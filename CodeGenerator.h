@@ -317,17 +317,15 @@ typedef struct Symbol {
     unsigned char is_extern;
 
     // Complex
-
-    unsigned int numberOfAttributes;
-    struct Symbol* attributes;
+    Token mothertype;
 
     SyntaxNode functionDefininiton;
 } Symbol;
 
-Symbol Complex_return = (Symbol) {.type = type_none};
+Token Complex_return = (Token) {.type = type_none};
 
 unsigned char returnComplex (Symbol variable) {
-    Complex_return = variable;
+    Complex_return = variable.mothertype;
     return variable.type;
 }
 
@@ -437,7 +435,7 @@ double reverseDouble (double value) {
 }
 
 // Will convert a type of a token to a variable type
-unsigned char tokenTypeToDataType (Token token) {
+unsigned char tokenTypeToDataType (Token token, CodeGenerator *codeGenerator) {
     switch (token.type) {
         case TTK_Ubyte:
             return type_ubyte;
@@ -472,8 +470,18 @@ unsigned char tokenTypeToDataType (Token token) {
         case TTK_Txt:
             return type_text;
             break;
-        case TTK_Collection:
-            return type_Collection;
+        case TT_Identifier:
+            {
+                if(strcmp(token.value.word, "table") == 0)
+                    return type_complex;
+                Symbol fnDeclaration = VariableTable_findVariableByName(&codeGenerator->table, token);
+                if(fnDeclaration.functionDefininiton.functionNode->returnType.type == TT_Identifier) {
+                    if(strcmp(fnDeclaration.functionDefininiton.functionNode->returnType.value.word, "table") == 0) {
+                        return type_complex;
+                    }
+                }
+            }
+            return type_function;
             break;
         default:
             return type_none;
@@ -503,6 +511,32 @@ unsigned char typeToStackType (unsigned char type) {
             break;
     }
     return type;
+}
+
+char *getTypeRepresentation(unsigned char type) {
+    switch (type) {
+        case type_ubyte:
+        case type_uint:
+        case type_ushort:
+        case type_ulong:
+            return "uint";
+        case type_byte:
+        case type_short:
+        case type_int:
+        case type_long:
+            return "int";
+        case type_float:
+        case type_double:
+            return "float";
+        case type_Collection:
+            return "Collection";
+        case type_text:
+        case type_complex:
+            return "text";
+        case type_function:
+            return "function";
+    }
+    return "unknown";
 }
 
 // Will create a new instance of a codeGenerator and will set all
@@ -553,6 +587,104 @@ void CodeGenerator_clear (CodeGenerator codeGenerator) {
 char* fullIncludes[512];
 unsigned int fullIncludesSize = 0;
 
+void syncFunctionSymbol(Symbol *newVariable, Symbol motherFunction) {
+    newVariable->functionDefininiton = motherFunction.functionDefininiton;
+    newVariable->returnType_isArray = motherFunction.returnType_isArray;
+    newVariable->returnType = motherFunction.returnType;
+    newVariable->memoryDeclaration = motherFunction.memoryDeclaration;
+    newVariable->free_arguments = motherFunction.free_arguments;
+    newVariable->codelength = motherFunction.codelength;
+    newVariable->code = motherFunction.code;
+    newVariable->argumentsCount = motherFunction.argumentsCount;
+    for(int args_counter = 0; args_counter < motherFunction.argumentsCount; args_counter += 1)
+        newVariable->arguments[args_counter] = motherFunction.arguments[args_counter];
+}
+
+// CodeGenerator_includeLibWithOutNamespace
+// Will search for the library and compiles it + imports it
+char CodeGenerator_includeLibWithOutNamespaceDirect (CodeGenerator* codeGenerator, char* path) {
+
+    // // Checks that the library is inside the list
+    // if (CodeGenerator_addLibPath (codeGenerator, path) == 0) {
+    //     return;
+    // }
+    for(unsigned int i = 0; i < fullIncludesSize; ++i) {
+        if(strcmp(fullIncludes[i], path) == 0) return 0;
+    }
+
+    fullIncludes[fullIncludesSize++] = path;
+
+    char base[512] = "";
+    char* abspath = NULL;
+    char* incCode = NULL;
+    // current path
+    abspath = strcat (base, "./");
+    abspath = strcat (base, path);
+    abspath = strcat (base, ".gsm");
+    //printf ("including: %s\n", abspath);
+    if (access (abspath, F_OK ) == 0) {
+        // Must be a lib. inside the compiling folder
+        incCode = readFile (abspath);
+        Tokenizer incTokenizer = Tokenizer_getTokens (incCode, abspath);
+        Parser incParser = Parser_build (&incTokenizer);
+
+        // include direct with insert
+        
+        for(unsigned int i = 0; i < incParser.ast.programsNode->size; ++i)
+            Program_addGlobalDeclaration(codeGenerator->parser->ast.programsNode, incParser.ast.programsNode->declarations[i]);
+        
+        for(unsigned int i = 0; i < incParser.numberOfLibrarys; ++i) {
+            Parser_addLibPath(codeGenerator->parser, incParser.librarys[i]);
+        }
+        return 1;
+    }
+    base[0] = '\0';
+    abspath = strcat (base, "./libs/");
+    abspath = strcat (base, path);
+    abspath = strcat (base, ".gsm");
+    //printf ("including: %s\n", abspath);
+    if (access (abspath, F_OK ) == 0) {
+        // Must be a lib. inside the compiling folder
+        incCode = readFile (abspath);
+        Tokenizer incTokenizer = Tokenizer_getTokens (incCode, abspath);
+        Parser incParser = Parser_build (&incTokenizer);
+
+        // Include direct with insert
+        for(unsigned int i = 0; i < incParser.ast.programsNode->size; ++i)
+            Program_addGlobalDeclaration(codeGenerator->parser->ast.programsNode, incParser.ast.programsNode->declarations[i]);
+        
+        for(unsigned int i = 0; i < incParser.numberOfLibrarys; ++i) {
+            Parser_addLibPath(codeGenerator->parser, incParser.librarys[i]);
+        }
+        return 1;
+    }
+
+    base[0] = '\0';
+    abspath = strcat (base, GISMOHOMELIBS);
+    abspath = strcat (base, path);
+    abspath = strcat (base, ".gsm");
+    //printf ("including: %s\n", abspath);
+    if (access (abspath, F_OK ) == 0) {
+        // Must be a lib. inside the compiling folder
+        incCode = readFile (abspath);
+        Tokenizer incTokenizer = Tokenizer_getTokens (incCode, abspath);
+        Parser incParser = Parser_build (&incTokenizer);
+
+        // Include direct with insert
+        for(unsigned int i = 0; i < incParser.ast.programsNode->size; ++i)
+            Program_addGlobalDeclaration(codeGenerator->parser->ast.programsNode, incParser.ast.programsNode->declarations[i]);
+        
+        for(unsigned int i = 0; i < incParser.numberOfLibrarys; ++i) {
+            Parser_addLibPath(codeGenerator->parser, incParser.librarys[i]);
+        }
+        return 1;
+    }
+
+    printf ("Library '%s' Not found!\n", path);
+    exit (1);
+    return 0;
+}
+
 // CodeGenerator_includeLibWithOutNamespace
 // Will search for the library and compiles it + imports it
 void CodeGenerator_includeLibWithOutNamespace (CodeGenerator* codeGenerator, char* path) {
@@ -561,7 +693,6 @@ void CodeGenerator_includeLibWithOutNamespace (CodeGenerator* codeGenerator, cha
     // if (CodeGenerator_addLibPath (codeGenerator, path) == 0) {
     //     return;
     // }
-    unsigned char alreadIncluded = 0;
     for(unsigned int i = 0; i < fullIncludesSize; ++i) {
         if(strcmp(fullIncludes[i], path) == 0) return;
     }
@@ -579,7 +710,7 @@ void CodeGenerator_includeLibWithOutNamespace (CodeGenerator* codeGenerator, cha
     if (access (abspath, F_OK ) == 0) {
         // Must be a lib. inside the compiling folder
         incCode = readFile (abspath);
-        Tokenizer incTokenizer = Tokenizer_getTokens (incCode);
+        Tokenizer incTokenizer = Tokenizer_getTokens (incCode, abspath);
         Parser incParser = Parser_build (&incTokenizer);
         unsigned int beginTableSize = codeGenerator->table.numberOfDeclarations;
         Parser* realPaser = codeGenerator->parser;
@@ -596,19 +727,19 @@ void CodeGenerator_includeLibWithOutNamespace (CodeGenerator* codeGenerator, cha
 
         // Rename all new declarations as <Name>At<Library>
 
-        for (unsigned int j = beginTableSize; j < codeGenerator->table.numberOfDeclarations; j++) {
-            Symbol vardec = codeGenerator->table.declarations[j];
-            if (!vardec.is_extern)
-                if (vardec.value.type == TT_Identifier) {
-                    unsigned int newNameSize = strlen (vardec.value.value.word) + 2 + strlen (path);
-                    char* newName = (char*) malloc (sizeof (char) * (newNameSize+1));
-                    newName[0] = '\0';
-                    newName = strcat (newName, vardec.value.value.word);
-                    vardec.value.value.word = newName;
-                    vardec.is_extern = 1;
-                }
-            codeGenerator->table.declarations[j] = vardec;
-        }
+        // for (unsigned int j = beginTableSize; j < codeGenerator->table.numberOfDeclarations; j++) {
+        //     Symbol vardec = codeGenerator->table.declarations[j];
+        //     if (!vardec.is_extern)
+        //         if (vardec.value.type == TT_Identifier) {
+        //             unsigned int newNameSize = strlen (vardec.value.value.word) + 2 + strlen (path);
+        //             char* newName = (char*) malloc (sizeof (char) * (newNameSize+1));
+        //             newName[0] = '\0';
+        //             newName = strcat (newName, vardec.value.value.word);
+        //             vardec.value.value.word = newName;
+        //             vardec.is_extern = 1;
+        //         }
+        //     codeGenerator->table.declarations[j] = vardec;
+        // }
         return;
     }
     base[0] = '\0';
@@ -619,7 +750,7 @@ void CodeGenerator_includeLibWithOutNamespace (CodeGenerator* codeGenerator, cha
     if (access (abspath, F_OK ) == 0) {
         // Must be a lib. inside the compiling folder
         incCode = readFile (abspath);
-        Tokenizer incTokenizer = Tokenizer_getTokens (incCode);
+        Tokenizer incTokenizer = Tokenizer_getTokens (incCode, abspath);
         Parser incParser = Parser_build (&incTokenizer);
         unsigned int beginTableSize = codeGenerator->table.numberOfDeclarations;
         Parser* realPaser = codeGenerator->parser;
@@ -633,19 +764,19 @@ void CodeGenerator_includeLibWithOutNamespace (CodeGenerator* codeGenerator, cha
 
         // Rename all new declarations as <Name>At<Library>
 
-        for (unsigned int j = beginTableSize; j < codeGenerator->table.numberOfDeclarations; j++) {
-            Symbol vardec = codeGenerator->table.declarations[j];
-            if (!vardec.is_extern)
-                if (vardec.value.type == TT_Identifier) {
-                    unsigned int newNameSize = strlen (vardec.value.value.word) + 2 + strlen (path);
-                    char* newName = (char*) malloc (sizeof (char) * (newNameSize+1));
-                    newName[0] = '\0';
-                    newName = strcat (newName, vardec.value.value.word);
-                    vardec.value.value.word = newName;
-                    vardec.is_extern = 1;
-                }
-            codeGenerator->table.declarations[j] = vardec;
-        }
+        // for (unsigned int j = beginTableSize; j < codeGenerator->table.numberOfDeclarations; j++) {
+        //     Symbol vardec = codeGenerator->table.declarations[j];
+        //     if (!vardec.is_extern)
+        //         if (vardec.value.type == TT_Identifier) {
+        //             unsigned int newNameSize = strlen (vardec.value.value.word) + 2 + strlen (path);
+        //             char* newName = (char*) malloc (sizeof (char) * (newNameSize+1));
+        //             newName[0] = '\0';
+        //             newName = strcat (newName, vardec.value.value.word);
+        //             vardec.value.value.word = newName;
+        //             vardec.is_extern = 1;
+        //         }
+        //     codeGenerator->table.declarations[j] = vardec;
+        // }
         return;
     }
 
@@ -657,7 +788,7 @@ void CodeGenerator_includeLibWithOutNamespace (CodeGenerator* codeGenerator, cha
     if (access (abspath, F_OK ) == 0) {
         // Must be a lib. inside the compiling folder
         incCode = readFile (abspath);
-        Tokenizer incTokenizer = Tokenizer_getTokens (incCode);
+        Tokenizer incTokenizer = Tokenizer_getTokens (incCode, abspath);
         Parser incParser = Parser_build (&incTokenizer);
         unsigned int beginTableSize = codeGenerator->table.numberOfDeclarations;
         Parser* realPaser = codeGenerator->parser;
@@ -669,24 +800,25 @@ void CodeGenerator_includeLibWithOutNamespace (CodeGenerator* codeGenerator, cha
 
         // Rename all new declarations as <Name>At<Library>
 
-        for (unsigned int j = beginTableSize; j < codeGenerator->table.numberOfDeclarations; j++) {
-            Symbol vardec = codeGenerator->table.declarations[j];
-            if (!vardec.is_extern)
-                if (vardec.value.type == TT_Identifier) {
-                    unsigned int newNameSize = strlen (vardec.value.value.word) + 2 + strlen (path);
-                    char* newName = (char*) malloc (sizeof (char) * (newNameSize+1));
-                    newName[0] = '\0';
-                    newName = strcat (newName, vardec.value.value.word);
-                    vardec.value.value.word = newName;
-                    vardec.is_extern = 1;
-                }
-            codeGenerator->table.declarations[j] = vardec;
-        }
+        // for (unsigned int j = beginTableSize; j < codeGenerator->table.numberOfDeclarations; j++) {
+        //     Symbol vardec = codeGenerator->table.declarations[j];
+        //     if (!vardec.is_extern)
+        //         if (vardec.value.type == TT_Identifier) {
+        //             unsigned int newNameSize = strlen (vardec.value.value.word) + 2 + strlen (path);
+        //             char* newName = (char*) malloc (sizeof (char) * (newNameSize+1));
+        //             newName[0] = '\0';
+        //             newName = strcat (newName, vardec.value.value.word);
+        //             vardec.value.value.word = newName;
+        //             vardec.is_extern = 1;
+        //         }
+        //     codeGenerator->table.declarations[j] = vardec;
+        // }
         return;
     }
 
     printf ("Library '%s' Not found!\n", path);
     exit (1);
+    return;
 }
 
 // Will search for the library and compiles it + imports it
@@ -708,7 +840,7 @@ void CodeGenerator_includeLib (CodeGenerator* codeGenerator, char* path) {
     if (access (abspath, F_OK ) == 0) {
         // Must be a lib. inside the compiling folder
         incCode = readFile (abspath);
-        Tokenizer incTokenizer = Tokenizer_getTokens (incCode);
+        Tokenizer incTokenizer = Tokenizer_getTokens (incCode, abspath);
         Parser incParser = Parser_build (&incTokenizer);
         unsigned int beginTableSize = codeGenerator->table.numberOfDeclarations;
         Parser* realPaser = codeGenerator->parser;
@@ -750,7 +882,7 @@ void CodeGenerator_includeLib (CodeGenerator* codeGenerator, char* path) {
     if (access (abspath, F_OK ) == 0) {
         // Must be a lib. inside the compiling folder
         incCode = readFile (abspath);
-        Tokenizer incTokenizer = Tokenizer_getTokens (incCode);
+        Tokenizer incTokenizer = Tokenizer_getTokens (incCode, abspath);
         Parser incParser = Parser_build (&incTokenizer);
         unsigned int beginTableSize = codeGenerator->table.numberOfDeclarations;
         Parser* realPaser = codeGenerator->parser;
@@ -790,7 +922,7 @@ void CodeGenerator_includeLib (CodeGenerator* codeGenerator, char* path) {
     if (access (abspath, F_OK ) == 0) {
         // Must be a lib. inside the compiling folder
         incCode = readFile (abspath);
-        Tokenizer incTokenizer = Tokenizer_getTokens (incCode);
+        Tokenizer incTokenizer = Tokenizer_getTokens (incCode, abspath);
         Parser incParser = Parser_build (&incTokenizer);
         unsigned int beginTableSize = codeGenerator->table.numberOfDeclarations;
         Parser* realPaser = codeGenerator->parser;
@@ -910,23 +1042,28 @@ void CodeGenerator_generate (CodeGenerator* codeGenerator) {
     ByteWriter_writeUInt (&byteWriter, 0);
     ByteWriter_writeUInt (&byteWriter, 0);
 
-    ByteWriter_writeUInt (&byteWriter, (codeGenerator->vanguards_size) * 8 + 5 + codeGenerator->global_ops_len + (codeGenerator->vanguards_size != 0 ? 1 : 0));
-    ByteWriter_addOps (&byteWriter, codeGenerator->global_ops, codeGenerator->global_ops_len);
-    ByteWriter_writeByte (&byteWriter, BC_LOAD_ARGUMENT);
-    ByteWriter_writeUInt (&byteWriter, 0);
+    ByteWriter_writeByte (&codeGenerator->globalwriter, BC_LOAD_ARGUMENT);
+    ByteWriter_writeUInt (&codeGenerator->globalwriter, 0);
     for (unsigned int i = 0; i < codeGenerator->vanguards_size; i++) {
-        ByteWriter_writeByte (&byteWriter, BC_COPY_COLLECTION);
-        ByteWriter_writeByte (&byteWriter, BC_LOAD_CONST_FUNC);
-        //ByteWriter_writeUInt (&byteWriter, VariableTable_findVariableByName (&codeGenerator->table, codeGenerator->vanguardFunctions[i].value).index);
-        ByteWriter_writeUInt (&byteWriter, codeGenerator->vanguardFunctions[i].index);
-        ByteWriter_writeByte (&byteWriter, BC_SWAP);
+        ByteWriter_writeByte (&codeGenerator->globalwriter, BC_COPY_COLLECTION);
+        ByteWriter_writeByte (&codeGenerator->globalwriter, BC_LOAD_CONST_FUNC);
+        //ByteWriter_writeUInt (&codeGenerator->globalwriter, VariableTable_findVariableByName (&codeGenerator->table, codeGenerator->vanguardFunctions[i].value).index);
+        ByteWriter_writeUInt (&codeGenerator->globalwriter, codeGenerator->vanguardFunctions[
+            codeGenerator->vanguards_size-i-1
+        ].index);
+        ByteWriter_writeByte (&codeGenerator->globalwriter, BC_SWAP);
         if (i == codeGenerator->vanguards_size-1) {
-            ByteWriter_writeByte (&byteWriter, BC_CALL_FUNC);
-            ByteWriter_writeByte (&byteWriter, BC_POP);
+            ByteWriter_writeByte (&codeGenerator->globalwriter, BC_CALL_FUNC);
+            ByteWriter_writeUInt(&codeGenerator->globalwriter, 1); // Only the collection
+            ByteWriter_writeByte (&codeGenerator->globalwriter, BC_POP);
         }
         else
-            ByteWriter_writeByte (&byteWriter, BC_CALL_VANGUARD);
+            ByteWriter_writeByte (&codeGenerator->globalwriter, BC_CALL_VANGUARD);
     }
+
+    // ByteWriter_writeUInt (&byteWriter, (codeGenerator->vanguards_size) * 8 + 5 + codeGenerator->global_ops_len + (codeGenerator->vanguards_size != 0 ? 1 : 0));
+    ByteWriter_writeUInt (&byteWriter, codeGenerator->global_ops_len);
+    ByteWriter_addOps (&byteWriter, codeGenerator->global_ops, codeGenerator->global_ops_len);
 
     free (codeGenerator->global_ops);
 
@@ -949,16 +1086,118 @@ void CodeGenerator_generate (CodeGenerator* codeGenerator) {
     }
 }
 
+// char startsWith(const char *a, const char *b)
+// {
+//    if(strncmp(a, b, strlen(b)) == 0) return 1;
+//    return 0;
+// }
+
+// char endsWith(const char *str, const char *suffix)
+// {
+//     if (!str || !suffix)
+//         return 0;
+//     size_t lenstr = strlen(str);
+//     size_t lensuffix = strlen(suffix);
+//     if (lensuffix >  lenstr)
+//         return 0;
+//     return strncmp(str + lenstr - lensuffix, suffix, lensuffix) == 0;
+// }
+
+// char isMetaPhysicName(char *name) {
+//     return startsWith(name, "$_") && endsWith(name, "_$");
+// }
+
 void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct SyntaxNode program) {
+    
+    // Including System
+    char includedSystem = CodeGenerator_includeLibWithOutNamespaceDirect(codeGenerator, "system");
+    
     SyntaxNode node;
+
+    // Direct Including
+    for (unsigned int i = 0; i < program.programsNode->size; i++) {
+        node = program.programsNode->declarations[i];
+        switch (node.type) {
+
+            case ID_ImplementNode:
+            {
+                ImplementNode implementNode = *node.implementNode;
+
+                if(implementNode.library.type != TT_None) {
+                    CodeGenerator_includeLibWithOutNamespaceDirect(codeGenerator, implementNode.library.value.word);
+                } else {
+                    puts("Cannot implement from library!");
+                    markTokenError(implementNode.implementsNode);
+                    exit(1);
+                }
+            }
+                break;
+        }
+    }
+
+
+    if(includedSystem) {
+        for (unsigned int i = 0; i < program.programsNode->size; i++) {
+            node = program.programsNode->declarations[i];
+            switch (node.type) {
+
+                case ID_FunctionNode:
+                {
+                    // Function declaration:
+                    FunctionNode functionNode = *node.functionNode;
+                    
+                    char lib_id[256] = "";
+                    getLibraryIdOfPath(functionNode.name.file_path, lib_id);
+                    if(strcmp(lib_id, "system") != 0) continue;
+                    Symbol functiondeclaration = VariableTable_declareVariable (&codeGenerator->table, functionNode.name, (Scope) {.rgtr = scope_constant});
+                    VariableTable_defineVariable (&codeGenerator->table, functiondeclaration.value, type_function);
+                    functiondeclaration = VariableTable_findVariableByName (&codeGenerator->table, functiondeclaration.value);
+                    functiondeclaration.functionDefininiton = node;
+                    if(functionNode.arguments.type == ID_ValueNode) {
+                        functiondeclaration.free_arguments = 1;
+                    } else if (functionNode.arguments.type != ID_None) {
+                        unsigned char j = 0;
+                        ArgumentNode next = *functionNode.arguments.argumentNode;
+                        unsigned char is_next = 1;
+                        while (is_next) {
+                            functiondeclaration.arguments[j].name = next.name;
+                            functiondeclaration.arguments[j].type = next.type;
+                            functiondeclaration.arguments[j].is_array = next.is_array;
+                            j++;
+                            if (next.next.type == ID_None)
+                                is_next = 0;
+                            else
+                                next = *next.next.argumentNode;
+                        }
+                        functiondeclaration.argumentsCount = j;
+                    }
+                    //functiondeclaration.returnType = tokenTypeToDataType (functionNode.returnType, codeGenerator);
+
+                    functiondeclaration.returnType_isArray = functionNode.returns_array;
+                    VariableTable_setVariableByName (&codeGenerator->table, functiondeclaration.value, functiondeclaration);
+                }
+                    break;
+            }
+        }
+    }
+
+    for (unsigned int i = 0; i < codeGenerator->parser->numberOfLibrarys; i++) {
+        char* path = codeGenerator->parser->librarys[i];
+        CodeGenerator_includeLib (codeGenerator, path);
+    }
 
     for (unsigned int i = 0; i < program.programsNode->size; i++) {
         node = program.programsNode->declarations[i];
         switch (node.type) {
+
             case ID_FunctionNode:
             {
                 // Function declaration:
                 FunctionNode functionNode = *node.functionNode;
+
+                char lib_id[256] = "";
+                getLibraryIdOfPath(functionNode.name.file_path, lib_id);
+                if(strcmp(lib_id, "system") == 0) continue;
                 Symbol functiondeclaration = VariableTable_declareVariable (&codeGenerator->table, functionNode.name, (Scope) {.rgtr = scope_constant});
                 VariableTable_defineVariable (&codeGenerator->table, functiondeclaration.value, type_function);
                 functiondeclaration = VariableTable_findVariableByName (&codeGenerator->table, functiondeclaration.value);
@@ -981,7 +1220,8 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                     }
                     functiondeclaration.argumentsCount = j;
                 }
-                functiondeclaration.returnType = tokenTypeToDataType (functionNode.returnType);
+                //functiondeclaration.returnType = tokenTypeToDataType (functionNode.returnType, codeGenerator);
+
                 functiondeclaration.returnType_isArray = functionNode.returns_array;
                 VariableTable_setVariableByName (&codeGenerator->table, functiondeclaration.value, functiondeclaration);
             }
@@ -1012,7 +1252,15 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                     }
                     functiondeclaration.argumentsCount = j;
                 }
-                functiondeclaration.returnType = tokenTypeToDataType (functionNode.returnType);
+                // functiondeclaration.returnType = tokenTypeToDataType (functionNode.returnType, codeGenerator);
+                // We need to store what motherclass it constructs
+                if(functiondeclaration.returnType == type_complex) {
+                    functiondeclaration.mothertype = functionNode.returnType;
+                } else {
+                    functiondeclaration.mothertype = (Token) {
+                        .type = TT_None
+                    };
+                }
                 functiondeclaration.returnType_isArray = functionNode.returns_array;
                 VariableTable_setVariableByName (&codeGenerator->table, functiondeclaration.value, functiondeclaration);
                 codeGenerator->vanguardFunctions[codeGenerator->vanguards_size++] = functiondeclaration;
@@ -1021,53 +1269,92 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
         }
     }
 
-    for (unsigned int i = 0; i < codeGenerator->parser->numberOfLibrarys; i++) {
-        char* path = codeGenerator->parser->librarys[i];
-        CodeGenerator_includeLib (codeGenerator, path);
+    // Set returntypes
+    for (unsigned int i = 0; i < program.programsNode->size; i++) {
+        // For each node in Program
+        node = program.programsNode->declarations[i];
+
+        // Check for Function/Vanguard and generate code for execution
+        if (node.type == ID_FunctionNode) {
+            FunctionNode functionNode = *node.functionNode;
+            Symbol functiondeclaration = VariableTable_findVariableByName (&codeGenerator->table, functionNode.name);
+            functiondeclaration.returnType = tokenTypeToDataType (functionNode.returnType, codeGenerator);
+            // complex type
+                
+            // We need to store what motherclass it constructs
+            if(functiondeclaration.returnType == type_complex) {
+                functiondeclaration.mothertype = functionNode.returnType;
+            } else {
+                functiondeclaration.mothertype = (Token) {
+                    .type = TT_None
+                };
+            }
+            VariableTable_setVariableByName(&codeGenerator->table, functiondeclaration.value, functiondeclaration);
+        }
     }
-
-    /*
-    char* global_ops = NULL;
-    unsigned int global_ops_len = 0;
-
-    ByteWriter globalwriter = ByteWriter_init (&global_ops, &global_ops_len);
-    */
    
+    // Implementating some library
     for (unsigned int i = 0; i < program.programsNode->size; i++) {
         node = program.programsNode->declarations[i];
         if (node.type == ID_BinOpNode || node.type == ID_ImplementNode) {
             unsigned char type = CodeGenerator_generateExpression (codeGenerator, node, (Scope) {.rgtr = scope_global}, &codeGenerator->globalwriter);
             if (type != type_none) {
                 puts ("Must be a declaration!");
-                markTokenError (codeGenerator->parser->tokenizer->code, node.binOpNode->operator);
+                markTokenError (node.binOpNode->operator);
                 exit (1);
             }
         }
     }
 
+
+    // Generate Functions
     for (unsigned int i = 0; i < program.programsNode->size; i++) {
+        // For each node in Program
         node = program.programsNode->declarations[i];
+
+        // Check for Function/Vanguard and generate code for execution
         if (node.type == ID_FunctionNode) {
+
+            // First loading the function Node for generate the function
             FunctionNode functionNode = *node.functionNode;
+
+            // Next we
             Symbol functiondeclaration = VariableTable_findVariableByName (&codeGenerator->table, functionNode.name);
+            
             ByteWriter tempWriter = ByteWriter_init (&functiondeclaration.code, &functiondeclaration.codelength); 
             Scope fscope = (Scope) {
                 .rgtr = scope_local,
                 .function = functiondeclaration.value
             };
+
+            // Loading Arguments
             for (unsigned char argsIndex = 0; argsIndex < functiondeclaration.argumentsCount; argsIndex++) {
                 Symbol argumentvar = VariableTable_declareVariable (&codeGenerator->table, functiondeclaration.arguments[argsIndex].name, fscope);
                 unsigned index;
                 if (functiondeclaration.arguments[argsIndex].is_array)
                     index = VariableTable_defineVariable (&codeGenerator->table, functiondeclaration.arguments[argsIndex].name, type_Collection);
                 else
-                    index = VariableTable_defineVariable (&codeGenerator->table, functiondeclaration.arguments[argsIndex].name, tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type));
+                    index = VariableTable_defineVariable (&codeGenerator->table, functiondeclaration.arguments[argsIndex].name, tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type, codeGenerator));
+
                 argumentvar.is_argument = 1;
                 argumentvar.argument_index = (functiondeclaration.argumentsCount - argsIndex)-1;
                 argumentvar.index = index;
-                argumentvar.type = functiondeclaration.arguments[argsIndex].is_array ? type_Collection : tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type);
+                argumentvar.type = functiondeclaration.arguments[argsIndex].is_array ? type_Collection : tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type, codeGenerator);
+
+                if(argumentvar.type == type_complex || argumentvar.type == type_function) {
+                    if(functiondeclaration.arguments[argsIndex].type.type == TT_Identifier)
+                        argumentvar.mothertype = functiondeclaration.arguments[argsIndex].type;
+                    else
+                        argumentvar.mothertype = (Token) {.type = TT_None};
+                }
+
+                if(argumentvar.type == type_function && argumentvar.mothertype.type == TT_Identifier) {
+                    Symbol motherfunction = VariableTable_findVariableByName(&codeGenerator->table, argumentvar.mothertype);
+                    syncFunctionSymbol(&argumentvar, motherfunction);
+                }
+                
                 if (functiondeclaration.arguments[argsIndex].is_array) {
-                    argumentvar.storingType = tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type);
+                    argumentvar.storingType = tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type, codeGenerator);
                 }
                 VariableTable_setVariableByName (&codeGenerator->table, functiondeclaration.arguments[argsIndex].name, argumentvar);
 
@@ -1078,7 +1365,7 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                 }
                 else {
 
-                    switch (tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type)) {
+                    switch (tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type, codeGenerator)) {
                         case type_ubyte:
                         case type_byte:
                             ByteWriter_writeByte (&tempWriter, BC_STORE_STACK_NUM8);
@@ -1090,7 +1377,7 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                         case type_uint:
                         case type_int:
                         case type_float:
-                            if (tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type) == type_float) {
+                            if (tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type, codeGenerator) == type_float) {
                                 ByteWriter_writeByte (&tempWriter, BC_Double2Float);
                             }
                             ByteWriter_writeByte (&tempWriter, BC_STORE_STACK_NUM32);
@@ -1100,11 +1387,16 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                         case type_double:
                             ByteWriter_writeByte (&tempWriter, BC_STORE_STACK_NUM64);
                             break;
+                        
+                        case type_complex:
                         case type_text:
                             ByteWriter_writeByte (&tempWriter, BC_STORE_STACK_TEXT);
                             break;
+                        case type_function:
+                            ByteWriter_writeByte (&tempWriter, BC_STORE_STACK_FUNC);
+                            break;
                         default:
-                            markTokenError (codeGenerator->parser->tokenizer->code, functiondeclaration.arguments[argsIndex].name);
+                            markTokenError (functiondeclaration.arguments[argsIndex].name);
                             switch (argumentvar.value.type) {
                                 case TT_String:
                                     printf ("Problem with Variable: %s\n", argumentvar.value.value.word);
@@ -1126,17 +1418,83 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                 }
                 ByteWriter_writeUInt (&tempWriter, argumentvar.index);
             }
+            // End Loading Arguments
+
+            // set name of current Function in codeGenerator
+            // for later refering
             codeGenerator->currentFunction = functionNode.name;
+
+            // generating the hole code corresponding to the execution of the function
             unsigned char functionRType = CodeGenerator_generateStatement (codeGenerator, functionNode.statements, fscope, &tempWriter);
+
+            // Select Function in Symboltable
+            Symbol datafunctiondeclaration = VariableTable_findVariableByName (&codeGenerator->table, functionNode.name);
+
+            // Now would be the time to generate the table class
+            if(datafunctiondeclaration.mothertype.type != TT_None) {
+                if(strcmp(datafunctiondeclaration.mothertype.value.word, "table") == 0) {
+
+                    // We need next to implement some kind of macro
+                    // that will executes a function
+                    SyntaxNode constructionFnCallNode = newFunctionCallNode(newValueNode((
+                        (Token) {
+                            .type = TT_Identifier,
+                            .value.word = "$_constructor_$"
+                        }
+                    )));
+
+
+                    char *tableIndex = (char*) malloc(sizeof(char) * 1024);
+                    tableIndex[0u] = '\0';
+
+                    // Generating table Index
+                    strcat(tableIndex, datafunctiondeclaration.value.value.word);
+                    strcat(tableIndex, "(");
+                    for(unsigned int fnArgumentIndex = 0u; fnArgumentIndex < datafunctiondeclaration.argumentsCount; fnArgumentIndex++) {
+                        strcat(tableIndex, datafunctiondeclaration.arguments[fnArgumentIndex].name.value.word);
+                        strcat(tableIndex, ":");
+                        strcat(tableIndex, getTypeRepresentation(tokenTypeToDataType(datafunctiondeclaration.arguments[fnArgumentIndex].type, codeGenerator)));
+                        if((fnArgumentIndex+1u) < datafunctiondeclaration.argumentsCount)
+                            strcat(tableIndex, ",");
+                    }
+                    strcat(tableIndex, ")");
+
+                    FunctionCallNode_add(constructionFnCallNode, newValueNode( (Token) {
+                        .type = TT_String,
+                        .value.word = tableIndex
+                    }));
+
+                    // Now we add all the arguments to the function call
+                    for(unsigned int fnArgumentIndex = 0u; fnArgumentIndex < datafunctiondeclaration.argumentsCount; fnArgumentIndex++) {
+                        FunctionCallNode_add(constructionFnCallNode, newValueNode( (Token) {
+                            .type = TT_Identifier,
+                            .value.word = datafunctiondeclaration.arguments[fnArgumentIndex].name.value.word
+                        }));
+                    }
+
+                    // Next we execute this functioncall!
+
+                    unsigned char type = CodeGenerator_generateExpression(codeGenerator, constructionFnCallNode, fscope, &tempWriter);
+
+                    ByteWriter_writeByte(&tempWriter, BC_RETURN_ELEMENT);
+                }
+            } 
+            
             if (functionRType != type_none) {
+                // If the last returning type of the last statement
+                // Is able to be returned, we simply returning it.
+
                 ByteWriter_writeByte (&tempWriter, BC_RETURN_ELEMENT);
                 if(functiondeclaration.returnType == type_none) {
                     functiondeclaration.returnType = functionRType;
                 }
             }
-            Symbol datafunctiondeclaration = VariableTable_findVariableByName (&codeGenerator->table, functionNode.name);
+
+            // Updating Function
             functiondeclaration.memoryDeclaration = datafunctiondeclaration.memoryDeclaration;
             VariableTable_setVariableByName (&codeGenerator->table, functiondeclaration.value, functiondeclaration);
+
+            // Forget about all these local variables in the function
             VariableTable_removeAllLocal (&codeGenerator->table);
         }
         else if (node.type == ID_VanguardNode) {
@@ -1153,13 +1511,13 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                 if (functiondeclaration.arguments[argsIndex].is_array)
                     index = VariableTable_defineVariable (&codeGenerator->table, functiondeclaration.arguments[argsIndex].name, type_Collection);
                 else
-                    index = VariableTable_defineVariable (&codeGenerator->table, functiondeclaration.arguments[argsIndex].name, tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type));
+                    index = VariableTable_defineVariable (&codeGenerator->table, functiondeclaration.arguments[argsIndex].name, tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type, codeGenerator));
                 argumentvar.is_argument = 1;
                 argumentvar.argument_index = (functiondeclaration.argumentsCount - argsIndex)-1;
                 argumentvar.index = index;
-                argumentvar.type = functiondeclaration.arguments[argsIndex].is_array ? type_Collection : tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type);
+                argumentvar.type = functiondeclaration.arguments[argsIndex].is_array ? type_Collection : tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type, codeGenerator);
                 if (functiondeclaration.arguments[argsIndex].is_array) {
-                    argumentvar.storingType = tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type);
+                    argumentvar.storingType = tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type, codeGenerator);
                 }
                 VariableTable_setVariableByName (&codeGenerator->table, functiondeclaration.arguments[argsIndex].name, argumentvar);
 
@@ -1169,7 +1527,7 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                     ByteWriter_writeByte (&tempWriter, BC_STORE_STACK_COLLECTION);
                 }
                 else
-                    switch (tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type)) {
+                    switch (tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type, codeGenerator)) {
                         case type_ubyte:
                         case type_byte:
                             ByteWriter_writeByte (&tempWriter, BC_STORE_STACK_NUM8);
@@ -1181,7 +1539,7 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                         case type_uint:
                         case type_int:
                         case type_float:
-                            if (tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type) == type_float) {
+                            if (tokenTypeToDataType (functiondeclaration.arguments[argsIndex].type, codeGenerator) == type_float) {
                                 ByteWriter_writeByte (&tempWriter, BC_Double2Float);
                             }
                             ByteWriter_writeByte (&tempWriter, BC_STORE_STACK_NUM32);
@@ -1195,7 +1553,7 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                             ByteWriter_writeByte (&tempWriter, BC_STORE_STACK_TEXT);
                             break;
                         default:
-                            markTokenError (codeGenerator->parser->tokenizer->code, functiondeclaration.arguments[argsIndex].name);
+                            markTokenError (functiondeclaration.arguments[argsIndex].name);
                             switch (functiondeclaration.arguments[argsIndex].name.type) {
                                 case TT_String:
                                     printf ("Problem with Function Argument: %s, in Function: %s\n", functiondeclaration.arguments[argsIndex].name.value.word, functiondeclaration.value.value.word);
@@ -1245,7 +1603,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
                     Symbol symbol = VariableTable_findVariableByName(&codeGenerator->table, implementNode.declaration);
                     if(symbol.type == type_undefined) {
                         puts("Cannot find implementation in library!");
-                        markTokenError(codeGenerator->parser->tokenizer->code, implementNode.implementsNode);
+                        markTokenError(implementNode.implementsNode);
                         exit(1);
                     }
                     VariableTable_createReferenceByName(&codeGenerator->table, symbol.value, implementNode.identifier); 
@@ -1254,7 +1612,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
                 CodeGenerator_includeLibWithOutNamespace(codeGenerator, implementNode.library.value.word);
             } else {
                 puts("Cannot implement from library!");
-                markTokenError(codeGenerator->parser->tokenizer->code, implementNode.implementsNode);
+                markTokenError(implementNode.implementsNode);
                 exit(1);
             }
 
@@ -1270,7 +1628,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
             
             if(rexpression == type_none || rexpression == type_undefined) {
                 puts("expression in if doesn't provide an return...");
-                markTokenError(codeGenerator->parser->tokenizer->code, ifNode.ifWord);
+                markTokenError(ifNode.ifWord);
                 exit(1);
             }
             
@@ -1466,7 +1824,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
                 type = CodeGenerator_generateExpression (codeGenerator, returnNode.expression, scope, byteWriter);
             else {
                 puts("Function is claimed to return nothing... you lied to the compiler :(");
-                markTokenError(codeGenerator->parser->tokenizer->code, fn.value);
+                markTokenError(fn.value);
                 exit(1);
             }
 
@@ -1490,7 +1848,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
                             ByteWriter_writeByte (byteWriter, BC_U2F);
                         else {
                             puts ("The Function returns a different Datatype!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, fn.value);
+                            markTokenError( fn.value);
                             exit (1);
                         }
                         break;
@@ -1501,7 +1859,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
                             ByteWriter_writeByte (byteWriter, BC_I2F);
                         else {
                             puts ("The Function returns a different Datatype!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, fn.value);
+                            markTokenError( fn.value);
                             exit (1);
                         }
                         break;
@@ -1512,13 +1870,13 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
                             ByteWriter_writeByte (byteWriter, BC_F2I);
                         else {
                             puts ("The Function returns a different Datatype!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, fn.value);
+                            markTokenError( fn.value);
                             exit (1);
                         }
                         break;
                     case type_text:
                         puts ("The Function returns a different Datatype!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, fn.value);
+                        markTokenError( fn.value);
                         exit (1);
                         break;
                     case type_Collection:
@@ -1526,7 +1884,15 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
                             break;
                         }
                         puts ("The Function returns a different Datatype!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, fn.value);
+                        markTokenError( fn.value);
+                        exit (1);
+                        break;
+                    case type_complex:
+                        // We need to check that
+                        // The returning complex
+                        // has the right motherclass
+                        puts ("The Function returns a different Datatype!");
+                        markTokenError( fn.value);
                         exit (1);
                         break;
                     case type_none:
@@ -1566,7 +1932,7 @@ void CodeGenerator_generateLogFunctionEnter(struct CodeGenerator *codeGenerator,
         ));
 
         CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
-        // ByteWriter_writeByte(byteWriter, BC_POP);
+        ByteWriter_writeByte(byteWriter, BC_POP);
     }
 }
 
@@ -1590,6 +1956,7 @@ void CodeGenerator_generateLogFunctionLeave(struct CodeGenerator *codeGenerator,
         ));
 
         CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+        ByteWriter_writeByte(byteWriter, BC_POP);
     }
 }
 
@@ -1606,7 +1973,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     Symbol symbol = VariableTable_findVariableByName(&codeGenerator->table, implementNode.declaration);
                     if(symbol.type == type_undefined) {
                         puts("Cannot find implementation in library!");
-                        markTokenError(codeGenerator->parser->tokenizer->code, implementNode.implementsNode);
+                        markTokenError(implementNode.implementsNode);
                         exit(1);
                     }
                     VariableTable_createReferenceByName(&codeGenerator->table, symbol.value, implementNode.identifier); 
@@ -1615,7 +1982,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 CodeGenerator_includeLibWithOutNamespace(codeGenerator, implementNode.library.value.word);
             } else {
                 puts("Cannot implement from library!");
-                markTokenError(codeGenerator->parser->tokenizer->code, implementNode.implementsNode);
+                markTokenError(implementNode.implementsNode);
                 exit(1);
             }
 
@@ -1646,28 +2013,28 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                 // New In node
 
-                case TTK_In:
-                {
-                    // TODO: Finish to implement the In-Operator
-                    // 1. Get Variables on both sides
-                    // 2. Create Variable on left side
-                    // 3. check what mode it uses
-                    // 4. react accordingly
-                    // 5. generate bytecode
+                // case TTK_In:
+                // {
+                //     // TODO: Finish to implement the In-Operator
+                //     // 1. Get Variables on both sides
+                //     // 2. Create Variable on left side
+                //     // 3. check what mode it uses
+                //     // 4. react accordingly
+                //     // 5. generate bytecode
 
-                    if (binOpNode->left.type != ID_ValueNode) {
-                        puts ("In Loop needs an identifier as variable");
-                        markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
-                        exit (1);
-                    }
+                //     if (binOpNode->left.type != ID_ValueNode) {
+                //         puts ("In Loop needs an identifier as variable");
+                //         markTokenError( binOpNode->operator);
+                //         exit (1);
+                //     }
 
-                    SyntaxNode right = binOpNode->right;
-                    // Making sure that right is a list or a range
+                //     SyntaxNode right = binOpNode->right;
+                //     // Making sure that right is a list or a range
 
-                    ValueNode iter_identifier = *binOpNode->left.valueNode;
-                    Symbol iter = VariableTable_findVariableByName (&codeGenerator->table, iter_identifier.value);
-                }
-                    break;
+                //     ValueNode iter_identifier = *binOpNode->left.valueNode;
+                //     Symbol iter = VariableTable_findVariableByName (&codeGenerator->table, iter_identifier.value);
+                // }
+                //     break;
 
                 case TT_Plus:
                 {
@@ -1727,6 +2094,10 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     ByteWriter_writeByte (byteWriter, BC_ADD_F);
                                     return type_double;
                                     break;
+                                default:
+                                    puts ("Cannot use this Datatype with + Operator!");
+                                    markTokenError(binOpNode->operator);
+                                    exit (1);
                             }
                             break;
                         case type_byte:
@@ -1765,6 +2136,10 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     ByteWriter_writeByte (byteWriter, BC_ADD_F);
                                     return type_double;
                                     break;
+                                default:
+                                    puts ("Cannot use this Datatype with + Operator!");
+                                    markTokenError(binOpNode->operator);
+                                    exit (1);
                             }
                             break;
                         case type_float:
@@ -1801,6 +2176,10 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     ByteWriter_writeByte (byteWriter, BC_ADD_F);
                                     return type_double;
                                     break;
+                                default:
+                                    puts ("Cannot use this Datatype with + Operator!");
+                                    markTokenError(binOpNode->operator);
+                                    exit (1);
                             }
                             break;
                         case type_text:
@@ -1810,16 +2189,19 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                 ByteWriter_writeByte (byteWriter, BC_CONCAT);
                                 return type_text;
                             } else {
-                                puts ("Cannot work with collections yet!");
+                                puts ("Cannot use this Datatype with + Operator!");
+                                markTokenError(binOpNode->operator);
                                 exit (1);
                             }
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
-                            exit (1);
+                            markTokenError(binOpNode->operator);
+                                exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -1959,14 +2341,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -2106,14 +2491,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -2253,14 +2641,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -2339,14 +2730,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -2483,15 +2877,20 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             }
                             break;
                         case type_text:
+                            
+
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -2631,14 +3030,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -2778,14 +3180,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -2965,14 +3370,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -3151,14 +3559,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -3305,14 +3716,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -3401,14 +3815,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -3497,14 +3914,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -3595,14 +4015,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -3692,14 +4115,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         case type_text:
                             puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         case type_Collection:
                             puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                         default:
                             puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
                             exit (1);
                             break;
                     }
@@ -3712,7 +4138,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     if (binOpNode->left.type != ID_ValueNode) 
                         if (binOpNode->left.valueNode->value.type != TT_Identifier){
                             puts ("Expected an identifier!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->left.valueNode->value);
+                            markTokenError( binOpNode->left.valueNode->value);
                             exit (1);
                         }
                     Token variableName = binOpNode->left.valueNode->value;
@@ -3722,14 +4148,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     } 
                     if (VariableTable_findVariableByName (&codeGenerator->table, variableName).type != type_none) {
                         puts ("Variable has already a type!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, variableName);
+                        markTokenError( variableName);
                         exit (1);
                     }
                     Symbol variableDeclaration = VariableTable_findVariableByName (&codeGenerator->table, variableName);
 
                     if (variableDeclaration.is_argument) {
                         puts ("Variable is a function-argument!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, variableName);
+                        markTokenError( variableName);
                         exit (1);
                     }
 
@@ -3792,7 +4218,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             default:
                                 puts ("Expected a type!");
-                                markTokenError (codeGenerator->parser->tokenizer->code, variableType);
+                                markTokenError( variableType);
                                 exit (1);
                         }
                         
@@ -3806,13 +4232,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                 {
                                     if (squareCallNode.numbersOfArguments == 0 || squareCallNode.arguments[0].type != ID_ValueNode) {
                                         puts ("Cannot create Collection without type!");
-                                        markTokenError (codeGenerator->parser->tokenizer->code, variableName);
+                                        markTokenError( variableName);
                                         exit (1);
                                     }
                                     Token storingType = squareCallNode.arguments[0].valueNode->value;
                                     VariableTable_defineVariable (&codeGenerator->table, variableDeclaration.value, type_Collection);
                                     VarDec collection = VariableTable_findVariableByName (&codeGenerator->table, variableDeclaration.value);
-                                    collection.storingType = tokentypeToDatatype (storingType);
+                                    collection.storingType = tokentypeToDatatype (storingType, codeGenerator);
                                     VariableTable_setVariableByName (&codeGenerator->table, variableDeclaration.value, collection);
 
                                     // Initzalisation
@@ -3831,15 +4257,19 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     break;
                                 default:
                                     puts ("Cannot create Collection!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, variableName);
+                                    markTokenError( variableName);
                                     exit (1);
                             }*/
-                            unsigned char arrayType = typeToStackType (tokenTypeToDataType (collectionType.value));
+                            unsigned char arrayType = typeToStackType (tokenTypeToDataType (collectionType.value, codeGenerator));
 
 
                             VariableTable_defineVariable (&codeGenerator->table, variableDeclaration.value, type_Collection);
                             Symbol collection = VariableTable_findVariableByName (&codeGenerator->table, variableDeclaration.value);
                             collection.storingType = arrayType;
+                            if(collection.storingType == type_complex || collection.storingType == type_function)
+                                collection.mothertype = collectionType.value;
+                            else
+                                collection.mothertype = (Token) {.type = type_none};
                             VariableTable_setVariableByName (&codeGenerator->table, variableDeclaration.value, collection);
 
                             // Initzalisation
@@ -3849,7 +4279,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                 etype = typeToStackType (etype);
                                 if (etype != arrayType) {
                                     puts ("All elements must be the same type of the array!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, variableName);
+                                    markTokenError( variableName);
                                     exit (1);
                                 }
                                 ByteWriter_writeByte (byteWriter, BC_ADD_ELEMENT);
@@ -3866,7 +4296,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             return type_none;
                         } else {
                             puts ("Cannot create Collection!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, variableName);
+                            markTokenError( variableName);
                             exit (1);
                         }
                     }
@@ -3925,13 +4355,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             return type_none;
                         } else {
                             puts ("Must be a type/array or function that returns these kinds!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, variableName);
+                            markTokenError( variableName);
                             exit (1);
                         }
                     }
                     else {
                         puts ("Missing Type!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, variableName);
+                        markTokenError( variableName);
                         exit (1);
                     }
                 }
@@ -3944,7 +4374,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     SyntaxNode noderight = binOpNode->right;
 
                     puts("Warning Deprecated: Colon is in this version of Gismo deprecated!");
-                    markTokenError(codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                    markTokenError(binOpNode->operator);
 
                     if (nodeleft.type == ID_SquareCallNode) {
                         unsigned char type = CodeGenerator_generateExpression (codeGenerator, noderight, scope, byteWriter);
@@ -3955,7 +4385,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                         if (ctype != typeToStackType (type)) {
                             puts ("No given index!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, name);
+                            markTokenError( name);
                             exit (1);
                         }
                         
@@ -3970,7 +4400,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                         if (squareCallNode.numbersOfArguments == 0) {
                             puts ("No given index!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, name);
+                            markTokenError( name);
                             exit (1);
                         }
                         CodeGenerator_generateExpression (codeGenerator, squareCallNode.arguments[0], scope, byteWriter);
@@ -3990,7 +4420,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     if (nodeleft.type != ID_ValueNode) 
                         if (nodeleft.valueNode->value.type != TT_Identifier) {
                             puts ("Only except an identifier; no 'is' statement with an colon operator!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                            markTokenError( binOpNode->operator);
                             exit (1);
                         }
                     unsigned char type = CodeGenerator_generateExpression (codeGenerator, noderight, scope, byteWriter);
@@ -4007,7 +4437,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     }
                     if (type != type_text) {
                         puts ("Only except an text value!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                        markTokenError( binOpNode->operator);
                         exit (1);
                     }
                     switch (vardec.scope.rgtr) {
@@ -4020,7 +4450,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         
                         default:
                             puts ("Unsupported scope!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                            markTokenError( binOpNode->operator);
                             exit (1);
                     }
                     ByteWriter_writeUInt (byteWriter, index);
@@ -4042,7 +4472,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     // if its such expression, we'll evaluate and create it, variable by calling generateExpression
                     if (nodeleft.type == ID_BinOpNode) {
                         puts (":= is used for defining immutable Variables, there is no 'is' operator, etc needed!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, nodeleft.binOpNode->operator);
+                        markTokenError( nodeleft.binOpNode->operator);
                         exit (1);
                     }
 
@@ -4078,7 +4508,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4097,7 +4527,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4116,7 +4546,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4136,7 +4566,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4155,7 +4585,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4174,7 +4604,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4193,7 +4623,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4213,7 +4643,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4232,7 +4662,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4252,7 +4682,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4273,13 +4703,76 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                             
                                             default:
                                                 puts ("Unsupported scope!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                                                markTokenError( binOpNode->operator);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
                                         return type_none;
                                     }
                                     break;
+
+                                    case type_complex:
+                                    {
+                                        unsigned int index = VariableTable_defineVariable (&codeGenerator->table, newVariable.value, type_complex);
+                                        switch (newVariable.scope.rgtr) {
+                                            case scope_global:
+                                                ByteWriter_writeByte (byteWriter, BC_STORE_GLOBAL_TEXT);
+                                                break;
+                                            case scope_local:
+                                                ByteWriter_writeByte (byteWriter, BC_STORE_STACK_TEXT);
+                                                break;
+                                            
+                                            default:
+                                                puts ("Unsupported scope!");
+                                                markTokenError( binOpNode->operator);
+                                                exit (1);
+                                        }
+                                        ByteWriter_writeUInt (byteWriter, index);
+                                        
+                                        newVariable = VariableTable_findVariableByName(&codeGenerator->table, newVariable.value);
+                                        newVariable.mothertype = Complex_return;
+
+                                        VariableTable_setVariableByName(&codeGenerator->table, newVariable.value, newVariable);
+
+                                        return type_none;
+                                    }
+                                    break;
+
+                                    case type_function:
+                                    {
+                                        unsigned int index = VariableTable_defineVariable(&codeGenerator->table, newVariable.value, type_function);
+
+                                        switch(newVariable.scope.rgtr) {
+                                            case scope_global:
+                                                ByteWriter_writeByte(byteWriter, BC_STORE_GLOBAL_FUNC);
+                                                break;
+                                            case scope_local:
+                                                ByteWriter_writeByte(byteWriter, BC_STORE_STACK_FUNC);
+                                                break;
+                                            default:
+                                                puts ("Unsupported scope!");
+                                                markTokenError( binOpNode->operator);
+                                                exit (1);
+                                        }
+
+                                        ByteWriter_writeUInt (byteWriter, index);
+
+                                        newVariable = VariableTable_findVariableByName(&codeGenerator->table, newVariable.value);
+                                        newVariable.mothertype = Complex_return;
+
+                                        Symbol motherFunction = VariableTable_findVariableByName(&codeGenerator->table, newVariable.mothertype);
+
+                                        syncFunctionSymbol(&newVariable, motherFunction);
+
+                                        VariableTable_setVariableByName(&codeGenerator->table, newVariable.value, newVariable);
+                                        return type_none;
+                                    }
+                                    break;
+                                    
+                                    default:
+                                        puts ("Unsupported Datatype!");
+                                        markTokenError( binOpNode->operator);
+                                        exit (1);
                                 }
                             }
                             else {
@@ -4287,7 +4780,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                 // we would we want to define it again???
 
                                 puts ("Variable has already been defined!");
-                                markTokenError (codeGenerator->parser->tokenizer->code, valueNode.value);
+                                markTokenError( valueNode.value);
                                 exit (1);
 
                                 return type_none;
@@ -4296,13 +4789,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         else {
                             // But if the variable isn't even a identifier, we cannot store it and we have to stop the compilation
                             puts ("Expected an Identifier!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, valueNode.value);
+                            markTokenError( valueNode.value);
                             exit (1);
                         }
                     } else {
                         // But if the variable isn't even a identifier, we cannot store it and we have to stop the compilation
                         puts ("Cannot define an immutable variable inside an collection or etc.");
-                        markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                        markTokenError( binOpNode->operator);
                         exit (1);
                     }
                 }
@@ -4395,25 +4888,119 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 case TT_Equalsign:
                 {
                     SyntaxNode nodeleft = binOpNode->left;
-                    unsigned char type = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, byteWriter);
 
                     if (nodeleft.type == ID_BinOpNode) {
                         BinOpNode binOpNode_def = *nodeleft.binOpNode;
                         if (binOpNode_def.operator.type == TTK_Is) {
                             CodeGenerator_generateExpression (codeGenerator, nodeleft, scope, byteWriter);
                             nodeleft = nodeleft.binOpNode->left;
-                        }
-                        else {
-                            puts ("Expected an Operator like 'is'!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, binOpNode_def.operator);
+                        } else if(binOpNode_def.operator.type == TT_Dot) {
+                            // Converting to simple functioncall
+                            SyntaxNode left = nodeleft.binOpNode->left;
+                            SyntaxNode right = nodeleft.binOpNode->right;
+
+                            if(left.type != ID_ValueNode || right.type != ID_ValueNode) {
+                                puts ("Expected right and left an identifier!");
+                                markTokenError( binOpNode_def.operator);
+                                exit (1);
+                            }
+
+                            Token name = left.valueNode->value;
+                            Token memberName = right.valueNode->value;
+
+                            Symbol leftComplex = VariableTable_findVariableByName (&codeGenerator->table, name);
+                            
+                            // Now this only works with complexes
+                            if(leftComplex.type == type_complex) {
+
+                                // Now we simply need to find out if that variable is an field within the mothertype
+                                // and get its type
+
+                                Symbol mothertype = VariableTable_findVariableByName(&codeGenerator->table, leftComplex.mothertype);
+                                
+                                for(unsigned int member = 0u; member < mothertype.argumentsCount; member++) {
+                                    if(strcmp(mothertype.arguments[member].name.value.word, memberName.value.word) == 0) {
+                                        SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token) {
+                                            .type = TT_Identifier,
+                                            .value.word = "$_update_$"
+                                        }));
+
+                                        FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                            .type = TT_Identifier,
+                                            .value.word = name.value.word
+                                        }));
+
+                                        FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                            .type = TT_String,
+                                            .value.word = memberName.value.word
+                                        }));
+
+                                        FunctionCallNode_add(fnCallNode, binOpNode->right);
+
+                                        return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+                                    }
+                                }
+                                puts ("Field in table object doesn't exist: ");
+                                puts (memberName.value.word);
+                                markTokenError( binOpNode->operator);
+                                exit (1);
+                            } 
+                        } else {
+                            puts ("Expected an Operator like 'is' or '.'!");
+                            markTokenError( binOpNode_def.operator);
                             exit (1);
                         }
-                    } 
+                    }
+
+                    unsigned char type = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, byteWriter);
 
                     if (nodeleft.type == ID_ValueNode) {
                         ValueNode valueNode = *nodeleft.valueNode;
                         if (valueNode.value.type == TT_Identifier) {
                             Symbol variable = VariableTable_findVariableByName (&codeGenerator->table, valueNode.value);
+
+                            if(type == type_function) {
+                                // Checking now that the functions will be with equal type
+                                if(Complex_return.type == TT_Identifier) {
+
+                                    Symbol motherFunction = VariableTable_findVariableByName(&codeGenerator->table, Complex_return);
+                                    if(motherFunction.type != type_function) {
+                                        puts ("Not same type of Function1!");
+                                        markTokenError( binOpNode->operator);
+                                        exit (1);
+                                    }
+
+                                    if((motherFunction.argumentsCount != variable.argumentsCount) ? (motherFunction.free_arguments && variable.free_arguments) : 0 ||
+                                        variable.returnType != motherFunction.returnType ||
+                                        variable.returnType_isArray != motherFunction.returnType_isArray
+                                    ) {
+                                        puts ("Not same type of Function2!");
+                                        markTokenError( binOpNode->operator);
+                                        exit (1);
+                                    }
+
+                                    for(unsigned int args_counter = 0; args_counter < variable.argumentsCount; args_counter++) {
+                                        if((variable.arguments[args_counter].type.type != motherFunction.arguments[args_counter].type.type) || 
+                                           (variable.arguments[args_counter].is_array != motherFunction.arguments[args_counter].is_array)) {
+                                            puts ("Not same type of Function3!");
+                                            markTokenError( binOpNode->operator);
+                                            exit (1);
+                                        }
+
+                                        if(variable.arguments[args_counter].type.type == TT_Identifier) {
+                                            if(strcmp(variable.arguments[args_counter].type.value.word, motherFunction.arguments[args_counter].type.value.word) != 0) {
+                                                puts ("Not same type of Function4!");
+                                                markTokenError( binOpNode->operator);
+                                                exit (1);
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    puts ("Cannot work with constant functions5!");
+                                    markTokenError( binOpNode->operator);
+                                    exit (1);
+                                }
+                            }
 
                             if (variable.type == type_undefined) {
                                 Symbol newVariable = VariableTable_declareVariable (&codeGenerator->table, valueNode.value, scope);
@@ -4434,7 +5021,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4457,7 +5044,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4478,13 +5065,20 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
                                         return type_none;
                                     }
                                         break;
+                                    case type_complex:
+                                    case type_function:
+                                        puts ("table objects or functions must be defined with the := operator!");
+                                        markTokenError( binOpNode->operator);
+                                        exit (1);
+                                        break;
+
                                     case type_text:
                                     {
                                         unsigned int index = VariableTable_defineVariable (&codeGenerator->table, newVariable.value, type_text);
@@ -4497,7 +5091,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                             default:
                                                 puts ("Inmutable Variable!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, newVariable.value);
+                                                markTokenError( newVariable.value);
                                                 exit (1);
                                         }
                                         ByteWriter_writeUInt (byteWriter, index);
@@ -4579,6 +5173,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                 break;
                                         }
                                         break;
+                                    case type_complex:
+                                        if(type == type_complex)
+                                            if(strcmp(Complex_return.value.word, variable.mothertype.value.word) != 0) {
+                                                printf("Cannot convert from table object %s to %s!\n", Complex_return.value.word, variable.mothertype.value.word);
+                                                markTokenError( binOpNode->operator);
+                                                exit (1);
+                                            }
                                     case type_text:
                                         switch (type) {
                                             case type_ubyte:
@@ -4629,11 +5230,15 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                             case type_double:
                                                 ByteWriter_writeByte (byteWriter, BC_STORE_GLOBAL_NUM64);
                                                 break;
+                                            case type_function:
+                                                ByteWriter_writeByte (byteWriter, BC_STORE_GLOBAL_FUNC);
+                                                break;
+                                            case type_complex:
                                             case type_text:
                                                 ByteWriter_writeByte(byteWriter, BC_STORE_GLOBAL_TEXT);
                                                 break;
                                             default:
-                                                markTokenError (codeGenerator->parser->tokenizer->code, variable.value);
+                                                markTokenError( variable.value);
                                                 switch (variable.value.type) {
                                                     case TT_String:
                                                         printf ("Problem with Variable: %s\n", variable.value.value.word);
@@ -4691,11 +5296,15 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                             case type_double:
                                                 ByteWriter_writeByte (byteWriter, BC_STORE_STACK_NUM64);
                                                 break;
+                                            case type_complex:
                                             case type_text:
                                                 ByteWriter_writeByte (byteWriter, BC_STORE_STACK_TEXT);
                                                 break;
+                                            case type_function:
+                                                ByteWriter_writeByte(byteWriter, BC_STORE_STACK_FUNC);
+                                                break;
                                             default:
-                                                markTokenError (codeGenerator->parser->tokenizer->code, variable.value);
+                                                markTokenError( variable.value);
                                                 switch (variable.value.type) {
                                                     case TT_String:
                                                         printf ("Problem with Variable: %s\n", variable.value.value.word);
@@ -4732,7 +5341,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                         break;
                                     default:
                                         puts ("The variable is a const, therefore it is Inmutable!");
-                                        markTokenError (codeGenerator->parser->tokenizer->code ,valueNode.value);
+                                        markTokenError(valueNode.value);
                                         exit (1);
                                 }
                                 ByteWriter_writeUInt (byteWriter, variable.index);
@@ -4741,7 +5350,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         }
                         else {
                             puts ("Expected an Identifier!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, valueNode.value);
+                            markTokenError( valueNode.value);
                             exit (1);
                         }
                     } else if (nodeleft.type == ID_SquareCallNode) {
@@ -4752,7 +5361,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                         if (ctype != typeToStackType (type)) {
                             puts ("No given index!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, name);
+                            markTokenError( name);
                             exit (1);
                         }
                         
@@ -4767,7 +5376,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                         if (squareCallNode.numbersOfArguments == 0) {
                             puts ("No given index!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, name);
+                            markTokenError( name);
                             exit (1);
                         }
                         CodeGenerator_generateExpression (codeGenerator, squareCallNode.arguments[0], scope, byteWriter);
@@ -4792,10 +5401,10 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned char stype = typeToStackType (type);
                     if (binOpNode->right.type != ID_ValueNode) {
                         puts ("Type conversation have to be an existing Type!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                        markTokenError( binOpNode->operator);
                         exit (1);
                     }
-                    unsigned char rtype = tokenTypeToDataType (binOpNode->right.valueNode->value);
+                    unsigned char rtype = tokenTypeToDataType (binOpNode->right.valueNode->value, codeGenerator);
                     unsigned char srtype = typeToStackType (rtype);
                     switch (stype) {
                         case type_long:
@@ -4813,7 +5422,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     break;
                                 default:
                                     puts ("Type conversation, unsupported datatype!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                                    markTokenError( binOpNode->operator);
                                     exit (1);
                             }
                             break;
@@ -4832,7 +5441,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     break;
                                 default:
                                     puts ("Type conversation, unsupported datatype!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                                    markTokenError( binOpNode->operator);
                                     exit (1);
                             }
                             break;
@@ -4851,7 +5460,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     break;
                                 default:
                                     puts ("Type conversation, unsupported datatype!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                                    markTokenError( binOpNode->operator);
                                     exit (1);
                             }
                             break;
@@ -4870,7 +5479,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     break;
                                 default:
                                     puts ("Type conversation, unsupported datatype!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                                    markTokenError( binOpNode->operator);
                                     exit (1);
                             }
                             break;
@@ -4878,7 +5487,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
                         default:
                             puts ("Type conversation, unsupported datatype!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                            markTokenError( binOpNode->operator);
                             exit (1);
                     }
                     return srtype;
@@ -4905,7 +5514,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     if (strcmp (fn.identifier.valueNode->value.value.word, "Init") == 0) {
                                         if (fn.numbersOfArguments != 1) {
                                             puts ("The function must have 1 argument!");
-                                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                            markTokenError( fn.identifier.valueNode->value);
                                             exit (1);
                                         }
                                         CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
@@ -4913,7 +5522,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     } else if (strcmp (fn.identifier.valueNode->value.value.word, "Size") == 0) {
                                         if (fn.numbersOfArguments != 0) {
                                             puts ("The function does not have any argument!!");
-                                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                            markTokenError( fn.identifier.valueNode->value);
                                             exit (1);
                                         }
                                         ByteWriter_writeByte (byteWriter, BC_SIZEOF_COLLECTION);
@@ -4922,13 +5531,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     } else if (strcmp (fn.identifier.valueNode->value.value.word, "Remove") == 0) {
                                         if (fn.numbersOfArguments != 1) {
                                             puts ("The function must have 1 argument!");
-                                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                            markTokenError( fn.identifier.valueNode->value);
                                             exit (1);
                                         }
                                         unsigned char ttype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
                                         if (typeToStackType (ttype) != type_ulong) {
                                             puts ("The Index must be an unsigned!");
-                                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                            markTokenError( fn.identifier.valueNode->value);
                                             exit (1);
                                         }
                                         ByteWriter_writeByte (byteWriter, BC_REMOVE_ELEMENT);
@@ -4936,7 +5545,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     } else if (strcmp (fn.identifier.valueNode->value.value.word, "Add") == 0) {
                                         if (fn.numbersOfArguments != 1) {
                                             puts ("The function must have 1 argument!");
-                                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                            markTokenError( fn.identifier.valueNode->value);
                                             exit (1);
                                         }
                                         CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
@@ -4944,7 +5553,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     } else if (strcmp (fn.identifier.valueNode->value.value.word, "Clear") == 0) {
                                         if (fn.numbersOfArguments != 0) {
                                             puts ("The function must not have none argument!");
-                                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                            markTokenError( fn.identifier.valueNode->value);
                                             exit (1);
                                         }
                                         ByteWriter_writeByte (byteWriter, BC_POP);
@@ -4963,7 +5572,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             if (strcmp (fn.identifier.valueNode->value.value.word, "Length") == 0) {
                                 if (fn.numbersOfArguments != 0) {
                                     puts ("Too many function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 ByteWriter_writeByte (byteWriter, BC_TEXT_GETSIZE);
@@ -4972,12 +5581,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             else if (strcmp (fn.identifier.valueNode->value.value.word, "InsertChar") == 0) {
                                 if (fn.numbersOfArguments < 1) {
                                     puts ("Too few function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 if (fn.numbersOfArguments > 1) {
                                     puts ("Too many function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
@@ -5000,7 +5609,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                         break;
                                     default:
                                         puts ("Wrong datatype as argument!");
-                                        markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                        markTokenError( fn.identifier.valueNode->value);
                                         exit (1);
                                         break;
                                 }
@@ -5010,7 +5619,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             else if (strcmp (fn.identifier.valueNode->value.value.word, "Pop") == 0) {
                                 if (fn.numbersOfArguments != 0) {
                                     puts ("Too many function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 ByteWriter_writeByte (byteWriter, BC_TEXT_POP_CHAR);
@@ -5019,12 +5628,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             else if (strcmp (fn.identifier.valueNode->value.value.word, "CharAt") == 0) {
                                 if (fn.numbersOfArguments < 1) {
                                     puts ("Too few function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 if (fn.numbersOfArguments > 1) {
                                     puts ("Too many function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
@@ -5047,7 +5656,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                         break;
                                     default:
                                         puts ("Wrong datatype as argument!");
-                                        markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                        markTokenError( fn.identifier.valueNode->value);
                                         exit (1);
                                         break;
                                 }
@@ -5057,12 +5666,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             else if (strcmp (fn.identifier.valueNode->value.value.word, "Remove") == 0) {
                                 if (fn.numbersOfArguments < 1) {
                                     puts ("Too few function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 if (fn.numbersOfArguments > 1) {
                                     puts ("Too many function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
@@ -5085,7 +5694,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                         break;
                                     default:
                                         puts ("Wrong datatype as argument!");
-                                        markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                        markTokenError( fn.identifier.valueNode->value);
                                         exit (1);
                                         break;
                                 }
@@ -5094,12 +5703,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             }else if (strcmp (fn.identifier.valueNode->value.value.word, "SetChar") == 0) {
                                 if (fn.numbersOfArguments < 2) {
                                     puts ("Too few function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 if (fn.numbersOfArguments > 2) {
                                     puts ("Too many function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[1], scope, byteWriter);
@@ -5122,7 +5731,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                         break;
                                     default:
                                         puts ("Wrong datatype as argument!");
-                                        markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                        markTokenError( fn.identifier.valueNode->value);
                                         exit (1);
                                         break;
                                 }
@@ -5146,7 +5755,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                         break;
                                     default:
                                         puts ("Wrong datatype as argument!");
-                                        markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                        markTokenError( fn.identifier.valueNode->value);
                                         exit (1);
                                         break;
                                 }
@@ -5156,7 +5765,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             else if (strcmp (fn.identifier.valueNode->value.value.word, "Print") == 0) {
                                 if (fn.numbersOfArguments != 0) {
                                     puts ("Too many function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 ByteWriter_writeByte (byteWriter, BC_PRINT_TEXT);
@@ -5165,7 +5774,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             else if (strcmp (fn.identifier.valueNode->value.value.word, "Println") == 0) {
                                 if (fn.numbersOfArguments != 0) {
                                     puts ("Too many function-arguments!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 ByteWriter_writeByte (byteWriter, BC_PRINT_TEXT);
@@ -5184,17 +5793,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         Symbol vardec = VariableTable_findVariableByName (&codeGenerator->table, fn.identifier.valueNode->value);
                         if (vardec.type == type_undefined) {
                             puts ("Undefined function!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                            markTokenError( fn.identifier.valueNode->value);
                             exit (1);
-                        }
+                        } 
                         if (fn.numbersOfArguments < vardec.argumentsCount) {
                             puts ("To few function-argument!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                            markTokenError( fn.identifier.valueNode->value);
                             exit (1);
                         }
                         if (fn.numbersOfArguments > vardec.argumentsCount) {
                             puts ("To many function-argument!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                            markTokenError( fn.identifier.valueNode->value);
                             exit (1);
                         }
 
@@ -5203,37 +5812,38 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         ByteWriter_writeByte (byteWriter, BC_LOAD_CONST_FUNC);
                         ByteWriter_writeUInt (byteWriter, vardec.index);
                         ByteWriter_writeByte (byteWriter, BC_SWAP);
-                        for (unsigned int i = 0; i < vardec.argumentsCount; i++) {
+                        
+                        for (unsigned int i = 1; i < vardec.argumentsCount; i++) {
                             /*if (i == 0)
-                                if (typeToStackType (type) == typeToStackType (tokentypeToDatatype (vardec.arguments[i].type)))
+                                if (typeToStackType (type) == typeToStackType (tokentypeToDatatype (vardec.arguments[i].type, codeGenerator)))
                                     continue;
                                 else {
                                     puts ("Methode value type does not match!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }*/
-                            unsigned char fntype = typeToStackType (tokenTypeToDataType (vardec.arguments[i].type));
+                            unsigned char fntype = typeToStackType (tokenTypeToDataType (vardec.arguments[i].type, codeGenerator));
                             if (vardec.arguments[i].is_array) {
                                 if (fn.arguments[i].type != ID_ValueNode) {
                                     puts ("Missing Array!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 Token arrayName = fn.arguments[i].valueNode->value;
                                 if (arrayName.type != TT_Identifier) {
                                     puts ("Missing Array!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 Symbol array = VariableTable_findVariableByName (&codeGenerator->table, arrayName);
                                 if (array.type != type_Collection) {
                                     puts ("Missing Array!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 if (fntype != array.storingType) {
                                     puts ("Wrong Datatype for Array!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                    markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
                                 }
                                 if (array.scope.rgtr == scope_local)
@@ -5261,7 +5871,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                             }
                                             else {
                                                 puts ("Wrong Datatype for function-argument!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                                markTokenError( fn.identifier.valueNode->value);
                                                 exit (1);
                                             }
                                             break;
@@ -5274,7 +5884,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                             }
                                             else {
                                                 puts ("Wrong Datatype for function-argument!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                                markTokenError( fn.identifier.valueNode->value);
                                                 exit (1);
                                             }
                                             break;
@@ -5287,18 +5897,18 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                             }
                                             else {
                                                 puts ("Wrong Datatype for function-argument!");
-                                                markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                                markTokenError( fn.identifier.valueNode->value);
                                                 exit (1);
                                             }
                                             break;
                                         case type_text:
                                             puts ("Wrong Datatype for function-argument!");
-                                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                            markTokenError( fn.identifier.valueNode->value);
                                             exit (1);
                                             break;
                                         case type_Collection:
                                             puts ("Wrong Datatype for function-argument!");
-                                            markTokenError (codeGenerator->parser->tokenizer->code, fn.identifier.valueNode->value);
+                                            markTokenError( fn.identifier.valueNode->value);
                                             exit (1);
                                             break;
                                     }
@@ -5306,17 +5916,155 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             }
                         }
                         ByteWriter_writeByte (byteWriter, BC_CALL_FUNC);
+                        ByteWriter_writeUInt(byteWriter, fn.numbersOfArguments);
                         if (vardec.returnType == type_none)
                             ByteWriter_writeByte (byteWriter, BC_POP);
                         free (args_tmp);
                         CodeGenerator_generateLogFunctionLeave(codeGenerator, fn, vardec, scope, byteWriter);
+                        if(vardec.returnType == type_complex)
+                            returnComplex(vardec);
                         return vardec.returnType;
+                    } else if(right.type == ID_ValueNode) {
+                        if (left.type == ID_ValueNode) {
+                            if (left.valueNode->value.type == TT_Identifier && right.valueNode->value.type == TT_Identifier) {
+                                Token name = left.valueNode->value;
+                                Token memberName = right.valueNode->value;
+                                Symbol leftComplex = VariableTable_findVariableByName (&codeGenerator->table, name);
+                                
+                                // Now this only works with complexes
+                                if(leftComplex.type == type_complex) {
+
+                                    // Now we simply need to find out if that variable is an field within the mothertype
+                                    // and get its type
+
+                                    Symbol mothertype = VariableTable_findVariableByName(&codeGenerator->table, leftComplex.mothertype);
+                                    
+                                    for(unsigned int member = 0u; member < mothertype.argumentsCount; member++) {
+                                        if(strcmp(mothertype.arguments[member].name.value.word, memberName.value.word) == 0) {
+                                            
+                                            // Now call the right $$select.. function
+
+                                            SyntaxNode fnCallNode;
+                                            switch(tokenTypeToDataType(mothertype.arguments[member].type, codeGenerator)) {
+                                                case type_ubyte:
+                                                case type_ushort:
+                                                case type_uint:
+                                                case type_ulong:
+                                                    fnCallNode = newFunctionCallNode(newValueNode((Token) {
+                                                        .type = TT_Identifier,
+                                                        .value.word = "$_selectUInt_$"
+                                                    }));
+
+                                                    FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                                        .type = TT_Identifier,
+                                                        .value.word = name.value.word
+                                                    }));
+
+                                                    FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                                        .type = TT_String,
+                                                        .value.word = memberName.value.word
+                                                    }));
+
+                                                    return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+                                                case type_byte:
+                                                case type_short:
+                                                case type_int:
+                                                case type_long:
+                                                    fnCallNode = newFunctionCallNode(newValueNode((Token) {
+                                                        .type = TT_Identifier,
+                                                        .value.word = "$_selectInt_$"
+                                                    }));
+
+                                                    FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                                        .type = TT_Identifier,
+                                                        .value.word = name.value.word
+                                                    }));
+
+                                                    FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                                        .type = TT_String,
+                                                        .value.word = memberName.value.word
+                                                    }));
+
+                                                    return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+                                                case type_float:
+                                                case type_double:
+                                                    fnCallNode = newFunctionCallNode(newValueNode((Token) {
+                                                        .type = TT_Identifier,
+                                                        .value.word = "$_selectFloat_$"
+                                                    }));
+
+                                                    FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                                        .type = TT_Identifier,
+                                                        .value.word = name.value.word
+                                                    }));
+
+                                                    FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                                        .type = TT_String,
+                                                        .value.word = memberName.value.word
+                                                    }));
+
+                                                    return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+                                                case type_complex:
+                                                    fnCallNode = newFunctionCallNode(newValueNode((Token) {
+                                                        .type = TT_Identifier,
+                                                        .value.word = "$_selectText_$"
+                                                    }));
+
+                                                    FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                                        .type = TT_Identifier,
+                                                        .value.word = name.value.word
+                                                    }));
+
+                                                    FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                                        .type = TT_String,
+                                                        .value.word = memberName.value.word
+                                                    }));
+
+                                                    CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+                                                    
+                                                    Complex_return = mothertype.arguments[member].type;
+                                                    
+                                                    return type_complex;
+                                                case type_text:
+                                                    fnCallNode = newFunctionCallNode(newValueNode((Token) {
+                                                        .type = TT_Identifier,
+                                                        .value.word = "$_selectText_$"
+                                                    }));
+
+                                                    FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                                        .type = TT_Identifier,
+                                                        .value.word = name.value.word
+                                                    }));
+
+                                                    FunctionCallNode_add(fnCallNode, newValueNode((Token) {
+                                                        .type = TT_String,
+                                                        .value.word = memberName.value.word
+                                                    }));
+
+                                                    return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+                                                    
+                                            }
+                                        }
+                                    }
+
+                                    puts ("Field in table object doesn't exist: ");
+                                    puts (memberName.value.word);
+                                    markTokenError( binOpNode->operator);
+                                    exit (1);
+
+                                } else {
+                                    puts ("left value must be an table object!");
+                                    markTokenError( binOpNode->operator);
+                                    exit (1);
+                                }
+                            }
+                        }
                     }
                 }
                     break;
                 
                 default:
-                    markTokenError (codeGenerator->parser->tokenizer->code, binOpNode->operator);
+                    markTokenError( binOpNode->operator);
                     puts ("Unusable binary operator!");
                     exit (1);
             }
@@ -5330,7 +6078,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 case TT_Minus:
                     if (type == type_ulong) {
                         puts ("Cannot use binary minus on an unsigned!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, unaryOpNode->operator);
+                        markTokenError( unaryOpNode->operator);
                         exit (1);
                     }
                     else if (type == type_double) {
@@ -5343,7 +6091,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     }
                     else {
                         puts ("Cannot use binary minus other types then floats and ints");
-                        markTokenError (codeGenerator->parser->tokenizer->code, unaryOpNode->operator);
+                        markTokenError( unaryOpNode->operator);
                         exit (1);
                     }
                     break;
@@ -5368,7 +6116,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
 
                         default:
-                            markTokenError (codeGenerator->parser->tokenizer->code, unaryOpNode->operator);
+                            markTokenError( unaryOpNode->operator);
                             puts ("Unusable datatype!");
                             exit (1);
                     }
@@ -5384,7 +6132,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
 
                         default:
-                            markTokenError (codeGenerator->parser->tokenizer->code, unaryOpNode->operator);
+                            markTokenError( unaryOpNode->operator);
                             puts ("Unusable datatype!");
                             exit (1);
                     }
@@ -5393,13 +6141,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                 case TT_Multiply:
                 {
-                    markTokenError (codeGenerator->parser->tokenizer->code, unaryOpNode->operator);
+                    markTokenError( unaryOpNode->operator);
                     puts ("Function call required in order to insert it's statements.");
                     exit (1);
                 }
                     break;
                 default:
-                    markTokenError (codeGenerator->parser->tokenizer->code, unaryOpNode->operator);
+                    markTokenError( unaryOpNode->operator);
                     puts ("Unusable unary operator!");
                     exit (1);
             }
@@ -5435,7 +6183,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                 }
                                 else {
                                     puts ("This Value is out of range!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                                    markTokenError( valueNode->value);
                                     exit (1);
                                 }
                                 break;
@@ -5454,7 +6202,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                 }
                                 else {
                                     puts ("This Value is out of range!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                                    markTokenError( valueNode->value);
                                     exit (1);
                                 }
                                 break;
@@ -5467,7 +6215,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                 }
                                 else {
                                     puts ("This Value is out of range!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                                    markTokenError( valueNode->value);
                                     exit (1);
                                 }
                                 break;
@@ -5567,7 +6315,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     Symbol declaration = VariableTable_findVariableByName (&codeGenerator->table, valueNode->value);
                     if (declaration.type == type_undefined) {
                         puts ("Undefined Variable, therefore it's impossible to load a value!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                        markTokenError( valueNode->value);
                         exit (1);
                     }
 
@@ -5594,7 +6342,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             default:
                                 puts ("Unusable Register Id!");
-                                markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                                markTokenError( valueNode->value);
                                 exit (1);
                         }
                         // then comes the matching index of the variable
@@ -5619,7 +6367,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             default:
                                 puts ("Unusable Register Id!");
-                                markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                                markTokenError( valueNode->value);
                                 exit (1);
                         }
                         ByteWriter_writeUInt (byteWriter, declaration.index);
@@ -5643,7 +6391,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             default:
                                 puts ("Unusable Register Id!");
-                                markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                                markTokenError( valueNode->value);
                                 exit (1);
                         }
                         ByteWriter_writeUInt (byteWriter, declaration.index);
@@ -5670,12 +6418,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             default:
                                 puts ("Unusable Register Id!");
-                                markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                                markTokenError( valueNode->value);
                                 exit (1);
                         }
                         ByteWriter_writeUInt (byteWriter, declaration.index);
                         break;
-                    
+
+                    case type_complex:
                     case type_text:
                         // Just a string
                         switch (declaration.scope.rgtr) {
@@ -5692,7 +6441,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             default:
                                 puts ("Unusable Register Id!");
-                                markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                                markTokenError( valueNode->value);
                                 exit (1);
                         }
                         ByteWriter_writeUInt (byteWriter, declaration.index);
@@ -5711,23 +6460,52 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             default:
                                 puts ("Unusable Register Id!");
-                                markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                                markTokenError( valueNode->value);
+                                exit (1);
+                        }
+                        ByteWriter_writeUInt (byteWriter, declaration.index);
+                        break;
+                    case type_function:
+                        // Just a function
+                        switch (declaration.scope.rgtr) {
+                            
+                            case scope_constant:
+                                ByteWriter_writeByte (byteWriter, BC_LOAD_CONST_FUNC);
+                                break;
+                            case scope_global:
+                                ByteWriter_writeByte (byteWriter, BC_LOAD_GLOBAL_FUNC);
+                                break;
+                            case scope_local:
+                                ByteWriter_writeByte (byteWriter, BC_LOAD_STACK_FUNC);
+                                break;
+
+                            default:
+                                puts ("Unusable Register Id!");
+                                markTokenError( valueNode->value);
                                 exit (1);
                         }
                         ByteWriter_writeUInt (byteWriter, declaration.index);
                         break;
                     default:
                         puts ("Unusable Datatype for variable!");
-                        markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                        markTokenError( valueNode->value);
                         exit (1);
                         break;
                     }
+
+                    // This is for exporing the type of the complex or function next steps
+                    if(declaration.type == type_complex) {
+                        returnComplex(declaration);
+                    } else if(declaration.type == type_function) {
+                        Complex_return = declaration.value;
+                    }
+                    
                     return declaration.type;
                 }
 
                     break;
                 default:
-                    markTokenError (codeGenerator->parser->tokenizer->code, valueNode->value);
+                    markTokenError( valueNode->value);
                     puts ("Unusable value");
                     exit (1);
             }
@@ -5746,22 +6524,22 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                 if (fn.type == type_undefined) {
                     puts ("Undefined function!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                    markTokenError( functionCallNode.identifier.valueNode->value);
                     exit (1);
                 }
                 if (fn.free_arguments) {
                     puts ("Cannot insert function body with arguments beeing optional.");
-                    markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                    markTokenError( functionCallNode.identifier.valueNode->value);
                     exit (1);
                 }
                 if (functionCallNode.numbersOfArguments < fn.argumentsCount) {
                     puts ("To few function-argument!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                    markTokenError( functionCallNode.identifier.valueNode->value);
                     exit (1);
                 }
                 if (functionCallNode.numbersOfArguments > fn.argumentsCount) {
                     puts ("To many function-argument!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                    markTokenError( functionCallNode.identifier.valueNode->value);
                     exit (1);
                 }
 
@@ -5780,7 +6558,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     }
 
                     //Symbol argumentSymbol = VariableTable_declareVariable(&codeGenerator->table, fn.arguments[i].name, scope);
-                    //unsigned int argumentIndex = VariableTable_defineVariable(&codeGenerator->table, fn.arguments[i].name, typeToStackType (tokenTypeToDataType (fn.arguments[i].type)));
+                    //unsigned int argumentIndex = VariableTable_defineVariable(&codeGenerator->table, fn.arguments[i].name, typeToStackType (tokenTypeToDataType (fn.arguments[i].type, codeGenerator)));
 
                     unsigned char argumentType = CodeGenerator_generateExpression(codeGenerator, newBinOpNode(
                         newValueNode(fn.arguments[i].name),
@@ -5808,12 +6586,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             if (strcmp (name.value.word, "$$printInt$$") == 0) {
                 if (functionCallNode.numbersOfArguments < 1) {
                     puts ("Missing integer number as argument!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 if (functionCallNode.numbersOfArguments > 1) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 SyntaxNode argumentNode = functionCallNode.arguments[0];
@@ -5824,12 +6602,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "$$printFloat$$") == 0) {
                 if (functionCallNode.numbersOfArguments < 1) {
                     puts ("Missing floating point number as argument!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 if (functionCallNode.numbersOfArguments > 1) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 SyntaxNode argumentNode = functionCallNode.arguments[0];
@@ -5840,12 +6618,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "$$printUnsigned$$") == 0) {
                 if (functionCallNode.numbersOfArguments < 1) {
                     puts ("Missing unsigned integer number as argument!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 if (functionCallNode.numbersOfArguments > 1) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 SyntaxNode argumentNode = functionCallNode.arguments[0];
@@ -5856,7 +6634,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "$$newline$$") == 0) {
                 if (functionCallNode.numbersOfArguments > 0) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 ByteWriter_writeByte (byteWriter, BC_NEWLINE);
@@ -5865,12 +6643,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "$$print$$") == 0) {
                 if (functionCallNode.numbersOfArguments < 1) {
                     puts ("Missing text as argument!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 if (functionCallNode.numbersOfArguments > 1) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 SyntaxNode argumentNode = functionCallNode.arguments[0];
@@ -5881,12 +6659,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "exit") == 0) {
                 if (functionCallNode.numbersOfArguments < 1) {
                     puts ("Missing integer number as argument!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 if (functionCallNode.numbersOfArguments > 1) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 SyntaxNode argumentNode = functionCallNode.arguments[0];
@@ -5916,12 +6694,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             ByteWriter_writeByte (byteWriter, BC_PRINT_F);
                             break;
                         
+                        case type_complex:
                         case type_text:
                             ByteWriter_writeByte (byteWriter, BC_PRINT_TEXT);
                             break;
 
                         default:
-                            markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                            markTokenError(name);
                             puts ("Unsupported Datatype!");
                             exit (1);
                     }
@@ -5932,7 +6711,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "$$getUnsigned$$") == 0) {
                 if (functionCallNode.numbersOfArguments > 0) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 ByteWriter_writeByte (byteWriter, BC_INPUT_U);
@@ -5941,7 +6720,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "$$getInt$$") == 0) {
                 if (functionCallNode.numbersOfArguments > 0) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                    markTokenError(name);
                     exit (1);
                 }
                 ByteWriter_writeByte (byteWriter, BC_INPUT_I);
@@ -5950,7 +6729,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "$$getFloat$$") == 0) {
                 if (functionCallNode.numbersOfArguments > 0) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
                 ByteWriter_writeByte (byteWriter, BC_INPUT_F);
@@ -5959,7 +6738,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "$$get$$") == 0) {
                 if (functionCallNode.numbersOfArguments > 0) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
                 ByteWriter_writeByte (byteWriter, BC_INPUT_LINE);
@@ -5968,7 +6747,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "getch") == 0) {
                 if (functionCallNode.numbersOfArguments > 0) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
                 ByteWriter_writeByte (byteWriter, BC_INPUT_CHAR);
@@ -5977,7 +6756,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "clock") == 0) {
                 if (functionCallNode.numbersOfArguments > 0) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
                 ByteWriter_writeByte (byteWriter, BC_CLOCK);
@@ -5986,7 +6765,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "time") == 0) {
                 if (functionCallNode.numbersOfArguments > 0) {
                     puts ("Too many arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
                 ByteWriter_writeByte (byteWriter, BC_TIME);
@@ -5995,7 +6774,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else if (strcmp (name.value.word, "type") == 0) {
                 if (functionCallNode.numbersOfArguments < 1) {
                     puts ("Too few arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
                 char* tmptxt = NULL;
@@ -6005,6 +6784,9 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 if(functionCallNode.arguments[0].type == ID_ValueNode)
                     if(functionCallNode.arguments[0].valueNode->value.type == TT_Identifier) {
                         type = VariableTable_findVariableByName(&codeGenerator->table, functionCallNode.arguments[0].valueNode->value).type;
+                        if(type == type_complex) {
+                            Complex_return = VariableTable_findVariableByName(&codeGenerator->table, functionCallNode.arguments[0].valueNode->value).mothertype;
+                        }
                     }
                     else type = CodeGenerator_generateExpression (codeGenerator, functionCallNode.arguments[0], scope, &tmpWriter);
                 else type = CodeGenerator_generateExpression (codeGenerator, functionCallNode.arguments[0], scope, &tmpWriter);
@@ -6061,6 +6843,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     case type_any:
                         typetxt = "any";
                         break;
+                    case type_complex:
+                        if(Complex_return.type == TT_Identifier)
+                            typetxt = Complex_return.value.word;
+                        else
+                            typetxt = "undefined";
+                        break;
                     default:
                         printf ("Unusable type! Type ID -> %d\n", type);
                         exit (1);
@@ -6115,7 +6903,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             break;
 
                         default:
-                            markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                            markTokenError(name);
                             puts ("Unsupported Datatype!");
                             exit (1);
                     }
@@ -6145,11 +6933,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             ByteWriter_writeByte (byteWriter, BC_TO_STRING_F);
                             break;
                         
+                        case type_complex:
                         case type_text:
                             break;
 
                         default:
-                            markTokenError (codeGenerator->parser->tokenizer->code ,name);
+                            markTokenError(name);
                             puts ("Unsupported Datatype!");
                             exit (1);
                     }
@@ -6162,7 +6951,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 // Will handle Library Loading
                 if (functionCallNode.numbersOfArguments != 1) {
                     puts ("Missing Path for GNL Library!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
                 
@@ -6172,7 +6961,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 
                 if (type != type_text) {
                     puts ("GNL Library Path must be a text value!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
                 
@@ -6184,7 +6973,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 // Will handle the symbole table for the native Librarys
                 if (functionCallNode.numbersOfArguments != 2) {
                     puts ("Wrong Arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
                 
@@ -6196,13 +6985,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                 if (libhandle_type != type_ushort) {
                     puts ("GNL Library Handle must be a ushort value!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
 
                 if (symbol_type != type_text) {
                     puts ("GNL Symbol must be a text value!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
 
@@ -6214,7 +7003,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 // Will load a function pointer and executes it with some informations
                 if (functionCallNode.numbersOfArguments < 3) {
                     puts ("Too few arguments!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
 
@@ -6227,19 +7016,19 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 unsigned char returnType = type_none;
                 if (libhandle_type != type_ushort) {
                     puts ("GNL Library Handle must be a ushort!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
 
                 if (fnhandle_type != type_ushort) {
                     puts ("GNL Function Handle must be a ushort!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
 
                 if (rtype.type != ID_ValueNode) {
                     puts ("GNL wrong return type!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, name);
+                    markTokenError( name);
                     exit (1);
                 }
 
@@ -6248,13 +7037,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     case TT_Int:
                         if (rtype.valueNode->value.value.i != 0) {
                             puts ("GNL wrong return type!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, name);
+                            markTokenError( name);
                             exit (1);
                         }
                         break;
 
                     default:
-                        returnType = tokenTypeToDataType (rtype.valueNode->value);
+                        returnType = tokenTypeToDataType (rtype.valueNode->value, codeGenerator);
                 }
 
                 for (unsigned int i = 3; i < functionCallNode.numbersOfArguments; i++) {
@@ -6274,34 +7063,49 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 // Will close a native Library while execution
 
                 puts ("Isn't supported by the VM yet!");
-                markTokenError (codeGenerator->parser->tokenizer->code, name);
+                markTokenError( name);
                 exit (1);
             }
             else {
+                // First we need to make sure enough parameters where given
                 //Regulare
                 Symbol vardec = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
                 if (vardec.type == type_undefined) {
                     puts ("Undefined function!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                    markTokenError( functionCallNode.identifier.valueNode->value);
                     exit (1);
                 }
                 if (functionCallNode.numbersOfArguments < vardec.argumentsCount && !vardec.free_arguments) {
                     puts ("To few function-argument!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                    markTokenError( functionCallNode.identifier.valueNode->value);
                     exit (1);
                 }
                 if (functionCallNode.numbersOfArguments > vardec.argumentsCount && !vardec.free_arguments) {
                     puts ("To many function-argument!");
-                    markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                    markTokenError( functionCallNode.identifier.valueNode->value);
                     exit (1);
                 }
 
+                // Next we make sure we log the entering of the function for later debugging
+
                 CodeGenerator_generateLogFunctionEnter(codeGenerator, functionCallNode, vardec, scope, byteWriter);
 
-                // Load the function to be callen (We need it on the stack first) 
-                ByteWriter_writeByte (byteWriter, BC_LOAD_CONST_FUNC);
-                ByteWriter_writeUInt (byteWriter, vardec.index);
 
+                // Load the function to be callen (We need it on the stack first)
+                switch(vardec.scope.rgtr) {
+                    case scope_global:
+                        ByteWriter_writeByte (byteWriter, BC_LOAD_GLOBAL_FUNC);
+                        break;
+                    case scope_local:
+                        ByteWriter_writeByte (byteWriter, BC_LOAD_STACK_FUNC);
+                        break;
+                    case scope_constant:
+                        ByteWriter_writeByte (byteWriter, BC_LOAD_CONST_FUNC);
+                        break;
+                }
+                ByteWriter_writeUInt (byteWriter, vardec.index);
+                
+                // If arguments are defined as foo(*) than let them all pass
                 if(vardec.free_arguments) {
 
                     ByteWriter_writeByte(byteWriter, BC_BUILD_EMPTYCOLLECTION);
@@ -6315,44 +7119,39 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                     ByteWriter_writeByte(byteWriter, BC_BUILD_EMPTYCOLLECTION);
                     for(unsigned int i = 0; i < functionCallNode.numbersOfArguments; ++i) {
-                        // Symbol typeOfArgument = VariableTable_findVariableByName(&codeGenerator->table, (Token) {.type = TT_Uint, .value.u = argt[i]});
-                        // unsigned int indexType = 0;
-                        // if(typeOfArgument.type == type_undefined) {
-                        //     VariableTable_declareVariable(&codeGenerator->table, (Token) {.type = TT_Uint, .value.u = argt[i]}, (Scope) {.rgtr = scope_constant});
-                        //     indexType = VariableTable_defineVariable (&codeGenerator->table, (Token) {.type = TT_Uint, .value.u = argt[i]}, type_ushort);
-                        // } else {
-                        //     indexType = typeOfArgument.index;
-                        // }
-                        // sByteWriter_writeByte(byteWriter, BC_LOAD_CONST_NUM16);
-                        // ByteWriter_writeUInt(byteWriter, indexType);
 
                         unsigned char indexType = CodeGenerator_generateExpression(codeGenerator, newValueNode((Token) {.type = TT_Uint, .value.u = argt[i]}), scope, byteWriter);
                         ByteWriter_writeByte(byteWriter, BC_ADD_ELEMENT);
                     }
-
+                
+                // Otherwise we go through ever single parameter to load it
                 } else for (unsigned int i = 0; i < vardec.argumentsCount; i++) {
-                    unsigned char fntype = typeToStackType (tokenTypeToDataType (vardec.arguments[i].type));
+
+                    // Next we check which type we would expect
+                    unsigned char fntype = typeToStackType (tokenTypeToDataType (vardec.arguments[i].type, codeGenerator));
+
+                    // If the parameter is an array, here we go
                     if (vardec.arguments[i].is_array) {
                         if (functionCallNode.arguments[i].type != ID_ValueNode) {
                             puts ("Missing Array!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                            markTokenError( functionCallNode.identifier.valueNode->value);
                             exit (1);
                         }
                         Token arrayName = functionCallNode.arguments[i].valueNode->value;
                         if (arrayName.type != TT_Identifier) {
                             puts ("Missing Array!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                            markTokenError( functionCallNode.identifier.valueNode->value);
                             exit (1);
                         }
                         Symbol array = VariableTable_findVariableByName (&codeGenerator->table, arrayName);
                         if (array.type != type_Collection) {
                             puts ("Missing Array!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                            markTokenError( functionCallNode.identifier.valueNode->value);
                             exit (1);
                         }
                         if (fntype != array.storingType) {
                             puts ("Wrong Datatype for Array!");
-                            markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                            markTokenError( functionCallNode.identifier.valueNode->value);
                             exit (1);
                         }
                         if (array.scope.rgtr == scope_local)
@@ -6366,9 +7165,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         else
                             ByteWriter_writeByte (byteWriter, BC_STORE_GLOBAL_COLLECTION);
                         ByteWriter_writeUInt (byteWriter, array.index);
+                        
                     }
                     else {
+
+                        // Next we've got simple/complex types
                         unsigned char argtype = typeToStackType (CodeGenerator_generateExpression (codeGenerator, functionCallNode.arguments[i], scope, byteWriter));
+                        
+                        // Now really make sure they are the type we expected
                         if (argtype != fntype) {
                             switch (fntype) {
                                 case type_ulong:
@@ -6380,7 +7184,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     }
                                     else {
                                         puts ("Wrong Datatype for function-argument!");
-                                        markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                                        markTokenError( functionCallNode.identifier.valueNode->value);
                                         exit (1);
                                     }
                                     break;
@@ -6393,7 +7197,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     }
                                     else {
                                         puts ("Wrong Datatype for function-argument!");
-                                        markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                                        markTokenError( functionCallNode.identifier.valueNode->value);
                                         exit (1);
                                     }
                                     break;
@@ -6406,28 +7210,70 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     }
                                     else {
                                         puts ("Wrong Datatype for function-argument!");
-                                        markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                                        markTokenError( functionCallNode.identifier.valueNode->value);
                                         exit (1);
                                     }
                                     break;
                                 case type_text:
-                                    puts ("Wrong Datatype for function-argument!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
-                                    exit (1);
+                                    if(argtype == type_complex) {
+                                        // Its ok
+                                    } else {
+                                        puts ("Wrong Datatype for function-argument!");
+                                        markTokenError( functionCallNode.identifier.valueNode->value);
+                                        exit (1);
+                                    }
                                     break;
                                 case type_Collection:
                                     puts ("Wrong Datatype for function-argument!");
-                                    markTokenError (codeGenerator->parser->tokenizer->code, functionCallNode.identifier.valueNode->value);
+                                    markTokenError( functionCallNode.identifier.valueNode->value);
                                     exit (1);
                                     break;
+                                case type_complex:
+                                    if(argtype == type_text) {
+                                        // Its ok
+                                        if(vardec.arguments[i].type.type == TT_Identifier)
+                                            Complex_return = vardec.arguments[i].type;
+                                    } else {
+                                        puts ("Wrong Datatype for function-argument!");
+                                        markTokenError( functionCallNode.identifier.valueNode->value);
+                                        exit (1);
+                                    }
+                                    break;
+                            }
+                        }
+
+                        // now after we loaded the current argument, we now have also to make
+                        // sure that if it's an complex, it has the right token for it
+
+                        if(argtype == type_complex && fntype == type_complex) {
+                            if(vardec.arguments[i].type.type == TT_Identifier && Complex_return.type == TT_Identifier)
+                            if(strcmp(vardec.arguments[i].type.value.word, Complex_return.value.word) != 0) {
+                                    puts ("Wrong Datatype for function-argument!");
+                                    puts ("Expected a table class of:");
+                                    puts (vardec.arguments[i].type.value.word);
+                                    markTokenError( functionCallNode.identifier.valueNode->value);
+                                    exit (1);
                             }
                         }
                     }
                 }
                 ByteWriter_writeByte (byteWriter, BC_CALL_FUNC);
+                if(vardec.free_arguments)
+                    ByteWriter_writeUInt(byteWriter, 2);
+                else
+                    ByteWriter_writeUInt(byteWriter, functionCallNode.numbersOfArguments);
                 if (vardec.returnType == type_none)
                     ByteWriter_writeByte (byteWriter, BC_POP);
                 CodeGenerator_generateLogFunctionLeave(codeGenerator, functionCallNode, vardec, scope, byteWriter);
+
+                // Make sure to return the complex type
+                if(vardec.mothertype.type != TT_None) {
+                    if(strcmp(vardec.mothertype.value.word, "table") == 0)
+                        Complex_return = vardec.value;
+                    else
+                        returnComplex(vardec);
+                }
+
                 return vardec.returnType;
             }
             puts ("No matching Function!");
@@ -6448,7 +7294,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
             if (squareCallNode.numbersOfArguments == 0) {
                 puts ("No given index!");
-                markTokenError (codeGenerator->parser->tokenizer->code, name);
+                markTokenError( name);
                 exit (1);
             }
 
@@ -6463,6 +7309,9 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 ByteWriter_writeByte (byteWriter, BC_STORE_GLOBAL_COLLECTION);
             }
             ByteWriter_writeUInt (byteWriter, variable.index);
+
+            if(variable.storingType == type_function || variable.storingType == type_complex)
+                Complex_return = variable.mothertype;
             return variable.storingType;
         }
             break;
@@ -6572,7 +7421,7 @@ unsigned char CodeGenerator_storeSymbol(CodeGenerator* codeGenerator, Symbol var
                         ByteWriter_writeByte (byteWriter, BC_STORE_GLOBAL_NUM64);
                         break;
                     default:
-                        markTokenError (codeGenerator->parser->tokenizer->code, variable.value);
+                        markTokenError( variable.value);
                         switch (variable.value.type) {
                             case TT_String:
                                 printf ("Problem with Variable: %s\n", variable.value.value.word);
@@ -6631,7 +7480,7 @@ unsigned char CodeGenerator_storeSymbol(CodeGenerator* codeGenerator, Symbol var
                         ByteWriter_writeByte (byteWriter, BC_STORE_STACK_NUM64);
                         break;
                     default:
-                        markTokenError (codeGenerator->parser->tokenizer->code, variable.value);
+                        markTokenError( variable.value);
                         switch (variable.value.type) {
                             case TT_String:
                                 printf ("Problem with Variable: %s\n", variable.value.value.word);
@@ -6717,6 +7566,7 @@ unsigned int VariableTable_defineVariable (SymbolTable* table, Token name, unsig
                     index = table->memoryDeclaration.const_functions++;
                     break;
                 
+                case type_complex:
                 case type_text:
                     index = table->memoryDeclaration.const_texts++;
                     break;
@@ -6753,16 +7603,13 @@ unsigned int VariableTable_defineVariable (SymbolTable* table, Token name, unsig
                     index = table->memoryDeclaration.global_functions++;
                     break;
                 
+                case type_complex:
                 case type_text:
                     index = table->memoryDeclaration.global_texts++;
                     break;
 
                 case type_Collection:
                     index = table->memoryDeclaration.global_collections++;
-                    break;
-                
-                case type_complex:
-                    // TODO: Coming soon
                     break;
             }
             break;
@@ -6796,16 +7643,13 @@ unsigned int VariableTable_defineVariable (SymbolTable* table, Token name, unsig
                     index = function.memoryDeclaration.functions++;
                     break;
                 
+                case type_complex:
                 case type_text:
                     index = function.memoryDeclaration.texts++;
                     break;
 
                 case type_Collection:
                     index = function.memoryDeclaration.collections++;
-                    break;
-                
-                case type_complex:
-                    // TODO: COMING SOON!
                     break;
             }
             VariableTable_setVariableByName (table, function.value, function);
@@ -6956,6 +7800,7 @@ Symbol* VariableTable_addDeclaration (SymbolTable* table) {
         .returnType_isArray = 0,
         .is_argument = 0,
         .argument_index = 0,
+        .mothertype = (Token) {.type = TT_None},
 
         .is_extern = 0,
         .functionDefininiton = (SyntaxNode) {.type = ID_None}

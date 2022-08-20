@@ -452,7 +452,7 @@ SyntaxNode Parser_parseLiteral(Parser* parser) {
         SyntaxNode inside = Parser_parseExpression(parser, 0);
         Token rbracket = Parser_nextToken(parser);
         if(rbracket.type != TT_RBracket) {
-            markTokenError(parser->tokenizer->code, rbracket);
+            markTokenError( rbracket);
             puts("Expected an closing bracket!");
             exit(1);
         }
@@ -496,11 +496,10 @@ SyntaxNode Parser_parseLiteral(Parser* parser) {
             case TTK_Long:
             case TTK_Ulong:
             case TTK_Double:
-            case TTK_Collection:
                 return newValueNode(token);
                 break;
             default:
-                markTokenError(parser->tokenizer->code, token);
+                markTokenError( token);
                 //printf("Type id %u\n", token.type);
                 puts("Expected a variable/value/datatype! Please don't use keywords!");
                 exit(1);
@@ -556,7 +555,6 @@ int Parser_getBinOpPrecedence(Token token) {
         case TTK_Is:
             return 1;
         case TT_Colon:
-        case TTK_In:
         case TT_DefineOnce:
             return 1;
         default:
@@ -614,7 +612,7 @@ SyntaxNode Parser_parseExpression(Parser* parser, int parentPrecedence) {
                     break;
                 else {
                     // Print Error
-                    markTokenError(parser->tokenizer->code, closingBracket);
+                    markTokenError( closingBracket);
                     puts("Expected a closing bracket or an comma!");
                     exit(1);
                 }
@@ -640,7 +638,7 @@ SyntaxNode Parser_parseExpression(Parser* parser, int parentPrecedence) {
                     break;
                 else {
                     // Print Error
-                    markTokenError(parser->tokenizer->code, closingBracket);
+                    markTokenError( closingBracket);
                     puts("Expected a closing bracket or an comma!");
                     exit(1);
                 }
@@ -691,7 +689,7 @@ SyntaxNode Parser_parseStatement(Parser* parser) {
                         return node;
                     }
                     else if(token.type == TT_End) {
-                        markTokenError(parser->tokenizer->code, Parser_peekNextToken(parser));
+                        markTokenError( Parser_peekNextToken(parser));
                         puts("Missing }");
                         exit(1);
                     }
@@ -798,13 +796,13 @@ SyntaxNode Parser_parseStatement(Parser* parser) {
                 Token atToken;
                 if((atToken = Parser_nextToken(parser)).type != TT_At) {
                     puts("Expected an @ Symbol!");
-                    markTokenError(parser->tokenizer->code, atToken);
+                    markTokenError( atToken);
                     exit(1);
                 }
                 libary = Parser_nextToken(parser);
                 if(libary.type != TT_Identifier) {
                     puts("Expected an Identifier!");
-                    markTokenError(parser->tokenizer->code, libary);
+                    markTokenError( libary);
                     exit(1);
                 }
             } else {
@@ -813,7 +811,7 @@ SyntaxNode Parser_parseStatement(Parser* parser) {
                 declaration = valueNode->value;
                 if(declaration.type != TT_Identifier) {
                     puts("Expected an Identifier!");
-                    markTokenError(parser->tokenizer->code, declaration);
+                    markTokenError( declaration);
                     exit(1);
                 }
             }
@@ -866,22 +864,23 @@ SyntaxNode Parser_parseGlobalDeclaration(Parser* parser) {
                 Token atToken;
                 if((atToken = Parser_nextToken(parser)).type != TT_At) {
                     puts("Expected an @ Symbol!");
-                    markTokenError(parser->tokenizer->code, atToken);
+                    markTokenError( atToken);
                     exit(1);
                 }
                 libary = Parser_nextToken(parser);
                 if(libary.type != TT_Identifier) {
                     puts("Expected an Identifier!");
-                    markTokenError(parser->tokenizer->code, libary);
+                    markTokenError( libary);
                     exit(1);
                 }
+                
             } else {
                 identifier = Parser_peekNextToken(parser);
                 ValueNode *valueNode = Parser_parseLiteral(parser).valueNode;
                 declaration = valueNode->value;
                 if(declaration.type != TT_Identifier) {
                     puts("Expected an Identifier!");
-                    markTokenError(parser->tokenizer->code, declaration);
+                    markTokenError( declaration);
                     exit(1);
                 }
             }
@@ -912,6 +911,7 @@ SyntaxNode Parser_parseGlobalDeclaration(Parser* parser) {
 }
 
 SyntaxNode Parser_parseArguments(Parser* parser) {
+    Parser_ignoreNewLine(parser);
     Token tokentype = Parser_nextToken(parser);
     switch(tokentype.type) {
         case TTK_Ubyte:
@@ -925,14 +925,13 @@ SyntaxNode Parser_parseArguments(Parser* parser) {
         case TTK_Ulong:
         case TTK_Double:
         case TT_Identifier:
-        case TTK_Collection:
         case TTK_Txt:
         {
             unsigned char is_array = 0;
             if(Parser_peekNextToken(parser).type == TT_LSquardBracket) {
                 Parser_nextToken(parser);
                 if(Parser_nextToken(parser).type != TT_RSquardBracket) {
-                    markTokenError(parser->tokenizer->code, tokentype);
+                    markTokenError( tokentype);
                     puts("Unusable name for an argument!");
                     exit(1);
                 }
@@ -940,16 +939,17 @@ SyntaxNode Parser_parseArguments(Parser* parser) {
             }
             Token name = Parser_nextToken(parser);
             if(name.type != TT_Identifier) {
-                markTokenError(parser->tokenizer->code, tokentype);
+                markTokenError( tokentype);
                 puts("Unusable name for an argument!");
                 exit(1);
             }
             SyntaxNode argument;
             if(Parser_peekNextToken(parser).type != TT_Comma) {
                 argument = newArgumentNode(tokentype, is_array, name, (SyntaxNode) {.type = ID_None});
+                Parser_ignoreNewLine(parser);
                 Token bracket = Parser_nextToken(parser);
                 if(bracket.type != TT_RBracket) {
-                    markTokenError(parser->tokenizer->code, bracket);
+                    markTokenError( bracket);
                     puts("Expected a closing bracket!");
                     exit(1);
                 }
@@ -962,10 +962,16 @@ SyntaxNode Parser_parseArguments(Parser* parser) {
         }
             break;
         default:
-            markTokenError(parser->tokenizer->code, tokentype);
+            markTokenError( tokentype);
             puts("Not existing datatype!");
             exit(1);
     }
+}
+
+void Program_addGlobalDeclaration(ProgramsNode* program, SyntaxNode globalDeclaration) {
+    program->size++;
+    program->declarations = (SyntaxNode*) realloc(program->declarations, sizeof(SyntaxNode) * program->size);
+    program->declarations[program->size-1] = globalDeclaration;
 }
 
 SyntaxNode Parser_parseFunctionDeclaration(Parser* parser) {
@@ -975,7 +981,7 @@ SyntaxNode Parser_parseFunctionDeclaration(Parser* parser) {
    
     // The token shouldn't be anything else than an identifier
     if(name.type != TT_Identifier){
-        markTokenError(parser->tokenizer->code, name);
+        markTokenError( name);
         puts("Unusable name for a function!");
         exit(1);
     }
@@ -984,7 +990,7 @@ SyntaxNode Parser_parseFunctionDeclaration(Parser* parser) {
     Token bracket = Parser_nextToken(parser);
     // Of course, we want it to be surrounded by brackets
     if(bracket.type != TT_LBracket) {
-        markTokenError(parser->tokenizer->code, bracket);
+        markTokenError( bracket);
         puts("Exprected a opening bracket!");
         exit(1);
     }
@@ -997,7 +1003,7 @@ SyntaxNode Parser_parseFunctionDeclaration(Parser* parser) {
         arguments = newValueNode(Parser_nextToken(parser));
         Token closingBracket = Parser_nextToken(parser);
         if(closingBracket.type != TT_RBracket) {
-            markTokenError(parser->tokenizer->code, closingBracket);
+            markTokenError( closingBracket);
             puts("Exprected a closing bracket!");
             exit(1);
         }
@@ -1019,13 +1025,12 @@ SyntaxNode Parser_parseFunctionDeclaration(Parser* parser) {
         case TTK_Long:
         case TTK_Double:
         case TTK_Txt:
-        case TTK_Collection:
         case TT_Identifier:
             Parser_nextToken(parser);
             if(Parser_peekNextToken(parser).type == TT_LSquardBracket) {
                 Parser_nextToken(parser);
                 if(Parser_nextToken(parser).type != TT_RSquardBracket) {
-                    markTokenError(parser->tokenizer->code, returnType);
+                    markTokenError( returnType);
                     puts("Unusable Return-Datatype!");
                     exit(1);
                 }
@@ -1049,7 +1054,7 @@ SyntaxNode Parser_parseFunctionDeclaration(Parser* parser) {
         
         return newFunctionNode(arguments, newReturnNode(Parser_parseExpression(parser, 0)), name, returnType, returns_array);
     }
-
+    
     return newFunctionNode(arguments, Parser_parseStatement(parser), name, returnType, returns_array);
 }
 
@@ -1059,7 +1064,7 @@ void Parser_parseSeperator(Parser* parser) {
     Token token = Parser_nextToken(parser);
     if(token.type == TT_Newline || token.type == TT_Semicolon)
         return;
-    markTokenError(parser->tokenizer->code, token);
+    markTokenError( token);
     puts("Expected a semicolon!");
     exit(1);
 }
@@ -1080,11 +1085,10 @@ SyntaxNode Parser_parse(Parser* parser) {
 
     Parser_ignoreNewLine(parser);
     while(Parser_peekNextToken(parser).type != TT_End) {
-        program->size++;
-        program->declarations = (SyntaxNode*) realloc(program->declarations, sizeof(SyntaxNode) * program->size);
-        program->declarations[program->size-1] = Parser_parseGlobalDeclaration(parser);
+        Program_addGlobalDeclaration(program, Parser_parseGlobalDeclaration(parser));
         Parser_ignoreNewLine(parser);
     }
+
     return (SyntaxNode) {
         .type = ID_ProgramsNode,
         .programsNode = program
@@ -1161,9 +1165,6 @@ void Parser_prettyPrint(SyntaxNode tree) {
                     break;
                 case TTK_As:
                     printf("as conv ");
-                    break;
-                case TTK_In:
-                    printf("in ");
                     break;
             }
             putchar(' ');
@@ -1247,9 +1248,6 @@ void Parser_prettyPrint(SyntaxNode tree) {
                 case TTK_Double:
                     printf("type: double");
                     break;
-                case TTK_Collection:
-                    printf("type: Collection");
-                    break;
             }
             break;
     
@@ -1328,9 +1326,6 @@ void Parser_prettyPrint(SyntaxNode tree) {
                     break;
                 case TTK_Double:
                     printf("type: double");
-                    break;
-                case TTK_Collection:
-                    printf("type: Collection");
                     break;
                 case TT_Identifier:
                     printf("progression: %s", tree.argumentNode->type.value.word);

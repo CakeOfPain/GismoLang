@@ -12,7 +12,14 @@
 #include <string.h>
 #include <limits.h>
 #include <float.h>
+#include <ctype.h>
+
+
+#ifdef _WIN32
 #include <io.h>
+#define F_OK 0
+#define access _access
+#endif
 
 char* readFile(const char*);
 
@@ -26,6 +33,25 @@ unsigned char DEBUGGING_MODE = 0;
 #include "tokenizer.h"
 #include "parser.h"
 #include "CodeGenerator.h"
+
+
+void getLibraryIdOfPath(const char *path, char *lib_id) {
+    int x = 0;
+    int i = 0;
+    for(char ch = path[0]; ch != '\0' && ch != '.'; ch = path[i]) {
+        ch = path[i];
+
+        if(ch == '/' || ch == '\\') {
+            lib_id[0] = '\0';
+            x = 0;
+        } else {
+            lib_id[x++] = ch;
+            lib_id[x] = '\0';
+        }
+
+        i++;
+    }
+}
 
 void adx_store_data(const char *filepath, const char *data, unsigned int data_lenght);
 void printHelp();
@@ -61,14 +87,18 @@ int main(int argc, char const *argv[]) {
 
     // Will read in the file to parse
     char* buffer = readFile(argv[2]);
+    char libraryId[256] = "";
+    getLibraryIdOfPath(argv[2], libraryId);
+    fullIncludes[fullIncludesSize++] = libraryId;
     
+
     // Init the Tokenizer
     Tokenizer* tokenizer = (Tokenizer*) malloc(sizeof(Tokenizer));
     if(!tokenizer) {
         puts("Out of Memory!");
         exit(1);
     }
-    *tokenizer = Tokenizer_getTokens(buffer);
+    *tokenizer = Tokenizer_getTokens(buffer, argv[2]);
 
     // Init Parser
     Parser *parser = (Parser*) malloc(sizeof(Parser));
@@ -85,8 +115,8 @@ int main(int argc, char const *argv[]) {
 
         // Optimize code
         char optCommand[900] = "";
-        const char optModPath[] = "C:/Gismolang/modifications/bin/optimization.gim";
-        sprintf(optCommand, "C:/GismoLang/GVM %s %s %s", optModPath, argv[3], argv[3]);
+        const char optModPath[] = "/Applications/Gismolang/modifications/bin/optimization.gim";
+        sprintf(optCommand, "/Applications/GismoLang/GVM %s %s %s", optModPath, argv[3], argv[3]);
         system(optCommand);
     }
     else if(strcmp(mode, "bytecode") == 0) {
@@ -115,13 +145,13 @@ int main(int argc, char const *argv[]) {
         adx_store_data(".temp.gim", generator->code, generator->codeLength);
 	
         // Optimize code
-        system("GVM C:/Gismolang/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
+        system("GVM /Applications/Gismolang/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
 
         // Passing code to GVM
         system("GVM ./.temp.gim");
 
         // Clean up made file
-        system("del .temp.gim");
+        system("rm -r .temp.gim");
         free(generator);
     }
     else if(strcmp(mode, "debug=run") == 0) {
@@ -130,13 +160,13 @@ int main(int argc, char const *argv[]) {
         adx_store_data(".temp.gim", generator->code, generator->codeLength);
 	
         // Optimize code
-        system("GVM C:/Gismolang/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
+        system("GVM /Applications/Gismolang/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
 
         // Passing code to GVM
         system("GVM ./.temp.gim");
 
         // Clean up made file
-        system("del .temp.gim");
+        system("rm -r .temp.gim");
         free(generator);
     }
     else if(strcmp(mode, "debug=build") == 0) {
@@ -151,8 +181,8 @@ int main(int argc, char const *argv[]) {
 
         // Optimize code
         char optCommand[900] = "";
-        const char optModPath[] = "C:/Gismolang/modifications/bin/optimization.gim";
-        sprintf(optCommand, "C:/GismoLang/GVM %s %s %s", optModPath, argv[3], argv[3]);
+        const char optModPath[] = "/Applications/Gismolang/modifications/bin/optimization.gim";
+        sprintf(optCommand, "/Applications/GismoLang/GVM %s %s %s", optModPath, argv[3], argv[3]);
         system(optCommand);
     }
     else if(strcmp(mode, "modify")) {

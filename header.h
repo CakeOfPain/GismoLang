@@ -51,7 +51,7 @@ struct ByteWriter;
 
 // Tokenizer: 
 
-struct Tokenizer Tokenizer_getTokens(const char* code);
+struct Tokenizer Tokenizer_getTokens(const char* code, const char* file_path);
 void Tokenizer_clear(struct Tokenizer tokenizer);
 char Tokenizer_nextCharacter(struct Tokenizer* tokenizer);
 void Tokenizer_addToken(struct Tokenizer* tokenizer, struct Token token);
@@ -62,7 +62,7 @@ char isIdentifierCharacter(char character);
 struct Token Tokenizer_readString(struct Tokenizer* tokenizer);
 
 void markPosError(const char* srcCode, unsigned int line, unsigned short begin, unsigned short end);
-void markTokenError(const char* text, struct Token token);
+void markTokenError(struct Token token);
 
 // Parser:
 struct Parser Parser_build(struct Tokenizer* tokenizer);
