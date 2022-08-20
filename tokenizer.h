@@ -325,11 +325,11 @@ Token Tokenizer_readHashString(Tokenizer* tokenizer) {
                 current = '\'';
             else if (escapeSign == '\\')
                 current = '\\';
-            else if (isdigit(escapeSign)) {
+            else if (isnumber(escapeSign)) {
                 char number_str[] = "   ";
                 number_str[0u] = escapeSign;
                 for(unsigned int n = 1u; n < 3u;  ++n) {
-                    if(!isdigit(Tokenizer_peekNextCharacter(tokenizer))) break;
+                    if(!isnumber(Tokenizer_peekNextCharacter(tokenizer))) break;
                     number_str[n] = Tokenizer_nextCharacter(tokenizer);
                 }
 
@@ -433,11 +433,11 @@ Token Tokenizer_readString(Tokenizer* tokenizer) {
                 current = '\'';
             else if (escapeSign == '\\')
                 current = '\\';
-            else if (isdigit(escapeSign)) {
+            else if (isnumber(escapeSign)) {
                 char number_str[] = "   ";
                 number_str[0u] = escapeSign;
                 for(unsigned int n = 1u; n < 3u;  ++n) {
-                    if(!isdigit(Tokenizer_peekNextCharacter(tokenizer))) break;
+                    if(!isnumber(Tokenizer_peekNextCharacter(tokenizer))) break;
                     number_str[n] = Tokenizer_nextCharacter(tokenizer);
                 }
 
