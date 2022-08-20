@@ -12,7 +12,7 @@
 #include <string.h>
 #include <limits.h>
 #include <float.h>
-#include <unistd.h>
+#include <io.h>
 
 char* readFile(const char*);
 
