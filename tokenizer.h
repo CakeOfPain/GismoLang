@@ -56,7 +56,7 @@ enum TokenTypes {
     TTK_As,
     TTK_Is,
     TTK_Const,
-    TTK_Implement,
+    TTK_Include,
     TTK_Txt,
     TTK_Long,
     TTK_Double,
@@ -85,7 +85,7 @@ const char* KeywordNames[24] = {
     [TTK_As       - TTK_Vanguard] = "as",
     [TTK_Is       - TTK_Vanguard] = "is",
     [TTK_Const    - TTK_Vanguard] = "const",
-    [TTK_Implement - TTK_Vanguard] = "implement",
+    [TTK_Include - TTK_Vanguard] = "include",
     [TTK_Txt       - TTK_Vanguard] = "txt",
     [TTK_Long - TTK_Vanguard] = "long",
     [TTK_Double - TTK_Vanguard] = "double",
@@ -325,11 +325,11 @@ Token Tokenizer_readHashString(Tokenizer* tokenizer) {
                 current = '\'';
             else if (escapeSign == '\\')
                 current = '\\';
-            else if (isnumber(escapeSign)) {
+            else if (isdigit(escapeSign)) {
                 char number_str[] = "   ";
                 number_str[0u] = escapeSign;
                 for(unsigned int n = 1u; n < 3u;  ++n) {
-                    if(!isnumber(Tokenizer_peekNextCharacter(tokenizer))) break;
+                    if(!isdigit(Tokenizer_peekNextCharacter(tokenizer))) break;
                     number_str[n] = Tokenizer_nextCharacter(tokenizer);
                 }
 
@@ -433,11 +433,11 @@ Token Tokenizer_readString(Tokenizer* tokenizer) {
                 current = '\'';
             else if (escapeSign == '\\')
                 current = '\\';
-            else if (isnumber(escapeSign)) {
+            else if (isdigit(escapeSign)) {
                 char number_str[] = "   ";
                 number_str[0u] = escapeSign;
                 for(unsigned int n = 1u; n < 3u;  ++n) {
-                    if(!isnumber(Tokenizer_peekNextCharacter(tokenizer))) break;
+                    if(!isdigit(Tokenizer_peekNextCharacter(tokenizer))) break;
                     number_str[n] = Tokenizer_nextCharacter(tokenizer);
                 }
 

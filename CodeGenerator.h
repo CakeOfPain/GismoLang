@@ -1119,15 +1119,15 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
         node = program.programsNode->declarations[i];
         switch (node.type) {
 
-            case ID_ImplementNode:
+            case ID_Include:
             {
-                ImplementNode implementNode = *node.implementNode;
+                IncludeNode includeNode = *node.includeNode;
 
-                if(implementNode.library.type != TT_None) {
-                    CodeGenerator_includeLibWithOutNamespaceDirect(codeGenerator, implementNode.library.value.word);
+                if(includeNode.library.type != TT_None) {
+                    CodeGenerator_includeLibWithOutNamespaceDirect(codeGenerator, includeNode.library.value.word);
                 } else {
                     puts("Cannot implement from library!");
-                    markTokenError(implementNode.implementsNode);
+                    markTokenError(includeNode.includeNode);
                     exit(1);
                 }
             }
@@ -1296,7 +1296,7 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
     // Implementating some library
     for (unsigned int i = 0; i < program.programsNode->size; i++) {
         node = program.programsNode->declarations[i];
-        if (node.type == ID_BinOpNode || node.type == ID_ImplementNode) {
+        if (node.type == ID_BinOpNode || node.type == ID_Include) {
             unsigned char type = CodeGenerator_generateExpression (codeGenerator, node, (Scope) {.rgtr = scope_global}, &codeGenerator->globalwriter);
             if (type != type_none) {
                 puts ("Must be a declaration!");
@@ -1593,26 +1593,26 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
 
 unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerator, struct SyntaxNode node, struct Scope scope, struct ByteWriter* byteWriter) {
     switch (node.type) {
-        case ID_ImplementNode:
+        case ID_Include:
         {
 
-            ImplementNode implementNode = *node.implementNode;
+            IncludeNode includeNode = *node.includeNode;
 
-            if(implementNode.declaration.type != TT_None) {
-                if(VariableTable_findVariableByName(&codeGenerator->table, implementNode.identifier).type == type_undefined) {
-                    Symbol symbol = VariableTable_findVariableByName(&codeGenerator->table, implementNode.declaration);
+            if(includeNode.declaration.type != TT_None) {
+                if(VariableTable_findVariableByName(&codeGenerator->table, includeNode.identifier).type == type_undefined) {
+                    Symbol symbol = VariableTable_findVariableByName(&codeGenerator->table, includeNode.declaration);
                     if(symbol.type == type_undefined) {
                         puts("Cannot find implementation in library!");
-                        markTokenError(implementNode.implementsNode);
+                        markTokenError(includeNode.includeNode);
                         exit(1);
                     }
-                    VariableTable_createReferenceByName(&codeGenerator->table, symbol.value, implementNode.identifier); 
+                    VariableTable_createReferenceByName(&codeGenerator->table, symbol.value, includeNode.identifier); 
                 }
-            } else if(implementNode.library.type != TT_None) {
-                CodeGenerator_includeLibWithOutNamespace(codeGenerator, implementNode.library.value.word);
+            } else if(includeNode.library.type != TT_None) {
+                CodeGenerator_includeLibWithOutNamespace(codeGenerator, includeNode.library.value.word);
             } else {
                 puts("Cannot implement from library!");
-                markTokenError(implementNode.implementsNode);
+                markTokenError(includeNode.includeNode);
                 exit(1);
             }
 
@@ -1964,16 +1964,16 @@ void CodeGenerator_generateLogFunctionLeave(struct CodeGenerator *codeGenerator,
 unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenerator, struct SyntaxNode node, struct Scope scope, struct ByteWriter* byteWriter) {
     switch (node.type) {
         
-        case ID_ImplementNode:
+        case ID_Include:
         {
-            ImplementNode implementNode = *node.implementNode;
+            IncludeNode implementNode = *node.includeNode;
             
             if(implementNode.declaration.type != TT_None) {
                 if(VariableTable_findVariableByName(&codeGenerator->table, implementNode.identifier).type == type_undefined) {
                     Symbol symbol = VariableTable_findVariableByName(&codeGenerator->table, implementNode.declaration);
                     if(symbol.type == type_undefined) {
                         puts("Cannot find implementation in library!");
-                        markTokenError(implementNode.implementsNode);
+                        markTokenError(implementNode.includeNode);
                         exit(1);
                     }
                     VariableTable_createReferenceByName(&codeGenerator->table, symbol.value, implementNode.identifier); 
@@ -1982,7 +1982,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 CodeGenerator_includeLibWithOutNamespace(codeGenerator, implementNode.library.value.word);
             } else {
                 puts("Cannot implement from library!");
-                markTokenError(implementNode.implementsNode);
+                markTokenError(implementNode.includeNode);
                 exit(1);
             }
 
@@ -6042,6 +6042,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                                     }));
 
                                                     return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+                                                    
                                                     
                                             }
                                         }

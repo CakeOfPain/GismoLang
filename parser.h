@@ -23,7 +23,7 @@ enum NodeTypes {
     ID_FunctionNode,
     ID_ArgumentNode,
     ID_VanguardNode,
-    ID_ImplementNode,
+    ID_Include,
     ID_ProgramsNode,
     ID_UnaryInstructionNode
 };
@@ -45,7 +45,7 @@ typedef struct SyntaxNode {
         struct ReturnNode* returnNode;
         struct ArgumentNode* argumentNode;
         struct VanguardNode* vanguardNode;
-        struct ImplementNode* implementNode;
+        struct IncludeNode* includeNode;
         struct ProgramsNode* programsNode;
         struct UnaryInstructionNode* unaryInstructionNode;
     };
@@ -118,12 +118,12 @@ typedef struct ProgramsNode {
     unsigned int size;
 } ProgramsNode;
 
-typedef struct ImplementNode {
-    Token implementsNode;
+typedef struct IncludeNode {
+    Token includeNode;
     Token library;
     Token declaration;
     Token identifier;
-} ImplementNode;
+} IncludeNode;
 
 typedef struct FunctionCallNode {
     SyntaxNode identifier;
@@ -144,6 +144,24 @@ typedef struct Parser {
     unsigned int numberOfLibrarys;
     char* librarys[600];
 } Parser;
+
+// null protected
+char* strconcat(char *s1, const char *s2)
+{
+	int a = strlen(s1);
+    int b = strlen(s2);
+    int i, size_ab = a+b;
+
+    s1 = (char *) realloc (s1, size_ab*sizeof(char));
+
+    for(i=0; i<b; i++) {
+        s1[i+a]=s2[i];
+    }
+
+    s1[size_ab]='\0';
+
+    return s1;
+}
 
 Parser Parser_build(Tokenizer* tokenizer) {
     Parser parser = (Parser) {
@@ -326,20 +344,20 @@ SyntaxNode newStatementsNode(SyntaxNode first, SyntaxNode second) {
     };
 }
 
-SyntaxNode newImplementNode(Token implementsToken, Token declaration, Token library, Token identifier) {
-    ImplementNode *implementNode = (ImplementNode*) malloc(sizeof(ImplementNode));
-    if(!implementNode) {
+SyntaxNode newIncludeNode(Token includeToken, Token declaration, Token library, Token identifier) {
+    IncludeNode *includeNode = (IncludeNode*) malloc(sizeof(IncludeNode));
+    if(!includeNode) {
         puts("Out of Memory!");
         exit(1);
     }
-    implementNode->implementsNode = implementsToken;
-    implementNode->declaration = declaration;
-    implementNode->library = library;
-    implementNode->identifier = identifier;
+    includeNode->includeNode = includeToken;
+    includeNode->declaration = declaration;
+    includeNode->library = library;
+    includeNode->identifier = identifier;
 
     return (SyntaxNode) {
-        .type = ID_ImplementNode,
-        .implementNode = implementNode
+        .type = ID_Include,
+        .includeNode = includeNode
     };
 }
 
@@ -784,10 +802,10 @@ SyntaxNode Parser_parseStatement(Parser* parser) {
         }
             break;
 
-        case TTK_Implement:
+        case TTK_Include:
         {
             Token implement_token = Parser_nextToken(parser);
-            Token libary = (Token) {.type = TT_None};
+            Token library = (Token) {.type = TT_None};
             Token declaration = (Token) {.type = TT_None};
             Token identifier = (Token) {.type = TT_None};
 
@@ -796,28 +814,44 @@ SyntaxNode Parser_parseStatement(Parser* parser) {
                 Token atToken;
                 if((atToken = Parser_nextToken(parser)).type != TT_At) {
                     puts("Expected an @ Symbol!");
-                    markTokenError( atToken);
+                    markTokenError(atToken);
                     exit(1);
                 }
-                libary = Parser_nextToken(parser);
-                if(libary.type != TT_Identifier) {
+                
+                library = Parser_nextToken(parser);
+                if(library.type != TT_Identifier) {
                     puts("Expected an Identifier!");
-                    markTokenError( libary);
+                    markTokenError(library);
                     exit(1);
                 }
+                while(Parser_peekNextToken(parser).type == TT_Dot) {
+                    Parser_nextToken(parser);
+                    
+                    Token nextLib = Parser_nextToken(parser);
+                    if(nextLib.type != TT_Identifier) {
+                        puts("Expected an Identifier!");
+                        markTokenError(library);
+                        exit(1);
+                    }
+
+                    library.value.word = strconcat(library.value.word, "/");
+                    library.value.word = strconcat(library.value.word, nextLib.value.word);
+                }
+
+
             } else {
                 identifier = Parser_peekNextToken(parser);
                 ValueNode *valueNode = Parser_parseLiteral(parser).valueNode;
                 declaration = valueNode->value;
                 if(declaration.type != TT_Identifier) {
                     puts("Expected an Identifier!");
-                    markTokenError( declaration);
+                    markTokenError(declaration);
                     exit(1);
                 }
             }
 
             Parser_parseSeperator(parser);
-            return newImplementNode(implement_token, declaration, libary, identifier);
+            return newIncludeNode(implement_token, declaration, library, identifier);
         }
             break;
 
@@ -852,10 +886,10 @@ SyntaxNode Parser_parseGlobalDeclaration(Parser* parser) {
             break;
 
         
-        case TTK_Implement:
+        case TTK_Include:
         {
             Token implement_token = Parser_nextToken(parser);
-            Token libary = (Token) {.type = TT_None};
+            Token library = (Token) {.type = TT_None};
             Token declaration = (Token) {.type = TT_None};
             Token identifier = (Token) {.type = TT_None};
 
@@ -867,11 +901,24 @@ SyntaxNode Parser_parseGlobalDeclaration(Parser* parser) {
                     markTokenError( atToken);
                     exit(1);
                 }
-                libary = Parser_nextToken(parser);
-                if(libary.type != TT_Identifier) {
+                library = Parser_nextToken(parser);
+                if(library.type != TT_Identifier) {
                     puts("Expected an Identifier!");
-                    markTokenError( libary);
+                    markTokenError( library);
                     exit(1);
+                }
+                while(Parser_peekNextToken(parser).type == TT_Dot) {
+                    Parser_nextToken(parser);
+                    
+                    Token nextLib = Parser_nextToken(parser);
+                    if(nextLib.type != TT_Identifier) {
+                        puts("Expected an Identifier!");
+                        markTokenError(library);
+                        exit(1);
+                    }
+
+                    library.value.word = strconcat(library.value.word, "/");
+                    library.value.word = strconcat(library.value.word, nextLib.value.word);
                 }
                 
             } else {
@@ -886,7 +933,7 @@ SyntaxNode Parser_parseGlobalDeclaration(Parser* parser) {
             }
 
             Parser_parseSeperator(parser);
-            return newImplementNode(implement_token, declaration, libary, identifier);
+            return newIncludeNode(implement_token, declaration, library, identifier);
         }
             break;
 
@@ -1339,8 +1386,8 @@ void Parser_prettyPrint(SyntaxNode tree) {
             printf("vanguard ");
             Parser_prettyPrint(tree.vanguardNode->functionDeclaration);
             break;
-        case ID_ImplementNode:
-            printf("implements from %s -> %s as %s", tree.implementNode->library.value.word, tree.implementNode->declaration.value.word, tree.implementNode->identifier.value.word);
+        case ID_Include:
+            printf("implements from %s -> %s as %s", tree.includeNode->library.value.word, tree.includeNode->declaration.value.word, tree.includeNode->identifier.value.word);
             break;
         case ID_ProgramsNode:
             puts("Program: ");
@@ -1453,7 +1500,7 @@ void Parser_clearAST(SyntaxNode node) {
             free(next);
         }
             break;
-        case ID_ImplementNode:
+        case ID_Include:
         {
             // Noting to be cleaned
         }
