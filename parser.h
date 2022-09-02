@@ -146,21 +146,13 @@ typedef struct Parser {
 } Parser;
 
 // null protected
-char* strconcat(char *s1, const char *s2)
+char* strconcat(const char *s1, const char *s2)
 {
-	int a = strlen(s1);
-    int b = strlen(s2);
-    int i, size_ab = a+b;
-
-    s1 = (char *) realloc (s1, size_ab*sizeof(char));
-
-    for(i=0; i<b; i++) {
-        s1[i+a]=s2[i];
-    }
-
-    s1[size_ab]='\0';
-
-    return s1;
+	char *result = malloc(strlen(s1) + strlen(s2) + 1); // +1 for the null-terminator
+    // in real code you would check for errors in malloc here
+    strcpy(result, s1);
+    strcat(result, s2);
+    return result;
 }
 
 Parser Parser_build(Tokenizer* tokenizer) {

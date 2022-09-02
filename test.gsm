@@ -1,3 +1,2 @@
-vanguard begin() {
-	output("Hello World!")
-}
+
+@[]

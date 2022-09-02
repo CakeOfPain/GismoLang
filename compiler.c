@@ -114,8 +114,8 @@ int main(int argc, char const *argv[]) {
 
         // Optimize code
         char optCommand[900] = "";
-        const char optModPath[] = "C:/Gismolang/modifications/bin/optimization.gim";
-        sprintf(optCommand, "C:/GismoLang/GVM %s %s %s", optModPath, argv[3], argv[3]);
+        const char optModPath[] = GISMOHOME "/modifications/bin/optimization.gim";
+        sprintf(optCommand, GISMOHOME "/GVM %s %s %s", optModPath, argv[3], argv[3]);
         system(optCommand);
     }
     else if(strcmp(mode, "bytecode") == 0) {
@@ -144,7 +144,7 @@ int main(int argc, char const *argv[]) {
         adx_store_data(".temp.gim", generator->code, generator->codeLength);
 	
         // Optimize code
-        system("GVM C:/Gismolang/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
+        system("GVM " GISMOHOME "/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
 
         // Passing code to GVM
         system("GVM ./.temp.gim");
@@ -159,7 +159,7 @@ int main(int argc, char const *argv[]) {
         adx_store_data(".temp.gim", generator->code, generator->codeLength);
 	
         // Optimize code
-        system("GVM C:/Gismolang/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
+        system("GVM " GISMOHOME "/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
 
         // Passing code to GVM
         system("GVM ./.temp.gim");
@@ -180,8 +180,8 @@ int main(int argc, char const *argv[]) {
 
         // Optimize code
         char optCommand[900] = "";
-        const char optModPath[] = "C:/Gismolang/modifications/bin/optimization.gim";
-        sprintf(optCommand, "C:/GismoLang/GVM %s %s %s", optModPath, argv[3], argv[3]);
+        const char optModPath[] = GISMOHOME "/modifications/bin/optimization.gim";
+        sprintf(optCommand, GISMOHOME "/GVM %s %s %s", optModPath, argv[3], argv[3]);
         system(optCommand);
     }
     else if(strcmp(mode, "modify")) {
