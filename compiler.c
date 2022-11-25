@@ -4,8 +4,9 @@
  * Creates an AST from Gismo-Sourcecode and compiles it to GVM-Bytecode
  */
 
-#define VERSION         "G3.0.0"
-
+#ifndef VERSION
+#define VERSION "UNKNOWN"
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +14,7 @@
 #include <limits.h>
 #include <float.h>
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
 
 #ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
@@ -23,14 +24,24 @@
 #include <io.h>
 #define F_OK 0
 #define access _access
+
+
+#define GISMOHOME "C:\\Gismolang"
+#define GISMOHOMELIBS "C:\\Gismolang\\libs\\"
+
+#endif
+
+#ifdef __APPLE__
+
+#define GISMOHOME "/Applications/Gismolang"
+#define GISMOHOMELIBS "/Applications/Gismolang/libs/"
+#include <unistd.h>
+
 #endif
 
 #include <ctype.h>
 
 char* readFile(const char*);
-
-#define GISMOHOME "C:\\Gismolang"
-#define GISMOHOMELIBS "C:\\Gismolang\\libs\\"
 
 // ANSI COLOR..
 #define ACEC "\e"
@@ -244,7 +255,7 @@ void adx_store_data(const char *filepath, const char *data, unsigned int data_le
 }
 
 void printHelp() {
-    #ifdef _WIN32
+    #if defined(_WIN32) | defined(_WIN64)
     // For enabling ANSI-Colors in the cmd
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     DWORD dwMode = 0;
