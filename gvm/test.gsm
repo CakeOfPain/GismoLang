@@ -1,4 +1,8 @@
 vanguard main(txt[] args) {
-	username = input("Enter your name: ")
-	output(reverse@std(username))
+	for i = 0; true; i+=1
+		doSomething(i, i * i)
+}
+
+doSomething(int n, int n2) {
+	input(n, ", ", n2)
 }

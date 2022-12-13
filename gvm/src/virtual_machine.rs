@@ -1,5 +1,5 @@
 use core::panic;
-use std::{env, fmt, io::{self, Write}, process, time::Instant, collections::HashMap, thread};
+use std::{env, fmt, io::{self, Write}, process, thread};
 
 use crate::{
     bytecode::{Bytecode, ConstantCode},
@@ -18,7 +18,7 @@ pub enum StackElement {
     Func(u32),
     Cmplx(Vec<StackElement>),
     Num(u64),
-    Nothing,
+    Nothing
 }
 
 #[derive(Clone)]
@@ -116,7 +116,7 @@ impl GismoText {
             (None, None) => 0,
             (_, Some(mod_string)) => mod_string.len(),
             (Some(base_string), None) => {
-                let mut const_text = gvm.const_texts.get(base_string as usize).unwrap();
+                let const_text = gvm.const_texts.get(base_string as usize).unwrap();
                 const_text.len()
             }
         }
@@ -129,7 +129,7 @@ impl GismoText {
             }
             (_, Some(mod_string)) => mod_string[index as usize] as u64,
             (Some(base_string), None) => {
-                let mut const_text = gvm.const_texts.get(base_string as usize).unwrap();
+                let const_text = gvm.const_texts.get(base_string as usize).unwrap();
                 const_text[index as usize] as u64
             }
         }
@@ -140,7 +140,7 @@ impl GismoText {
             (None, None) => String::from(""),
             (_, Some(mod_string)) => String::from_utf8(mod_string.clone()).unwrap(),
             (Some(base_string), None) => {
-                let mut const_text = gvm.const_texts.get(base_string as usize).unwrap().clone();
+                let const_text = gvm.const_texts.get(base_string as usize).unwrap().clone();
                 String::from_utf8(const_text).unwrap()
             }
         }
@@ -225,23 +225,27 @@ impl GismoLocalRegister {
     }
 }
 
-pub struct GismoStackFrame<'a> {
+pub struct GismoStackFrame {
     function: u32,
     stack_offset: usize,
     local_register: GismoLocalRegister,
-    byte_reader: ByteReader<'a>,
+    instr_pos: usize,
     argument_count: u32,
 }
 
-impl<'a> GismoStackFrame<'a> {
-    pub fn from(function: &'a GismoFunction, offset: usize) -> Self {
+impl GismoStackFrame {
+    pub fn from(function: &GismoFunction, offset: usize) -> Self {
         Self {
             function: function.const_position,
             stack_offset: offset,
             local_register: GismoLocalRegister::from(function),
-            byte_reader: ByteReader::new(&function.instructions),
+            instr_pos: 0,
             argument_count: 0,
         }
+    }
+
+    pub fn get_byte_reader<'a>(&'a mut self, gvm: &'a GismoVirtualMachine) -> ByteReader {
+        ByteReader::new(&gvm.const_functions[self.function as usize].instructions, &mut self.instr_pos)
     }
 }
 
@@ -272,7 +276,8 @@ pub struct GismoVirtualMachine {
 impl GismoVirtualMachine {
     pub fn new(bytecode: Vec<u8>) -> Self {
         // parsing the bytecode
-        let mut byte_reader = ByteReader::new(&bytecode);
+        let mut instr_pos = 0usize;
+        let mut byte_reader = ByteReader::new(&bytecode, &mut instr_pos);
 
         // Magic
         let magic = byte_reader.read_u32();
@@ -384,7 +389,7 @@ impl GismoVirtualMachine {
         self.execute_func(
             0,
             vec![StackElement::Cmplx(
-                arguments
+                arguments[1..]
                     .iter()
                     .map(|arg| StackElement::Text(GismoText::new(arg.clone())))
                     .collect(),
@@ -393,9 +398,12 @@ impl GismoVirtualMachine {
     }
 
     pub fn execute_func(&mut self, pos: u32, arguments: Vec<StackElement>) {
+        thread::scope(|_scope| {
+
         if self.const_functions.len() < 1 {
             panic!("GVM: [Main-Function] No main-function with index 0 was provided!");
         }
+        
 
         // Operation Stack
         let mut operation_stack: Vec<StackElement> = arguments;
@@ -423,58 +431,60 @@ impl GismoVirtualMachine {
 
         // let mut instr_monitoring: HashMap<String, GismoRecord>= HashMap::new();
 
-        while !stackframes.is_empty() && stackframes.last_mut().unwrap().byte_reader.has_next() {
-            let instr = Bytecode::try_from(stackframes.last_mut().unwrap().byte_reader.read_u8())
+        while !stackframes.is_empty() && stackframes.last_mut().unwrap().get_byte_reader(self).has_next() {
+            let instr = Bytecode::try_from(stackframes.last_mut().unwrap().get_byte_reader(self).read_u8())
                 .expect("GVM: [Bytecode] Unknown Bytecode instruction!");
-            // print!("{}: {}", stackframes.len(), instr.to_string());
+            //println!("{}: {}", stackframes.len(), instr.to_string());
+            //println!("Opstack.len = {}", operation_stack.len());
             // let start = Instant::now();
 
             match instr {
                 Bytecode::Nop => {}
                 Bytecode::LoadConstNum8 => {
                     operation_stack.push(StackElement::Num(
-                        self.const_num8[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] as u64,
+                        self.const_num8[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize] as u64,
                     ));
                 }
                 Bytecode::LoadConstNum16 => {
                     operation_stack.push(StackElement::Num(
-                        self.const_num16[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] as u64,
+                        self.const_num16[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize] as u64,
                     ));
                 }
                 Bytecode::LoadConstNum32 => {
                     operation_stack.push(StackElement::Num(
-                        self.const_num32[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] as u64,
+                        self.const_num32[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize] as u64,
                     ));
                 }
                 Bytecode::LoadConstNum64 => {
                     operation_stack.push(StackElement::Num(
-                        self.const_num64[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] as u64,
+                        self.const_num64[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize] as u64,
                     ));
                 }
                 Bytecode::LoadGlobalNum8 => {
                     operation_stack.push(StackElement::Num(
-                        self.global_num8[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] as u64,
+                        self.global_num8[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize] as u64,
                     ));
                 }
                 Bytecode::LoadGlobalNum16 => {
                     operation_stack.push(StackElement::Num(
-                        self.global_num16[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] as u64,
+                        self.global_num16[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize] as u64,
                     ));
                 }
                 Bytecode::LoadGlobalNum32 => {
                     operation_stack.push(StackElement::Num(
-                        self.global_num32[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] as u64,
+                        self.global_num32[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize] as u64,
                     ));
                 }
                 Bytecode::LoadGlobalNum64 => {
                     operation_stack.push(StackElement::Num(
-                        self.global_num64[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] as u64,
+                        self.global_num64[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize] as u64,
                     ));
                 }
                 Bytecode::StoreGlobalNum8 => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Num(x) => {
-                            self.global_num8[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] = x as u8
+                            let pos = stackframes.last_mut().unwrap().get_byte_reader(self).read_u32();
+                            self.global_num8[pos as usize] = x as u8
                         }
                         _ => panic!("GVM: [StoreGlobalNum8] Requires an number to store!"),
                     },
@@ -483,7 +493,8 @@ impl GismoVirtualMachine {
                 Bytecode::StoreGlobalNum16 => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Num(x) => {
-                            self.global_num16[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] = x as u16
+                            let pos = stackframes.last_mut().unwrap().get_byte_reader(self).read_u32();
+                            self.global_num16[pos as usize] = x as u16
                         }
                         _ => panic!("GVM: [StoreGlobalNum16] Requires an number to store!"),
                     },
@@ -492,7 +503,8 @@ impl GismoVirtualMachine {
                 Bytecode::StoreGlobalNum32 => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Num(x) => {
-                            self.global_num32[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] = x as u32
+                            let pos = stackframes.last_mut().unwrap().get_byte_reader(self).read_u32();
+                            self.global_num32[pos as usize] = x as u32
                         }
                         _ => panic!("GVM: [StoreGlobalNum32] Requires an number to store!"),
                     },
@@ -501,7 +513,8 @@ impl GismoVirtualMachine {
                 Bytecode::StoreGlobalNum64 => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Num(x) => {
-                            self.global_num64[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] = x as u64
+                            let pos = stackframes.last_mut().unwrap().get_byte_reader(self).read_u32();
+                            self.global_num64[pos as usize] = x as u64
                         }
                         _ => panic!("GVM: [StoreGlobalNum64] Requires an number to store!"),
                     },
@@ -509,33 +522,38 @@ impl GismoVirtualMachine {
                 },
                 Bytecode::LoadLocalNum8 => {
                     let stackframe = stackframes.last_mut().unwrap();
+                    let pos = stackframe.get_byte_reader(self).read_u32();
                     operation_stack.push(StackElement::Num(
-                        stackframe.local_register.local_num8[stackframe.byte_reader.read_u32() as usize] as u64,
+                        stackframe.local_register.local_num8[pos as usize] as u64,
                     ));
                 }
                 Bytecode::LoadLocalNum16 => {
                     let stackframe = stackframes.last_mut().unwrap();
+                    let pos = stackframe.get_byte_reader(self).read_u32();
                     operation_stack.push(StackElement::Num(
-                        stackframe.local_register.local_num16[stackframe.byte_reader.read_u32() as usize] as u64,
+                        stackframe.local_register.local_num16[pos as usize] as u64,
                     ));
                 }
                 Bytecode::LoadLocalNum32 => {
                     let stackframe = stackframes.last_mut().unwrap();
+                    let pos = stackframe.get_byte_reader(self).read_u32();
                     operation_stack.push(StackElement::Num(
-                        stackframe.local_register.local_num32[stackframe.byte_reader.read_u32() as usize] as u64,
+                        stackframe.local_register.local_num32[pos as usize] as u64,
                     ));
                 }
                 Bytecode::LoadLocalNum64 => {
                     let stackframe = stackframes.last_mut().unwrap();
+                    let pos = stackframe.get_byte_reader(self).read_u32();
                     operation_stack.push(StackElement::Num(
-                        stackframe.local_register.local_num64[stackframe.byte_reader.read_u32() as usize] as u64,
+                        stackframe.local_register.local_num64[pos as usize] as u64,
                     ));
                 }
                 Bytecode::StoreLocalNum8 => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Num(x) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            stackframe.local_register.local_num8[stackframe.byte_reader.read_u32() as usize] = x as u8
+                            let pos = stackframe.get_byte_reader(self).read_u32();
+                            stackframe.local_register.local_num8[pos as usize] = x as u8
                         }
                         _ => panic!("GVM: [StoreLocalNum8] Requires an number to store!"),
                     },
@@ -545,7 +563,8 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Num(x) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            stackframe.local_register.local_num16[stackframe.byte_reader.read_u32() as usize] = x as u16
+                            let pos = stackframe.get_byte_reader(self).read_u32();
+                            stackframe.local_register.local_num16[pos as usize] = x as u16
                         }
                         _ => panic!("GVM: [StoreLocalNum16] Requires an number to store!"),
                     },
@@ -555,7 +574,8 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Num(x) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            stackframe.local_register.local_num32[stackframe.byte_reader.read_u32() as usize] = x as u32
+                            let pos = stackframe.get_byte_reader(self).read_u32();
+                            stackframe.local_register.local_num32[pos as usize] = x as u32
                         }
                         _ => panic!("GVM: [StoreLocalNum32] Requires an number to store!"),
                     },
@@ -565,7 +585,8 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Num(x) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            stackframe.local_register.local_num64[stackframe.byte_reader.read_u32() as usize] = x as u64
+                            let pos = stackframe.get_byte_reader(self).read_u32();
+                            stackframe.local_register.local_num64[pos as usize] = x as u64
                         }
                         _ => panic!("GVM: [StoreLocalNum64] Requires an number to store!"),
                     },
@@ -717,7 +738,7 @@ impl GismoVirtualMachine {
                 Bytecode::And => match (operation_stack.pop(), operation_stack.pop()) {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => operation_stack
-                            .push(StackElement::Num(if a > 0 && b > 0 { 1 } else { 0 })),
+                            .push(StackElement::Num(a & b)),
                         _ => panic!("GVM: [And] Requires two numbers to operate with!"),
                     },
                     _ => panic!("GVM: [And] Operation stack is empty!"),
@@ -725,7 +746,7 @@ impl GismoVirtualMachine {
                 Bytecode::Or => match (operation_stack.pop(), operation_stack.pop()) {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => operation_stack
-                            .push(StackElement::Num(if a > 0 || b > 0 { 1 } else { 0 })),
+                            .push(StackElement::Num(a | b)),
                         _ => panic!("GVM: [Or] Requires two numbers to operate with!"),
                     },
                     _ => panic!("GVM: [Or] Operation stack is empty!"),
@@ -985,22 +1006,23 @@ impl GismoVirtualMachine {
                     self.global_cmplxs.push(Vec::new());
                     operation_stack.push(StackElement::Cmplx(
                         self.global_cmplxs
-                            .swap_remove(stackframes.last_mut().unwrap().byte_reader.read_u32() as usize),
+                            .swap_remove(stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize),
                     ));
                 }
                 Bytecode::LoadLocalCmplx => {
                     let stackframe = stackframes.last_mut().unwrap();
                     stackframe.local_register.local_cmplxs.push(Vec::new());
+                    let pos = stackframe.get_byte_reader(self).read_u32();
                     operation_stack.push(StackElement::Cmplx(
                         stackframe.local_register.local_cmplxs
-                            .swap_remove(stackframe.byte_reader.read_u32() as usize),
+                            .swap_remove(pos as usize),
                     ));
                 },
                 Bytecode::StoreGlobalCmplx => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Cmplx(cmplx) => {
                             self.global_cmplxs.push(cmplx);
-                            self.global_cmplxs.swap_remove(stackframes.last_mut().unwrap().byte_reader.read_u32() as usize);
+                            self.global_cmplxs.swap_remove(stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize);
                         },
                         _ => panic!("GVM: [StoreGlobalCmplx] Top value on the stack must be a complex!")
                     },
@@ -1010,8 +1032,9 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Cmplx(cmplx) => {
                             let stackframe = stackframes.last_mut().unwrap();
+                            let pos = stackframe.get_byte_reader(self).read_u32();
                             stackframe.local_register.local_cmplxs.push(cmplx);
-                            stackframe.local_register.local_cmplxs.swap_remove(stackframe.byte_reader.read_u32() as usize);
+                            stackframe.local_register.local_cmplxs.swap_remove(pos as usize);
                         },
                         _ => panic!("GVM: [StoreLocalCmplx] Top value on the stack must be a complex!")
                     },
@@ -1075,18 +1098,22 @@ impl GismoVirtualMachine {
                     _ => panic!("GVM: [CmplxStoreElement] Operation stack is empty!"),
                 },
                 Bytecode::LoadConstFunc => {
-                    operation_stack.push(StackElement::Func(self.const_functions[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize].const_position));
+                    operation_stack.push(StackElement::Func(self.const_functions[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize].const_position));
                 },
                 Bytecode::LoadGlobalFunc => {
-                    operation_stack.push(StackElement::Func(self.global_functions[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize]));
+                    operation_stack.push(StackElement::Func(self.global_functions[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize]));
                 },
                 Bytecode::LoadLocalFunc => {
                     let stackframe = stackframes.last_mut().unwrap();
-                    operation_stack.push(StackElement::Func(stackframe.local_register.local_functions[stackframe.byte_reader.read_u32() as usize]));
+                    let pos = stackframe.get_byte_reader(self).read_u32();
+                    operation_stack.push(StackElement::Func(stackframe.local_register.local_functions[pos as usize]));
                 },
                 Bytecode::StoreGlobalFunc => match operation_stack.pop() {
                     Some(element) => match element {
-                        StackElement::Func(func) => self.global_functions[stackframes.last_mut().unwrap().byte_reader.read_u32() as usize] = func,
+                        StackElement::Func(func) => {
+                            let pos = stackframes.last_mut().unwrap().get_byte_reader(self).read_u32();
+                            self.global_functions[pos as usize] = func
+                        },
                         _ => panic!("GVM: [StoreGlobalFunc] Requires a function to store!"),
                     },
                     None => panic!("GVM: [StoreGlobalFunc] Operation stack is empty!"),
@@ -1095,7 +1122,8 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Func(func) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            stackframe.local_register.local_functions[stackframe.byte_reader.read_u32() as usize] = func
+                            let pos = stackframe.get_byte_reader(self).read_u32();
+                            stackframe.local_register.local_functions[pos as usize] = func
                         },
                         _ => panic!("GVM: [StoreLocalFunc] Requires a function to store!"),
                     },
@@ -1107,7 +1135,7 @@ impl GismoVirtualMachine {
                             
                             // Check for the arguments on the stack
                             let argument_count = stackframes.last_mut().unwrap()
-                                .byte_reader.read_u32();
+                                .get_byte_reader(self).read_u32();
                             
                             // putting the function to execute onto the stack
                             let mut stackframe = GismoStackFrame::from(&self.const_functions[func as usize], operation_stack.len());
@@ -1124,8 +1152,8 @@ impl GismoVirtualMachine {
                 Bytecode::ReturnElement => match operation_stack.pop() {
                     Some(return_element) => {
                         let stackframe = stackframes.last_mut().unwrap();
-                        for _ in 0..stackframe.argument_count {
-                            operation_stack.pop().expect("GVM: [ReturnElement] Operation stack is empty, while removing arguments!");
+                        while operation_stack.len() > (stackframe.stack_offset - stackframe.argument_count as usize) {
+                            operation_stack.pop().expect("GVM: [CallFunc] Operation stack is empty!");
                         }
                         operation_stack.push(return_element);
 
@@ -1161,22 +1189,23 @@ impl GismoVirtualMachine {
                 },
                 Bytecode::LoadConstText => {
                     let stackframe = stackframes.last_mut().unwrap();
-                    operation_stack.push(StackElement::Text(GismoText::from(stackframe.byte_reader.read_u32())));
+                    operation_stack.push(StackElement::Text(GismoText::from(stackframe.get_byte_reader(self).read_u32())));
                 },
                 Bytecode::LoadGlobalText => {
                     let stackframe = stackframes.last_mut().unwrap();
                     operation_stack.push(
                         StackElement::Text(
-                            self.global_texts.get(stackframe.byte_reader.read_u32() as usize).unwrap().clone()
+                            self.global_texts.get(stackframe.get_byte_reader(self).read_u32() as usize).unwrap().clone()
                         )
                     );
                 },
                 Bytecode::LoadLocalText => {
                     let stackframe = stackframes.last_mut().unwrap();
+                    let pos = stackframe.get_byte_reader(self).read_u32();
                     operation_stack.push(
                         StackElement::Text(
                             stackframe.local_register.local_texts.get(
-                                stackframe.byte_reader.read_u32() as usize
+                                pos as usize
                             ).unwrap().clone()
                         )
                     );
@@ -1185,7 +1214,8 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Text(value) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            self.global_texts[stackframe.byte_reader.read_u32() as usize] = value;
+                            let pos = stackframe.get_byte_reader(self).read_u32();
+                            self.global_texts[pos as usize] = value;
                         }
                         _ => panic!("GVM: [StoreGlobalText] Requires text to store!")
                     },
@@ -1195,7 +1225,8 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Text(value) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            stackframe.local_register.local_texts[stackframe.byte_reader.read_u32() as usize] = value;
+                            let pos = stackframe.get_byte_reader(self).read_u32();
+                            stackframe.local_register.local_texts[pos as usize] = value;
                         }
                         _ => panic!("GVM: [StoreLocalText] Requires text to store!")
                     },
@@ -1327,26 +1358,26 @@ impl GismoVirtualMachine {
 
                 Bytecode::JumpAbs => {
                     let stackframe = stackframes.last_mut().unwrap();
-                    let pos = stackframe.byte_reader.read_u32();
-                    stackframe.byte_reader.jump_abs(pos);
+                    let pos = stackframe.get_byte_reader(self).read_u32();
+                    stackframe.get_byte_reader(self).jump_abs(pos);
                 },
                 Bytecode::JumpNeg => {
                     let stackframe = stackframes.last_mut().unwrap();
-                    let pos = stackframe.byte_reader.read_u16() + 3;
-                    stackframe.byte_reader.jump_neg(pos);
+                    let pos = stackframe.get_byte_reader(self).read_u16() + 3;
+                    stackframe.get_byte_reader(self).jump_neg(pos);
                 },
                 Bytecode::JumpPos => {
                     let stackframe = stackframes.last_mut().unwrap();
-                    let pos = stackframe.byte_reader.read_u16();
-                    stackframe.byte_reader.jump_pos(pos);
+                    let pos = stackframe.get_byte_reader(self).read_u16();
+                    stackframe.get_byte_reader(self).jump_pos(pos);
                 },
                 Bytecode::JumpAbsIfTrue => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Num(cond) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            let pos = stackframe.byte_reader.read_u32();
+                            let pos = stackframe.get_byte_reader(self).read_u32();
                             if cond > 0 {
-                                stackframe.byte_reader.jump_abs(pos);
+                                stackframe.get_byte_reader(self).jump_abs(pos);
                             }
                         },
                         _ => panic!("GVM: [JumpAbsIfTrue] Requires an number as condition!")
@@ -1357,9 +1388,9 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Num(cond) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            let pos = stackframe.byte_reader.read_u32();
+                            let pos = stackframe.get_byte_reader(self).read_u32();
                             if cond < 1 {
-                                stackframe.byte_reader.jump_abs(pos);
+                                stackframe.get_byte_reader(self).jump_abs(pos);
                             }
                         },
                         _ => panic!("GVM: [JumpAbsIfFalse] Requires an number as condition!")
@@ -1370,9 +1401,9 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Num(cond) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            let pos = stackframe.byte_reader.read_u16() + 3;
+                            let pos = stackframe.get_byte_reader(self).read_u16() + 3;
                             if cond > 0 {
-                                stackframe.byte_reader.jump_neg(pos);
+                                stackframe.get_byte_reader(self).jump_neg(pos);
                             }
                         },
                         _ => panic!("GVM: [JumpNegIfTrue] Requires an number as condition!")
@@ -1383,9 +1414,9 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Num(cond) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            let pos = stackframe.byte_reader.read_u16() + 3;
+                            let pos = stackframe.get_byte_reader(self).read_u16() + 3;
                             if cond < 1 {
-                                stackframe.byte_reader.jump_neg(pos);
+                                stackframe.get_byte_reader(self).jump_neg(pos);
                             }
                         },
                         _ => panic!("GVM: [JumpNegIfFalse] Requires an number as condition!")
@@ -1396,9 +1427,9 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Num(cond) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            let pos = stackframe.byte_reader.read_u16();
+                            let pos = stackframe.get_byte_reader(self).read_u16();
                             if cond > 0 {
-                                stackframe.byte_reader.jump_pos(pos);
+                                stackframe.get_byte_reader(self).jump_pos(pos);
                             }
                         },
                         _ => panic!("GVM: [JumpPosIfTrue] Requires an number as condition!")
@@ -1409,9 +1440,9 @@ impl GismoVirtualMachine {
                     Some(element) => match element {
                         StackElement::Num(cond) => {
                             let stackframe = stackframes.last_mut().unwrap();
-                            let pos = stackframe.byte_reader.read_u16();
+                            let pos = stackframe.get_byte_reader(self).read_u16();
                             if cond < 1 {
-                                stackframe.byte_reader.jump_pos(pos);
+                                stackframe.get_byte_reader(self).jump_pos(pos);
                             }
                         },
                         _ => panic!("GVM: [JumpPosIfFalse] Requires an number as condition!")
@@ -1447,7 +1478,7 @@ impl GismoVirtualMachine {
                 },
                 Bytecode::CmplxBuildNew => {
                     let stackframe = stackframes.last_mut().unwrap();
-                    let size = stackframe.byte_reader.read_u32();
+                    let size = stackframe.get_byte_reader(self).read_u32();
                     let mut cmplx: Vec<StackElement> = Vec::new(); 
                     for _ in 0..size {
                         cmplx.push(operation_stack.pop()
@@ -1553,7 +1584,7 @@ impl GismoVirtualMachine {
                 },
                 Bytecode::LoadArgument => {
                     let stackframe = stackframes.last_mut().unwrap();
-                    let argument_pos = (stackframe.stack_offset - stackframe.byte_reader.read_u32() as usize) - 1;
+                    let argument_pos = (stackframe.stack_offset - stackframe.get_byte_reader(self).read_u32() as usize) - 1;
                     let argument = operation_stack.get(argument_pos)
                         .expect("GVM: [LoadArgument] Operation stack is empty at argument position!");
                     if let StackElement::Cmplx(_) = argument {
@@ -1737,7 +1768,7 @@ impl GismoVirtualMachine {
                         let stackframe = stackframes.last_mut().unwrap();
                         operation_stack.push(
                             StackElement::Cmplx(
-                                vec![element; stackframe.byte_reader.read_u32() as usize]
+                                vec![element; stackframe.get_byte_reader(self).read_u32() as usize]
                             )
                         )
                     }
@@ -1788,7 +1819,7 @@ impl GismoVirtualMachine {
                 Bytecode::Text2I => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Text(text) => {
-                            let num: i64 = text.to_text(self).trim().parse().expect("GVM: [Text2I] Failed parsing integer!");
+                            let num: i64 = text.to_text(self).trim().parse().unwrap_or(0);
                             operation_stack.push(
                                 StackElement::Num(
                                     u64::from_be_bytes(num.to_be_bytes())
@@ -1802,7 +1833,7 @@ impl GismoVirtualMachine {
                 Bytecode::Text2F => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Text(text) => {
-                            let num: f64 = text.to_text(self).trim().parse().expect("GVM: [Text2F] Failed parsing integer!");
+                            let num: f64 = text.to_text(self).trim().parse().unwrap_or(0.0);
                             operation_stack.push(
                                 StackElement::Num(
                                     u64::from_be_bytes(num.to_be_bytes())
@@ -1816,7 +1847,7 @@ impl GismoVirtualMachine {
                 Bytecode::Text2U => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Text(text) => {
-                            let num: u64 = text.to_text(self).trim().parse().expect("GVM: [Text2U] Failed parsing integer!");
+                            let num: u64 = text.to_text(self).trim().parse().unwrap_or(0);
                             operation_stack.push(
                                 StackElement::Num(
                                     num
@@ -1872,12 +1903,12 @@ impl GismoVirtualMachine {
                 Bytecode::InputChar => todo!(),
                 Bytecode::CallAsync => match operation_stack.pop() {
                     Some(element) => match element {
-                        StackElement::Func(func) => {
+                        StackElement::Func(_func) => {
                             let mut arguments: Vec<StackElement> = vec![];
 
                             // Check for the arguments on the stack
                             let argument_count = stackframes.last_mut().unwrap()
-                                .byte_reader.read_u32();
+                                .get_byte_reader(self).read_u32();
                             
                             for _ in 0..argument_count {
                                 arguments.push(operation_stack.pop().expect(
@@ -1885,8 +1916,11 @@ impl GismoVirtualMachine {
                                 ));
                             }
                             
-                            // Execute function async in own stack
-                            self.execute_func(func, arguments);
+                            // TODO: How the fuck?
+                            // scope.spawn(|| {
+                            //     // Execute function async in own stack
+                            //     self.execute_func(func, arguments);
+                            // });
                         }
                         _ => panic!("GVM: [CallAsync] Requires a function on top to call!"),
                     }
@@ -1925,8 +1959,12 @@ impl GismoVirtualMachine {
             // instr_record.sum += duration.as_nanos();
             // instr_record.count += 1;
             
-            if (!stackframes.last_mut().unwrap().byte_reader.has_next()) && !stackframes.is_empty() {
-                stackframes.pop();
+            if (!stackframes.last_mut().unwrap().get_byte_reader(self).has_next()) && !stackframes.is_empty() {
+                let stackframe = stackframes.pop().unwrap();
+                while operation_stack.len() > (stackframe.stack_offset - stackframe.argument_count as usize) {
+                    operation_stack.pop().unwrap();
+                }
+                operation_stack.push(StackElement::Nothing);
             }
         }
 
@@ -1936,5 +1974,7 @@ impl GismoVirtualMachine {
         // for record in records.iter() {
         //     println!("{} Average -> {} ({}/{})", record.name, record.average(), record.sum, record.count);
         // }
+            
+        });
     }
 }

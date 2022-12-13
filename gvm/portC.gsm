@@ -1,0 +1,8 @@
+
+vanguard main(txt[] args) {
+	output("⚓Port-C Package Manager 🚢")
+
+	for i=0; i<args.Size(); i+=1 {
+		output(args[i])
+	}
+}

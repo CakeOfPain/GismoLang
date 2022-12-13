@@ -1,0 +1,108 @@
+width := 50
+height := 50
+
+buffer1 is bool[]
+buffer2 is bool[]
+buffer is bool = false
+
+initField() {
+    for y = 0; y < height; y+=1 {
+        for x = 0; x < width; x += 1 {
+            value := (rand() % 100) > 70
+            buffer1.Add(value)
+            buffer2.Add(value)
+        }
+    }
+}
+
+switchBuffer() {
+    buffer = !buffer
+}
+
+getCell(uint x, uint y) bool {
+    if (x < 0) || (x > (width-1)) || (y < 0) || (y > (height-1))
+        return false
+    if buffer {
+        return buffer1[x + (y * width)]
+    } else {
+        return buffer2[x + (y * width)]
+    }
+}
+
+setCell(uint x, uint y, bool value) {
+    if buffer {
+        buffer2[x + (y * width)] = value
+    } else {
+        buffer1[x + (y * width)] = value
+    }
+}
+
+countAliveCells(uint x, uint y) uint {
+    sum is uint = 0
+    sum += getCell(x, y+1)
+    sum += getCell(x + 1, y)
+    sum += getCell(x + 1, y + 1)
+    sum += getCell(x, y - 1)
+    sum += getCell(x - 1, y)
+    sum += getCell(x - 1, y - 1)
+    sum += getCell(x - 1, y + 1)
+    sum += getCell(x + 1, y - 1)
+    return sum
+}
+checkCellAlive(uint x, uint y) {
+    liveCellsAround := countAliveCells(x, y)
+    if liveCellsAround < 2 {
+        setCell(x, y, false)
+    } else if liveCellsAround == 3 {
+        setCell(x, y, true)
+    } else if liveCellsAround > 3 {
+        setCell(x, y, false)
+    } else {
+        setCell(x, y, getCell(x, y))
+    }
+}
+
+printCells() {
+    output("\n\n\n\n\n\n\n\n")
+    for y = 0; y < height; y+=1 {
+        for x = 0; x < width; x+=1 {
+            if getCell(x, y) {
+                "[]".Print()
+            } else {
+                "  ".Print()
+            }
+        }
+        output()
+    }
+}
+
+nextField() {
+    for y = 0; y < height; y+=1 {
+        for x = 0; x < width; x+=1 {
+            checkCellAlive(x, y)
+        }
+    }
+}
+
+seed is long = 1u
+
+srand(long newseed) {
+    seed = (newseed as ulong) & 2147483647u
+}
+
+rand() long {
+    seed = (seed * 1103515245u + 12345u) & 2147483647u
+    return seed
+}
+
+vanguard main() {
+
+    srand(input("seed: ") as ulong)
+
+    initField()
+    for true {
+        printCells()
+        nextField()
+        switchBuffer()
+    }
+}

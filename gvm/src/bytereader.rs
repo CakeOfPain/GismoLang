@@ -1,22 +1,22 @@
 pub struct ByteReader<'a> {
     buffer: &'a Vec<u8>,
-    count: usize,
+    count: &'a mut usize,
 }
 impl<'a> ByteReader<'a> {
-    pub fn new(buffer: &'a Vec<u8>) -> Self {
-        Self { buffer, count: 0 }
+    pub fn new(buffer: &'a Vec<u8>, count: &'a mut usize) -> Self {
+        Self { buffer, count }
     }
 
     pub fn has_next(&self) -> bool {
-        self.count < self.buffer.len()
+        *self.count < self.buffer.len()
     }
 
     pub fn read_u8(&mut self) -> u8 {
-        if self.count >= self.buffer.len() {
+        if *self.count >= self.buffer.len() {
             panic!("GVM: [Bytecode Format] cannot parse bytecode!");
         }
-        self.count += 1;
-        self.buffer[self.count - 1]
+        *self.count += 1;
+        self.buffer[*self.count - 1]
     }
 
     pub fn read_u16(&mut self) -> u16 {
@@ -55,14 +55,14 @@ impl<'a> ByteReader<'a> {
     }
 
     pub fn jump_abs(&mut self, pos: u32) {
-        self.count = pos as usize;
+        *self.count = pos as usize;
     }
 
     pub fn jump_pos(&mut self, pos: u16) {
-        self.count += pos as usize;
+        *self.count += pos as usize;
     }
 
     pub fn jump_neg(&mut self, pos: u16) {
-        self.count -= pos as usize;
+        *self.count -= pos as usize;
     }
 }
