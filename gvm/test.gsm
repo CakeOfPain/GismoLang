@@ -1,0 +1,4 @@
+vanguard main(txt[] args) {
+	username = input("Enter your name: ")
+	output(reverse@std(username))
+}

@@ -971,6 +971,13 @@ void CodeGenerator_generate (CodeGenerator* codeGenerator) {
 
     // Code Generation
 
+    // Magic
+    ByteWriter_writeByte(&byteWriter, '\0');
+    ByteWriter_writeByte(&byteWriter, 'g');
+    ByteWriter_writeByte(&byteWriter, 'i');
+    ByteWriter_writeByte(&byteWriter, 'm');
+
+    // Const Register
     ByteWriter_writeUInt (&byteWriter, codeGenerator->table.memoryDeclaration.const_num8s);
     ByteWriter_writeUInt (&byteWriter, codeGenerator->table.memoryDeclaration.const_num16s);
     ByteWriter_writeUInt (&byteWriter, codeGenerator->table.memoryDeclaration.const_num32s);
@@ -978,6 +985,7 @@ void CodeGenerator_generate (CodeGenerator* codeGenerator) {
     ByteWriter_writeUInt (&byteWriter, codeGenerator->table.memoryDeclaration.const_functions);
     ByteWriter_writeUInt (&byteWriter, codeGenerator->table.memoryDeclaration.const_texts);
 
+    // Global Register
     ByteWriter_writeUInt (&byteWriter, codeGenerator->table.memoryDeclaration.global_num8s);
     ByteWriter_writeUInt (&byteWriter, codeGenerator->table.memoryDeclaration.global_num16s);
     ByteWriter_writeUInt (&byteWriter, codeGenerator->table.memoryDeclaration.global_num32s);
@@ -1051,7 +1059,6 @@ void CodeGenerator_generate (CodeGenerator* codeGenerator) {
         ByteWriter_writeUInt (&codeGenerator->globalwriter, codeGenerator->vanguardFunctions[
             codeGenerator->vanguards_size-i-1
         ].index);
-        ByteWriter_writeByte (&codeGenerator->globalwriter, BC_SWAP);
         if (i == codeGenerator->vanguards_size-1) {
             ByteWriter_writeByte (&codeGenerator->globalwriter, BC_CALL_FUNC);
             ByteWriter_writeUInt(&codeGenerator->globalwriter, 1); // Only the collection
@@ -2042,14 +2049,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
                     // Actually it parses it in the wrong order so here it gets fixed
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
 
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int + Int = Int
                     // UInt + UInt = UInt
@@ -2213,12 +2220,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    // Actually it parses it in the wrong order so here it gets fixed
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int - Int = Int
                     // UInt - UInt = UInt
@@ -2363,12 +2372,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    // Actually it parses it in the wrong order so here it gets fixed
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int * Int = Int
                     // UInt * UInt = UInt
@@ -2513,12 +2524,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    // Actually it parses it in the wrong order so here it gets fixed
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int / Int = Int
                     // UInt / UInt = UInt
@@ -2663,12 +2676,16 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    // Actually it parses it in the wrong order so here it gets fixed
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+
+
                     switch (type_left) {
                         case type_ubyte:
                         case type_ushort:
@@ -2753,12 +2770,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    // Actually it parses it in the wrong order so here it gets fixed
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int == Int = ubyte
                     // UInt == UInt = ubyte
@@ -2903,12 +2922,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    // Actually it parses it in the wrong order so here it gets fixed
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int < Int = ubyte
                     // UInt < UInt = ubyte
@@ -3053,12 +3074,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    // Actually it parses it in the wrong order so here it gets fixed
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int < Int = ubyte
                     // UInt < UInt = ubyte
@@ -3204,10 +3227,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+
+                    // Actually it parses it in the wrong order so here it gets fixed
                     unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
 
                     unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
@@ -3393,10 +3418,12 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+
+                    // Actually it parses it in the wrong order so here it gets fixed
                     unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
 
                     unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
@@ -3582,12 +3609,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    // Actually it parses it in the wrong order so here it gets fixed
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int == Int = ubyte
                     // UInt == UInt = ubyte
@@ -3739,14 +3768,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
                     // Actually it parses it in the wrong order so here it gets fixed
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
 
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int + Int = Int
                     // UInt + UInt = UInt
@@ -3838,14 +3867,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
                     // Actually it parses it in the wrong order so here it gets fixed
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
 
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int + Int = Int
                     // UInt + UInt = UInt
@@ -3937,14 +3966,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
                     // Actually it parses it in the wrong order so here it gets fixed
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
 
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
 
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int + Int = Int
                     // UInt + UInt = UInt
@@ -4038,13 +4067,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     unsigned int left_ops_length = 0;
                     char* right_ops = NULL;
                     unsigned int right_ops_length = 0;
-                    ByteWriter tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
-
-                    tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
 
                     // Actually it parses it in the wrong order so here it gets fixed
-                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
-                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
 
                     // Int + Int = Int
                     // UInt + UInt = UInt
@@ -5511,22 +5541,13 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     else
                                         ByteWriter_writeByte (byteWriter, BC_LOAD_GLOBAL_COLLECTION);
                                     ByteWriter_writeUInt (byteWriter, collection.index);
-                                    if (strcmp (fn.identifier.valueNode->value.value.word, "Init") == 0) {
-                                        if (fn.numbersOfArguments != 1) {
-                                            puts ("The function must have 1 argument!");
-                                            markTokenError( fn.identifier.valueNode->value);
-                                            exit (1);
-                                        }
-                                        CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
-                                        ByteWriter_writeByte (byteWriter, BC_COLLECTION_INIT);
-                                    } else if (strcmp (fn.identifier.valueNode->value.value.word, "Size") == 0) {
+                                    if (strcmp (fn.identifier.valueNode->value.value.word, "Size") == 0) {
                                         if (fn.numbersOfArguments != 0) {
                                             puts ("The function does not have any argument!!");
                                             markTokenError( fn.identifier.valueNode->value);
                                             exit (1);
                                         }
                                         ByteWriter_writeByte (byteWriter, BC_SIZEOF_COLLECTION);
-                                        ByteWriter_writeByte (byteWriter, BC_SWAP);
                                         rtype =  type_ulong;
                                     } else if (strcmp (fn.identifier.valueNode->value.value.word, "Remove") == 0) {
                                         if (fn.numbersOfArguments != 1) {
@@ -5808,10 +5829,6 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         }
 
                         CodeGenerator_generateLogFunctionEnter(codeGenerator, fn, vardec, scope, byteWriter);
-
-                        ByteWriter_writeByte (byteWriter, BC_LOAD_CONST_FUNC);
-                        ByteWriter_writeUInt (byteWriter, vardec.index);
-                        ByteWriter_writeByte (byteWriter, BC_SWAP);
                         
                         for (unsigned int i = 1; i < vardec.argumentsCount; i++) {
                             /*if (i == 0)
@@ -5915,6 +5932,9 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                 }
                             }
                         }
+
+                        ByteWriter_writeByte (byteWriter, BC_LOAD_CONST_FUNC);
+                        ByteWriter_writeUInt (byteWriter, vardec.index);
                         ByteWriter_writeByte (byteWriter, BC_CALL_FUNC);
                         ByteWriter_writeUInt(byteWriter, fn.numbersOfArguments);
                         if (vardec.returnType == type_none)
@@ -6914,7 +6934,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             }
             else if (strcmp (name.value.word, "fmt") == 0) {
                 for (unsigned int i = 0; i < functionCallNode.numbersOfArguments; i++) {
-                    SyntaxNode argumentNode = functionCallNode.arguments[functionCallNode.numbersOfArguments-i-1];
+                    SyntaxNode argumentNode = functionCallNode.arguments[i];
                     unsigned char type = CodeGenerator_generateExpression (codeGenerator, argumentNode, scope, byteWriter);
                     switch (type) {
                         case type_ubyte:
@@ -7090,21 +7110,6 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 // Next we make sure we log the entering of the function for later debugging
 
                 CodeGenerator_generateLogFunctionEnter(codeGenerator, functionCallNode, vardec, scope, byteWriter);
-
-
-                // Load the function to be callen (We need it on the stack first)
-                switch(vardec.scope.rgtr) {
-                    case scope_global:
-                        ByteWriter_writeByte (byteWriter, BC_LOAD_GLOBAL_FUNC);
-                        break;
-                    case scope_local:
-                        ByteWriter_writeByte (byteWriter, BC_LOAD_STACK_FUNC);
-                        break;
-                    case scope_constant:
-                        ByteWriter_writeByte (byteWriter, BC_LOAD_CONST_FUNC);
-                        break;
-                }
-                ByteWriter_writeUInt (byteWriter, vardec.index);
                 
                 // If arguments are defined as foo(*) than let them all pass
                 if(vardec.free_arguments) {
@@ -7258,6 +7263,21 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         }
                     }
                 }
+
+                // Load the function to be callen (We need it on the stack first)
+                switch(vardec.scope.rgtr) {
+                    case scope_global:
+                        ByteWriter_writeByte (byteWriter, BC_LOAD_GLOBAL_FUNC);
+                        break;
+                    case scope_local:
+                        ByteWriter_writeByte (byteWriter, BC_LOAD_STACK_FUNC);
+                        break;
+                    case scope_constant:
+                        ByteWriter_writeByte (byteWriter, BC_LOAD_CONST_FUNC);
+                        break;
+                }
+                ByteWriter_writeUInt (byteWriter, vardec.index);
+                
                 ByteWriter_writeByte (byteWriter, BC_CALL_FUNC);
                 if(vardec.free_arguments)
                     ByteWriter_writeUInt(byteWriter, 2);
@@ -7286,12 +7306,6 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             SquareCallNode squareCallNode = *node.squareCallNode;
             Token name = squareCallNode.identifier.valueNode->value;
             Symbol variable = VariableTable_findVariableByName (&codeGenerator->table, name);
-            if (variable.scope.rgtr == scope_local) {
-                ByteWriter_writeByte (byteWriter, BC_LOAD_STACK_COLLECTION);
-            } else {
-                ByteWriter_writeByte (byteWriter, BC_LOAD_GLOBAL_COLLECTION);
-            }
-            ByteWriter_writeUInt (byteWriter, variable.index);
 
             if (squareCallNode.numbersOfArguments == 0) {
                 puts ("No given index!");
@@ -7299,11 +7313,16 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 exit (1);
             }
 
+            if (variable.scope.rgtr == scope_local) {
+                ByteWriter_writeByte (byteWriter, BC_LOAD_STACK_COLLECTION);
+            } else {
+                ByteWriter_writeByte (byteWriter, BC_LOAD_GLOBAL_COLLECTION);
+            }
+            ByteWriter_writeUInt (byteWriter, variable.index);
+            
             CodeGenerator_generateExpression (codeGenerator, squareCallNode.arguments[0], scope, byteWriter);
 
             ByteWriter_writeByte (byteWriter, BC_LOAD_ELEMENT);
-            
-            ByteWriter_writeByte (byteWriter, BC_SWAP);
             if (variable.scope.rgtr == scope_local) {
                 ByteWriter_writeByte (byteWriter, BC_STORE_STACK_COLLECTION);
             } else {
