@@ -1,5 +1,13 @@
 use core::panic;
-use std::{env, fmt::{self}, io::{self, Write, BufReader, BufRead}, process::{self}, thread, collections::HashMap, fs::File};
+use std::{
+    collections::{HashMap, HashSet},
+    env,
+    fmt::{self},
+    fs::File,
+    io::{self, BufRead, BufReader, Write},
+    process::{self},
+    thread,
+};
 
 use crate::{
     bytecode::{Bytecode, ConstantCode},
@@ -18,7 +26,7 @@ pub enum StackElement {
     Func(u32),
     Cmplx(Vec<StackElement>),
     Num(u64),
-    Nothing
+    Nothing,
 }
 
 pub fn zip_zack_encode(i: i64) -> i64 {
@@ -187,10 +195,14 @@ impl GismoText {
     pub fn hash(&self, gvm: &GismoVirtualMachine) -> u64 {
         match (self.base_string, &self.mod_string) {
             (None, None) => 0,
-            (_, Some(mod_string)) => mod_string.iter().fold(0, |sum, n| sum + n.to_owned() as u64),
+            (_, Some(mod_string)) => mod_string
+                .iter()
+                .fold(0, |sum, n| sum + n.to_owned() as u64),
             (Some(base_string), None) => {
                 let const_text = gvm.const_texts.get(base_string as usize).unwrap();
-                const_text.iter().fold(0, |sum, n| sum + n.to_owned() as u64)
+                const_text
+                    .iter()
+                    .fold(0, |sum, n| sum + n.to_owned() as u64)
             }
         }
     }
@@ -264,10 +276,10 @@ impl GismoSymbolType {
             "i2" => GismoSymbolType::I2,
             "i4" => GismoSymbolType::I4,
             "i8" => GismoSymbolType::I8,
-            "t"  => GismoSymbolType::Text,
-            "c"  => GismoSymbolType::Cmplx,
-            "f"  => GismoSymbolType::Func,
-            _ => panic!("GVM: [Hint] lc/gb/cs: Unknown type def!")
+            "t" => GismoSymbolType::Text,
+            "c" => GismoSymbolType::Cmplx,
+            "f" => GismoSymbolType::Func,
+            _ => panic!("GVM: [Hint] lc/gb/cs: Unknown type def!"),
         }
     }
 }
@@ -276,42 +288,79 @@ pub struct DebugSymbol {
     name: String,
     type_id: GismoSymbolType,
     scope: GismoSymbolScope,
-    index: u32
+    index: u32,
 }
 
 pub struct Debugger {
     line: u32,
     file: String,
     symbols: HashMap<String, DebugSymbol>,
+    breakpoints: HashSet<String>,
 }
 
 impl Debugger {
     pub fn new() -> Self {
-        Self { line: 0, file: "[Undefined]".to_string(), symbols: HashMap::new() }
+        Self {
+            line: 0,
+            file: "[Undefined]".to_string(),
+            symbols: HashMap::new(),
+            breakpoints: HashSet::new(),
+        }
     }
 
-    pub fn set_line(&mut self, line: u32) {
+    pub fn set_line(&mut self, line: u32, gvm: &GismoVirtualMachine) {
         self.line = line;
+        self.check_breakpoint(gvm);
     }
 
-    pub fn set_file(&mut self, file: String) {
+    pub fn set_file(&mut self, file: String, gvm: &GismoVirtualMachine) {
         self.file = file;
+        self.check_breakpoint(gvm);
+    }
+
+    fn check_breakpoint(&self, gvm: &GismoVirtualMachine) {
+        if gvm.debugger.breakpoints.contains(&self.build_label()) {
+            self.debugging(gvm);
+        }
+    }
+
+    fn build_label(&self) -> String {
+        let path = self.file
+            .split(":")
+            .collect::<Vec<&str>>()
+            .get(0)
+            .expect("GVM: [Hint] Missing Path.")
+            .to_string();
+        let label = path + ":" + &self.line.to_string();
+        label
     }
 
     pub fn add_symbol(&mut self, symbol: DebugSymbol) {
         self.symbols.insert(symbol.name.clone(), symbol);
     }
 
-    pub fn debugging(&self, _gvm: &GismoVirtualMachine) {
+    pub fn add_breakpoint(&mut self, label: String) {
+        self.breakpoints.insert(label);
+    }
+
+    pub fn debugging(&self, gvm: &GismoVirtualMachine) {
         if self.file.eq("[Undefined]") {
             return;
         }
         println!("\n\n");
         println!("*** Breakpoint ***");
-        let path = self.file.split(":").collect::<Vec<&str>>().get(0)
-            .expect("GVM: [Hint] bp: Missing Path.")
+        let path = self
+            .file
+            .split(":")
+            .collect::<Vec<&str>>()
+            .get(0)
+            .expect("GVM: [Hint] Missing Path.")
             .clone();
-        let function = self.file.split(":").collect::<Vec<&str>>().get(1)
+        let function = self
+            .file
+            .split(":")
+            .collect::<Vec<&str>>()
+            .get(1)
             .expect("GVM: [Hint] bp: Missing Function.")
             .clone();
         println!("At {}:{} Function: {}", path, self.line, function);
@@ -320,12 +369,15 @@ impl Debugger {
         if let Ok(file) = file {
             let reader = BufReader::new(file);
 
-            for (line_count, line) in reader.lines()
-                .enumerate()
-                .filter(|(i, _)| (*i as i64 > (self.line as i64 - 5)) && (*i < (self.line + 5) as usize))
-            {
+            for (line_count, line) in reader.lines().enumerate().filter(|(i, _)| {
+                (*i as i64 > (self.line as i64 - 5)) && (*i < (self.line + 5) as usize)
+            }) {
                 if (line_count + 1) == self.line as usize {
-                    println!("\x1b[0;30;47m{:5}: {}\x1b[0m", line_count + 1, line.unwrap());
+                    println!(
+                        "\x1b[0;30;47m{:5}: {}\x1b[0m",
+                        line_count + 1,
+                        line.unwrap()
+                    );
                 } else {
                     println!("{:5}: {}", line_count + 1, line.unwrap());
                 }
@@ -336,13 +388,13 @@ impl Debugger {
         let mut command = String::new();
 
         loop {
-            print!("break/help/[cmd]> ");
-            io::stdout().flush();
+            print!("next/help/[cmd]> ");
+            io::stdout().flush().unwrap();
             io::stdin().read_line(&mut command).unwrap();
             match &command.to_lowercase() {
-                x if x.contains("break") => {
+                x if x.contains("next") => {
                     break;
-                },
+                }
                 x if x.contains("help") => {}
                 x if x.len() < 2 => {
                     break;
@@ -376,12 +428,15 @@ impl GismoStackFrame {
             argument_count: 0,
 
             // debugging
-            debugger: Debugger::new()
+            debugger: Debugger::new(),
         }
     }
 
     pub fn get_byte_reader<'a>(&'a mut self, gvm: &'a GismoVirtualMachine) -> ByteReader {
-        ByteReader::new(&gvm.const_functions[self.function as usize].instructions, &mut self.instr_pos)
+        ByteReader::new(
+            &gvm.const_functions[self.function as usize].instructions,
+            &mut self.instr_pos,
+        )
     }
 }
 
@@ -409,7 +464,7 @@ pub struct GismoVirtualMachine {
     global_cmplxs: Vec<Vec<StackElement>>,
 
     // debugging
-    debugger: Debugger
+    debugger: Debugger,
 }
 
 impl GismoVirtualMachine {
@@ -449,7 +504,7 @@ impl GismoVirtualMachine {
             global_texts: vec![GismoText::empty(); byte_reader.read_u32() as usize],
             global_cmplxs: vec![Vec::new(); byte_reader.read_u32() as usize],
 
-            debugger: Debugger::new()
+            debugger: Debugger::new(),
         };
 
         // Parse Consts
@@ -525,6 +580,12 @@ impl GismoVirtualMachine {
         machine
     }
 
+    pub fn set_breakpoints(&mut self, breakpoints: Vec<String>) {
+        for label in breakpoints {
+            self.debugger.add_breakpoint(label);
+        }
+    }
+
     pub fn execute_main(&mut self) {
         let arguments: Vec<String> = env::args().collect();
         self.execute_func(
@@ -540,46 +601,56 @@ impl GismoVirtualMachine {
 
     pub fn execute_func(&mut self, pos: u32, arguments: Vec<StackElement>) {
         thread::scope(|_scope| {
+            if self.const_functions.len() < 1 {
+                panic!("GVM: [Main-Function] No main-function with index 0 was provided!");
+            }
 
-        if self.const_functions.len() < 1 {
-            panic!("GVM: [Main-Function] No main-function with index 0 was provided!");
-        }
-        
+            // Operation Stack
+            let mut operation_stack: Vec<StackElement> = arguments;
 
-        // Operation Stack
-        let mut operation_stack: Vec<StackElement> = arguments;
+            // Stack-frames
+            let mut stackframes: Vec<GismoStackFrame> = vec![GismoStackFrame::from(
+                &self.const_functions[pos as usize],
+                operation_stack.len(),
+            )];
 
-        // Stack-frames
-        let mut stackframes: Vec<GismoStackFrame> = vec![GismoStackFrame::from(
-            &self.const_functions[pos as usize],
-            operation_stack.len(),
-        )];
-        
-        /*
-         * For recording each time a instruction takes
-         */
-        // struct GismoRecord {
-        //     name: String,
-        //     count: usize,
-        //     sum: u128
-        // }
+            /*
+             * For recording each time a instruction takes
+             */
+            // struct GismoRecord {
+            //     name: String,
+            //     count: usize,
+            //     sum: u128
+            // }
 
-        // impl GismoRecord {
-        //     fn average(&self) -> u128 {
-        //         self.sum / self.count as u128
-        //     }
-        // }
+            // impl GismoRecord {
+            //     fn average(&self) -> u128 {
+            //         self.sum / self.count as u128
+            //     }
+            // }
 
-        // let mut instr_monitoring: HashMap<String, GismoRecord> = HashMap::new();
+            // let mut instr_monitoring: HashMap<String, GismoRecord> = HashMap::new();
 
-        while !stackframes.is_empty() && stackframes.last_mut().unwrap().get_byte_reader(self).has_next() {
-            let instr = Bytecode::try_from(stackframes.last_mut().unwrap().get_byte_reader(self).read_u8())
+            while !stackframes.is_empty()
+                && stackframes
+                    .last_mut()
+                    .unwrap()
+                    .get_byte_reader(self)
+                    .has_next()
+            {
+                let instr = Bytecode::try_from(
+                    stackframes
+                        .last_mut()
+                        .unwrap()
+                        .get_byte_reader(self)
+                        .read_u8(),
+                )
                 .expect("GVM: [Bytecode] Unknown Bytecode instruction!");
-            // println!("{}: {}", stackframes.len(), instr.to_string());
-            //println!("Opstack.len = {}", operation_stack.len());
-            // let start = Instant::now();
+                // println!("{}: {}", stackframes.len(), instr.to_string());
+                //println!("Opstack.len = {}", operation_stack.len());
+                // let start = Instant::now();
 
-            match instr {
+                match instr {
                 Bytecode::Nop => {}
                 Bytecode::Hint => {
                     let stackframe = stackframes.last_mut().unwrap();
@@ -596,24 +667,20 @@ impl GismoVirtualMachine {
                      * sy;name;i1;0 // set local symbol
                     */
                     match hint_args[0] {
-                        "bp" => {
-                            // Jump into debugging mode
-                            stackframe.debugger.debugging(self);
-                        },
                         "ln" => {
                             let line_num = hint_args.get(1)
                                 .expect("GVM: [Hint] ln: Line hint requires a line number at argument pos 1!")
                                 .parse::<u32>()
                                 .expect("GVM: [Hint] ln: Line hint requires an u32 as line number at argument pos 1!");
                             
-                            stackframe.debugger.set_line(line_num);
+                            stackframe.debugger.set_line(line_num, self);
                             // stackframe.debugger.debugging(self);
                         },
                         "fl" => {
                             let file_path = hint_args.get(1)
                                 .expect("GVM: [Hint] fl: File hint requires a file path at argument pos 1!")
                                 .to_string();
-                            stackframe.debugger.set_file(file_path);
+                            stackframe.debugger.set_file(file_path, self);
                         },
                         "sy" => {
                             stackframe.debugger.add_symbol(DebugSymbol {
@@ -2169,34 +2236,40 @@ impl GismoVirtualMachine {
                 },
             }
 
+                // let duration = start.elapsed();
 
-            // let duration = start.elapsed();
+                // let instr_record = instr_monitoring.entry(instr.to_string()).or_insert(GismoRecord {
+                //     name: instr.to_string(),
+                //     count: 0,
+                //     sum: 0,
+                // });
 
-            // let instr_record = instr_monitoring.entry(instr.to_string()).or_insert(GismoRecord {
-            //     name: instr.to_string(),
-            //     count: 0,
-            //     sum: 0,
-            // });
+                // instr_record.sum += duration.as_nanos();
+                // instr_record.count += 1;
 
-            // instr_record.sum += duration.as_nanos();
-            // instr_record.count += 1;
-            
-            if (!stackframes.last_mut().unwrap().get_byte_reader(self).has_next()) && !stackframes.is_empty() {
-                let stackframe = stackframes.pop().unwrap();
-                while operation_stack.len() > (stackframe.stack_offset - stackframe.argument_count as usize) {
-                    operation_stack.pop().unwrap();
+                if (!stackframes
+                    .last_mut()
+                    .unwrap()
+                    .get_byte_reader(self)
+                    .has_next())
+                    && !stackframes.is_empty()
+                {
+                    let stackframe = stackframes.pop().unwrap();
+                    while operation_stack.len()
+                        > (stackframe.stack_offset - stackframe.argument_count as usize)
+                    {
+                        operation_stack.pop().unwrap();
+                    }
+                    operation_stack.push(StackElement::Nothing);
                 }
-                operation_stack.push(StackElement::Nothing);
             }
-        }
 
-        // let mut records = Vec::from_iter(instr_monitoring.values());
-        // records.sort_by(|a,b| a.average().cmp(&b.average()));
+            // let mut records = Vec::from_iter(instr_monitoring.values());
+            // records.sort_by(|a,b| a.average().cmp(&b.average()));
 
-        // for record in records.iter() {
-        //     println!("{} Average -> {} ({}/{})", record.name, record.average(), record.sum, record.count);
-        // }
-            
+            // for record in records.iter() {
+            //     println!("{} Average -> {} ({}/{})", record.name, record.average(), record.sum, record.count);
+            // }
         });
     }
 }

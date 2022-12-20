@@ -1672,6 +1672,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
             IncludeNode includeNode = *node.includeNode;
 
             unsigned int line_count = includeNode.identifier.lineNumber;
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";
@@ -1712,6 +1713,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
             IfNode ifNode = *node.ifNode;
 
             unsigned int line_count = ifNode.ifWord.lineNumber;
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";
@@ -1764,6 +1766,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
             ForNode forNode = *node.forNode;
 
             unsigned int line_count = forNode.forWord.lineNumber;
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";
@@ -1897,6 +1900,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
             UnaryInstructionNode instructionNode = *node.unaryInstructionNode;
 
             unsigned int line_count = instructionNode.instruction.lineNumber;
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";
@@ -1951,6 +1955,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
             ReturnNode returnNode = *node.returnNode;
 
             unsigned int line_count = returnNode.returnWord.lineNumber;
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";
@@ -2062,7 +2067,7 @@ unsigned char CodeGenerator_generateStatement (struct CodeGenerator* codeGenerat
 }
 
 void CodeGenerator_generateLogFunctionEnter(struct CodeGenerator *codeGenerator, struct FunctionCallNode fncall, struct Symbol fn, struct Scope scope, struct ByteWriter *byteWriter) {
-    if(DEBUGGING_MODE == 0) return;
+    if(DEBUGGING_MODE != 0) return;
     Symbol tracerFunction = VariableTable_findVariableByName(&codeGenerator->table, (Token) {
         .type = TT_Identifier, .value.word = "function_tracer_enter"
     });
@@ -2086,7 +2091,7 @@ void CodeGenerator_generateLogFunctionEnter(struct CodeGenerator *codeGenerator,
 }
 
 void CodeGenerator_generateLogFunctionLeave(struct CodeGenerator *codeGenerator, struct FunctionCallNode fncall, struct Symbol fn, struct Scope scope, struct ByteWriter *byteWriter) {
-    if(DEBUGGING_MODE == 0) return;
+    if(DEBUGGING_MODE != 2) return;
     Symbol tracerFunction = VariableTable_findVariableByName(&codeGenerator->table, (Token) {
         .type = TT_Identifier, .value.word = "function_tracer_leave"
     });
@@ -2119,6 +2124,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             IncludeNode implementNode = *node.includeNode;
             unsigned int line_count = implementNode.identifier.lineNumber;
 
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";
@@ -2173,6 +2179,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
         {
             BinOpNode* binOpNode = node.binOpNode;
             unsigned int line_count = binOpNode->operator.lineNumber;
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";
@@ -5640,6 +5647,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         free (args_tmp);
                         CodeGenerator_generateLogFunctionLeave(codeGenerator, fn, vardec, scope, byteWriter);
                         
+                        if(DEBUGGING_MODE)
                         if(line_count != 0 && codeGenerator->currentLine != line_count) {
                             codeGenerator->currentLine = line_count;
                             char hint[1024] = "";
@@ -5808,6 +5816,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
         {
             UnaryOpNode* unaryOpNode = node.unaryOpNode;
             unsigned int line_count = unaryOpNode->operator.lineNumber;
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";
@@ -5906,6 +5915,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
         {
             ValueNode* valueNode = node.valueNode;
             unsigned int line_count = valueNode->value.lineNumber;
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";
@@ -6284,6 +6294,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 Token name = functionCallNode.identifier.unaryOpNode->operand.valueNode->value;
 
                 unsigned int line_count = name.lineNumber;
+                if(DEBUGGING_MODE)
                 if(line_count != 0 && codeGenerator->currentLine != line_count) {
                     codeGenerator->currentLine = line_count;
                     char hint[1024] = "";
@@ -6365,6 +6376,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             Token name = functionCallNode.identifier.valueNode->value;
 
             unsigned int line_count = name.lineNumber;
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";
@@ -7062,6 +7074,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     ByteWriter_writeByte (byteWriter, BC_POP);
                 CodeGenerator_generateLogFunctionLeave(codeGenerator, functionCallNode, vardec, scope, byteWriter);
 
+                if(DEBUGGING_MODE)
                 if(line_count != 0 && codeGenerator->currentLine != line_count) {
                     codeGenerator->currentLine = line_count;
                     char hint[1024] = "";
@@ -7096,6 +7109,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             Token name = squareCallNode.identifier.valueNode->value;
 
             unsigned int line_count = name.lineNumber;
+            if(DEBUGGING_MODE)
             if(line_count != 0 && codeGenerator->currentLine != line_count) {
                 codeGenerator->currentLine = line_count;
                 char hint[1024] = "";

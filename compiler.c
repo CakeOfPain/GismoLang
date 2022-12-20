@@ -169,7 +169,7 @@ int main(int argc, char const *argv[]) {
         system("del .temp.gim");
         free(generator);
     }
-    else if(strcmp(mode, "run=debug") == 0) {
+    else if(strcmp(mode, "run:debug") == 0) {
         DEBUGGING_MODE = 1;
         CodeGenerator* generator = CodeGenerator_build(parser);
         adx_store_data(".temp.gim", generator->code, generator->codeLength);
@@ -184,7 +184,7 @@ int main(int argc, char const *argv[]) {
         system("del .temp.gim");
         free(generator);
     }
-    else if(strcmp(mode, "build=debug") == 0) {
+    else if(strcmp(mode, "build:debug") == 0) {
         DEBUGGING_MODE = 1;
         CodeGenerator* generator = CodeGenerator_build(parser);
         if(argc < 4) {
@@ -266,9 +266,9 @@ void printHelp() {
 
     puts(""ACEC"[97mModes: \n"
         "* Use "ACEC"[36mgismo build xyz.gsm xyz.gim"ACEC"[97m to generate an\n"
-        "  Gismo Instruction Mode Executable ("ACEC"[36mbuild=debug"ACEC"[97m for debugging)\n"
+        "  Gismo Instruction Mode Executable ("ACEC"[36mbuild:debug"ACEC"[97m for debugging)\n"
         "* Use "ACEC"[36mgismo run xyz.gsm"ACEC"[97m to directly execute a file\n"
-        "  in the Gismo Source Mode("ACEC"[37run=debug"ACEC"[97m for debugging)\n"
+        "  in the Gismo Source Mode("ACEC"[36mrun:debug"ACEC"[97m for debugging)\n"
         "* Use "ACEC"[36mgismo bytecode xyz.gsm"ACEC"[97m for dumping it's\n"
         "  bytecode as hex\n"
         "* Use "ACEC"[36mgismo symboltable xyz.gsm"ACEC"[97m for listing all symbols\n"
