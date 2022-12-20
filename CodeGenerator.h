@@ -224,13 +224,13 @@
 #define BC_CLOCK                    140
 #define BC_TIME                     141
 
-// GNL IMPLEMENTATIONS
+// GLL IMPLEMENTATIONS
 
 
-#define BC_GNL_LOAD                 142
-#define BC_GNL_SYMBOL               143
-#define BC_GNL_EXEC                 144
-#define BC_GNL_CLOSE                145
+#define BC_GLL_LOAD                 142
+#define BC_GLL_SYMBOL               143
+#define BC_GLL_EXEC                 144
+#define BC_GLL_CLOSE                145
 
 // INTERATOR OPERATIONS
 
@@ -479,6 +479,7 @@ unsigned char tokenTypeToDataType (Token token, CodeGenerator *codeGenerator) {
                 if(strcmp(token.value.word, "table") == 0)
                     return type_complex;
                 Symbol fnDeclaration = VariableTable_findVariableByName(&codeGenerator->table, token);
+                // printf("fnDeclaration search: %s\n", token.value.word);
                 if(fnDeclaration.functionDefininiton.functionNode->returnType.type == TT_Identifier) {
                     if(strcmp(fnDeclaration.functionDefininiton.functionNode->returnType.value.word, "table") == 0) {
                         return type_complex;
@@ -869,9 +870,10 @@ void CodeGenerator_includeLib (CodeGenerator* codeGenerator, char* path) {
                     unsigned int newNameSize = strlen (vardec.value.value.word) + 2 + strlen (path);
                     char* newName = (char*) malloc (sizeof (char) * (newNameSize+1));
                     newName[0] = '\0';
-                    newName = strcat (newName, vardec.value.value.word);
-                    newName = strcat (newName, "At");
+                    newName = strcat (newName, "@");
                     newName = strcat (newName, path);
+                    newName = strcat (newName, "_");
+                    newName = strcat (newName, vardec.value.value.word);
                     vardec.value.value.word = newName;
                     vardec.is_extern = 1;
                 }
@@ -908,9 +910,10 @@ void CodeGenerator_includeLib (CodeGenerator* codeGenerator, char* path) {
                     unsigned int newNameSize = strlen (vardec.value.value.word) + 2 + strlen (path);
                     char* newName = (char*) malloc (sizeof (char) * (newNameSize+1));
                     newName[0] = '\0';
-                    newName = strcat (newName, vardec.value.value.word);
-                    newName = strcat (newName, "At");
+                    newName = strcat (newName, "@");
                     newName = strcat (newName, path);
+                    newName = strcat (newName, "_");
+                    newName = strcat (newName, vardec.value.value.word);
                     vardec.value.value.word = newName;
                     vardec.is_extern = 1;
                 }
@@ -946,9 +949,10 @@ void CodeGenerator_includeLib (CodeGenerator* codeGenerator, char* path) {
                     unsigned int newNameSize = strlen (vardec.value.value.word) + 2 + strlen (path);
                     char* newName = (char*) malloc (sizeof (char) * (newNameSize+1));
                     newName[0] = '\0';
-                    newName = strcat (newName, vardec.value.value.word);
-                    newName = strcat (newName, "At");
+                    newName = strcat (newName, "@");
                     newName = strcat (newName, path);
+                    newName = strcat (newName, "_");
+                    newName = strcat (newName, vardec.value.value.word);
                     vardec.value.value.word = newName;
                     vardec.is_extern = 1;
                 }
@@ -1233,6 +1237,11 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                 char lib_id[256] = "";
                 getLibraryIdOfPath(functionNode.name.file_path, lib_id);
                 if(strcmp(lib_id, "system") == 0) continue;
+
+                char name[4096] = "";
+                strcat(name, functionNode.name.value.word);
+                strcat(name, "/");
+
                 Symbol functiondeclaration = VariableTable_declareVariable (&codeGenerator->table, functionNode.name, (Scope) {.rgtr = scope_constant});
                 VariableTable_defineVariable (&codeGenerator->table, functiondeclaration.value, type_function);
                 functiondeclaration = VariableTable_findVariableByName (&codeGenerator->table, functiondeclaration.value);
@@ -1244,6 +1253,15 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                     ArgumentNode next = *functionNode.arguments.argumentNode;
                     unsigned char is_next = 1;
                     while (is_next) {
+                        if(functiondeclaration.arguments[j].is_array)
+                            strcat(name, "*");
+                        else if(next.type.type == TT_Identifier) {
+                            strcat(name, next.type.value.word);
+                        }
+                        else if(next.type.type == TTK_Txt)
+                            strcat(name, "txt");
+
+                        strcat(name, "/");
                         functiondeclaration.arguments[j].name = next.name;
                         functiondeclaration.arguments[j].type = next.type;
                         functiondeclaration.arguments[j].is_array = next.is_array;
@@ -1258,7 +1276,17 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                 //functiondeclaration.returnType = tokenTypeToDataType (functionNode.returnType, codeGenerator);
 
                 functiondeclaration.returnType_isArray = functionNode.returns_array;
-                VariableTable_setVariableByName (&codeGenerator->table, functiondeclaration.value, functiondeclaration);
+
+                Symbol newFunctionDec = functiondeclaration;
+                if(!(functionNode.returnType.type == TT_Identifier && strcmp(functionNode.returnType.value.word, "table") == 0)) { 
+                    char *identifier;
+                    identifier = copyString(name);
+                    newFunctionDec.value.value.word = identifier;
+                    newFunctionDec.functionDefininiton.functionNode->name.value.word = identifier;
+                }
+
+                VariableTable_setVariableByName (&codeGenerator->table, functiondeclaration.value, newFunctionDec);
+                // printf("Funcdec: %s\n", newFunctionDec.value.value.word);
             }
                 break;
             case ID_VanguardNode:
@@ -4016,8 +4044,43 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         }
                     }
                     else if (binOpNode->right.type == ID_FunctionCallNode) {
-                        
-                        Symbol fn = VariableTable_findVariableByName (&codeGenerator->table, binOpNode->right.functionCallNode->identifier.valueNode->value);
+                        FunctionCallNode functionCallNode = *binOpNode->right.functionCallNode;
+
+                        char identifier[4096] = "";
+                        strcat(identifier, functionCallNode.identifier.valueNode->value.value.word);
+                        strcat(identifier, "/");
+
+                        char *arg_writer_buffer = NULL;
+                        unsigned int arg_writer_length = 0;
+                        ByteWriter arg_writer = ByteWriter_init(&arg_writer_buffer, &arg_writer_length);
+
+                        for (unsigned int i = 0; i < functionCallNode.numbersOfArguments; i++) {
+                            unsigned char arg_type = CodeGenerator_generateExpression(codeGenerator, functionCallNode.arguments[i], scope, &arg_writer);
+                            switch(arg_type) {
+                                case type_text:
+                                    strcat(identifier, "txt");
+                                    break;
+                                case type_complex:
+                                    strcat(identifier, Complex_return.value.word);
+                                    break;
+                                case type_Collection:
+                                    strcat(identifier, "*");
+                                default:
+                                    break;
+                            }
+
+                            strcat(identifier, "/");
+                        }
+
+                        char *before_id = functionCallNode.identifier.valueNode->value.value.word;
+                        functionCallNode.identifier.valueNode->value.value.word = copyString(identifier);
+
+                        Symbol fn = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
+
+                        // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
+
+                        free(functionCallNode.identifier.valueNode->value.value.word);
+                        functionCallNode.identifier.valueNode->value.value.word = before_id;
 
                         if(strcmp(binOpNode->right.functionCallNode->identifier.valueNode->value.value.word, "$$args$$") == 0) {
                             ByteWriter_writeByte(byteWriter, BC_LOAD_ARGUMENT);
@@ -5292,379 +5355,284 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     ByteWriter_writeUInt (byteWriter, collection.index);
                                     return rtype;
                                 }
-                            } 
-                        unsigned char type = CodeGenerator_generateExpression (codeGenerator, left, scope, byteWriter);
-                        if (type == type_text) {
-                            if (strcmp (fn.identifier.valueNode->value.value.word, "Length") == 0) {
-                                if (fn.numbersOfArguments != 0) {
-                                    puts ("Too many function-arguments!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                ByteWriter_writeByte (byteWriter, BC_TEXT_GETSIZE);
-                                return type_ulong;
                             }
-                            else if (strcmp (fn.identifier.valueNode->value.value.word, "InsertChar") == 0) {
-                                if (fn.numbersOfArguments < 1) {
-                                    puts ("Too few function-arguments!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                if (fn.numbersOfArguments > 1) {
-                                    puts ("Too many function-arguments!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
-                                switch (argtype) {
-                                    case type_ubyte:
-                                    case type_ushort:
-                                    case type_uint:
-                                    case type_ulong:
-                                        break;
-                                    case type_byte:
-                                    case type_short:
-                                    case type_int:
-                                    case type_long:
-                                        ByteWriter_writeByte (byteWriter, BC_I2U);
-                                        break;
+                        if (strcmp (fn.identifier.valueNode->value.value.word, "Length") == 0) {
 
-                                    case type_float:
-                                    case type_double:
-                                        ByteWriter_writeByte (byteWriter, BC_F2U);
-                                        break;
-                                    default:
-                                        puts ("Wrong datatype as argument!");
-                                        markTokenError( fn.identifier.valueNode->value);
-                                        exit (1);
-                                        break;
-                                }
-                                ByteWriter_writeByte (byteWriter, BC_TEXT_ADD_CHAR);
-                                return type_text;
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, left, scope, byteWriter);
+                            if (type != type_text) {
+                                puts ("Object must be a text!");
+                                markTokenError(fn.identifier.valueNode->value);
+                                exit (1);
                             }
-                            else if (strcmp (fn.identifier.valueNode->value.value.word, "Pop") == 0) {
-                                if (fn.numbersOfArguments != 0) {
-                                    puts ("Too many function-arguments!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                ByteWriter_writeByte (byteWriter, BC_TEXT_POP_CHAR);
-                                return type_text;
-                            }
-                            else if (strcmp (fn.identifier.valueNode->value.value.word, "CharAt") == 0) {
-                                if (fn.numbersOfArguments < 1) {
-                                    puts ("Too few function-arguments!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                if (fn.numbersOfArguments > 1) {
-                                    puts ("Too many function-arguments!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
-                                switch (argtype) {
-                                    case type_ubyte:
-                                    case type_ushort:
-                                    case type_uint:
-                                    case type_ulong:
-                                        break;
-                                    case type_byte:
-                                    case type_short:
-                                    case type_int:
-                                    case type_long:
-                                        ByteWriter_writeByte (byteWriter, BC_I2U);
-                                        break;
 
-                                    case type_float:
-                                    case type_double:
-                                        ByteWriter_writeByte (byteWriter, BC_F2U);
-                                        break;
-                                    default:
-                                        puts ("Wrong datatype as argument!");
-                                        markTokenError( fn.identifier.valueNode->value);
-                                        exit (1);
-                                        break;
-                                }
-                                ByteWriter_writeByte (byteWriter, BC_TEXT_GET_CHAR);
-                                return type_ubyte;
+                            if (fn.numbersOfArguments != 0) {
+                                puts ("Too many function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
                             }
-                            else if (strcmp (fn.identifier.valueNode->value.value.word, "Remove") == 0) {
-                                if (fn.numbersOfArguments < 1) {
-                                    puts ("Too few function-arguments!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                if (fn.numbersOfArguments > 1) {
-                                    puts ("Too many function-arguments!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
-                                switch (argtype) {
-                                    case type_ubyte:
-                                    case type_ushort:
-                                    case type_uint:
-                                    case type_ulong:
-                                        break;
-                                    case type_byte:
-                                    case type_short:
-                                    case type_int:
-                                    case type_long:
-                                        ByteWriter_writeByte (byteWriter, BC_I2U);
-                                        break;
+                            ByteWriter_writeByte (byteWriter, BC_TEXT_GETSIZE);
+                            return type_ulong;
+                        }
+                        else if (strcmp (fn.identifier.valueNode->value.value.word, "InsertChar") == 0) {
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, left, scope, byteWriter);
+                            if (type != type_text) {
+                                puts ("Object must be a text!");
+                                markTokenError(fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            
+                            if (fn.numbersOfArguments < 1) {
+                                puts ("Too few function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            if (fn.numbersOfArguments > 1) {
+                                puts ("Too many function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
+                            switch (argtype) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    ByteWriter_writeByte (byteWriter, BC_I2U);
+                                    break;
 
-                                    case type_float:
-                                    case type_double:
-                                        ByteWriter_writeByte (byteWriter, BC_F2U);
-                                        break;
-                                    default:
-                                        puts ("Wrong datatype as argument!");
-                                        markTokenError( fn.identifier.valueNode->value);
-                                        exit (1);
-                                        break;
-                                }
-                                ByteWriter_writeByte (byteWriter, BC_TEXT_REMOVE_CHAR);
-                                return type_text;
-                            }else if (strcmp (fn.identifier.valueNode->value.value.word, "SetChar") == 0) {
-                                if (fn.numbersOfArguments < 2) {
-                                    puts ("Too few function-arguments!");
+                                case type_float:
+                                case type_double:
+                                    ByteWriter_writeByte (byteWriter, BC_F2U);
+                                    break;
+                                default:
+                                    puts ("Wrong datatype as argument!");
                                     markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
-                                }
-                                if (fn.numbersOfArguments > 2) {
-                                    puts ("Too many function-arguments!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[1], scope, byteWriter);
-                                switch (argtype) {
-                                    case type_ubyte:
-                                    case type_ushort:
-                                    case type_uint:
-                                    case type_ulong:
-                                        break;
-                                    case type_byte:
-                                    case type_short:
-                                    case type_int:
-                                    case type_long:
-                                        ByteWriter_writeByte (byteWriter, BC_I2U);
-                                        break;
+                                    break;
+                            }
+                            ByteWriter_writeByte (byteWriter, BC_TEXT_ADD_CHAR);
+                            return type_text;
+                        }
+                        else if (strcmp (fn.identifier.valueNode->value.value.word, "Pop") == 0) {
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, left, scope, byteWriter);
+                            if (type != type_text) {
+                                puts ("Object must be a text!");
+                                markTokenError(fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            
+                            if (fn.numbersOfArguments != 0) {
+                                puts ("Too many function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            ByteWriter_writeByte (byteWriter, BC_TEXT_POP_CHAR);
+                            return type_text;
+                        }
+                        else if (strcmp (fn.identifier.valueNode->value.value.word, "CharAt") == 0) {
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, left, scope, byteWriter);
+                            if (type != type_text) {
+                                puts ("Object must be a text!");
+                                markTokenError(fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            
+                            if (fn.numbersOfArguments < 1) {
+                                puts ("Too few function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            if (fn.numbersOfArguments > 1) {
+                                puts ("Too many function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
+                            switch (argtype) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    ByteWriter_writeByte (byteWriter, BC_I2U);
+                                    break;
 
-                                    case type_float:
-                                    case type_double:
-                                        ByteWriter_writeByte (byteWriter, BC_F2U);
-                                        break;
-                                    default:
-                                        puts ("Wrong datatype as argument!");
-                                        markTokenError( fn.identifier.valueNode->value);
-                                        exit (1);
-                                        break;
-                                }
-                                unsigned char postype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
-                                switch (postype) {
-                                    case type_ubyte:
-                                    case type_ushort:
-                                    case type_uint:
-                                    case type_ulong:
-                                        break;
-                                    case type_byte:
-                                    case type_short:
-                                    case type_int:
-                                    case type_long:
-                                        ByteWriter_writeByte (byteWriter, BC_I2U);
-                                        break;
+                                case type_float:
+                                case type_double:
+                                    ByteWriter_writeByte (byteWriter, BC_F2U);
+                                    break;
+                                default:
+                                    puts ("Wrong datatype as argument!");
+                                    markTokenError( fn.identifier.valueNode->value);
+                                    exit (1);
+                                    break;
+                            }
+                            ByteWriter_writeByte (byteWriter, BC_TEXT_GET_CHAR);
+                            return type_ubyte;
+                        }
+                        else if (strcmp (fn.identifier.valueNode->value.value.word, "Remove") == 0) {
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, left, scope, byteWriter);
+                            if (type != type_text) {
+                                puts ("Object must be a text!");
+                                markTokenError(fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            
+                            if (fn.numbersOfArguments < 1) {
+                                puts ("Too few function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            if (fn.numbersOfArguments > 1) {
+                                puts ("Too many function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
+                            switch (argtype) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    ByteWriter_writeByte (byteWriter, BC_I2U);
+                                    break;
 
-                                    case type_float:
-                                    case type_double:
-                                        ByteWriter_writeByte (byteWriter, BC_F2U);
-                                        break;
-                                    default:
-                                        puts ("Wrong datatype as argument!");
-                                        markTokenError( fn.identifier.valueNode->value);
-                                        exit (1);
-                                        break;
-                                }
-                                ByteWriter_writeByte (byteWriter, BC_TEXT_SET_CHAR);
-                                return type_text;
-                            }
-                            else if (strcmp (fn.identifier.valueNode->value.value.word, "Print") == 0) {
-                                if (fn.numbersOfArguments != 0) {
-                                    puts ("Too many function-arguments!");
+                                case type_float:
+                                case type_double:
+                                    ByteWriter_writeByte (byteWriter, BC_F2U);
+                                    break;
+                                default:
+                                    puts ("Wrong datatype as argument!");
                                     markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
-                                }
-                                ByteWriter_writeByte (byteWriter, BC_PRINT_TEXT);
-                                return type_none;
+                                    break;
                             }
-                            else if (strcmp (fn.identifier.valueNode->value.value.word, "Println") == 0) {
-                                if (fn.numbersOfArguments != 0) {
-                                    puts ("Too many function-arguments!");
+                            ByteWriter_writeByte (byteWriter, BC_TEXT_REMOVE_CHAR);
+                            return type_text;
+                        }else if (strcmp (fn.identifier.valueNode->value.value.word, "SetChar") == 0) {
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, left, scope, byteWriter);
+                            if (type != type_text) {
+                                puts ("Object must be a text!");
+                                markTokenError(fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            
+                            if (fn.numbersOfArguments < 2) {
+                                puts ("Too few function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            if (fn.numbersOfArguments > 2) {
+                                puts ("Too many function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            unsigned char argtype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[1], scope, byteWriter);
+                            switch (argtype) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    ByteWriter_writeByte (byteWriter, BC_I2U);
+                                    break;
+
+                                case type_float:
+                                case type_double:
+                                    ByteWriter_writeByte (byteWriter, BC_F2U);
+                                    break;
+                                default:
+                                    puts ("Wrong datatype as argument!");
                                     markTokenError( fn.identifier.valueNode->value);
                                     exit (1);
-                                }
-                                ByteWriter_writeByte (byteWriter, BC_PRINT_TEXT);
-                                ByteWriter_writeByte (byteWriter, BC_NEWLINE);
-                                return type_none;
+                                    break;
                             }
+                            unsigned char postype = CodeGenerator_generateExpression (codeGenerator, fn.arguments[0], scope, byteWriter);
+                            switch (postype) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    ByteWriter_writeByte (byteWriter, BC_I2U);
+                                    break;
+
+                                case type_float:
+                                case type_double:
+                                    ByteWriter_writeByte (byteWriter, BC_F2U);
+                                    break;
+                                default:
+                                    puts ("Wrong datatype as argument!");
+                                    markTokenError( fn.identifier.valueNode->value);
+                                    exit (1);
+                                    break;
+                            }
+                            ByteWriter_writeByte (byteWriter, BC_TEXT_SET_CHAR);
+                            return type_text;
+                        }
+                        else if (strcmp (fn.identifier.valueNode->value.value.word, "Print") == 0) {
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, left, scope, byteWriter);
+                            if (type != type_text) {
+                                puts ("Object must be a text!");
+                                markTokenError(fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            
+                            if (fn.numbersOfArguments != 0) {
+                                puts ("Too many function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            ByteWriter_writeByte (byteWriter, BC_PRINT_TEXT);
+                            return type_none;
+                        }
+                        else if (strcmp (fn.identifier.valueNode->value.value.word, "Println") == 0) {
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, left, scope, byteWriter);
+                            if (type != type_text) {
+                                puts ("Object must be a text!");
+                                markTokenError(fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            
+                            if (fn.numbersOfArguments != 0) {
+                                puts ("Too many function-arguments!");
+                                markTokenError( fn.identifier.valueNode->value);
+                                exit (1);
+                            }
+                            ByteWriter_writeByte (byteWriter, BC_PRINT_TEXT);
+                            ByteWriter_writeByte (byteWriter, BC_NEWLINE);
+                            return type_none;
                         }
 
-                        fn.numbersOfArguments++;
-                        SyntaxNode* args_tmp = (SyntaxNode*) malloc (sizeof (SyntaxNode) * fn.numbersOfArguments);
-                        args_tmp[0] = left;
-                        for (unsigned int i = 0; i < (fn.numbersOfArguments-1); i++) {
-                            args_tmp[i+1] = fn.arguments[i];
-                        }
-                        fn.arguments = args_tmp;
-                        Symbol vardec = VariableTable_findVariableByName (&codeGenerator->table, fn.identifier.valueNode->value);
-                        if (vardec.type == type_undefined) {
-                            puts ("Undefined function!");
-                            markTokenError( fn.identifier.valueNode->value);
-                            exit (1);
-                        } 
-                        if (fn.numbersOfArguments < vardec.argumentsCount) {
-                            puts ("To few function-argument!");
-                            markTokenError( fn.identifier.valueNode->value);
-                            exit (1);
-                        }
-                        if (fn.numbersOfArguments > vardec.argumentsCount) {
-                            puts ("To many function-argument!");
-                            markTokenError( fn.identifier.valueNode->value);
-                            exit (1);
+                        SyntaxNode functionCallNode = newFunctionCallNode(fn.identifier);
+                        FunctionCallNode_add(functionCallNode, left);
+                        for(unsigned int arg_i = 0; arg_i < fn.numbersOfArguments; ++arg_i) {
+                            FunctionCallNode_add(functionCallNode, fn.arguments[arg_i]);
                         }
 
-                        CodeGenerator_generateLogFunctionEnter(codeGenerator, fn, vardec, scope, byteWriter);
-                        
-                        for (unsigned int i = 1; i < vardec.argumentsCount; i++) {
-                            /*if (i == 0)
-                                if (typeToStackType (type) == typeToStackType (tokentypeToDatatype (vardec.arguments[i].type, codeGenerator)))
-                                    continue;
-                                else {
-                                    puts ("Methode value type does not match!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }*/
-                            unsigned char fntype = typeToStackType (tokenTypeToDataType (vardec.arguments[i].type, codeGenerator));
-                            if (vardec.arguments[i].is_array) {
-                                if (fn.arguments[i].type != ID_ValueNode) {
-                                    puts ("Missing Array!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                Token arrayName = fn.arguments[i].valueNode->value;
-                                if (arrayName.type != TT_Identifier) {
-                                    puts ("Missing Array!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                Symbol array = VariableTable_findVariableByName (&codeGenerator->table, arrayName);
-                                if (array.type != type_Collection) {
-                                    puts ("Missing Array!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                if (fntype != array.storingType) {
-                                    puts ("Wrong Datatype for Array!");
-                                    markTokenError( fn.identifier.valueNode->value);
-                                    exit (1);
-                                }
-                                if (array.scope.rgtr == scope_local)
-                                    ByteWriter_writeByte (byteWriter, BC_LOAD_STACK_COLLECTION);
-                                else
-                                    ByteWriter_writeByte (byteWriter, BC_LOAD_GLOBAL_COLLECTION);
-                                ByteWriter_writeUInt (byteWriter, array.index);
-                                ByteWriter_writeByte (byteWriter, BC_COPY_COLLECTION);
-                                if (array.scope.rgtr == scope_local)
-                                    ByteWriter_writeByte (byteWriter, BC_STORE_STACK_COLLECTION);
-                                else
-                                    ByteWriter_writeByte (byteWriter, BC_STORE_GLOBAL_COLLECTION);
-                                ByteWriter_writeUInt (byteWriter, array.index);
-                            }
-                            else {
-                                unsigned char argtype = typeToStackType (CodeGenerator_generateExpression (codeGenerator, fn.arguments[i], scope, byteWriter));
-                                if (argtype != fntype) {
-                                    switch (fntype) {
-                                        case type_ulong:
-                                            if (argtype == type_long) {
-                                                ByteWriter_writeByte (byteWriter, BC_I2U);
-                                            }
-                                            else if (argtype == type_double) {
-                                                ByteWriter_writeByte (byteWriter, BC_F2U);
-                                            }
-                                            else {
-                                                puts ("Wrong Datatype for function-argument!");
-                                                markTokenError( fn.identifier.valueNode->value);
-                                                exit (1);
-                                            }
-                                            break;
-                                        case type_long:
-                                            if (argtype == type_ulong) {
-                                                ByteWriter_writeByte (byteWriter, BC_U2I);
-                                            }
-                                            else if (argtype == type_double) {
-                                                ByteWriter_writeByte (byteWriter, BC_F2I);
-                                            }
-                                            else {
-                                                puts ("Wrong Datatype for function-argument!");
-                                                markTokenError( fn.identifier.valueNode->value);
-                                                exit (1);
-                                            }
-                                            break;
-                                        case type_double:
-                                            if (argtype == type_ulong) {
-                                                ByteWriter_writeByte (byteWriter, BC_U2F);
-                                            }
-                                            else if (argtype == type_long) {
-                                                ByteWriter_writeByte (byteWriter, BC_I2F);
-                                            }
-                                            else {
-                                                puts ("Wrong Datatype for function-argument!");
-                                                markTokenError( fn.identifier.valueNode->value);
-                                                exit (1);
-                                            }
-                                            break;
-                                        case type_text:
-                                            puts ("Wrong Datatype for function-argument!");
-                                            markTokenError( fn.identifier.valueNode->value);
-                                            exit (1);
-                                            break;
-                                        case type_Collection:
-                                            puts ("Wrong Datatype for function-argument!");
-                                            markTokenError( fn.identifier.valueNode->value);
-                                            exit (1);
-                                            break;
-                                    }
-                                }
-                            }
-                        }
-
-                        ByteWriter_writeByte (byteWriter, BC_LOAD_CONST_FUNC);
-                        ByteWriter_writeUInt (byteWriter, vardec.index);
-                        ByteWriter_writeByte (byteWriter, BC_CALL_FUNC);
-                        ByteWriter_writeUInt(byteWriter, fn.numbersOfArguments);
-                        if (vardec.returnType == type_none)
-                            ByteWriter_writeByte (byteWriter, BC_POP);
-                        free (args_tmp);
-                        CodeGenerator_generateLogFunctionLeave(codeGenerator, fn, vardec, scope, byteWriter);
-                        
-                        if(DEBUGGING_MODE)
-                        if(line_count != 0 && codeGenerator->currentLine != line_count) {
-                            codeGenerator->currentLine = line_count;
-                            char hint[1024] = "";
-
-                            sprintf(hint, "ln;%d", line_count);
-
-                            ByteWriter_writeByte(byteWriter, BC_HINT);
-                            unsigned int hint_len = strlen(hint);
-                            ByteWriter_writeUInt(byteWriter, hint_len);
-                            for(unsigned int i = 0; i < hint_len; ++i) {
-                                ByteWriter_writeByte(byteWriter, hint[i]);
-                            }
-                        }
-                        
-                        if(vardec.returnType == type_complex)
-                            returnComplex(vardec);
-                        return vardec.returnType;
+                        return CodeGenerator_generateExpression(codeGenerator, functionCallNode, scope, byteWriter);
                     } else if(right.type == ID_ValueNode) {
                         if (left.type == ID_ValueNode) {
                             if (left.valueNode->value.type == TT_Identifier && right.valueNode->value.type == TT_Identifier) {
@@ -6755,10 +6723,10 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 }
                 return type_text;
             }
-            else if (strcmp (name.value.word, "GNL_LOAD") == 0) {
+            else if (strcmp (name.value.word, "GLL_LOAD") == 0) {
                 // Will handle Library Loading
                 if (functionCallNode.numbersOfArguments != 1) {
-                    puts ("Missing Path for GNL Library!");
+                    puts ("Missing Path for GLL Library!");
                     markTokenError( name);
                     exit (1);
                 }
@@ -6768,16 +6736,16 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 unsigned char type = CodeGenerator_generateExpression (codeGenerator, libpath, scope, byteWriter);
                 
                 if (type != type_text) {
-                    puts ("GNL Library Path must be a text value!");
+                    puts ("GLL Library Path must be a text value!");
                     markTokenError( name);
                     exit (1);
                 }
                 
-                ByteWriter_writeByte (byteWriter, BC_GNL_LOAD);
+                ByteWriter_writeByte (byteWriter, BC_GLL_LOAD);
 
                 return type_ushort;
             }
-            else if (strcmp (name.value.word, "GNL_SYMBOL") == 0) {
+            else if (strcmp (name.value.word, "GLL_SYMBOL") == 0) {
                 // Will handle the symbole table for the native Librarys
                 if (functionCallNode.numbersOfArguments != 2) {
                     puts ("Wrong Arguments!");
@@ -6792,22 +6760,22 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 unsigned char symbol_type = CodeGenerator_generateExpression (codeGenerator, symbol, scope, byteWriter);
 
                 if (libhandle_type != type_ushort) {
-                    puts ("GNL Library Handle must be a ushort value!");
+                    puts ("GLL Library Handle must be a ushort value!");
                     markTokenError( name);
                     exit (1);
                 }
 
                 if (symbol_type != type_text) {
-                    puts ("GNL Symbol must be a text value!");
+                    puts ("GLL Symbol must be a text value!");
                     markTokenError( name);
                     exit (1);
                 }
 
-                ByteWriter_writeByte (byteWriter, BC_GNL_SYMBOL);
+                ByteWriter_writeByte (byteWriter, BC_GLL_SYMBOL);
 
                 return type_ushort;
             }
-            else if (strcmp (name.value.word, "GNL_EXEC") == 0) {
+            else if (strcmp (name.value.word, "GLL_EXEC") == 0) {
                 // Will load a function pointer and executes it with some informations
                 if (functionCallNode.numbersOfArguments < 3) {
                     puts ("Too few arguments!");
@@ -6823,19 +6791,19 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 unsigned char fnhandle_type  = CodeGenerator_generateExpression (codeGenerator, fnhandle, scope, byteWriter);
                 unsigned char returnType = type_none;
                 if (libhandle_type != type_ushort) {
-                    puts ("GNL Library Handle must be a ushort!");
+                    puts ("GLL Library Handle must be a ushort!");
                     markTokenError( name);
                     exit (1);
                 }
 
                 if (fnhandle_type != type_ushort) {
-                    puts ("GNL Function Handle must be a ushort!");
+                    puts ("GLL Function Handle must be a ushort!");
                     markTokenError( name);
                     exit (1);
                 }
 
                 if (rtype.type != ID_ValueNode) {
-                    puts ("GNL wrong return type!");
+                    puts ("GLL wrong return type!");
                     markTokenError( name);
                     exit (1);
                 }
@@ -6844,7 +6812,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     
                     case TT_Int:
                         if (rtype.valueNode->value.value.i != 0) {
-                            puts ("GNL wrong return type!");
+                            puts ("GLL wrong return type!");
                             markTokenError( name);
                             exit (1);
                         }
@@ -6858,7 +6826,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     CodeGenerator_generateExpression (codeGenerator, functionCallNode.arguments[i], scope, byteWriter);
                 }
 
-                ByteWriter_writeByte (byteWriter, BC_GNL_EXEC);
+                ByteWriter_writeByte (byteWriter, BC_GLL_EXEC);
 
                 ByteWriter_writeUInt (byteWriter, functionCallNode.numbersOfArguments-3);
 
@@ -6867,7 +6835,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                 return returnType;
             }
-            else if (strcmp (name.value.word, "GNL_CLOSE") == 0) {
+            else if (strcmp (name.value.word, "GLL_CLOSE") == 0) {
                 // Will close a native Library while execution
 
                 puts ("Isn't supported by the VM yet!");
@@ -6877,7 +6845,110 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else {
                 // First we need to make sure enough parameters where given
                 //Regulare
-                Symbol vardec = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
+
+                Symbol vardec = (Symbol) {.type = type_undefined};
+                {
+
+                    vardec = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
+                }
+
+                if(vardec.type == type_undefined) {
+                    char identifier[4096] = "";
+                    strcat(identifier, functionCallNode.identifier.valueNode->value.value.word);
+                    strcat(identifier, "/");
+
+                    char *before_id = functionCallNode.identifier.valueNode->value.value.word;
+                    functionCallNode.identifier.valueNode->value.value.word = copyString(identifier);
+                    
+
+                    vardec = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
+
+                    free(functionCallNode.identifier.valueNode->value.value.word);
+                    functionCallNode.identifier.valueNode->value.value.word = before_id;
+                }
+
+                if (vardec.type == type_undefined) {
+
+                    char identifier[4096] = "";
+                    strcat(identifier, functionCallNode.identifier.valueNode->value.value.word);
+                    strcat(identifier, "/");
+
+                    char *arg_writer_buffer = NULL;
+                    unsigned int arg_writer_length = 0;
+                    ByteWriter arg_writer = ByteWriter_init(&arg_writer_buffer, &arg_writer_length);
+
+                    for (unsigned int i = 0; i < functionCallNode.numbersOfArguments; i++) {
+                        unsigned char arg_type = CodeGenerator_generateExpression(codeGenerator, functionCallNode.arguments[i], scope, &arg_writer);
+                        switch(arg_type) {
+                            case type_text:
+                                strcat(identifier, "txt");
+                                break;
+                            case type_complex:
+                                strcat(identifier, Complex_return.value.word);
+                                break;
+                            case type_Collection:
+                                strcat(identifier, "*");
+                            default:
+                                break;
+                        }
+
+                        strcat(identifier, "/");
+                    }
+
+                    char *before_id = functionCallNode.identifier.valueNode->value.value.word;
+                    functionCallNode.identifier.valueNode->value.value.word = copyString(identifier);
+                    
+
+                    vardec = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
+
+                    // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
+
+                    free(functionCallNode.identifier.valueNode->value.value.word);
+                    functionCallNode.identifier.valueNode->value.value.word = before_id;
+
+                }
+                
+                if (vardec.type == type_undefined) {
+
+                    char identifier[4096] = "";
+                    strcat(identifier, functionCallNode.identifier.valueNode->value.value.word);
+                    strcat(identifier, "/");
+
+                    char *arg_writer_buffer = NULL;
+                    unsigned int arg_writer_length = 0;
+                    ByteWriter arg_writer = ByteWriter_init(&arg_writer_buffer, &arg_writer_length);
+
+                    for (unsigned int i = 0; i < functionCallNode.numbersOfArguments; i++) {
+                        unsigned char arg_type = CodeGenerator_generateExpression(codeGenerator, functionCallNode.arguments[i], scope, &arg_writer);
+                        switch(arg_type) {
+                            case type_text:
+                                strcat(identifier, "txt");
+                                break;
+                            case type_complex:
+                                strcat(identifier, "txt");
+                                break;
+                            case type_Collection:
+                                strcat(identifier, "*");
+                            default:
+                                break;
+                        }
+
+                        strcat(identifier, "/");
+                    }
+
+                    char *before_id = functionCallNode.identifier.valueNode->value.value.word;
+                    functionCallNode.identifier.valueNode->value.value.word = copyString(identifier);
+                    
+
+                    vardec = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
+
+                    // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
+
+                    free(functionCallNode.identifier.valueNode->value.value.word);
+                    functionCallNode.identifier.valueNode->value.value.word = before_id;
+
+                }
+
                 if (vardec.type == type_undefined) {
                     puts ("Undefined function!");
                     markTokenError( functionCallNode.identifier.valueNode->value);

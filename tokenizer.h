@@ -1057,6 +1057,14 @@ Tokenizer Tokenizer_getTokens(const char* code, const char* file_path) {
                             .begin = tokenizer.lineIndex - 3
                         };
                         Tokenizer_addToken(&tokenizer, token);
+                    } else if (strcmp(word, "GLL_handle") == 0) {
+                        Token token = (Token) {
+                            .type = TTK_Ushort,
+                            .lineNumber = tokenizer.line,
+                            .end = tokenizer.lineIndex,
+                            .begin = tokenizer.lineIndex - 10
+                        };
+                        Tokenizer_addToken(&tokenizer, token);
                     } else {
                         char* name = (char*) malloc(sizeof(char) * (1+strlen(word)));
                         if(!name)

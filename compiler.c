@@ -66,6 +66,17 @@ void getLibraryIdOfPath(const char *path, char *lib_id) {
     }
 }
 
+
+char* copyString(char s[])
+{
+    char* s2;
+    s2 = (char*)malloc(strlen(s) + 1);
+    s2[0] = '\0';
+
+    strcpy(s2, s);
+    return (char*)s2;
+}
+
 #include "header.h"
 #include "ByteWriter.h"
 #include "tokenizer.h"

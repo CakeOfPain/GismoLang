@@ -1,0 +1,22 @@
+Person(
+	txt name,
+	int age
+) table;
+
+toText(Person self) txt {
+	return fmt("{name: ", self.name, ", age: ", self.age, "}")
+}
+
+Programmer(
+	Person person,
+	txt fav_lang
+) table;
+
+toText(Programmer self) txt {
+	return fmt("{fav_lang: ", self.fav_lang, ", person: ", self.person.toText(), "}")
+}
+
+vanguard main() {
+	leo := Programmer("Gismo", Person("Leo", 20))
+	leo.toText().Println()
+}

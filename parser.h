@@ -487,9 +487,10 @@ SyntaxNode Parser_parseLiteral(Parser* parser) {
                     unsigned int newNameSize = strlen(token.value.word) + 2 + strlen(library.value.word);
                     libVarName.value.word = (char*) malloc(sizeof(char) * (newNameSize+1));
                     libVarName.value.word[0] = '\0';
-                    libVarName.value.word = strcat(libVarName.value.word, token.value.word);
-                    libVarName.value.word = strcat(libVarName.value.word, "At");
+                    libVarName.value.word = strcat(libVarName.value.word, "@");
                     libVarName.value.word = strcat(libVarName.value.word, library.value.word);
+                    libVarName.value.word = strcat(libVarName.value.word, "_");
+                    libVarName.value.word = strcat(libVarName.value.word, token.value.word);
                     Parser_addLibPath(parser, library.value.word);
                     return newValueNode(libVarName);
                 }

@@ -1,0 +1,29 @@
+
+posix_lib is GLL_handle = GLL_LOAD("posix")
+posix_open is GLL_handle = GLL_SYMBOL(posix_lib, "open")
+posix_read is GLL_handle = GLL_SYMBOL(posix_lib, "read")
+posix_close is GLL_handle = GLL_SYMBOL(posix_lib, "close")
+
+File(
+	GLL_handle handle,
+	bool is_open
+) table;
+
+Open(txt path, txt mode) File = File(GLL_EXEC(posix_lib, posix_open, GLL_handle, path, mode), true)
+Read(File file) txt {
+	if file.is_open
+		return GLL_EXEC(posix_lib, posix_read, txt, file.handle)
+	return "[closed]"
+}
+Close(File file) {
+	GLL_EXEC(posix_lib, posix_close, 0, file.handle)
+	file.is_open = false
+}
+
+vanguard main() {
+	file := Open("helloWorld.txt", "rb")
+	content := file.Read()
+	file.Close()
+
+	output(content)
+}

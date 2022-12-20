@@ -213,9 +213,9 @@ back_to_enum! {
         Clock,
         Time,
 
-        GnlLoad,
-        GnlSymbol,
-        GnlExec,
+        GllLoad,
+        GllSymbol,
+        GllExec,
         GnlClose,
 
         SetupIter,
