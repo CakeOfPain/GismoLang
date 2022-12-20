@@ -78,10 +78,10 @@ struct SyntaxNode newBinOpNode(struct SyntaxNode left, struct Token operator, st
 struct SyntaxNode newUnaryOpNode(struct Token operator, struct SyntaxNode operand);
 
 struct SyntaxNode newFunctionNode(struct SyntaxNode arguments, struct SyntaxNode statements, struct Token name, struct Token returnType, unsigned char returns_array);
-struct SyntaxNode newIfNode(struct SyntaxNode statements, struct SyntaxNode elseStatements, struct SyntaxNode condition, struct Token ifNode);
-struct SyntaxNode newForNode(struct SyntaxNode statements, struct SyntaxNode init, struct SyntaxNode contition, struct SyntaxNode action);
+struct SyntaxNode newIfNode(struct SyntaxNode statements, struct SyntaxNode elseStatements, struct SyntaxNode condition, struct Token ifWord);
+struct SyntaxNode newForNode(struct Token forWord, struct SyntaxNode statements, struct SyntaxNode init, struct SyntaxNode contition, struct SyntaxNode action);
 struct SyntaxNode newStatementsNode(struct SyntaxNode first, struct SyntaxNode second);
-struct SyntaxNode newReturnNode(struct SyntaxNode expression);
+struct SyntaxNode newReturnNode(struct Token returnWord, struct SyntaxNode expression);
 struct SyntaxNode newArgumentNode(struct Token type, unsigned char is_array, struct Token name, struct SyntaxNode next);
 struct SyntaxNode newVanguardNode(struct SyntaxNode functionDeclaration);
 struct SyntaxNode newValueNode(struct Token value);

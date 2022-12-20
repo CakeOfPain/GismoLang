@@ -1,5 +1,5 @@
 use core::panic;
-use std::{env, fmt, io::{self, Write}, process, thread};
+use std::{env, fmt::{self}, io::{self, Write, BufReader, BufRead}, process::{self}, thread, collections::HashMap, fs::File};
 
 use crate::{
     bytecode::{Bytecode, ConstantCode},
@@ -19,6 +19,14 @@ pub enum StackElement {
     Cmplx(Vec<StackElement>),
     Num(u64),
     Nothing
+}
+
+pub fn zip_zack_encode(i: i64) -> i64 {
+    (i >> 63) ^ (i << 1)
+}
+
+pub fn zip_zack_decode(i: i64) -> i64 {
+    (i >> 1) ^ -(i & 1)
 }
 
 #[derive(Clone)]
@@ -225,12 +233,137 @@ impl GismoLocalRegister {
     }
 }
 
+pub enum GismoSymbolScope {
+    Const,
+    Global,
+    Local,
+}
+
+pub enum GismoSymbolType {
+    U1,
+    U2,
+    U4,
+    U8,
+    I1,
+    I2,
+    I4,
+    I8,
+    Text,
+    Cmplx,
+    Func,
+}
+
+impl GismoSymbolType {
+    pub fn from(name: &str) -> Self {
+        match name {
+            "u1" => GismoSymbolType::U1,
+            "u2" => GismoSymbolType::U2,
+            "u4" => GismoSymbolType::U4,
+            "u8" => GismoSymbolType::U8,
+            "i1" => GismoSymbolType::I1,
+            "i2" => GismoSymbolType::I2,
+            "i4" => GismoSymbolType::I4,
+            "i8" => GismoSymbolType::I8,
+            "t"  => GismoSymbolType::Text,
+            "c"  => GismoSymbolType::Cmplx,
+            "f"  => GismoSymbolType::Func,
+            _ => panic!("GVM: [Hint] lc/gb/cs: Unknown type def!")
+        }
+    }
+}
+
+pub struct DebugSymbol {
+    name: String,
+    type_id: GismoSymbolType,
+    scope: GismoSymbolScope,
+    index: u32
+}
+
+pub struct Debugger {
+    line: u32,
+    file: String,
+    symbols: HashMap<String, DebugSymbol>,
+}
+
+impl Debugger {
+    pub fn new() -> Self {
+        Self { line: 0, file: "[Undefined]".to_string(), symbols: HashMap::new() }
+    }
+
+    pub fn set_line(&mut self, line: u32) {
+        self.line = line;
+    }
+
+    pub fn set_file(&mut self, file: String) {
+        self.file = file;
+    }
+
+    pub fn add_symbol(&mut self, symbol: DebugSymbol) {
+        self.symbols.insert(symbol.name.clone(), symbol);
+    }
+
+    pub fn debugging(&self, _gvm: &GismoVirtualMachine) {
+        if self.file.eq("[Undefined]") {
+            return;
+        }
+        println!("\n\n");
+        println!("*** Breakpoint ***");
+        let path = self.file.split(":").collect::<Vec<&str>>().get(0)
+            .expect("GVM: [Hint] bp: Missing Path.")
+            .clone();
+        let function = self.file.split(":").collect::<Vec<&str>>().get(1)
+            .expect("GVM: [Hint] bp: Missing Function.")
+            .clone();
+        println!("At {}:{} Function: {}", path, self.line, function);
+        let file = File::open(path);
+
+        if let Ok(file) = file {
+            let reader = BufReader::new(file);
+
+            for (line_count, line) in reader.lines()
+                .enumerate()
+                .filter(|(i, _)| (*i as i64 > (self.line as i64 - 5)) && (*i < (self.line + 5) as usize))
+            {
+                if (line_count + 1) == self.line as usize {
+                    println!("\x1b[0;30;47m{:5}: {}\x1b[0m", line_count + 1, line.unwrap());
+                } else {
+                    println!("{:5}: {}", line_count + 1, line.unwrap());
+                }
+            }
+        }
+        println!();
+        // Command
+        let mut command = String::new();
+
+        loop {
+            print!("break/help/[cmd]> ");
+            io::stdout().flush();
+            io::stdin().read_line(&mut command).unwrap();
+            match &command.to_lowercase() {
+                x if x.contains("break") => {
+                    break;
+                },
+                x if x.contains("help") => {}
+                x if x.len() < 2 => {
+                    break;
+                }
+                _ => {
+                    println!("Use the command 'help' for listing all commands.")
+                }
+            }
+        }
+    }
+}
+
 pub struct GismoStackFrame {
     function: u32,
     stack_offset: usize,
     local_register: GismoLocalRegister,
     instr_pos: usize,
     argument_count: u32,
+
+    // debugging
+    debugger: Debugger,
 }
 
 impl GismoStackFrame {
@@ -241,6 +374,9 @@ impl GismoStackFrame {
             local_register: GismoLocalRegister::from(function),
             instr_pos: 0,
             argument_count: 0,
+
+            // debugging
+            debugger: Debugger::new()
         }
     }
 
@@ -271,6 +407,9 @@ pub struct GismoVirtualMachine {
     global_functions: Vec<u32>,
     global_texts: Vec<GismoText>,
     global_cmplxs: Vec<Vec<StackElement>>,
+
+    // debugging
+    debugger: Debugger
 }
 
 impl GismoVirtualMachine {
@@ -309,6 +448,8 @@ impl GismoVirtualMachine {
             global_functions: vec![0; byte_reader.read_u32() as usize],
             global_texts: vec![GismoText::empty(); byte_reader.read_u32() as usize],
             global_cmplxs: vec![Vec::new(); byte_reader.read_u32() as usize],
+
+            debugger: Debugger::new()
         };
 
         // Parse Consts
@@ -429,17 +570,70 @@ impl GismoVirtualMachine {
         //     }
         // }
 
-        // let mut instr_monitoring: HashMap<String, GismoRecord>= HashMap::new();
+        // let mut instr_monitoring: HashMap<String, GismoRecord> = HashMap::new();
 
         while !stackframes.is_empty() && stackframes.last_mut().unwrap().get_byte_reader(self).has_next() {
             let instr = Bytecode::try_from(stackframes.last_mut().unwrap().get_byte_reader(self).read_u8())
                 .expect("GVM: [Bytecode] Unknown Bytecode instruction!");
-            //println!("{}: {}", stackframes.len(), instr.to_string());
+            // println!("{}: {}", stackframes.len(), instr.to_string());
             //println!("Opstack.len = {}", operation_stack.len());
             // let start = Instant::now();
 
             match instr {
                 Bytecode::Nop => {}
+                Bytecode::Hint => {
+                    let stackframe = stackframes.last_mut().unwrap();
+                    let hint = String::from_utf8(stackframe.get_byte_reader(self).read_buffer()).unwrap();
+                    let hint_args: Vec<&str> = hint.split(";").collect();
+                    if hint_args.len() < 1 {
+                        continue;
+                    }
+                    /*
+                     * *** hint debugging notation ***
+                     * bp // set break point
+                     * ln;100 // set line number
+                     * fl;./src/helloWorld.gsm // set file path
+                     * sy;name;i1;0 // set local symbol
+                    */
+                    match hint_args[0] {
+                        "bp" => {
+                            // Jump into debugging mode
+                            stackframe.debugger.debugging(self);
+                        },
+                        "ln" => {
+                            let line_num = hint_args.get(1)
+                                .expect("GVM: [Hint] ln: Line hint requires a line number at argument pos 1!")
+                                .parse::<u32>()
+                                .expect("GVM: [Hint] ln: Line hint requires an u32 as line number at argument pos 1!");
+                            
+                            stackframe.debugger.set_line(line_num);
+                            // stackframe.debugger.debugging(self);
+                        },
+                        "fl" => {
+                            let file_path = hint_args.get(1)
+                                .expect("GVM: [Hint] fl: File hint requires a file path at argument pos 1!")
+                                .to_string();
+                            stackframe.debugger.set_file(file_path);
+                        },
+                        "sy" => {
+                            stackframe.debugger.add_symbol(DebugSymbol {
+                                name: hint_args.get(1)
+                                    .expect("GVM: [Hint] lc: Local Symbol requires a name at argument pos 1!")
+                                    .to_string(),
+                                type_id: GismoSymbolType::from(
+                                    hint_args.get(2)
+                                    .expect("GVM: [Hint] lc: Local Symbol requires a type at argument pos 2!")
+                                ),
+                                scope: GismoSymbolScope::Local,
+                                index: hint_args.get(2)
+                                    .expect("GVM: [Hint] lc: Local Symbol requires an index at argument pos 3!")
+                                    .parse::<u32>()
+                                    .expect("GVM: [Hint] lc: Local Symbol requires an u32 number as index at argument pos 3!")
+                            });
+                        }
+                        _ => {}
+                    }
+                }
                 Bytecode::LoadConstNum8 => {
                     operation_stack.push(StackElement::Num(
                         self.const_num8[stackframes.last_mut().unwrap().get_byte_reader(self).read_u32() as usize] as u64,
@@ -597,8 +791,10 @@ impl GismoVirtualMachine {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => {
                             operation_stack.push(StackElement::Num(u64::from_be_bytes(
-                                (i64::from_be_bytes(a.to_be_bytes())
-                                    + i64::from_be_bytes(b.to_be_bytes()))
+                                zip_zack_encode(
+                                    zip_zack_decode(i64::from_be_bytes(a.to_be_bytes()))
+                                    + zip_zack_decode(i64::from_be_bytes(b.to_be_bytes()))
+                                )
                                 .to_be_bytes(),
                             )))
                         }
@@ -634,8 +830,8 @@ impl GismoVirtualMachine {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => {
                             operation_stack.push(StackElement::Num(u64::from_be_bytes(
-                                (i64::from_be_bytes(a.to_be_bytes())
-                                    - i64::from_be_bytes(b.to_be_bytes()))
+                                zip_zack_encode(zip_zack_decode(i64::from_be_bytes(a.to_be_bytes()))
+                                    - zip_zack_decode(i64::from_be_bytes(b.to_be_bytes())))
                                 .to_be_bytes(),
                             )))
                         }
@@ -669,8 +865,8 @@ impl GismoVirtualMachine {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => {
                             operation_stack.push(StackElement::Num(u64::from_be_bytes(
-                                (i64::from_be_bytes(a.to_be_bytes())
-                                    * i64::from_be_bytes(b.to_be_bytes()))
+                                zip_zack_encode(zip_zack_decode(i64::from_be_bytes(a.to_be_bytes()))
+                                    * zip_zack_decode(i64::from_be_bytes(b.to_be_bytes())))
                                 .to_be_bytes(),
                             )))
                         }
@@ -704,8 +900,8 @@ impl GismoVirtualMachine {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => {
                             operation_stack.push(StackElement::Num(u64::from_be_bytes(
-                                (i64::from_be_bytes(a.to_be_bytes())
-                                    / i64::from_be_bytes(b.to_be_bytes()))
+                                zip_zack_encode(zip_zack_decode(i64::from_be_bytes(a.to_be_bytes()))
+                                    / zip_zack_decode(i64::from_be_bytes(b.to_be_bytes())))
                                 .to_be_bytes(),
                             )))
                         }
@@ -790,7 +986,9 @@ impl GismoVirtualMachine {
                 Bytecode::EqIU => match (operation_stack.pop(), operation_stack.pop()) {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => operation_stack.push(
-                            StackElement::Num(if i64::from_be_bytes(a.to_be_bytes()) == b as i64 {
+                            StackElement::Num(if zip_zack_decode(
+                                i64::from_be_bytes(a.to_be_bytes())
+                            ) == b as i64 {
                                 1
                             } else {
                                 0
@@ -805,7 +1003,9 @@ impl GismoVirtualMachine {
                         (StackElement::Num(a), StackElement::Num(b)) => {
                             operation_stack.push(StackElement::Num(
                                 if f64::from_be_bytes(a.to_be_bytes())
-                                    == i64::from_be_bytes(b.to_be_bytes()) as f64
+                                    == zip_zack_decode(
+                                        i64::from_be_bytes(b.to_be_bytes())
+                                    ) as f64
                                 {
                                     1
                                 } else {
@@ -834,8 +1034,12 @@ impl GismoVirtualMachine {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => {
                             operation_stack.push(StackElement::Num(
-                                if i64::from_be_bytes(a.to_be_bytes())
-                                    > i64::from_be_bytes(b.to_be_bytes())
+                                if zip_zack_decode(
+                                    i64::from_be_bytes(a.to_be_bytes())
+                                )
+                                    > zip_zack_decode(
+                                        i64::from_be_bytes(b.to_be_bytes())
+                                    )
                                 {
                                     1
                                 } else {
@@ -876,7 +1080,9 @@ impl GismoVirtualMachine {
                 Bytecode::GreaterIU => match (operation_stack.pop(), operation_stack.pop()) {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => operation_stack.push(
-                            StackElement::Num(if i64::from_be_bytes(a.to_be_bytes()) > b as i64 {
+                            StackElement::Num(if zip_zack_decode(
+                                i64::from_be_bytes(a.to_be_bytes())
+                            ) > b as i64 {
                                 1
                             } else {
                                 0
@@ -891,7 +1097,9 @@ impl GismoVirtualMachine {
                         (StackElement::Num(a), StackElement::Num(b)) => {
                             operation_stack.push(StackElement::Num(
                                 if f64::from_be_bytes(a.to_be_bytes())
-                                    > i64::from_be_bytes(b.to_be_bytes()) as f64
+                                    > zip_zack_decode(
+                                        i64::from_be_bytes(b.to_be_bytes())
+                                    ) as f64
                                 {
                                     1
                                 } else {
@@ -920,8 +1128,12 @@ impl GismoVirtualMachine {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => {
                             operation_stack.push(StackElement::Num(
-                                if i64::from_be_bytes(a.to_be_bytes())
-                                    < i64::from_be_bytes(b.to_be_bytes())
+                                if zip_zack_decode(
+                                    i64::from_be_bytes(a.to_be_bytes())
+                                )
+                                    < zip_zack_decode(
+                                        i64::from_be_bytes(b.to_be_bytes())
+                                    )
                                 {
                                     1
                                 } else {
@@ -962,7 +1174,9 @@ impl GismoVirtualMachine {
                 Bytecode::LessIU => match (operation_stack.pop(), operation_stack.pop()) {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => operation_stack.push(
-                            StackElement::Num(if i64::from_be_bytes(a.to_be_bytes()) < b as i64 {
+                            StackElement::Num(if zip_zack_decode(
+                                i64::from_be_bytes(a.to_be_bytes())
+                            ) < b as i64 {
                                 1
                             } else {
                                 0
@@ -977,7 +1191,9 @@ impl GismoVirtualMachine {
                         (StackElement::Num(a), StackElement::Num(b)) => {
                             operation_stack.push(StackElement::Num(
                                 if f64::from_be_bytes(a.to_be_bytes())
-                                    < i64::from_be_bytes(b.to_be_bytes()) as f64
+                                    < zip_zack_decode(
+                                        i64::from_be_bytes(b.to_be_bytes())
+                                    ) as f64
                                 {
                                     1
                                 } else {
@@ -1305,7 +1521,7 @@ impl GismoVirtualMachine {
                 Bytecode::PrintI => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Num(num) => {
-                            let integer_num = i64::from_be_bytes(num.to_be_bytes());
+                            let integer_num = zip_zack_decode(i64::from_be_bytes(num.to_be_bytes()));
                             print!("{}", integer_num);
                         },
                         _ => panic!("GVM: [PrintI] Requires number to print!")
@@ -1453,8 +1669,12 @@ impl GismoVirtualMachine {
                     (Some(b), Some(a)) => match (a, b) {
                         (StackElement::Num(a), StackElement::Num(b)) => {
                             operation_stack.push(StackElement::Num(u64::from_be_bytes(
-                                (i64::from_be_bytes(a.to_be_bytes())
-                                    % i64::from_be_bytes(b.to_be_bytes()))
+                                zip_zack_encode(zip_zack_decode(
+                                    i64::from_be_bytes(a.to_be_bytes())
+                                )
+                                    % zip_zack_decode(
+                                        i64::from_be_bytes(b.to_be_bytes())
+                                    ))
                                 .to_be_bytes(),
                             )))
                         }
@@ -1493,7 +1713,9 @@ impl GismoVirtualMachine {
                     io::stdin()
                         .read_line(&mut input_line)
                         .expect("GVM: [InputI] IO Error!");
-                    let input_number: i64 = input_line.trim().parse().expect("GVM: [InputI] Failed parsing integer!");
+                    let input_number: i64 = zip_zack_encode(
+                        input_line.trim().parse().expect("GVM: [InputI] Failed parsing integer!")
+                    );
 
                     operation_stack.push(
                         StackElement::Num(
@@ -1600,7 +1822,7 @@ impl GismoVirtualMachine {
                         StackElement::Num(num) => {
                             operation_stack.push(
                                 StackElement::Num(
-                                    i64::from_be_bytes(num.to_be_bytes()) as u64
+                                    zip_zack_decode(i64::from_be_bytes(num.to_be_bytes())) as u64
                                 )
                             );
                         }
@@ -1613,7 +1835,7 @@ impl GismoVirtualMachine {
                         StackElement::Num(num) => {
                             operation_stack.push(
                                 StackElement::Num(
-                                    u64::from_be_bytes((i64::from_be_bytes(num.to_be_bytes()) as f64).to_be_bytes())
+                                    u64::from_be_bytes((zip_zack_decode(i64::from_be_bytes(num.to_be_bytes())) as f64).to_be_bytes())
                                 )
                             );
                         }
@@ -1626,7 +1848,7 @@ impl GismoVirtualMachine {
                         StackElement::Num(num) => {
                             operation_stack.push(
                                 StackElement::Num(
-                                    u64::from_be_bytes((num as i64).to_be_bytes())
+                                    u64::from_be_bytes(zip_zack_encode(num as i64).to_be_bytes())
                                 )
                             );
                         }
@@ -1652,7 +1874,7 @@ impl GismoVirtualMachine {
                         StackElement::Num(num) => {
                             operation_stack.push(
                                 StackElement::Num(
-                                    u64::from_be_bytes((f64::from_be_bytes(num.to_be_bytes()) as i64).to_be_bytes())
+                                    u64::from_be_bytes(zip_zack_encode(f64::from_be_bytes(num.to_be_bytes()) as i64).to_be_bytes())
                                 )
                             );
                         }
@@ -1777,7 +1999,7 @@ impl GismoVirtualMachine {
                 Bytecode::I2Text => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Num(num) => {
-                            let string = i64::from_be_bytes(num.to_be_bytes()).to_string();
+                            let string = zip_zack_decode(i64::from_be_bytes(num.to_be_bytes())).to_string();
                             operation_stack.push(
                                 StackElement::Text(
                                     GismoText::new(string)
@@ -1819,7 +2041,7 @@ impl GismoVirtualMachine {
                 Bytecode::Text2I => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Text(text) => {
-                            let num: i64 = text.to_text(self).trim().parse().unwrap_or(0);
+                            let num: i64 = zip_zack_encode(text.to_text(self).trim().parse().unwrap_or(0));
                             operation_stack.push(
                                 StackElement::Num(
                                     u64::from_be_bytes(num.to_be_bytes())
@@ -1863,7 +2085,7 @@ impl GismoVirtualMachine {
                         StackElement::Num(num) => {
                             operation_stack.push(
                                 StackElement::Num(
-                                    u64::from_be_bytes((-i64::from_be_bytes(num.to_be_bytes())).to_be_bytes())
+                                    u64::from_be_bytes((zip_zack_encode(-zip_zack_decode(i64::from_be_bytes(num.to_be_bytes())))).to_be_bytes())
                                 )
                             );
                         },

@@ -83,6 +83,7 @@ typedef struct IfNode {
 } IfNode;
 
 typedef struct ForNode {
+    Token forWord;
     SyntaxNode statements;
     SyntaxNode init;
     SyntaxNode condition;
@@ -95,6 +96,7 @@ typedef struct StatementsNode {
 } StatementsNode;
 
 typedef struct ReturnNode {
+    Token returnWord;
     SyntaxNode expression;
 } ReturnNode;
 
@@ -305,12 +307,13 @@ SyntaxNode newIfNode(SyntaxNode statements, SyntaxNode elseStatements, SyntaxNod
     };
 }
 
-SyntaxNode newForNode(SyntaxNode statements, SyntaxNode init, SyntaxNode condition, SyntaxNode action) {
+SyntaxNode newForNode(Token forWord, SyntaxNode statements, SyntaxNode init, SyntaxNode condition, SyntaxNode action) {
     ForNode* forNode = (ForNode*) malloc(sizeof(ForNode));
     if(!forNode) {
         puts("Out of Memory!");
         exit(1);
     }
+    forNode->forWord = forWord;
     forNode->statements = statements;
     forNode->init = init;
     forNode->condition = condition;
@@ -353,12 +356,13 @@ SyntaxNode newIncludeNode(Token includeToken, Token declaration, Token library, 
     };
 }
 
-SyntaxNode newReturnNode(SyntaxNode expression) {
+SyntaxNode newReturnNode(Token returnWord, SyntaxNode expression) {
     ReturnNode* returnNode = (ReturnNode*) malloc(sizeof(ReturnNode));
     if(!returnNode) {
         puts("Out of Memory!");
         exit(1);
     }
+    returnNode->returnWord = returnWord;
     returnNode->expression = expression;
     return (SyntaxNode) {
         .type = ID_ReturnNode,
@@ -734,7 +738,7 @@ SyntaxNode Parser_parseStatement(Parser* parser) {
             SyntaxNode condition = {.type = ID_None};
             SyntaxNode action = {.type = ID_None};
 
-            Parser_nextToken(parser);
+            Token forWord = Parser_nextToken(parser);
 
             SyntaxNode expression1 = Parser_parseExpression(parser, 0);
             if(Parser_peekNextToken(parser).type == TT_Semicolon) {
@@ -765,16 +769,16 @@ SyntaxNode Parser_parseStatement(Parser* parser) {
                 }
             }
 
-            return newForNode(statements, init, condition, action);
+            return newForNode(forWord, statements, init, condition, action);
         }
             break;
         
         case TTK_Return:
         {
-            Parser_nextToken(parser);
+            Token returnWord = Parser_nextToken(parser);
             SyntaxNode expression = Parser_parseExpression(parser, 0);
             Parser_parseSeperator(parser);
-            return newReturnNode(expression);
+            return newReturnNode(returnWord, expression);
         }
             break;
 
@@ -1089,9 +1093,9 @@ SyntaxNode Parser_parseFunctionDeclaration(Parser* parser) {
     // Oneliner
 
     if(Parser_peekNextToken(parser).type == TT_Equalsign) {
-        Parser_nextToken(parser);
-        
-        return newFunctionNode(arguments, newReturnNode(Parser_parseExpression(parser, 0)), name, returnType, returns_array);
+        Token returnNode = Parser_nextToken(parser);
+
+        return newFunctionNode(arguments, newReturnNode(returnNode, Parser_parseExpression(parser, 0)), name, returnType, returns_array);
     }
     
     return newFunctionNode(arguments, Parser_parseStatement(parser), name, returnType, returns_array);

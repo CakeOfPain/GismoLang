@@ -222,6 +222,9 @@ back_to_enum! {
         NextIter,
 
         TextHash,
+
+        // Debugging
+        Hint,
     }
 }
 

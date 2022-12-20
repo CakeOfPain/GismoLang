@@ -1102,8 +1102,6 @@ void Tokenizer_clear(Tokenizer tokenizer) {
 }
 
 void markPosError(const char* srcCode, unsigned int line, unsigned short begin, unsigned short end) {
-    printf("In Line %u:\n", line);
-
     char ch = srcCode[0];
     unsigned int linepos = 1;
     unsigned int i = 0;
@@ -1160,7 +1158,7 @@ void markPosError(const char* srcCode, unsigned int line, unsigned short begin, 
 
 void markTokenError(Token token) {
     if(token.code) {
-        printf("File: %s\n", token.file_path);
+        printf("At: %s:%d\n", token.file_path, token.lineNumber);
         markPosError(token.code, token.lineNumber, token.begin, token.end);
     } else
         abort();

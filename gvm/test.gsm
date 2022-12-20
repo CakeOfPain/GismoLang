@@ -1,8 +1,14 @@
-vanguard main(txt[] args) {
-	for i = 0; true; i+=1
-		doSomething(i, i * i)
-}
 
-doSomething(int n, int n2) {
-	input(n, ", ", n2)
+String(int count, txt value) table;
+
+vanguard main() {
+	username := String(3, "Leo")
+	output(username)
+	output(username.count)
+	output(username.value)
+	output(username.classOf())
+
+	// for i = 0; i < ObjectNode_name@classic.Size(); i+=1 {
+	// 	output("Object: ", ObjectNode_name@classic[i])
+	// }
 }
