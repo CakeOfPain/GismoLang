@@ -1,14 +1,10 @@
 
-String(int count, txt value) table;
-
 vanguard main() {
-	username := String(3, "Leo")
-	output(username)
-	output(username.count)
-	output(username.value)
-	output(username.classOf())
+	posix := GLL_LOAD("posix")
+	
+	file := posix.open@posix("helloWorld.txt", "rb")
+	content := file.read@posix()
+	file.close@posix()
 
-	// for i = 0; i < ObjectNode_name@classic.Size(); i+=1 {
-	// 	output("Object: ", ObjectNode_name@classic[i])
-	// }
+	output(content)
 }
