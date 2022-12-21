@@ -7,7 +7,7 @@ posix_close is GLL_handle = GLL_SYMBOL(posix_lib, "close")
 File(
 	GLL_handle handle,
 	bool is_open
-) table;
+) struct;
 
 Open(txt path, txt mode) File = File(GLL_EXEC(posix_lib, posix_open, GLL_handle, path, mode), true)
 Read(File file) txt {
@@ -20,7 +20,7 @@ Close(File file) {
 	file.is_open = false
 }
 
-vanguard main() {
+actor main() {
 	file := Open("helloWorld.txt", "rb")
 	content := file.Read()
 	file.Close()

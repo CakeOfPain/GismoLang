@@ -80,7 +80,7 @@ enum TokenTypes {
 };
 
 const char* KeywordNames[24] = {
-    [TTK_Vanguard - TTK_Vanguard] = "vanguard",
+    [TTK_Vanguard - TTK_Vanguard] = "actor",
     [TTK_Return   - TTK_Vanguard] = "return",
     [TTK_As       - TTK_Vanguard] = "as",
     [TTK_Is       - TTK_Vanguard] = "is",

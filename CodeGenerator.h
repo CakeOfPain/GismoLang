@@ -476,12 +476,14 @@ unsigned char tokenTypeToDataType (Token token, CodeGenerator *codeGenerator) {
             break;
         case TT_Identifier:
             {
-                if(strcmp(token.value.word, "table") == 0)
+                if(strcmp(token.value.word, "struct") == 0)
+                    return type_complex;
+                if(strcmp(token.value.word, "cmplx") == 0)
                     return type_complex;
                 Symbol fnDeclaration = VariableTable_findVariableByName(&codeGenerator->table, token);
                 // printf("fnDeclaration search: %s\n", token.value.word);
                 if(fnDeclaration.functionDefininiton.functionNode->returnType.type == TT_Identifier) {
-                    if(strcmp(fnDeclaration.functionDefininiton.functionNode->returnType.value.word, "table") == 0) {
+                    if(strcmp(fnDeclaration.functionDefininiton.functionNode->returnType.value.word, "struct") == 0) {
                         return type_complex;
                     }
                 }
@@ -1278,7 +1280,7 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                 functiondeclaration.returnType_isArray = functionNode.returns_array;
 
                 Symbol newFunctionDec = functiondeclaration;
-                if(!(functionNode.returnType.type == TT_Identifier && strcmp(functionNode.returnType.value.word, "table") == 0)) { 
+                if(!(functionNode.returnType.type == TT_Identifier && strcmp(functionNode.returnType.value.word, "struct") == 0)) { 
                     char *identifier;
                     identifier = copyString(name);
                     newFunctionDec.value.value.word = identifier;
@@ -1513,7 +1515,7 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
 
             // Now would be the time to generate the table class
             if(datafunctiondeclaration.mothertype.type != TT_None) {
-                if(strcmp(datafunctiondeclaration.mothertype.value.word, "table") == 0) {
+                if(strcmp(datafunctiondeclaration.mothertype.value.word, "struct") == 0) {
 
                     // We need next to implement some kind of macro
                     // that will executes a function
@@ -4046,41 +4048,110 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     else if (binOpNode->right.type == ID_FunctionCallNode) {
                         FunctionCallNode functionCallNode = *binOpNode->right.functionCallNode;
 
-                        char identifier[4096] = "";
-                        strcat(identifier, functionCallNode.identifier.valueNode->value.value.word);
-                        strcat(identifier, "/");
+                        Symbol fn = (Symbol) {.type = type_undefined};
+                        
+                        
+                        {
 
-                        char *arg_writer_buffer = NULL;
-                        unsigned int arg_writer_length = 0;
-                        ByteWriter arg_writer = ByteWriter_init(&arg_writer_buffer, &arg_writer_length);
-
-                        for (unsigned int i = 0; i < functionCallNode.numbersOfArguments; i++) {
-                            unsigned char arg_type = CodeGenerator_generateExpression(codeGenerator, functionCallNode.arguments[i], scope, &arg_writer);
-                            switch(arg_type) {
-                                case type_text:
-                                    strcat(identifier, "txt");
-                                    break;
-                                case type_complex:
-                                    strcat(identifier, Complex_return.value.word);
-                                    break;
-                                case type_Collection:
-                                    strcat(identifier, "*");
-                                default:
-                                    break;
-                            }
-
-                            strcat(identifier, "/");
+                            fn = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
                         }
 
-                        char *before_id = functionCallNode.identifier.valueNode->value.value.word;
-                        functionCallNode.identifier.valueNode->value.value.word = copyString(identifier);
+                        if(fn.type == type_undefined) {
+                            char identifier[4096] = "";
+                            strcat(identifier, functionCallNode.identifier.valueNode->value.value.word);
+                            strcat(identifier, "/");
 
-                        Symbol fn = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
+                            char *before_id = functionCallNode.identifier.valueNode->value.value.word;
+                            functionCallNode.identifier.valueNode->value.value.word = copyString(identifier);
+                            
 
-                        // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
+                            fn = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
 
-                        free(functionCallNode.identifier.valueNode->value.value.word);
-                        functionCallNode.identifier.valueNode->value.value.word = before_id;
+                            free(functionCallNode.identifier.valueNode->value.value.word);
+                            functionCallNode.identifier.valueNode->value.value.word = before_id;
+                        }
+
+                        if (fn.type == type_undefined) {
+
+                            char identifier[4096] = "";
+                            strcat(identifier, functionCallNode.identifier.valueNode->value.value.word);
+                            strcat(identifier, "/");
+
+                            char *arg_writer_buffer = NULL;
+                            unsigned int arg_writer_length = 0;
+                            ByteWriter arg_writer = ByteWriter_init(&arg_writer_buffer, &arg_writer_length);
+
+                            for (unsigned int i = 0; i < functionCallNode.numbersOfArguments; i++) {
+                                unsigned char arg_type = CodeGenerator_generateExpression(codeGenerator, functionCallNode.arguments[i], scope, &arg_writer);
+                                switch(arg_type) {
+                                    case type_text:
+                                        strcat(identifier, "txt");
+                                        break;
+                                    case type_complex:
+                                        strcat(identifier, Complex_return.value.word);
+                                        break;
+                                    case type_Collection:
+                                        strcat(identifier, "*");
+                                    default:
+                                        break;
+                                }
+
+                                strcat(identifier, "/");
+                            }
+
+                            char *before_id = functionCallNode.identifier.valueNode->value.value.word;
+                            functionCallNode.identifier.valueNode->value.value.word = copyString(identifier);
+                            
+
+                            fn = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
+
+                            // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
+
+                            free(functionCallNode.identifier.valueNode->value.value.word);
+                            functionCallNode.identifier.valueNode->value.value.word = before_id;
+
+                        }
+                        
+                        if (fn.type == type_undefined) {
+
+                            char identifier[4096] = "";
+                            strcat(identifier, functionCallNode.identifier.valueNode->value.value.word);
+                            strcat(identifier, "/");
+
+                            char *arg_writer_buffer = NULL;
+                            unsigned int arg_writer_length = 0;
+                            ByteWriter arg_writer = ByteWriter_init(&arg_writer_buffer, &arg_writer_length);
+
+                            for (unsigned int i = 0; i < functionCallNode.numbersOfArguments; i++) {
+                                unsigned char arg_type = CodeGenerator_generateExpression(codeGenerator, functionCallNode.arguments[i], scope, &arg_writer);
+                                switch(arg_type) {
+                                    case type_text:
+                                        strcat(identifier, "txt");
+                                        break;
+                                    case type_complex:
+                                        strcat(identifier, "txt");
+                                        break;
+                                    case type_Collection:
+                                        strcat(identifier, "*");
+                                    default:
+                                        break;
+                                }
+
+                                strcat(identifier, "/");
+                            }
+
+                            char *before_id = functionCallNode.identifier.valueNode->value.value.word;
+                            functionCallNode.identifier.valueNode->value.value.word = copyString(identifier);
+                            
+
+                            fn = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
+
+                            // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
+
+                            free(functionCallNode.identifier.valueNode->value.value.word);
+                            functionCallNode.identifier.valueNode->value.value.word = before_id;
+
+                        }
 
                         if(strcmp(binOpNode->right.functionCallNode->identifier.valueNode->value.value.word, "$$args$$") == 0) {
                             ByteWriter_writeByte(byteWriter, BC_LOAD_ARGUMENT);
@@ -4132,7 +4203,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             ByteWriter_writeUInt (byteWriter, collection.index);
                             return type_none;
                         } else {
-                            puts ("Must be a type/array or function that returns these kinds!");
+                            puts ("Must be a type/array or function that returns this specific type!");
                             markTokenError( variableName);
                             exit (1);
                         }
@@ -5274,6 +5345,8 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     ByteWriter_writeByte (byteWriter, BC_STR_TO_F);
                                     break;
                                 case type_text:
+                                    break;
+                                case type_complex:
                                     break;
                                 default:
                                     puts ("Type conversation, unsupported datatype!");
@@ -7162,7 +7235,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                 // Make sure to return the complex type
                 if(vardec.mothertype.type != TT_None) {
-                    if(strcmp(vardec.mothertype.value.word, "table") == 0)
+                    if(strcmp(vardec.mothertype.value.word, "struct") == 0)
                         Complex_return = vardec.value;
                     else
                         returnComplex(vardec);

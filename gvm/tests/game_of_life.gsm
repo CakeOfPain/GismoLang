@@ -95,7 +95,7 @@ rand() long {
     return seed
 }
 
-vanguard main() {
+actor main() {
 
     srand(input("seed: ") as ulong)
 

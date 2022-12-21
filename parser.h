@@ -524,11 +524,11 @@ SyntaxNode Parser_parseLiteral(Parser* parser) {
 
 int Parser_getBinOpPrecedence(Token token) {
     switch(token.type) {
-        case TTK_As:
-            return 15;
         case TT_Dot:
             return 14;
             break;
+        case TTK_As:
+            return 13;
         case TT_Plus:
         case TT_Minus:
             return 11;
