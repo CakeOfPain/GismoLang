@@ -1,13 +1,4 @@
-Beerbarrel(
-	int id,
-	int temp,
-	int alc,
-	int co2
-) struct;
 
-
-actor main(txt[] args) {
-	beerbarrel := Beerbarrel(2, 50, 2, 3)
-	beerbarrel.toJson@json().output()
-	
+actor main() {
+    library := GLL_LOAD("HelloWorld")
 }

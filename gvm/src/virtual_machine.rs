@@ -2234,6 +2234,29 @@ impl GismoVirtualMachine {
                     }
                     None => panic!("GVM: [TextHash] Operation stack is empty!")
                 },
+
+                Bytecode::ShiftL => match (operation_stack.pop(), operation_stack.pop()) {
+                    (Some(b), Some(a)) => match (a, b) {
+                        (StackElement::Num(a), StackElement::Num(b)) => {
+                            operation_stack.push(StackElement::Num(
+                                a << b
+                            ));
+                        }
+                        _ => panic!("GVM: [ShiftL] Requires two numbers for shifting!")
+                    }
+                    _ => panic!("GVM: [ShiftL] Operation stack is empty!")
+                },
+                Bytecode::ShiftR => match (operation_stack.pop(), operation_stack.pop()) {
+                    (Some(b), Some(a)) => match (a, b) {
+                        (StackElement::Num(a), StackElement::Num(b)) => {
+                            operation_stack.push(StackElement::Num(
+                                a >> b
+                            ));
+                        }
+                        _ => panic!("GVM: [ShiftR] Requires two numbers for shifting!")
+                    }
+                    _ => panic!("GVM: [ShiftR] Operation stack is empty!")
+                },
             }
 
                 // let duration = start.elapsed();

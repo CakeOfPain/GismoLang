@@ -244,6 +244,9 @@
 // Debugging
 #define BC_HINT                     149
 
+#define BC_SHIFTL                   150
+#define BC_SHIFTR                   151
+
 // Const definition:
 
 #define CONST_NOP                   0
@@ -325,11 +328,18 @@ typedef struct Symbol {
     SyntaxNode functionDefininiton;
 } Symbol;
 
-Token Complex_return = (Token) {.type = type_none};
+Token Complex_return = (Token) {.type = TT_None};
+Token Expect_type = (Token) {.type = TT_None};
 
 unsigned char returnComplex (Symbol variable) {
     Complex_return = variable.mothertype;
     return variable.type;
+}
+
+void expect_type(Symbol variable) {
+    if(variable.type == type_undefined || variable.type == type_none) return;
+    if(variable.mothertype.type != TT_None)
+    Expect_type = variable.mothertype;
 }
 
 typedef struct SymbolTable {
@@ -1255,7 +1265,7 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                     ArgumentNode next = *functionNode.arguments.argumentNode;
                     unsigned char is_next = 1;
                     while (is_next) {
-                        if(functiondeclaration.arguments[j].is_array)
+                        if(next.is_array)
                             strcat(name, "*");
                         else if(next.type.type == TT_Identifier) {
                             strcat(name, next.type.value.word);
@@ -1280,7 +1290,13 @@ void CodeGenerator_generateProgram (struct CodeGenerator* codeGenerator, struct 
                 functiondeclaration.returnType_isArray = functionNode.returns_array;
 
                 Symbol newFunctionDec = functiondeclaration;
-                if(!(functionNode.returnType.type == TT_Identifier && strcmp(functionNode.returnType.value.word, "struct") == 0)) { 
+                if(
+                    !(
+                        ((functionNode.returnType.type == TT_Identifier) &&
+                        (strcmp(functionNode.returnType.value.word, "struct") == 0))
+                    ) &&
+                    (functionNode.statements.type != ID_None)
+                ) { 
                     char *identifier;
                     identifier = copyString(name);
                     newFunctionDec.value.value.word = identifier;
@@ -3124,6 +3140,300 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 }
                     break;
 
+                case TT_ShiftL:
+                {
+                    char* left_ops = NULL;
+                    unsigned int left_ops_length = 0;
+                    char* right_ops = NULL;
+                    unsigned int right_ops_length = 0;
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+
+                    // Actually it parses it in the wrong order so here it gets fixed
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+
+                    switch (type_left) {
+                        case type_ubyte:
+                        case type_ushort:
+                        case type_uint:
+                        case type_ulong:
+                            // UInt
+                            switch (type_right) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    // UInt
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTL);
+                                    return type_ulong;
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    // Int
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_I2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTL);
+                                    return type_long;
+                                    break;
+                                case type_float:
+                                case type_double:
+                                    // Float
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_F2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTL);
+                                    return type_double;
+                                    break;
+                            }
+                            break;
+                        case type_byte:
+                        case type_short:
+                        case type_int:
+                        case type_long:
+                            // Int
+                            switch (type_right) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    // UInt
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTL);
+                                    return type_long;
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    // Int
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_I2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTL);
+                                    return type_long;
+                                    break;
+                                case type_float:
+                                case type_double:
+                                    // Float
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_F2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTL);
+                                    return type_double;
+                                    break;
+                            }
+                            break;
+                        case type_float:
+                        case type_double:
+                            // Float
+                            switch (type_right) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    // UInt
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTL);
+                                    return type_double;
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    // Int
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_I2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTL);
+                                    return type_double;
+                                    break;
+                                case type_float:
+                                case type_double:
+                                    // Float
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_F2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTL);
+                                    return type_double;
+                                    break;
+                            }
+                            break;
+                        case type_text:
+                            puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
+                            exit (1);
+                            break;
+                        case type_Collection:
+                            puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
+                            exit (1);
+                            break;
+                        default:
+                            puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
+                            exit (1);
+                            break;
+                    }
+                }
+                    break;
+
+                case TT_ShiftR:
+                {
+                    char* left_ops = NULL;
+                    unsigned int left_ops_length = 0;
+                    char* right_ops = NULL;
+                    unsigned int right_ops_length = 0;
+                    ByteWriter tmpWriter = ByteWriter_init (&right_ops, &right_ops_length);
+
+                    // Actually it parses it in the wrong order so here it gets fixed
+                    unsigned char type_right = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, &tmpWriter);
+
+                    tmpWriter = ByteWriter_init (&left_ops, &left_ops_length);
+
+                    unsigned char type_left = CodeGenerator_generateExpression (codeGenerator, binOpNode->left, scope, &tmpWriter);
+
+                    switch (type_left) {
+                        case type_ubyte:
+                        case type_ushort:
+                        case type_uint:
+                        case type_ulong:
+                            // UInt
+                            switch (type_right) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    // UInt
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTR);
+                                    return type_ulong;
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    // Int
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_I2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTR);
+                                    return type_long;
+                                    break;
+                                case type_float:
+                                case type_double:
+                                    // Float
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_F2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTR);
+                                    return type_double;
+                                    break;
+                            }
+                            break;
+                        case type_byte:
+                        case type_short:
+                        case type_int:
+                        case type_long:
+                            // Int
+                            switch (type_right) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    // UInt
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTR);
+                                    return type_long;
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    // Int
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_I2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTR);
+                                    return type_long;
+                                    break;
+                                case type_float:
+                                case type_double:
+                                    // Float
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_F2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTR);
+                                    return type_double;
+                                    break;
+                            }
+                            break;
+                        case type_float:
+                        case type_double:
+                            // Float
+                            switch (type_right) {
+                                case type_ubyte:
+                                case type_ushort:
+                                case type_uint:
+                                case type_ulong:
+                                    // UInt
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTR);
+                                    return type_double;
+                                    break;
+                                case type_byte:
+                                case type_short:
+                                case type_int:
+                                case type_long:
+                                    // Int
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_I2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTR);
+                                    return type_double;
+                                    break;
+                                case type_float:
+                                case type_double:
+                                    // Float
+                                    ByteWriter_addOps (byteWriter, left_ops, left_ops_length);
+                                    ByteWriter_addOps (byteWriter, right_ops, right_ops_length);
+                                    ByteWriter_writeByte(byteWriter, BC_F2U);
+                                    ByteWriter_writeByte (byteWriter, BC_SHIFTR);
+                                    return type_double;
+                                    break;
+                            }
+                            break;
+                        case type_text:
+                            puts ("Cannot work with text yet!");
+                            markTokenError(binOpNode->operator);
+                            exit (1);
+                            break;
+                        case type_Collection:
+                            puts ("Cannot work with collections yet!");
+                            markTokenError(binOpNode->operator);
+                            exit (1);
+                            break;
+                        default:
+                            puts ("Unusable Datatype!");
+                            markTokenError(binOpNode->operator);
+                            exit (1);
+                            break;
+                    }
+                }
+                    break;
+
                 case TT_Less:
                 {
                     char* left_ops = NULL;
@@ -4047,6 +4357,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     }
                     else if (binOpNode->right.type == ID_FunctionCallNode) {
                         FunctionCallNode functionCallNode = *binOpNode->right.functionCallNode;
+                        char *implementation = NULL;
 
                         Symbol fn = (Symbol) {.type = type_undefined};
                         
@@ -4067,7 +4378,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             fn = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
 
-                            free(functionCallNode.identifier.valueNode->value.value.word);
+                            implementation = functionCallNode.identifier.valueNode->value.value.word;
                             functionCallNode.identifier.valueNode->value.value.word = before_id;
                         }
 
@@ -4090,8 +4401,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     case type_complex:
                                         strcat(identifier, Complex_return.value.word);
                                         break;
+                                    case type_function:
+                                    {
+                                        Symbol expected = VariableTable_findVariableByName(&codeGenerator->table, Complex_return);
+                                        if(expected.type != type_undefined) {
+                                            strcat(identifier, expected.mothertype.value.word);
+                                        }
+                                    }
+                                        break;
                                     case type_Collection:
                                         strcat(identifier, "*");
+                                        break;
                                     default:
                                         break;
                                 }
@@ -4107,7 +4427,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
 
-                            free(functionCallNode.identifier.valueNode->value.value.word);
+                            implementation = functionCallNode.identifier.valueNode->value.value.word;
                             functionCallNode.identifier.valueNode->value.value.word = before_id;
 
                         }
@@ -4131,8 +4451,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     case type_complex:
                                         strcat(identifier, "txt");
                                         break;
+                                    case type_function:
+                                    {
+                                        Symbol expected = VariableTable_findVariableByName(&codeGenerator->table, Complex_return);
+                                        if(expected.type != type_undefined) {
+                                            strcat(identifier, expected.mothertype.value.word);
+                                        }
+                                    }
+                                        break;
                                     case type_Collection:
                                         strcat(identifier, "*");
+                                        break;
                                     default:
                                         break;
                                 }
@@ -4148,7 +4477,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
 
-                            free(functionCallNode.identifier.valueNode->value.value.word);
+                            implementation = functionCallNode.identifier.valueNode->value.value.word;
                             functionCallNode.identifier.valueNode->value.value.word = before_id;
 
                         }
@@ -4201,12 +4530,22 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                                     break;
                             }
                             ByteWriter_writeUInt (byteWriter, collection.index);
+
+
+                            if(implementation)
+                                free(implementation);
+
                             return type_none;
                         } else {
                             puts ("Must be a type/array or function that returns this specific type!");
+                            free(implementation);
                             markTokenError( variableName);
                             exit (1);
                         }
+
+
+                        if(implementation)
+                            free(implementation);
                     }
                     else {
                         puts ("Missing Type!");
@@ -4322,10 +4661,6 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     // We need the left node in order to know were to store
                     SyntaxNode nodeleft = binOpNode->left;
 
-                    // Now we generate the Expression that we're need and emit it's type
-                    // Operation have already been created by now
-                    unsigned char type = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, byteWriter);
-
 
                     // Lets check if the left operation is an <name> is <type> expression
                     // if its such expression, we'll evaluate and create it, variable by calling generateExpression
@@ -4346,6 +4681,9 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                             // Now we need to access the variable to store its new value in it
                             Symbol variable = VariableTable_findVariableByName (&codeGenerator->table, valueNode.value);
+
+                            // Now we generate the Expression that we're need and emit it's type
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, byteWriter);
 
                             // In the case that this variable is undefined, we'll just create this variable for this purpose
                             if (variable.type == type_undefined) {
@@ -4811,12 +5149,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                         }
                     }
 
-                    unsigned char type = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, byteWriter);
-
                     if (nodeleft.type == ID_ValueNode) {
                         ValueNode valueNode = *nodeleft.valueNode;
                         if (valueNode.value.type == TT_Identifier) {
                             Symbol variable = VariableTable_findVariableByName (&codeGenerator->table, valueNode.value);
+                            Token expected_before = Expect_type;
+                            expect_type(variable);
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, byteWriter);
+                            Expect_type = expected_before;
 
                             if(type == type_function) {
                                 // Checking now that the functions will be with equal type
@@ -5213,6 +5553,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             exit (1);
                         }
                     } else if (nodeleft.type == ID_SquareCallNode) {
+                        unsigned char type = CodeGenerator_generateExpression (codeGenerator, binOpNode->right, scope, byteWriter);
                         SquareCallNode squareCallNode = *nodeleft.squareCallNode;
                         Token name = squareCallNode.identifier.valueNode->value;
                         Symbol collection = VariableTable_findVariableByName (&codeGenerator->table, name);
@@ -5239,27 +5580,29 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             exit (1);
                         }
                         
-                        unsigned char type = CodeGenerator_generateExpression (codeGenerator, squareCallNode.arguments[0], scope, byteWriter);
-                        if(typeToStackType(type) == type_long) {
-                            ByteWriter_writeByte(byteWriter, BC_I2U);
-                        } else if (typeToStackType(type) == type_double) {
-                            ByteWriter_writeByte(byteWriter, BC_F2U);
-                        } else if (typeToStackType(type) != type_ulong) {
-                            puts ("Accessing an array requires a number!");
-                            markTokenError( squareCallNode.identifier.valueNode->value);
-                            exit (1);
+                        {
+                            unsigned char type = CodeGenerator_generateExpression (codeGenerator, squareCallNode.arguments[0], scope, byteWriter);
+                            if(typeToStackType(type) == type_long) {
+                                ByteWriter_writeByte(byteWriter, BC_I2U);
+                            } else if (typeToStackType(type) == type_double) {
+                                ByteWriter_writeByte(byteWriter, BC_F2U);
+                            } else if (typeToStackType(type) != type_ulong) {
+                                puts ("Accessing an array requires a number!");
+                                markTokenError( squareCallNode.identifier.valueNode->value);
+                                exit (1);
+                            }
+
+                            ByteWriter_writeByte (byteWriter, BC_STORE_ELEMENT);
+
+                            // Cleaning up by storing the collection back
+                            if (collection.scope.rgtr == scope_local)
+                                ByteWriter_writeByte (byteWriter, BC_STORE_STACK_COLLECTION);
+                            else
+                                ByteWriter_writeByte (byteWriter, BC_STORE_GLOBAL_COLLECTION);
+
+                            ByteWriter_writeUInt (byteWriter, collection.index);
+                            return type_none;
                         }
-
-                        ByteWriter_writeByte (byteWriter, BC_STORE_ELEMENT);
-
-                        // Cleaning up by storing the collection back
-                        if (collection.scope.rgtr == scope_local)
-                            ByteWriter_writeByte (byteWriter, BC_STORE_STACK_COLLECTION);
-                        else
-                            ByteWriter_writeByte (byteWriter, BC_STORE_GLOBAL_COLLECTION);
-
-                        ByteWriter_writeUInt (byteWriter, collection.index);
-                        return type_none;
                     }
                 }
                     break;
@@ -6127,6 +6470,43 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                 {
                     // Loads the corresponding variable by the variable table and checks it does exist
                     Symbol declaration = VariableTable_findVariableByName (&codeGenerator->table, valueNode->value);
+
+                    if(declaration.type == type_undefined && Expect_type.type == TT_Identifier) {
+                        Symbol expecting = VariableTable_findVariableByName(&codeGenerator->table, Expect_type);
+                        if (expecting.type == type_function) {
+                            char identifier[4096] = "";
+                            strcat(identifier, valueNode->value.value.word);
+                            strcat(identifier, "/");
+
+                            for (unsigned int i = 0; i < expecting.argumentsCount; i++) {
+                                unsigned char arg_type = tokenTypeToDataType(expecting.arguments[i].type, codeGenerator);
+                                switch(arg_type) {
+                                    case type_text:
+                                        strcat(identifier, "txt");
+                                        break;
+                                    case type_complex:
+                                        strcat(identifier, Complex_return.value.word);
+                                        break;
+                                    case type_Collection:
+                                        strcat(identifier, "*");
+                                    default:
+                                        break;
+                                }
+
+                                strcat(identifier, "/");
+                            }
+
+                            char *before_id = valueNode->value.value.word;
+                            valueNode->value.value.word = copyString(identifier);
+                            
+
+                            declaration = VariableTable_findVariableByName (&codeGenerator->table, valueNode->value);
+
+                            free(valueNode->value.value.word);
+                            valueNode->value.value.word = before_id;
+                        }
+                    }
+
                     if (declaration.type == type_undefined) {
                         puts ("Undefined Variable, therefore it's impossible to load a value!");
                         markTokenError( valueNode->value);
@@ -6329,90 +6709,6 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
         case ID_FunctionCallNode:
         {
             FunctionCallNode functionCallNode = *node.functionCallNode;
-
-            if(functionCallNode.identifier.type == ID_UnaryOpNode) {
-                // First get the function name in order to access the required function
-                Token name = functionCallNode.identifier.unaryOpNode->operand.valueNode->value;
-
-                unsigned int line_count = name.lineNumber;
-                if(DEBUGGING_MODE)
-                if(line_count != 0 && codeGenerator->currentLine != line_count) {
-                    codeGenerator->currentLine = line_count;
-                    char hint[1024] = "";
-
-                    sprintf(hint, "ln;%d", line_count);
-
-                    ByteWriter_writeByte(byteWriter, BC_HINT);
-                    unsigned int hint_len = strlen(hint);
-                    ByteWriter_writeUInt(byteWriter, hint_len);
-                    for(unsigned int i = 0; i < hint_len; ++i) {
-                        ByteWriter_writeByte(byteWriter, hint[i]);
-                    }
-                }
-
-                // Access Function
-                Symbol fn = VariableTable_findVariableByName(&codeGenerator->table, name);
-                FunctionNode fnNode = *fn.functionDefininiton.functionNode;
-
-                if (fn.type == type_undefined) {
-                    puts ("Undefined function!");
-                    markTokenError( functionCallNode.identifier.valueNode->value);
-                    exit (1);
-                }
-                if (fn.free_arguments) {
-                    puts ("Cannot insert function body with arguments beeing optional.");
-                    markTokenError( functionCallNode.identifier.valueNode->value);
-                    exit (1);
-                }
-                if (functionCallNode.numbersOfArguments < fn.argumentsCount) {
-                    puts ("To few function-argument!");
-                    markTokenError( functionCallNode.identifier.valueNode->value);
-                    exit (1);
-                }
-                if (functionCallNode.numbersOfArguments > fn.argumentsCount) {
-                    puts ("To many function-argument!");
-                    markTokenError( functionCallNode.identifier.valueNode->value);
-                    exit (1);
-                }
-
-                unsigned int numberOfReference = 0;
-                unsigned int referenceSymbols[255];
-
-                for(unsigned int i = 0; i < functionCallNode.numbersOfArguments; i++) {
-                    SyntaxNode argument = functionCallNode.arguments[i];
-                    if(argument.type == ID_ValueNode) {
-                        ValueNode *argumentValue = argument.valueNode;
-                        if(argumentValue->value.type == TT_Identifier) {
-                            Token argumentName = argumentValue->value;
-                            referenceSymbols[numberOfReference++] = VariableTable_createReferenceByName(&codeGenerator->table, argumentName, fn.arguments[i].name);
-                            continue;
-                        }
-                    }
-
-                    //Symbol argumentSymbol = VariableTable_declareVariable(&codeGenerator->table, fn.arguments[i].name, scope);
-                    //unsigned int argumentIndex = VariableTable_defineVariable(&codeGenerator->table, fn.arguments[i].name, typeToStackType (tokenTypeToDataType (fn.arguments[i].type, codeGenerator)));
-
-                    unsigned char argumentType = CodeGenerator_generateExpression(codeGenerator, newBinOpNode(
-                        newValueNode(fn.arguments[i].name),
-                        (Token) {.type = TT_Equalsign},
-                        functionCallNode.arguments[i]
-                    ), scope, byteWriter);
-                }
-
-                SyntaxNode functionStatements = fn.functionDefininiton.functionNode->statements;
-
-                if(functionStatements.type == ID_ReturnNode) {
-                    functionStatements = functionStatements.returnNode->expression;
-                }
-
-                unsigned char rType = CodeGenerator_generateStatement(codeGenerator, functionStatements, scope, byteWriter);
-
-                for(unsigned int i = 0; i < numberOfReference; ++i) {
-                    VariableTable_removeDeclaration(&codeGenerator->table, referenceSymbols[numberOfReference-i-1u]);
-                }
-
-                return rType;
-            }
 
             Token name = functionCallNode.identifier.valueNode->value;
 
@@ -6918,6 +7214,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
             else {
                 // First we need to make sure enough parameters where given
                 //Regulare
+                char *implementation = NULL;
 
                 Symbol vardec = (Symbol) {.type = type_undefined};
                 {
@@ -6936,7 +7233,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                     vardec = VariableTable_findVariableByName (&codeGenerator->table, functionCallNode.identifier.valueNode->value);
 
-                    free(functionCallNode.identifier.valueNode->value.value.word);
+                    implementation = functionCallNode.identifier.valueNode->value.value.word;
                     functionCallNode.identifier.valueNode->value.value.word = before_id;
                 }
 
@@ -6951,6 +7248,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                     ByteWriter arg_writer = ByteWriter_init(&arg_writer_buffer, &arg_writer_length);
 
                     for (unsigned int i = 0; i < functionCallNode.numbersOfArguments; i++) {
+                        
                         unsigned char arg_type = CodeGenerator_generateExpression(codeGenerator, functionCallNode.arguments[i], scope, &arg_writer);
                         switch(arg_type) {
                             case type_text:
@@ -6959,8 +7257,17 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             case type_complex:
                                 strcat(identifier, Complex_return.value.word);
                                 break;
+                            case type_function:
+                            {
+                                Symbol expected = VariableTable_findVariableByName(&codeGenerator->table, Complex_return);
+                                if(expected.type != type_undefined) {
+                                    strcat(identifier, expected.mothertype.value.word);
+                                }
+                            }
+                                break;
                             case type_Collection:
                                 strcat(identifier, "*");
+                                break;
                             default:
                                 break;
                         }
@@ -6976,7 +7283,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                     // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
 
-                    free(functionCallNode.identifier.valueNode->value.value.word);
+                    implementation = functionCallNode.identifier.valueNode->value.value.word;
                     functionCallNode.identifier.valueNode->value.value.word = before_id;
 
                 }
@@ -7000,6 +7307,14 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             case type_complex:
                                 strcat(identifier, "txt");
                                 break;
+                            case type_function:
+                            {
+                                Symbol expected = VariableTable_findVariableByName(&codeGenerator->table, Complex_return);
+                                if(expected.type != type_undefined) {
+                                    strcat(identifier, expected.mothertype.value.word);
+                                }
+                            }
+                                break;
                             case type_Collection:
                                 strcat(identifier, "*");
                             default:
@@ -7017,16 +7332,18 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                     // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
 
-                    free(functionCallNode.identifier.valueNode->value.value.word);
+                    implementation = functionCallNode.identifier.valueNode->value.value.word;
                     functionCallNode.identifier.valueNode->value.value.word = before_id;
 
                 }
 
                 if (vardec.type == type_undefined) {
-                    puts ("Undefined function!");
+                    printf ("Undefined function of implementation: %s\n", implementation);
+                    if(implementation) free(implementation);
                     markTokenError( functionCallNode.identifier.valueNode->value);
                     exit (1);
                 }
+                if(implementation) free(implementation);
                 if (functionCallNode.numbersOfArguments < vardec.argumentsCount && !vardec.free_arguments) {
                     puts ("To few function-argument!");
                     markTokenError( functionCallNode.identifier.valueNode->value);
@@ -7066,6 +7383,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
 
                     // Next we check which type we would expect
                     unsigned char fntype = typeToStackType (tokenTypeToDataType (vardec.arguments[i].type, codeGenerator));
+                    Expect_type = vardec.arguments[i].type;
 
                     // If the parameter is an array, here we go
                     if (vardec.arguments[i].is_array) {
@@ -7086,7 +7404,7 @@ unsigned char CodeGenerator_generateExpression (struct CodeGenerator* codeGenera
                             markTokenError( functionCallNode.identifier.valueNode->value);
                             exit (1);
                         }
-                        if (fntype != array.storingType) {
+                        if (typeToStackType(fntype != typeToStackType(array.storingType))) {
                             puts ("Wrong Datatype for Array!");
                             markTokenError( functionCallNode.identifier.valueNode->value);
                             exit (1);

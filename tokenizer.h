@@ -49,6 +49,8 @@ enum TokenTypes {
     TT_HashSymbol,
     // TT_Increment,
     // TT_Decrement,
+    TT_ShiftL,
+    TT_ShiftR,
 
     // Keywords:
     TTK_Vanguard,
@@ -764,6 +766,16 @@ Tokenizer Tokenizer_getTokens(const char* code, const char* file_path) {
                     };
                     Tokenizer_addToken(&tokenizer, token);
                 }
+                else if (Tokenizer_peekNextCharacter(&tokenizer) == '<') {
+                    Tokenizer_nextCharacter(&tokenizer);
+                    Token token = (Token) {
+                        .type = TT_ShiftL,
+                        .lineNumber = tokenizer.line,
+                        .begin = tokenizer.lineIndex-2,
+                        .end = tokenizer.lineIndex
+                    };
+                    Tokenizer_addToken(&tokenizer, token);
+                }
                 else {
                     Token token = (Token) {
                         .type = TT_Less,
@@ -781,6 +793,16 @@ Tokenizer Tokenizer_getTokens(const char* code, const char* file_path) {
                     Tokenizer_nextCharacter(&tokenizer);
                     Token token = (Token) {
                         .type = TT_GreaterEquals,
+                        .lineNumber = tokenizer.line,
+                        .begin = tokenizer.lineIndex-2,
+                        .end = tokenizer.lineIndex
+                    };
+                    Tokenizer_addToken(&tokenizer, token);
+                }
+                else if (Tokenizer_peekNextCharacter(&tokenizer) == '>') {
+                    Tokenizer_nextCharacter(&tokenizer);
+                    Token token = (Token) {
+                        .type = TT_ShiftR,
                         .lineNumber = tokenizer.line,
                         .begin = tokenizer.lineIndex-2,
                         .end = tokenizer.lineIndex

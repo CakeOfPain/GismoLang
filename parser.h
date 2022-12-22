@@ -538,6 +538,10 @@ int Parser_getBinOpPrecedence(Token token) {
         case TT_Modulo:
             return 12;
             break;
+        case TT_ShiftL:
+        case TT_ShiftR:
+            return 9;
+            break;
         case TT_Less:
         case TT_LessEquals:
         case TT_Greater:
@@ -1207,6 +1211,12 @@ void Parser_prettyPrint(SyntaxNode tree) {
                 case TT_GreaterEquals:
                     printf(">=");
                     break;
+                case TT_ShiftL:
+                    printf("<<");
+                    break;
+                case TT_ShiftR:
+                    printf(">>");
+                    break;
                 case TTK_As:
                     printf("as conv ");
                     break;
@@ -1406,6 +1416,9 @@ void Parser_prettyPrint(SyntaxNode tree) {
             for(unsigned int i = 0; i < tree.squareCallNode->numbersOfArguments; i++) {
                 Parser_prettyPrint(tree.squareCallNode->arguments[i]);
             }
+            break;
+        case ID_None:
+            printf("nil");
             break;
     }
     putchar(')');

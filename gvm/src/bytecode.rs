@@ -225,6 +225,10 @@ back_to_enum! {
 
         // Debugging
         Hint,
+
+        // Additional Bit operator
+        ShiftL,
+        ShiftR,
     }
 }
 
