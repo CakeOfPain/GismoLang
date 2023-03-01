@@ -1,10 +1,10 @@
-use core::panic;
+use core::{panic};
 use std::{
     collections::{HashMap, HashSet},
     env,
     fmt::{self},
     fs::File,
-    io::{self, BufRead, BufReader, Write},
+    io::{self, BufRead, BufReader, Write, Read},
     process::{self},
     thread,
 };
@@ -154,10 +154,10 @@ impl GismoText {
     pub fn to_text(&self, gvm: &GismoVirtualMachine) -> String {
         match (self.base_string, &self.mod_string) {
             (None, None) => String::from(""),
-            (_, Some(mod_string)) => String::from_utf8(mod_string.clone()).unwrap(),
+            (_, Some(mod_string)) => String::from_utf8_lossy(mod_string.as_slice().try_into().unwrap()).into_owned(),
             (Some(base_string), None) => {
                 let const_text = gvm.const_texts.get(base_string as usize).unwrap().clone();
-                String::from_utf8(const_text).unwrap()
+                String::from_utf8_lossy(const_text.as_slice().try_into().unwrap()).into_owned()
             }
         }
     }
@@ -654,7 +654,7 @@ impl GismoVirtualMachine {
                 Bytecode::Nop => {}
                 Bytecode::Hint => {
                     let stackframe = stackframes.last_mut().unwrap();
-                    let hint = String::from_utf8(stackframe.get_byte_reader(self).read_buffer()).unwrap();
+                    let hint = String::from_utf8_lossy(stackframe.get_byte_reader(self).read_buffer().as_slice().try_into().unwrap()).into_owned();
                     let hint_args: Vec<&str> = hint.split(";").collect();
                     if hint_args.len() < 1 {
                         continue;
@@ -1820,23 +1820,19 @@ impl GismoVirtualMachine {
                     );
                 },
                 Bytecode::InputText => {
-                    let mut input_line = String::new();
-                    io::stdout().flush().unwrap();
-                    io::stdin()
-                        .read_line(&mut input_line)
-                        .expect("GVM: [InputText] IO Error!");
+                    let mut input: Vec<u8> = Vec::new();
 
-                    // Removing newline at the end
-                    if input_line.ends_with('\n') || input_line.ends_with('\r') {
-                        input_line.pop();
-                        if input_line.ends_with('\r') {
-                            input_line.pop();
-                        }
+                    for i in io::stdin().bytes() {
+                        input.push(i.unwrap());
                     }
 
                     operation_stack.push(
                         StackElement::Text(
-                            GismoText::new(input_line)
+                            GismoText::new(
+                                String::from_utf8_lossy(
+                                    input.as_slice().try_into().unwrap()
+                                ).into()
+                            )
                         )
                     );
                 },
@@ -2015,7 +2011,7 @@ impl GismoVirtualMachine {
                 Bytecode::Float2Double => match operation_stack.pop() {
                     Some(element) => match element {
                         StackElement::Num(num) => {
-                            let float = f32::from_ne_bytes((num as u32).to_be_bytes());
+                            let float = f32::from_be_bytes((num as u32).to_be_bytes());
                             let double = float as f64;
                             operation_stack.push(
                                 StackElement::Num(
@@ -2217,7 +2213,16 @@ impl GismoVirtualMachine {
                 },
                 Bytecode::Clock => todo!(),
                 Bytecode::Time => todo!(),
-                Bytecode::GllLoad => todo!(),
+                Bytecode::GllLoad => {
+                    let stackframe = stackframes.last_mut().unwrap();
+                    let lib_path = String::from_utf8_lossy(
+                        stackframe.get_byte_reader(self).read_buffer().as_slice().try_into().unwrap()
+                    ).into_owned();
+                    println!("GllLoad: {}", lib_path);
+                    operation_stack.push(
+                        StackElement::Num(233)
+                    );
+                },
                 Bytecode::GllSymbol => todo!(),
                 Bytecode::GllExec => todo!(),
                 Bytecode::GnlClose => todo!(),

@@ -1,4 +1,7 @@
 
-actor main() {
-    library := GLL_LOAD("HelloWorld")
+
+Person(txt name, int age) struct;
+
+actor main(txt[] args) {
+    leo := Person("Leo", 20)
 }
