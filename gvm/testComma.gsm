@@ -1,0 +1,66 @@
+
+Token(txt tokenType, txt value) struct;
+emptyToken := Token("none", " ")
+
+operators is txt[
+	"+", "-", "*", "/", "=", // 1 Character
+	":="					 // 2 Characters
+]
+tokenize(txt text) Token[] {
+	tokens is Token[]
+
+	for text.Length() {
+		found := emptyToken
+
+		if text.CharAt(0).isWhitespace@std() {
+			found = Token("whitespace", " ")
+		} else if text.CharAt(0).isAlpha@std() || text.CharAt(0).isInText@ {
+			found = Token("alpha", "".InsertChar(text.CharAt(0)))
+			
+		} else if text.CharAt(0).isNumeric@std() {
+			found = Token("numeric", "".InsertChar(text.CharAt(0)))
+		} else {
+			found = Token("binary-op", "")
+			for i=0; i < operators.Size(); i+=1 {
+				if text.startsWith@std(operators[i])
+					found.value = operators[i]
+			}
+		}
+
+		if !found.tokenType.cmp@std("none") {
+			tokens.Add(found)
+			for i=0; i < found.value.Length(); i+=1
+				text = text.Remove(0)
+		} else {
+			abort@std("Unknown Character: ".InsertChar(text.CharAt(0)))
+		}
+	}
+
+	return tokens
+}
+
+
+operatorPrecedence is txt[":=", "=", "+", "-", "*", "/"]
+parseExpression(txt expression, int operatorId) txt {
+	if !(operatorId < operatorPrecedence.Size())
+		return expression.replace@std(" ", "")
+	operator := operatorPrecedence[operatorId]
+	subExpressions is split@std(expression, operator)
+	operands is txt[]
+	for i=0; i < subExpressions.Size(); i += 1
+		operands.Add(parseExpression(subExpressions[i], operatorId+1))
+	if operands.Size() > 1
+		return fmt("(", operator, " ", makeString@std(operands, " "), ")")
+	return operands[0]
+}
+
+actor main(txt[] args) {
+	expression := input("> ")
+	// expression.parseExpression(0).output()
+
+	tokens is tokenize(expression)
+	for i=0; i<tokens.Size(); i+=1 {
+		token := tokens[i]
+		output(token.tokenType, " = ", token.value)
+	}
+}

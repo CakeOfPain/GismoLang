@@ -1,0 +1,27 @@
+include * @webkit
+
+Response(
+   txt sql,
+   txt db 
+) struct;
+
+actor main(txt[] args) {
+    username := getArgument@std(args, "username")
+    password := getArgument@std(args, "password")
+    email    := getArgument@std(args, "email")
+
+    sets is txt[]
+    if !(#username) errorResponse("<p>username needs to be included!</p>")
+    else            sets.Add("username = ?".prepare@sql(username))
+    if (#password)  sets.Add("password = ?".prepare@sql(password))
+    if (#email)     sets.Add("email = ?".prepare@sql(email))
+
+    sql := "UPDATE account SET " + 
+        makeString@std(sets, ", ") +
+        " WHERE username = ?".prepare@sql(username) + 
+        ";"
+
+    jsonResponse(Response(
+        sql, "wasapi"
+    )).output()
+}

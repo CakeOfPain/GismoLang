@@ -9,6 +9,7 @@ use virtual_machine::GismoVirtualMachine;
 mod bytecode;
 mod bytereader;
 mod virtual_machine;
+mod gllposix;
 
 fn main() {
     let mut breakpoints: Vec<String> = vec![];

@@ -174,6 +174,16 @@ void Parser_clear(Parser parser) {
     Parser_clearAST(ast);
 }
 
+Token Parser_peekLastToken(Parser* parser) {
+    if(parser->pos == 0) {
+        return (Token) {
+            .type = TT_End, .begin = strlen(parser->tokenizer->code)+1, 
+            .end = strlen(parser->tokenizer->code), .lineNumber = parser->tokenizer->line
+        };
+    }
+    return parser->tokenizer->tokens[parser->pos-1];
+}
+
 Token Parser_nextToken(Parser* parser) {
     if(parser->pos >= parser->tokenizer->length) {
         parser->pos++;
@@ -445,6 +455,7 @@ SyntaxNode newSquareCallNode(SyntaxNode identifier) {
 }
 
 void FunctionCallNode_add(SyntaxNode functionCallNode, SyntaxNode argument) {
+    if(argument.type == ID_None) return;
     functionCallNode.functionCallNode->numbersOfArguments++;
     functionCallNode.functionCallNode->arguments = 
         (SyntaxNode*) realloc(functionCallNode.functionCallNode->arguments, 
@@ -461,8 +472,15 @@ void SquareCallNode_add(SyntaxNode squareCallNode, SyntaxNode argument) {
 }
 
 SyntaxNode Parser_parseLiteral(Parser* parser) {
+    Token before = Parser_peekLastToken(parser);
+
     if(Parser_peekNextToken(parser).type == TT_LBracket) {
         Parser_nextToken(parser);
+        if(Parser_peekNextToken(parser).type == TT_RBracket) {
+            Token closingBracket = Parser_nextToken(parser);
+            closingBracket.type = TT_Comma;
+            return newBinOpNode((SyntaxNode) {.type = ID_None}, closingBracket, (SyntaxNode) {.type = ID_None});
+        }
         SyntaxNode inside = Parser_parseExpression(parser, 0);
         Token rbracket = Parser_nextToken(parser);
         if(rbracket.type != TT_RBracket) {
@@ -476,10 +494,11 @@ SyntaxNode Parser_parseLiteral(Parser* parser) {
         return statementNode;
     }
     else {
-        Token token = Parser_nextToken(parser);
+        Token token = Parser_peekNextToken(parser);
         switch(token.type) {
             case TT_Identifier:
-                if(Parser_peekNextToken(parser).type == TT_At) {
+                if(Parser_peekTwiceNextToken(parser).type == TT_At) {
+                    Parser_nextToken(parser);
                     Token atToken = Parser_nextToken(parser);
                     Token library = Parser_nextToken(parser);
                     Token libVarName;
@@ -511,10 +530,15 @@ SyntaxNode Parser_parseLiteral(Parser* parser) {
             case TTK_Long:
             case TTK_Ulong:
             case TTK_Double:
+                Parser_nextToken(parser);
                 return newValueNode(token);
                 break;
             default:
-                markTokenError( token);
+                if(before.type == TT_Comma) {
+                    return (SyntaxNode) {.type = ID_None}; 
+                }
+
+                markTokenError(token);
                 //printf("Type id %u\n", token.type);
                 puts("Expected a variable/value/datatype! Please don't use keywords!");
                 exit(1);
@@ -563,6 +587,10 @@ int Parser_getBinOpPrecedence(Token token) {
             break;
         case TT_OrOr:
             return 3;
+
+        case TT_Comma:
+            return 2;
+
         case TT_Equalsign:
         case TT_PlusEqual:
         case TT_SubEqual:
@@ -570,9 +598,7 @@ int Parser_getBinOpPrecedence(Token token) {
         case TT_DivEqual:
         case TT_ModEqual:
         case TT_HashEqual:
-
         case TTK_Is:
-            return 1;
         case TT_Colon:
         case TT_DefineOnce:
             return 1;
@@ -614,56 +640,68 @@ SyntaxNode Parser_parseExpression(Parser* parser, int parentPrecedence) {
 
     // Postfix => () functioncall
     if(Parser_peekNextToken(parser).type == TT_LBracket && 16 >= parentPrecedence) {
-        Parser_nextToken(parser);
         SyntaxNode functionCallNode = newFunctionCallNode(left);
+        Parser_nextToken(parser);
         Parser_ignoreNewLine(parser);
-        if(Parser_peekNextToken(parser).type == TT_RBracket) {
-            Parser_nextToken(parser);
-        }
-        else {
-            Token closingBracket;
-            while(1) {
-                FunctionCallNode_add(functionCallNode, Parser_parseExpression(parser, 0));
-                Parser_ignoreNewLine(parser);
-                closingBracket = Parser_nextToken(parser);
-                if(closingBracket.type == TT_Comma);
-                else if(closingBracket.type == TT_RBracket)
-                    break;
-                else {
-                    // Print Error
-                    markTokenError( closingBracket);
-                    puts("Expected a closing bracket or an comma!");
-                    exit(1);
-                }
-                Parser_ignoreNewLine(parser);
+        
+        if(Parser_peekNextToken(parser).type != TT_RBracket) {
+            SyntaxNode tuple = Parser_parseExpression(parser, 0);
+            while(tuple.type == ID_BinOpNode && tuple.binOpNode->operator.type == TT_Comma) {
+                FunctionCallNode_add(functionCallNode, tuple.binOpNode->right);
+                tuple = tuple.binOpNode->left;
             }
+            FunctionCallNode_add(functionCallNode, tuple);
         }
+
+        SyntaxNode reversedFunctionCallNode = newFunctionCallNode(left);
+        for(unsigned int i = 0; i < functionCallNode.functionCallNode->numbersOfArguments; i++) {
+            FunctionCallNode_add(
+                reversedFunctionCallNode,
+                functionCallNode.functionCallNode->arguments[functionCallNode.functionCallNode->numbersOfArguments - i - 1]
+            );
+        }
+        functionCallNode = reversedFunctionCallNode;
+
+
+        Parser_ignoreNewLine(parser);
+
+        Token closingBracket = Parser_nextToken(parser);
+        if(closingBracket.type != TT_RBracket) {
+            markTokenError(closingBracket);
+            puts("Expected a closing bracket!");
+            exit(1);
+        }
+
         left = functionCallNode;
     } else if(Parser_peekNextToken(parser).type == TT_LSquardBracket) { // => [a,b, type]
-        Parser_nextToken(parser);
         SyntaxNode squareCallNode = newSquareCallNode(left);
+        Parser_nextToken(parser);
         Parser_ignoreNewLine(parser);
-        if(Parser_peekNextToken(parser).type == TT_RSquardBracket) {
-            Parser_nextToken(parser);
-        }
-        else {
-            Token closingBracket;
-            while(1) {
-                SquareCallNode_add(squareCallNode, Parser_parseExpression(parser, 0));
-                Parser_ignoreNewLine(parser);
-                closingBracket = Parser_nextToken(parser);
-                if(closingBracket.type == TT_Comma);
-                else if(closingBracket.type == TT_RSquardBracket)
-                    break;
-                else {
-                    // Print Error
-                    markTokenError( closingBracket);
-                    puts("Expected a closing bracket or an comma!");
-                    exit(1);
-                }
-                Parser_ignoreNewLine(parser);
+        
+        if(Parser_peekNextToken(parser).type != TT_RSquardBracket) {
+            SyntaxNode tuple = Parser_parseExpression(parser, 0);
+            while(tuple.type == ID_BinOpNode && tuple.binOpNode->operator.type == TT_Comma) {
+                SquareCallNode_add(squareCallNode, tuple.binOpNode->right);
+                tuple = tuple.binOpNode->left;
             }
+            SquareCallNode_add(squareCallNode, tuple);
         }
+
+        SyntaxNode reversedSquareCallNode = newSquareCallNode(left);
+        for(unsigned int i = 0; i < squareCallNode.squareCallNode->numbersOfArguments; i++) {
+            SquareCallNode_add(reversedSquareCallNode, squareCallNode.squareCallNode->arguments[squareCallNode.squareCallNode->numbersOfArguments - i - 1]);
+        }
+        squareCallNode = reversedSquareCallNode;
+
+        Parser_ignoreNewLine(parser);
+
+        Token closingBracket = Parser_nextToken(parser);
+        if(closingBracket.type != TT_RSquardBracket) {
+            markTokenError(closingBracket);
+            puts("Expected a closing squared bracket!");
+            exit(1);
+        }
+
         left = squareCallNode;
     }
     
@@ -672,7 +710,9 @@ SyntaxNode Parser_parseExpression(Parser* parser, int parentPrecedence) {
         if(precedence == 0 || precedence <= parentPrecedence)
             break;
         Token operator = Parser_nextToken(parser);
+        Parser_ignoreNewLine(parser);
         SyntaxNode right = Parser_parseExpression(parser, precedence);
+
         left = newBinOpNode(left, operator, right);
     }
 
@@ -1148,6 +1188,9 @@ void Parser_prettyPrint(SyntaxNode tree) {
     switch(tree.type) {
         case ID_BinOpNode:
             switch(tree.binOpNode->operator.type) {
+                case TT_Comma:
+                    putchar(',');
+                    break;
                 case TT_Plus:
                     putchar('+');
                     break;

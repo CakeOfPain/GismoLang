@@ -216,7 +216,7 @@ back_to_enum! {
         GllLoad,
         GllSymbol,
         GllExec,
-        GnlClose,
+        GllClose,
 
         SetupIter,
         NextIter,

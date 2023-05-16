@@ -280,6 +280,7 @@ enum VariableIDs
     type_function,
     type_Collection,
     type_complex,
+    type_tuple,
     type_any
 };
 
@@ -572,6 +573,15 @@ char *getTypeRepresentation(unsigned char type)
         return "function";
     }
     return "unknown";
+}
+
+void mapTupleFunctionCallNode(SyntaxNode tuple, SyntaxNode next) {
+    if(tuple.type == ID_BinOpNode && tuple.binOpNode->operator.type == TT_Comma) {
+        mapTupleFunctionCallNode(tuple.binOpNode->left, next);
+        FunctionCallNode_add(next, tuple.binOpNode->right);
+        return;
+    }
+    FunctionCallNode_add(next, tuple);
 }
 
 // Will create a new instance of a codeGenerator and will set all
@@ -1511,7 +1521,9 @@ void CodeGenerator_generateProgram(struct CodeGenerator *codeGenerator, struct S
                 argumentvar.index = index;
                 argumentvar.type = functiondeclaration.arguments[argsIndex].is_array ? type_Collection : tokenTypeToDataType(functiondeclaration.arguments[argsIndex].type, codeGenerator);
 
-                if (argumentvar.type == type_complex || argumentvar.type == type_function)
+                if ((argumentvar.type == type_complex || argumentvar.type == type_function) ||
+                    (functiondeclaration.arguments[argsIndex].is_array &&
+                    tokenTypeToDataType(functiondeclaration.arguments[argsIndex].type, codeGenerator) == type_complex))
                 {
                     if (functiondeclaration.arguments[argsIndex].type.type == TT_Identifier)
                         argumentvar.mothertype = functiondeclaration.arguments[argsIndex].type;
@@ -4758,6 +4770,7 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     VariableTable_defineVariable(&codeGenerator->table, variableDeclaration.value, type_Collection);
                     Symbol collection = VariableTable_findVariableByName(&codeGenerator->table, variableDeclaration.value);
                     collection.storingType = arraytype;
+                    collection.mothertype = fn.functionDefininiton.functionNode->returnType;
                     VariableTable_setVariableByName(&codeGenerator->table, variableDeclaration.value, collection);
                     switch (collection.scope.rgtr)
                     {
@@ -4796,115 +4809,45 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
 
         break;
 
+        case TT_Comma:
+        {
+            SyntaxNode tuple = (SyntaxNode) {
+                .type = ID_BinOpNode,
+                .binOpNode = binOpNode};
+            
+            unsigned int numberOfElements = 1;
+            unsigned char element_type = type_none;
+            Token element_cmplx = (Token) {.type = TT_None};
+            while(tuple.type == ID_BinOpNode && tuple.binOpNode->operator.type == TT_Comma) {
+                char result_type = CodeGenerator_generateExpression(codeGenerator, tuple.binOpNode->right, scope, byteWriter);
+                if(element_type == type_none) {
+                    element_type = result_type;
+                    element_cmplx = Complex_return;
+                } else {
+                    // Type Error
+                }
+                
+                tuple = tuple.binOpNode->left;
+                numberOfElements++;
+            }
+            CodeGenerator_generateExpression(codeGenerator, tuple, scope, byteWriter);
+
+            ByteWriter_writeByte(byteWriter, BC_BUILD_COLLECTION);
+            ByteWriter_writeUInt(byteWriter, numberOfElements);
+            return type_Collection;
+        }
+            break;
+
         case TT_Colon:
         {
             SyntaxNode nodeleft = binOpNode->left;
             SyntaxNode noderight = binOpNode->right;
 
-            puts("Warning Deprecated: Colon is in this version of Gismo deprecated!");
+
+
+            puts("Deprecation Error: Colon is in this version of Gismo deprecated!");
             markTokenError(binOpNode->operator);
-
-            if (nodeleft.type == ID_SquareCallNode)
-            {
-                unsigned char type = CodeGenerator_generateExpression(codeGenerator, noderight, scope, byteWriter);
-                SquareCallNode squareCallNode = *nodeleft.squareCallNode;
-                Token name = squareCallNode.identifier.valueNode->value;
-                Symbol collection = VariableTable_findVariableByName(&codeGenerator->table, name);
-                unsigned char ctype = typeToStackType(collection.storingType);
-
-                if (ctype != typeToStackType(type))
-                {
-                    puts("No given index!");
-                    markTokenError(name);
-                    exit(1);
-                }
-
-                // Loading Collection
-                if (collection.scope.rgtr == scope_local)
-                    ByteWriter_writeByte(byteWriter, BC_LOAD_STACK_COLLECTION);
-                else
-                    ByteWriter_writeByte(byteWriter, BC_LOAD_GLOBAL_COLLECTION);
-
-                ByteWriter_writeUInt(byteWriter, collection.index);
-                ByteWriter_writeByte(byteWriter, BC_SWAP);
-
-                if (squareCallNode.numbersOfArguments == 0)
-                {
-                    puts("No given index!");
-                    markTokenError(name);
-                    exit(1);
-                }
-
-                unsigned char index_type = CodeGenerator_generateExpression(codeGenerator, squareCallNode.arguments[0], scope, byteWriter);
-                if (typeToStackType(type) == type_long)
-                {
-                    ByteWriter_writeByte(byteWriter, BC_I2U);
-                }
-                else if (typeToStackType(type) == type_double)
-                {
-                    ByteWriter_writeByte(byteWriter, BC_F2U);
-                }
-                else if (typeToStackType(type) != type_ulong)
-                {
-                    puts("Accessing an array requires a number!");
-                    markTokenError(squareCallNode.identifier.valueNode->value);
-                    exit(1);
-                }
-
-                ByteWriter_writeByte(byteWriter, BC_STORE_ELEMENT);
-
-                // Cleaning up by storing the collection back
-                if (collection.scope.rgtr == scope_local)
-                    ByteWriter_writeByte(byteWriter, BC_STORE_STACK_COLLECTION);
-                else
-                    ByteWriter_writeByte(byteWriter, BC_STORE_GLOBAL_COLLECTION);
-
-                ByteWriter_writeUInt(byteWriter, collection.index);
-                return type_none;
-            }
-
-            if (nodeleft.type != ID_ValueNode)
-                if (nodeleft.valueNode->value.type != TT_Identifier)
-                {
-                    puts("Only except an identifier; no 'is' statement with an colon operator!");
-                    markTokenError(binOpNode->operator);
-                    exit(1);
-                }
-            unsigned char type = CodeGenerator_generateExpression(codeGenerator, noderight, scope, byteWriter);
-            Symbol vardec = VariableTable_findVariableByName(&codeGenerator->table, nodeleft.valueNode->value);
-
-            unsigned int index = 0;
-            if (vardec.type == type_undefined)
-            {
-                vardec = VariableTable_declareVariable(&codeGenerator->table, nodeleft.valueNode->value, scope);
-                index = VariableTable_defineVariable(&codeGenerator->table, nodeleft.valueNode->value, type_text);
-            }
-            else
-            {
-                index = vardec.index;
-            }
-            if (type != type_text)
-            {
-                puts("Only except an text value!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-            }
-            switch (vardec.scope.rgtr)
-            {
-            case scope_global:
-                ByteWriter_writeByte(byteWriter, BC_STORE_GLOBAL_TEXT);
-                break;
-            case scope_local:
-                ByteWriter_writeByte(byteWriter, BC_STORE_STACK_TEXT);
-                break;
-
-            default:
-                puts("Unsupported scope!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-            }
-            ByteWriter_writeUInt(byteWriter, index);
-            return type_none;
+            exit(1);
         }
         break;
 
@@ -7132,6 +7075,13 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
     {
         FunctionCallNode functionCallNode = *node.functionCallNode;
 
+        // Convert tuple to function arguments
+        // if(functionCallNode.numbersOfArguments > 0) {
+        //     SyntaxNode nextFunctionCallNode = newFunctionCallNode(functionCallNode.identifier);
+        //     mapTupleFunctionCallNode(functionCallNode.arguments[0], nextFunctionCallNode);
+        //     functionCallNode = *nextFunctionCallNode.functionCallNode;
+        // }
+
         Token name = functionCallNode.identifier.valueNode->value;
 
         unsigned int line_count = name.lineNumber;
@@ -7635,6 +7585,7 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
         }
         else if (strcmp(name.value.word, "GLL_EXEC") == 0)
         {
+
             // Will load a function pointer and executes it with some informations
             if (functionCallNode.numbersOfArguments < 3)
             {

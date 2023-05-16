@@ -1,0 +1,24 @@
+include * @webkit
+
+Response(
+	txt sql,
+	txt db
+) struct;
+
+actor main(txt[] args) {
+	username := getArgument@std(args, "username")
+	password := getArgument@std(args, "password")
+	email    := getArgument@std(args, "email")
+
+	sql := "
+		INSERT INTO account(username, password, email) VALUES (?, ?, ?);
+	".prepare@sql(
+		username,
+		password,
+		email
+	);
+
+	response := Response(sql, "wasapi")
+
+	jsonResponse(response).output()
+}

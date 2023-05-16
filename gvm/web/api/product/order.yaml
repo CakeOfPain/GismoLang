@@ -1,0 +1,27 @@
+verify-jwt:
+  when: request
+  action: /function/jwt/verify
+  options:
+    jwt: request.jwt
+
+to-sql:
+  when: request
+  action: /function/order/insert
+  options:
+    id: request.order.id
+    issuer: request.issuer.id
+
+apply-to-mysql:
+  when: verify-jwt.verified && to-sql
+  action: /middleware/mysql/apply
+  options:
+    sql: to-sql.sql
+    db: "'myDatabase'"
+
+error-response:
+  when: verify-jwt.verified
+  action: /function/response/forbidden
+  options: {}
+
+response:
+  when: apply-to-mysql || error-response

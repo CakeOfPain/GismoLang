@@ -2201,7 +2201,6 @@ impl GismoVirtualMachine {
                                 ));
                             }
                             
-                            // TODO: How the fuck?
                             // scope.spawn(|| {
                             //     // Execute function async in own stack
                             //     self.execute_func(func, arguments);
@@ -2218,14 +2217,27 @@ impl GismoVirtualMachine {
                     let lib_path = String::from_utf8_lossy(
                         stackframe.get_byte_reader(self).read_buffer().as_slice().try_into().unwrap()
                     ).into_owned();
-                    println!("GllLoad: {}", lib_path);
-                    operation_stack.push(
-                        StackElement::Num(233)
-                    );
+                    if(lib_path.eq("<POSIX>")) {
+                        operation_stack.push(StackElement::Num(0));
+                    } else {
+                        println!("GllLoad: {}", lib_path);
+                        operation_stack.push(
+                            StackElement::Num(404)
+                        );
+                    }
                 },
-                Bytecode::GllSymbol => todo!(),
+                Bytecode::GllSymbol => {
+                    // let stackframe = stackframes.last_mut().unwrap();
+                    match operation_stack.pop() {
+                        Some(StackElement::Num(lib_id)) => {
+                            
+                        }
+                        _ => panic!("GVM: [GllSymbol] Requires a lib_id as number for loading Symbol")
+                    }
+
+                },
                 Bytecode::GllExec => todo!(),
-                Bytecode::GnlClose => todo!(),
+                Bytecode::GllClose => todo!(),
                 Bytecode::SetupIter => todo!(),
                 Bytecode::NextIter => todo!(),
                 Bytecode::TextHash => match operation_stack.pop() {

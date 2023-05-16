@@ -1,7 +1,13 @@
 
+Person(txt name, int age) struct {
+    return {name, age}
+}
 
-Person(txt name, int age) struct;
+powersOf2(int n) int.. {
+    return x in 0..n yield x*x;
+}
 
-actor main(txt[] args) {
-    leo := Person("Leo", 20)
+actor main(txt.. args) {
+    leo := {..Person("Leo", 20), int credit = 0}
+    
 }
