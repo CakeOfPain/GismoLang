@@ -1,13 +1,18 @@
 
-Person(txt name, int age) struct {
-    return {name, age}
+gsix := GLL_LOAD("<GSIX>")
+gsixFetch := GLL_SYMBOL(gsix, "fetch")
+gsixPost  := GLL_SYMBOL(gsix, "post")
+fetch(txt file, int mode) txt = GLL_EXEC(gsix, gsixFetch, txt, file, mode)
+post(txt file, int mode, txt buffer) int = GLL_EXEC(gsix, gsixPost, int, file, mode)
+
+print(txt message) {
+	FILE_STREAM := 30
+	post("<stdout>", FILE_STREAM, message)
 }
 
-powersOf2(int n) int.. {
-    return x in 0..n yield x*x;
-}
-
-actor main(txt.. args) {
-    leo := {..Person("Leo", 20), int credit = 0}
-    
+actor main(txt[] args) {
+	"gsix:  ".output(gsix)
+	"fetch: ".output(gsixFetch)
+	"post:  ".output(gsixPost)
+	"GLL_EXEC(gsix, gsixFetch, int, \"Something\", 101) = ".output(GLL_EXEC(gsix, gsixFetch, int, "Something", 101))
 }

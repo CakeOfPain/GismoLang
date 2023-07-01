@@ -2217,7 +2217,7 @@ impl GismoVirtualMachine {
                     let lib_path = String::from_utf8_lossy(
                         stackframe.get_byte_reader(self).read_buffer().as_slice().try_into().unwrap()
                     ).into_owned();
-                    if(lib_path.eq("<POSIX>")) {
+                    if lib_path.eq("<GSIX>") {
                         operation_stack.push(StackElement::Num(0));
                     } else {
                         println!("GllLoad: {}", lib_path);
@@ -2228,15 +2228,51 @@ impl GismoVirtualMachine {
                 },
                 Bytecode::GllSymbol => {
                     // let stackframe = stackframes.last_mut().unwrap();
-                    match operation_stack.pop() {
-                        Some(StackElement::Num(lib_id)) => {
-                            
+                    match (operation_stack.pop(), operation_stack.pop()) {
+                        (Some(StackElement::Text(symbol)), Some(StackElement::Num(lib_id))) => {
+                            match lib_id {
+                                0 => {
+                                    match &symbol.to_text(self)[..] {
+                                        "fetch" => operation_stack.push(StackElement::Num(1)),
+                                        "post" => operation_stack.push(StackElement::Num(2)),
+                                        _ => panic!("GVM: [GllSymbol] Unknown GSIX symbol id ({})", symbol.to_text(self))
+                                    };
+                                }
+                                _ => panic!("GVM: [GllSymbol] Feature not implemented yet")
+                            }
                         }
                         _ => panic!("GVM: [GllSymbol] Requires a lib_id as number for loading Symbol")
-                    }
+                    };
 
                 },
-                Bytecode::GllExec => todo!(),
+                Bytecode::GllExec => {
+                   let stackframe = stackframes.last_mut().unwrap();
+                   let numberOfArgs = stackframe.get_byte_reader(self).read_u32();
+                   match (operation_stack.pop(), operation_stack.pop()) {
+                       (Some(StackElement::Num(lib_id)), Some(StackElement::Num(sym_id))) => {
+                            match (lib_id, sym_id) {
+                                // GSIX:
+                                (0, 1) => {
+                                    // GSIX.fetch
+                                    let url = operation_stack.pop();
+                                    let mode = operation_stack.pop();
+                                    match (url, mode) {
+                                        (Some(StackElement::Text(url)), Some(StackElement::Num(mode))) => {
+                                            operation_stack.push(StackElement::Num(mode));
+                                        },
+                                        _ => panic!("GVM: [GllExec] GSIX.fetch requires an url as text and a mode as int")
+                                    }
+                                },
+                                (0, 2) => {
+                                    // GSIX.post
+                                }
+                                // Other:
+                                _ => panic!("GVM: [GllExec] Feature not implemented yet")
+                            }
+                       },
+                       _ => panic!("GVM: [GllExec] Requires a lib_id and sym_id as number for execution")
+                   }
+                },
                 Bytecode::GllClose => todo!(),
                 Bytecode::SetupIter => todo!(),
                 Bytecode::NextIter => todo!(),

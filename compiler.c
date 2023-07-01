@@ -28,9 +28,7 @@
 #define GISMOHOME "C:\\Gismolang"
 #define GISMOHOMELIBS "C:\\Gismolang\\libs\\"
 
-#endif
-
-#ifdef __APPLE__
+#else
 
 #define GISMOHOME "/Applications/Gismolang"
 #define GISMOHOMELIBS "/Applications/Gismolang/libs/"
