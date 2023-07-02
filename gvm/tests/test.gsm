@@ -1,18 +1,16 @@
+gsi := GLL_LOAD("<GSI>")
+gsiFetch := gsi.GLL_SYMBOL("fetch")
+fetch(txt file, int status) txt = gsi.GLL_EXEC(gsiFetch, txt, file, status)
 
-gsix := GLL_LOAD("<GSIX>")
-gsixFetch := GLL_SYMBOL(gsix, "fetch")
-gsixPost  := GLL_SYMBOL(gsix, "post")
-fetch(txt file, int mode) txt = GLL_EXEC(gsix, gsixFetch, txt, file, mode)
-post(txt file, int mode, txt buffer) int = GLL_EXEC(gsix, gsixPost, int, file, mode)
-
-print(txt message) {
-	FILE_STREAM := 30
-	post("<stdout>", FILE_STREAM, message)
-}
+FILE_KIND    := 1
+FILE_SIZE    := 2
+FILE_CONTENT := 3
 
 actor main(txt[] args) {
-	"gsix:  ".output(gsix)
-	"fetch: ".output(gsixFetch)
-	"post:  ".output(gsixPost)
-	"GLL_EXEC(gsix, gsixFetch, int, \"Something\", 101) = ".output(GLL_EXEC(gsix, gsixFetch, int, "Something", 101))
+	if args.Size() < 2 abort@std("Not enough Arguments!")
+	path := args[1]
+	if (#path.fetch(FILE_KIND)) != 'f' abort@std("File does not exist or is a directory")
+
+	content := fetch(path, FILE_CONTENT)
+	content.output()
 }

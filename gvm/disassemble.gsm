@@ -1,3 +1,11 @@
+gsi := GLL_LOAD("<GSI>")
+gsiFetch := gsi.GLL_SYMBOL("fetch")
+fetch(txt file, int status) txt = gsi.GLL_EXEC(gsiFetch, txt, file, status)
+
+FILE_KIND    := 1
+FILE_SIZE    := 2
+FILE_CONTENT := 3
+
 ByteReader(txt buffer, ulong count) struct;
 
 hasNext(ByteReader reader) bool {
@@ -53,10 +61,7 @@ nextBuffer(ByteReader reader) txt {
 ByteCode(txt buffer) struct;
 
 actor main(txt[] args) {
-	buffer := $$get$$()
-	for i=0; i < buffer.Length(); i+=1 {
-		fmt("\\", buffer.CharAt(i)).Print()
-	}
+	buffer := fetch(args[1], FILE_CONTENT)
 	byteCode := ByteCode(buffer)
 	byteCode.print()
 }
@@ -133,10 +138,6 @@ print(ByteCode byteCode) {
 			local_cmplx := reader.nextUInt()
 			instructions := reader.nextBuffer()
 
-			for i=0; i<instructions.Length(); i+=1 {
-				fmt("\\", instructions.CharAt(i)).Print()
-			}
-
 			function_name := "$function".fmt(function_count)
 			function_count += 1
 			dis_instructions := ""
@@ -146,8 +147,6 @@ print(ByteCode byteCode) {
 				fInstr := fReader.next()
 				name := bytecode_name@bytecode[fInstr]
 				len := bytecode_arglen@bytecode[fInstr]
-
-				dis_instructions += name
 				
 				if fInstr == 149 {
 					// Hint
@@ -156,15 +155,18 @@ print(ByteCode byteCode) {
 					if hint_args[0u].cmp@std("fl") {
 						function_name = hint_args[1u]
 					}
-				} else if len == (-1) {
-					dis_instructions += fmt(" ", StringRepresentation@std(fReader.nextBuffer()))
-				} else if len == 2 {
-					dis_instructions += fmt(" ", fReader.nextUShort())
-				} else if len == 4 {
-					dis_instructions += fmt(" ", fReader.nextUInt())
-				}
+				} else {
+					dis_instructions += "\t" + name
+					if len == (-1) {
+						dis_instructions += fmt("\t", StringRepresentation@std(fReader.nextBuffer()))
+					} else if len == 2 {
+						dis_instructions += fmt("\t", fReader.nextUShort())
+					} else if len == 4 {
+						dis_instructions += fmt("\t", fReader.nextUInt())
+					}
 
-				dis_instructions += "\n"
+					dis_instructions += "\n"
+				}
 			}
 
 			output(function_name, ":")

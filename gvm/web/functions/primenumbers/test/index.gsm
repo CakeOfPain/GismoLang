@@ -1,0 +1,33 @@
+include * @webkit
+
+Response(int is_prime, txt factors) struct;
+
+EngResult(int x, int r) struct;
+
+eng(int n) EngResult {
+	for x=0; n >= x*x; x+=1 {}
+	return EngResult(x-1, n - (x-1) * (x-1))
+}
+
+actor main(txt[] args) {
+	number := getArgument@std(args, "number") as int
+
+	is_prime := true
+	factor := ""
+
+	// Check for factors
+	result := eng(number)
+	if result.r == 0 is_prime = false
+
+	for i=0; i < (result.x-1); i+=1 {
+		// If not factor 1
+		if ((result.r + result.x * i) % (result.x-i)) == 0 {
+			is_prime = false
+			factor = fmt(result.x - i, " * ", result.x + (result.r + result.x * i) / (result.x-i))
+		}
+	}
+
+	jsonResponse(Response(
+		is_prime, factor
+	)).output()
+}

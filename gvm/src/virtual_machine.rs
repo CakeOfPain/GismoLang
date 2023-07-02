@@ -3,7 +3,7 @@ use std::{
     collections::{HashMap, HashSet},
     env,
     fmt::{self},
-    fs::File,
+    fs::{File, metadata, self},
     io::{self, BufRead, BufReader, Write, Read},
     process::{self},
     thread,
@@ -154,10 +154,10 @@ impl GismoText {
     pub fn to_text(&self, gvm: &GismoVirtualMachine) -> String {
         match (self.base_string, &self.mod_string) {
             (None, None) => String::from(""),
-            (_, Some(mod_string)) => String::from_utf8_lossy(mod_string.as_slice().try_into().unwrap()).into_owned(),
-            (Some(base_string), None) => {
+            (_, Some(mod_string)) => unsafe {String::from_utf8_unchecked(mod_string.as_slice().try_into().unwrap())},
+            (Some(base_string), None) => unsafe {
                 let const_text = gvm.const_texts.get(base_string as usize).unwrap().clone();
-                String::from_utf8_lossy(const_text.as_slice().try_into().unwrap()).into_owned()
+                String::from_utf8_unchecked(const_text.as_slice().try_into().unwrap())
             }
         }
     }
@@ -652,9 +652,9 @@ impl GismoVirtualMachine {
 
                 match instr {
                 Bytecode::Nop => {}
-                Bytecode::Hint => {
+                Bytecode::Hint => unsafe {
                     let stackframe = stackframes.last_mut().unwrap();
-                    let hint = String::from_utf8_lossy(stackframe.get_byte_reader(self).read_buffer().as_slice().try_into().unwrap()).into_owned();
+                    let hint = String::from_utf8_unchecked(stackframe.get_byte_reader(self).read_buffer().as_slice().try_into().unwrap());
                     let hint_args: Vec<&str> = hint.split(";").collect();
                     if hint_args.len() < 1 {
                         continue;
@@ -1819,7 +1819,7 @@ impl GismoVirtualMachine {
                         )
                     );
                 },
-                Bytecode::InputText => {
+                Bytecode::InputText => unsafe {
                     let mut input: Vec<u8> = Vec::new();
 
                     for i in io::stdin().bytes() {
@@ -1829,7 +1829,7 @@ impl GismoVirtualMachine {
                     operation_stack.push(
                         StackElement::Text(
                             GismoText::new(
-                                String::from_utf8_lossy(
+                                String::from_utf8_unchecked(
                                     input.as_slice().try_into().unwrap()
                                 ).into()
                             )
@@ -2212,12 +2212,12 @@ impl GismoVirtualMachine {
                 },
                 Bytecode::Clock => todo!(),
                 Bytecode::Time => todo!(),
-                Bytecode::GllLoad => {
+                Bytecode::GllLoad => unsafe {
                     let stackframe = stackframes.last_mut().unwrap();
-                    let lib_path = String::from_utf8_lossy(
+                    let lib_path = String::from_utf8_unchecked(
                         stackframe.get_byte_reader(self).read_buffer().as_slice().try_into().unwrap()
-                    ).into_owned();
-                    if lib_path.eq("<GSIX>") {
+                    );
+                    if lib_path.eq("<GSI>") {
                         operation_stack.push(StackElement::Num(0));
                     } else {
                         println!("GllLoad: {}", lib_path);
@@ -2235,7 +2235,7 @@ impl GismoVirtualMachine {
                                     match &symbol.to_text(self)[..] {
                                         "fetch" => operation_stack.push(StackElement::Num(1)),
                                         "post" => operation_stack.push(StackElement::Num(2)),
-                                        _ => panic!("GVM: [GllSymbol] Unknown GSIX symbol id ({})", symbol.to_text(self))
+                                        _ => panic!("GVM: [GllSymbol] Unknown GSI symbol id ({})", symbol.to_text(self))
                                     };
                                 }
                                 _ => panic!("GVM: [GllSymbol] Feature not implemented yet")
@@ -2247,24 +2247,55 @@ impl GismoVirtualMachine {
                 },
                 Bytecode::GllExec => {
                    let stackframe = stackframes.last_mut().unwrap();
-                   let numberOfArgs = stackframe.get_byte_reader(self).read_u32();
+                   let number_of_args = stackframe.get_byte_reader(self).read_u32();
+                   let mut arguments: Vec<StackElement> = Vec::new();
+
+                   for _ in 0..number_of_args {
+                    arguments.push(operation_stack.pop().unwrap());
+                   }
+
                    match (operation_stack.pop(), operation_stack.pop()) {
-                       (Some(StackElement::Num(lib_id)), Some(StackElement::Num(sym_id))) => {
+                       (Some(StackElement::Num(sym_id)), Some(StackElement::Num(lib_id))) => {
                             match (lib_id, sym_id) {
-                                // GSIX:
+                                // GSI:
                                 (0, 1) => {
-                                    // GSIX.fetch
-                                    let url = operation_stack.pop();
-                                    let mode = operation_stack.pop();
+                                    // GSI.fetch
+                                    let mode = arguments.pop();
+                                    let url = arguments.pop();
                                     match (url, mode) {
-                                        (Some(StackElement::Text(url)), Some(StackElement::Num(mode))) => {
-                                            operation_stack.push(StackElement::Num(mode));
+                                        (Some(StackElement::Num(mode)), Some(StackElement::Text(url))) => {
+                                            /* Modes: STATUS, KIND, SIZE, CONTENT */
+                                            match zip_zack_decode(mode as i64) {
+                                                1 => { /* KIND */
+                                                    if !std::path::Path::new(&url.to_text(self)).exists() {
+                                                        operation_stack.push(StackElement::Text(GismoText::empty()));
+                                                    } else {
+                                                        let md = metadata(&url.to_text(self)).unwrap();
+                                                        if md.is_dir() {
+                                                            operation_stack.push(StackElement::Text(GismoText::new("d".to_string())));
+                                                        } else if md.is_file() {
+                                                            operation_stack.push(StackElement::Text(GismoText::new("f".to_string())));
+                                                        } else if md.is_symlink() {
+                                                            operation_stack.push(StackElement::Text(GismoText::new("s".to_string())));
+                                                        }
+                                                    }
+                                                }
+                                                2 => { /* SIZE */
+                                                    let md = metadata(&url.to_text(self)).unwrap();
+                                                    operation_stack.push(StackElement::Text(GismoText::new(md.len().to_string())));
+                                                }
+                                                3 => unsafe { /* CONTENT */
+                                                    let content = fs::read(url.to_text(self)).unwrap();
+                                                    operation_stack.push(StackElement::Text(GismoText::new(String::from_utf8_unchecked(content))));
+                                                }
+                                                _ => panic!("GVM: [GllExec] GSI.fetch specified mode id is not defined")
+                                            }
                                         },
-                                        _ => panic!("GVM: [GllExec] GSIX.fetch requires an url as text and a mode as int")
+                                        _ => panic!("GVM: [GllExec] GSI.fetch requires an url as text and a mode as int")
                                     }
                                 },
                                 (0, 2) => {
-                                    // GSIX.post
+                                    // GSI.post
                                 }
                                 // Other:
                                 _ => panic!("GVM: [GllExec] Feature not implemented yet")

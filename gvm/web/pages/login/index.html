@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+        <label>Username: <input id="username" type="text"></label><br>
+        <label>Password: <input id="password" type="password"></label>
+
+        <div id="response-view"></div>
+
+        <script>
+            const username = document.getElementById("username");
+            const password =  document.getElementById("password");
+            const responseView = document.getElementById("response-view");
+            
+            async function onInput(e) {
+                const response = await fetch("/functions/account/select", {
+                    headers: {
+                        "username": username.value,
+                        "password": password.value
+                    }
+                });
+
+                const result = await response.json();
+                responseView.innerHTML = result.sql;
+            }
+
+            username.addEventListener("input", onInput);
+            password.addEventListener("input", onInput);
+        </script>
+</body>
+</html>

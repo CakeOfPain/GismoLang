@@ -3,7 +3,7 @@
 | Instruction        | Parameter   | Stack-Parameter                     | Description                                      |
 | ------------------ | ----------- | ----------------------------------- | ------------------------------------------------ |
 | Nop                | ()          | ()                                  | Will be ignored by the GVM                       |
-| LoadConstNum8      | (id: num32̉) | () -> num8                          | Loads a 8 bit part of the constant num8 register |
+| LoadConstNum8      | (id: num32) | () -> num8                          | Loads a 8 bit part of the constant num8 register |
 | LoadConstNum16     | (id: num32) | () -> num16                         |                                                  |
 | LoadConstNum32     | (id: num32) | () -> num32                         |                                                  |
 | LoadConstNum64     | (id: num32) | () -> num64                         |                                                  |
@@ -35,31 +35,31 @@
 | DivI               | ()          | (a: int64, b: int64) -> int64       |                                                  |
 | DivU               | ()          | (a: uint64, b: uint64) -> uint64    |                                                  |
 | DivF               | ()          | (a: float64, b: float64) -> float64 |                                                  |
-| And                |             |                                     |                                                  |
-| Or                 |             |                                     |                                                  |
-| Not                |             |                                     |                                                  |
-| EqI                |             |                                     |                                                  |
-| EqU                |             |                                     |                                                  |
-| EqF                |             |                                     |                                                  |
-| EqIU               |             |                                     |                                                  |
-| EqFI               |             |                                     |                                                  |
-| EqFU               |             |                                     |                                                  |
-| GreaterI           |             |                                     |                                                  |
-| GreaterU           |             |                                     |                                                  |
-| GreaterF           |             |                                     |                                                  |
-| GreaterIU          |             |                                     |                                                  |
-| GreaterFI          |             |                                     |                                                  |
-| GreaterFU          |             |                                     |                                                  |
-| LessI              |             |                                     |                                                  |
-| LessU              |             |                                     |                                                  |
-| LessF              |             |                                     |                                                  |
-| LessIU             |             |                                     |                                                  |
-| LessFI             |             |                                     |                                                  |
-| LessFU             |             |                                     |                                                  |
-| LoadGlobalCmplx    |             |                                     |                                                  |
-| LoadLocalCmplx     |             |                                     |                                                  |
-| StoreGlobalCmplx   |             |                                     |                                                  |
-| StoreLocalCmplx    |             |                                     |                                                  |
+| And                | ()          | (a: num64, b: num64) -> num64       |                                                  |
+| Or                 | ()          | (a: num64, b: num64) -> num64       |                                                  |
+| Not                | ()          | (x: num64) -> num64                 |                                                  |
+| EqI                | ()          | (a: int64, b: int64) -> num64       |                                                  |
+| EqU                | ()          | (a: uint64, b: uint64) -> num64     |                                                  |
+| EqF                | ()          | (a: float64, b: float64) -> num64   |                                                  |
+| EqIU               | ()          |                                     |                                                  |
+| EqFI               | ()          |                                     |                                                  |
+| EqFU               | ()          |                                     |                                                  |
+| GreaterI           | ()          |                                     |                                                  |
+| GreaterU           | ()          |                                     |                                                  |
+| GreaterF           | ()          |                                     |                                                  |
+| GreaterIU          | ()          |                                     |                                                  |
+| GreaterFI          | ()          |                                     |                                                  |
+| GreaterFU          | ()          |                                     |                                                  |
+| LessI              | ()          |                                     |                                                  |
+| LessU              | ()          |                                     |                                                  |
+| LessF              | ()          |                                     |                                                  |
+| LessIU             | ()          |                                     |                                                  |
+| LessFI             | ()          |                                     |                                                  |
+| LessFU             | ()          |                                     |                                                  |
+| LoadGlobalCmplx    | (id: num32) |                                     |                                                  |
+| LoadLocalCmplx     | (id: num32) |                                     |                                                  |
+| StoreGlobalCmplx   | (id: num32) |                                     |                                                  |
+| StoreLocalCmplx    | (id: num32) |                                     |                                                  |
 | CmplxAddElement    |             |                                     |                                                  |
 | CmplxRemoveElement |             |                                     |                                                  |
 | CmplxSize          |             |                                     |                                                  |

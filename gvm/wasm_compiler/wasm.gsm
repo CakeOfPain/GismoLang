@@ -1,7 +1,0 @@
-
-WasmModule(
-
-) struct;
-
-wasmModule() WasmModule = WasmModule()
-

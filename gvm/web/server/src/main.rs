@@ -1,4 +1,3 @@
-mod api;
 mod gismo;
 mod middleware;
 
@@ -7,9 +6,9 @@ use std::{
     io::{prelude::*, BufReader},
     net::{TcpListener, TcpStream},
     thread,
+    fs
 };
 
-use api::handle_api;
 use gismo::handle_gismo;
 use middleware::handle_middleware;
 
@@ -39,20 +38,31 @@ fn handle_connection(mut stream: TcpStream) {
     let request_line_vec: Vec<_> = request_line.split(" ").collect();
     let path = request_line_vec.get(1).unwrap().replace("..", ".");
 
-    if path.starts_with("/function/") {
+    if path.starts_with("/functions") {
         // Only functions can call functions
         // Call file ..index.gim
         handle_gismo(stream, path, request_line, request_line_vec, lines_iter);
-    } else if path.starts_with("/middleware/") {
+    } else if path.starts_with("/middleware") {
         // Only functions can call middleware
 
         // Call file ..index
         handle_middleware(stream, path, request_line, request_line_vec, lines_iter);
-    } else if path.starts_with("/api/") {
-        // This is public
+    } else if path.starts_with("/pages") {
+        let mut filename: String = String::new();
 
-        // Call file ..index.json
-        handle_api(stream, path, request_line, request_line_vec, lines_iter);
+        if path.ends_with(".html") {
+            filename = format!("./web{path}");
+        } else if path.ends_with("/") {
+            filename = format!("./web{path}index.html");
+        } else {
+            filename = format!("./web{path}/index.html");
+        }
+        
+        let contents = fs::read_to_string(filename).unwrap();
+        let length = contents.len();
+
+        let response = format!("HTTP/1.0 200 OK\r\nContent-Type: text/html\r\nContent-Length: {length}\r\n\r\n{contents}");
+        stream.write_all(response.as_bytes()).unwrap();
     } else {
         // Error!
         stream.write_all(

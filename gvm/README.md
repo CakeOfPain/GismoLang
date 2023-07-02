@@ -2,3 +2,4 @@
 
 Full implementation of the Gismo Virtual Machine written in Rust.
 
+[instructions](instructions.md)

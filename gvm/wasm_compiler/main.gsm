@@ -1,9 +1,0 @@
-
-// Writing a very basic wasm compiler
-// in my own language gismo
-
-
-
-actor main(txt[] args) {
-
-}

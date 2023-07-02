@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prime number checker</title>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prime-numbers check</h1>
+    <label>Number: </label>
+    <input id="check-number" type="number" value="2">
+    <label id="prime" style="color: blue;">1 * 2 prime</label>
+    <label id="composite" style="display: none;"></label>
+
+    <script>
+        const check = document.getElementById('check-number');
+
+        check.addEventListener("input", async function(e) {
+            e.preventDefault();
+            const number = document.getElementById('check-number').value;
+            const response = await fetch("/functions/primenumbers/test", {
+                headers: {
+                    "number": number
+                }
+            });
+
+            const result = await response.json();
+            if(result.is_prime == 1) {
+                const prime = document.getElementById("prime");
+                prime.style = "color: blue;";
+                prime.innerHTML = `1 * ${number} prime`;
+                document.getElementById("composite").style = "display: none;";
+            } else {
+                document.getElementById("prime").style = "display: none;";
+                const composite = document.getElementById("composite");
+                composite.style = "";
+                composite.innerHTML = result.factors;
+            }
+        });
+    </script>
+</body>
+</html>

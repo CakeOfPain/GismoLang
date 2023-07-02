@@ -1,0 +1,17 @@
+include * @webkit
+
+gsi := GLL_LOAD("<GSI>")
+fetch(txt file, int status) txt = gsi.GLL_EXEC(
+    gsi.GLL_SYMBOL("fetch"), txt, file, status)
+FILE_KIND    := 1
+FILE_SIZE    := 2
+FILE_CONTENT := 3
+
+actor main(txt[] args) {
+    if (#fetch("./web/functions/storage/message.json", FILE_KIND)) != 'f' {
+        errorResponse("Couldn't load file")
+    } else {
+        content := fetch("./web/functions/storage/message.json", FILE_CONTENT)
+        jsonResponse(content).output()
+    }
+}
