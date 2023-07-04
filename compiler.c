@@ -109,6 +109,13 @@ int main(int argc, char const *argv[])
         printf("\nGismo Version: %s\n", VERSION);
         return 0;
     }
+    else if (strcmp(mode, "init") == 0)
+    {
+        system("git clone https://github.com/CakeOfPain/Gismo-libs.git ./libs");
+        system("mkdir -p src");
+        system("echo 'actor main(txt[] args) {\\n\toutput(\"Hello World!\")\\n}' >> main.gsm");
+        return 0;
+    }
 
     if (argc < 3)
     {
@@ -179,13 +186,13 @@ int main(int argc, char const *argv[])
         adx_store_data(".temp.gim", generator->code, generator->codeLength);
 
         // Optimize code
-        system("GVM " GISMOHOME "/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
+        // system("GVM " GISMOHOME "/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
 
         // Passing code to GVM
         system("GVM ./.temp.gim");
 
         // Clean up made file
-        system("del .temp.gim");
+        system("rm -rf .temp.gim");
         free(generator);
     }
     else if (strcmp(mode, "run:debug") == 0)

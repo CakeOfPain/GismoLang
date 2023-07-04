@@ -2285,8 +2285,19 @@ impl GismoVirtualMachine {
                                                     operation_stack.push(StackElement::Text(GismoText::new(md.len().to_string())));
                                                 }
                                                 3 => unsafe { /* CONTENT */
-                                                    let content = fs::read(url.to_text(self)).unwrap();
-                                                    operation_stack.push(StackElement::Text(GismoText::new(String::from_utf8_unchecked(content))));
+                                                    let md = metadata(&url.to_text(self)).unwrap();
+                                                    if md.is_dir() {
+                                                        let mut string: String = String::new();
+                                                        let paths = fs::read_dir(&url.to_text(self)).unwrap();
+                                                        for path in paths {
+                                                            string += path.unwrap().file_name().to_str().unwrap();
+                                                            string += "\n";
+                                                        }
+                                                        operation_stack.push(StackElement::Text(GismoText::new(string)));
+                                                    } else {
+                                                        let content = fs::read(url.to_text(self)).unwrap();
+                                                        operation_stack.push(StackElement::Text(GismoText::new(String::from_utf8_unchecked(content))));
+                                                    }
                                                 }
                                                 _ => panic!("GVM: [GllExec] GSI.fetch specified mode id is not defined")
                                             }

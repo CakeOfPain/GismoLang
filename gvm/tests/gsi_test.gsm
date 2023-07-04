@@ -1,0 +1,39 @@
+include * @fs
+
+workingDir := ""
+system(txt command) ubyte {
+	args is split@std(command, " ")
+	if !(#args[0]) return 0
+	cmd := workingDir + args[0]
+	path := Path(cmd)
+	cmdType := path.Type()
+	if cmdType == 'f' {
+		file := File(cmd)
+		fileResult := file.Read()
+		output(fileResult.content)
+		return 0
+	} else if cmdType == 'd' {
+		dir := Dir(cmd)
+		dirResult := dir.List()
+		list is split@std(dirResult.content, "\n")
+		for i=0; i<list.Size(); i+=1 {
+			element := list[i]
+			elementPath := Path(element)
+			elementType := elementPath.Type()
+			if elementType == 'd' {
+				output("*", element)
+			} else {
+				output(" ", element)
+			}
+		}
+		return 0
+	}
+	return 1
+}
+
+actor main(txt[] args) {
+	for true {
+		cmd := input(workingDir, "λ ")
+		exit_code := system(cmd)
+	}
+}
