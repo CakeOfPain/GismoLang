@@ -1,0 +1,72 @@
+include * @fs
+include * @src.byteReader
+
+GismoInstructions(
+	uint constNum8Size,
+	uint constNum16Size,
+	uint constNum32Size,
+	uint constNum64Size,
+	uint constFuncSize,
+	uint constTextSize,
+
+	uint globalNum8Size,
+	uint globalNum16Size,
+	uint globalNum32Size,
+	uint globalNum64Size,
+	uint globalFuncSize,
+	uint globalTextSize,
+	uint globalCmplxSize
+) struct;
+
+loadGim(txt path) GismoInstructions {
+
+	// Loading file & Read Content
+	file := File(path)
+	bytecodeResult := file.Read()
+
+	// If not found or isn't file
+	if #bytecodeResult.error
+		abort@std(bytecodeResult.error)
+
+	// Finally the content
+	bytecode := bytecodeResult.content
+	
+	// We need a byteReader
+	byteReader := ByteReader(bytecode, 0)
+
+	magic := byteReader.nextUInt()
+	if magic != 6777197u
+		abort@std("Transpiler Error: Not valid file format")
+
+	constNum8Size  := byteReader.nextUInt()
+	constNum16Size := byteReader.nextUInt()
+	constNum32Size := byteReader.nextUInt()
+	constNum64Size := byteReader.nextUInt()
+	constFuncSize  := byteReader.nextUInt()
+	constTextSize  := byteReader.nextUInt()
+	
+	globalNum8Size  := byteReader.nextUInt()
+	globalNum16Size := byteReader.nextUInt()
+	globalNum32Size := byteReader.nextUInt()
+	globalNum64Size := byteReader.nextUInt()
+	globalFuncSize  := byteReader.nextUInt()
+	globalTextSize  := byteReader.nextUInt()
+	globalCmplxSize := byteReader.nextUInt()
+
+	return GismoInstructions(
+		constNum8Size,
+		constNum16Size,
+		constNum32Size,
+		constNum64Size,
+		constFuncSize,
+		constTextSize,
+		
+		globalNum8Size,
+		globalNum16Size,
+		globalNum32Size,
+		globalNum64Size,
+		globalFuncSize,
+		globalTextSize,
+		globalCmplxSize
+	)
+}

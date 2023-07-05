@@ -1,176 +1,19 @@
-gsi := GLL_LOAD("<GSI>")
-gsiFetch := gsi.GLL_SYMBOL("fetch")
-fetch(txt file, int status) txt = gsi.GLL_EXEC(gsiFetch, txt, file, status)
+include * @src.GIM
 
-FILE_KIND    := 1
-FILE_SIZE    := 2
-FILE_CONTENT := 3
-
-ByteReader(txt buffer, ulong count) struct;
-
-hasNext(ByteReader reader) bool {
-	return reader.count < reader.buffer.Length()
+help() {
+	output("Gismo Bytecode Transpiler")
+	output("")
+	output("Arguments-Usage:")
+	output("*source\tpath to your .gim file to translate")
+	output("")
+	output("Arguments marked with a * are not optional")
+	exit(0)
 }
-
-next(ByteReader reader) ubyte {
-	if !reader.hasNext()
-		return 0u
-	b := reader.buffer.CharAt(reader.count)
-	reader.count += 1u
-	return b
-}
-
-nextULong(ByteReader reader) ulong {
-	integer is ulong = 0u
-	integer = integer | (reader.next() << 56u)
-	integer = integer | (reader.next() << 48u)
-	integer = integer | (reader.next() << 40u)
-	integer = integer | (reader.next() << 32u)
-	integer = integer | (reader.next() << 24u)
-	integer = integer | (reader.next() << 16u)
-	integer = integer | (reader.next() << 8u)
-	integer = integer | (reader.next() )
-	return integer
-}
-
-nextUInt(ByteReader reader) uint {
-	integer is uint = 0u
-	integer = integer | (reader.next() << 24u)
-	integer = integer | (reader.next() << 16u)
-	integer = integer | (reader.next() << 8u)
-	integer = integer | (reader.next())
-	return integer
-}
-
-nextUShort(ByteReader reader) ushort {
-	integer is ushort = 0u
-	integer = integer | (reader.next() << 8u)
-	integer = integer | (reader.next())
-	return integer
-}
-
-nextBuffer(ByteReader reader) txt {
-	buffer := ""
-	length := reader.nextUInt()
-	for i=0; i < length; i+=1 {
-		buffer = buffer.InsertChar(reader.next())
-	}
-	return buffer
-}
-
-ByteCode(txt buffer) struct;
 
 actor main(txt[] args) {
-	buffer := fetch(args[1], FILE_CONTENT)
-	byteCode := ByteCode(buffer)
-	byteCode.print()
-}
-
-print(ByteCode byteCode) {
-	reader := ByteReader(byteCode.buffer, 0)
-
-	magic := reader.nextUInt()
-	if magic != 6777197u {
-		abort@std("Wrong file format! (".fmt(magic, ")"))
-	}
-
-	const_num8 := reader.nextUInt()
-	const_num16 := reader.nextUInt()
-	const_num32 := reader.nextUInt()
-	const_num64 := reader.nextUInt()
-	const_func  := reader.nextUInt()
-	const_text  := reader.nextUInt()
-
-	output("const-register")
-	output("const num8:  ", const_num8)
-	output("const num16: ", const_num16)
-	output("const num32: ", const_num32)
-	output("const num64: ", const_num64)
-	output("const func:  ", const_func)
-	output("const text:  ", const_text)
-
-	global_num8  := reader.nextUInt()
-	global_num16 := reader.nextUInt()
-	global_num32 := reader.nextUInt()
-	global_num64 := reader.nextUInt()
-	global_func  := reader.nextUInt()
-	global_text  := reader.nextUInt()
-	global_cmplx := reader.nextUInt()
-
-	output("global-register")
-	output("global num8:  ", global_num8)
-	output("global num16: ", global_num16)
-	output("global num32: ", global_num32)
-	output("global num64: ", global_num64)
-	output("global func:  ", global_func)
-	output("global text:  ", global_text)
-	output("global cmplx: ", global_cmplx)
-
-	// next the consts
-	for reader.hasNext() {
-		instr := reader.next()
-		function_count is ulong = 0
-		if instr == 0 {
-			// NOP
-		} else if instr == 1 {
-			// Num8
-			output("num8: ", reader.next())
-		} else if instr == 2 {
-			// Num16
-			output("num16: ", reader.nextUShort())
-		} else if instr == 3 {
-			// Num32
-			output("num32: ", reader.nextUInt())
-		} else if instr == 4 {
-			// Num64
-			output("num64: ", reader.nextULong())
-		} else if instr == 5 {
-			// Text
-			output("text: ", StringRepresentation@std(reader.nextBuffer()))
-		} else if instr == 6 || instr == 7 {
-			// Function
-			local_num8 := reader.nextUInt()
-			local_num16 := reader.nextUInt()
-			local_num32 := reader.nextUInt()
-			local_num64 := reader.nextUInt()
-			local_func := reader.nextUInt()
-			local_text := reader.nextUInt()
-			local_cmplx := reader.nextUInt()
-			instructions := reader.nextBuffer()
-
-			function_name := "$function".fmt(function_count)
-			function_count += 1
-			dis_instructions := ""
-
-			fReader := ByteReader(instructions, 0)
-			for fReader.hasNext() {
-				fInstr := fReader.next()
-				name := bytecode_name@bytecode[fInstr]
-				len := bytecode_arglen@bytecode[fInstr]
-				
-				if fInstr == 149 {
-					// Hint
-					hint := fReader.nextBuffer()
-					hint_args is split@std(hint, ";")
-					if hint_args[0u].cmp@std("fl") {
-						function_name = hint_args[1u]
-					}
-				} else {
-					dis_instructions += "\t" + name
-					if len == (-1) {
-						dis_instructions += fmt("\t", StringRepresentation@std(fReader.nextBuffer()))
-					} else if len == 2 {
-						dis_instructions += fmt("\t", fReader.nextUShort())
-					} else if len == 4 {
-						dis_instructions += fmt("\t", fReader.nextUInt())
-					}
-
-					dis_instructions += "\n"
-				}
-			}
-
-			output(function_name, ":")
-			output(dis_instructions)
-		}
-	}
+	if args.Size() < 2 help()
+	source := getArgument@std(args, "source")
+	if !(#source) abort@std("Required argument source is missing!")
+	
+	gim := loadGim(source)
 }

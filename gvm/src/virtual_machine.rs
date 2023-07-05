@@ -674,7 +674,7 @@ impl GismoVirtualMachine {
                                 .expect("GVM: [Hint] ln: Line hint requires an u32 as line number at argument pos 1!");
                             
                             stackframe.debugger.set_line(line_num, self);
-                            // stackframe.debugger.debugging(self);
+                            //stackframe.debugger.debugging(self);
                         },
                         "fl" => {
                             let file_path = hint_args.get(1)

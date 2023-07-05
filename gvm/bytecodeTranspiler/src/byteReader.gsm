@@ -1,0 +1,51 @@
+ByteReader(txt buffer, ulong count) struct;
+
+hasNext(ByteReader reader) bool {
+	return reader.count < reader.buffer.Length()
+}
+
+next(ByteReader reader) ubyte {
+	if !reader.hasNext()
+		return 0u
+	b := reader.buffer.CharAt(reader.count)
+	reader.count += 1u
+	return b
+}
+
+nextULong(ByteReader reader) ulong {
+	integer is ulong = 0u
+	integer = integer | (reader.next() << 56u)
+	integer = integer | (reader.next() << 48u)
+	integer = integer | (reader.next() << 40u)
+	integer = integer | (reader.next() << 32u)
+	integer = integer | (reader.next() << 24u)
+	integer = integer | (reader.next() << 16u)
+	integer = integer | (reader.next() << 8u)
+	integer = integer | (reader.next() )
+	return integer
+}
+
+nextUInt(ByteReader reader) uint {
+	integer is uint = 0u
+	integer = integer | (reader.next() << 24u)
+	integer = integer | (reader.next() << 16u)
+	integer = integer | (reader.next() << 8u)
+	integer = integer | (reader.next())
+	return integer
+}
+
+nextUShort(ByteReader reader) ushort {
+	integer is ushort = 0u
+	integer = integer | (reader.next() << 8u)
+	integer = integer | (reader.next())
+	return integer
+}
+
+nextBuffer(ByteReader reader) txt {
+	buffer := ""
+	length := reader.nextUInt()
+	for i=0; i < length; i+=1 {
+		buffer = buffer.InsertChar(reader.next())
+	}
+	return buffer
+}

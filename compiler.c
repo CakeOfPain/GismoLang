@@ -186,10 +186,10 @@ int main(int argc, char const *argv[])
         adx_store_data(".temp.gim", generator->code, generator->codeLength);
 
         // Optimize code
-        // system("GVM " GISMOHOME "/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
+        // system("gvm " GISMOHOME "/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
 
         // Passing code to GVM
-        system("GVM ./.temp.gim");
+        system("gvm ./.temp.gim");
 
         // Clean up made file
         system("rm -rf .temp.gim");
@@ -202,13 +202,13 @@ int main(int argc, char const *argv[])
         adx_store_data(".temp.gim", generator->code, generator->codeLength);
 
         // Optimize code
-        system("GVM " GISMOHOME "/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
+        // system("GVM " GISMOHOME "/modifications/bin/optimization.gim ./.temp.gim ./.temp.gim");
 
         // Passing code to GVM
-        system("GVM ./.temp.gim");
+        system("gvm ./.temp.gim");
 
         // Clean up made file
-        system("del .temp.gim");
+        system("rm -rf .temp.gim");
         free(generator);
     }
     else if (strcmp(mode, "build:debug") == 0)
