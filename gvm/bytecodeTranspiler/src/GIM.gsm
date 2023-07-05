@@ -15,7 +15,9 @@ GismoInstructions(
 	uint globalNum64Size,
 	uint globalFuncSize,
 	uint globalTextSize,
-	uint globalCmplxSize
+	uint globalCmplxSize,
+
+	txt bytecode
 ) struct;
 
 loadGim(txt path) GismoInstructions {
@@ -67,6 +69,8 @@ loadGim(txt path) GismoInstructions {
 		globalNum64Size,
 		globalFuncSize,
 		globalTextSize,
-		globalCmplxSize
+		globalCmplxSize,
+		
+		bytecode
 	)
 }

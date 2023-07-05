@@ -1,0 +1,103 @@
+include * @src.GIM
+include * @src.byteReader
+
+transpile2C(GismoInstructions instr) txt {
+	code := ""
+
+	code += "#include <stdio.h>\n"
+	code += "#include <stdint.h>\n"
+	code += "#include <stdlib.h>\n\n"
+	code += collectConstants(instr)
+
+	return code
+}
+
+collectConstants(GismoInstructions instr) txt {
+	reader := ByteReader(instr.bytecode, 0)
+
+	num8s is txt[]
+	num16s is txt[]
+	num32s is txt[]
+	num64s is txt[]
+	texts  is txt[]
+	protos is txt[]
+	funcs  is txt[]
+
+	function_count = 0
+	for reader.hasNext() {
+		instruction := reader.next()
+		if instruction == 0 {
+			// NOP
+		} else if instruction == 1 {
+			// Num8
+			num8s.Add(reader.next().fmt())
+		} else if instruction == 2 {
+			// Num16
+			num16s.Add(reader.nextUShort().fmt())
+		} else if instruction == 3 {
+			// Num32
+			num32s.Add(reader.nextUInt().fmt())
+		} else if instruction == 4 {
+			// Num64
+			num64s.Add(reader.nextULong().fmt())
+		} else if instruction == 5 {
+			// Text
+			texts.Add(StringRepresentation@std(reader.nextBuffer()))
+		} else if instruction == 6 || instruction == 7 {
+			// Function
+			local_num8 := reader.nextUInt()
+			local_num16 := reader.nextUInt()
+			local_num32 := reader.nextUInt()
+			local_num64 := reader.nextUInt()
+			local_func := reader.nextUInt()
+			local_text := reader.nextUInt()
+			local_cmplx := reader.nextUInt()
+			instructions := reader.nextBuffer()
+
+			function_name := "$function".fmt(function_count)
+			dis_instructions := ""
+
+			fReader := ByteReader(instructions, 0)
+			for fReader.hasNext() {
+				fInstr := fReader.next()
+				name := bytecode_name@bytecode[fInstr]
+				len := bytecode_arglen@bytecode[fInstr]
+				
+				if fInstr == 149 {
+					// Hint
+					hint := fReader.nextBuffer()
+					hint_args is split@std(hint, ";")
+					if hint_args[0u].cmp@std("fl") {
+						function_name = hint_args[1u]
+					}
+				} else {
+					dis_instructions += "\t" + name
+					if len == (-1) {
+						dis_instructions += fmt("\t", StringRepresentation@std(fReader.nextBuffer()))
+					} else if len == 2 {
+						dis_instructions += fmt("\t", fReader.nextUShort())
+					} else if len == 4 {
+						dis_instructions += fmt("\t", fReader.nextUInt())
+					}
+
+					dis_instructions += "\n"
+				}
+			}
+
+			protos.Add("void " + "$function".fmt(function_count) + "(void); /* " + function_name.replace@std("*", "multi") + " */")
+			funcs.Add("void " + "$function".fmt(function_count) + "(void) {/* " + function_name.replace@std("*", "multi") + " */" + "/*\n" + dis_instructions + "\n*/\n}")
+			function_count += 1
+		}
+	}
+
+	code := ""
+	code += makeString@std(protos, "\n") + "\n"
+	code += "uint8_t  const_num8["+instr.constNum8Size.fmt()+"] = {"+makeString@std(num8s, ",\n")+"};\n"
+	code += "uint16_t const_num16["+instr.constNum16Size.fmt()+"] = {"+makeString@std(num16s, ",\n")+"};\n"
+	code += "uint32_t const_num32["+instr.constNum32Size.fmt()+"] = {"+makeString@std(num32s, ",\n")+"};\n"
+	code += "uint64_t const_num64["+instr.constNum64Size.fmt()+"] = {"+makeString@std(num64s, ",\n")+"};\n"
+	code += "char *const_text["+instr.constTextSize.fmt()+"] = {"+makeString@std(texts, ",\n")+"};\n"
+	code += makeString@std(funcs, "\n") + "\n"
+
+	return code
+}
