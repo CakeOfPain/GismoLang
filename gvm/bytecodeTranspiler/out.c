@@ -2,6 +2,15 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#define GVM_ZZE(I) ((((int64_t)I) >> 63) ^ (((int64_t)I) << 1))
+#define GVM_ZZD(I) ((((int64_t)I) >> 1) ^ -(((int64_t)I) & 1))
+#define GVM_U2I(X) ({uint64_t x = X;GVM_ZZE(*((int64_t*) &x)); })
+#define GVM_U2F(X) ({uint64_t x = X;*((double*) &x); })
+#define GVM_I2U(X) ({int64_t x = GVM_ZZD(X);*((uint64_t*) &x); })
+#define GVM_I2F(X) ({int64_t x = GVM_ZZD(X);*((double*) &x); })
+#define GVM_F2U(X) ({double x = X;*((uint64_t*) &x); })
+#define GVM_F2I(X) ({double x = X;GVM_ZZE(*((uint64_t*) &x)); })
+
 void $function0(void);   /* $function0 */
 void $function1(void);   /* ./libs/std.gsm:getFormatType// */
 void $function2(void);   /* ./libs/std.gsm:cmp/txt/txt/ */
@@ -113,9 +122,9 @@ void $function107(void); /* ./src/byteReader.gsm:nextULong/ByteReader/ */
 void $function108(void); /* ./src/byteReader.gsm:nextUInt/ByteReader/ */
 void $function109(void); /* ./src/byteReader.gsm:nextUShort/ByteReader/ */
 void $function110(void); /* ./src/byteReader.gsm:nextBuffer/ByteReader/ */
-const uint8_t const_num8[51] = {0,
+const uint8_t const_num8[53] = {0,
                                 0,
-                                61,
+                                77,
                                 0,
                                 2,
                                 4,
@@ -160,6 +169,8 @@ const uint8_t const_num8[51] = {0,
                                 36,
                                 38,
                                 40,
+                                42,
+                                44,
                                 15,
                                 102,
                                 100,
@@ -173,7 +184,7 @@ const uint16_t const_num16[2] = {0,
 const uint32_t const_num32[1] = {0,
                                  6777197};
 const uint64_t const_num64[1] = {0};
-const char *const_text[317] = {"undefined",
+const char *const_text[333] = {"undefined",
                                "none",
                                "ubyte",
                                "byte",
@@ -414,6 +425,14 @@ const char *const_text[317] = {"undefined",
                                "#include <stdio.h>\n",
                                "#include <stdint.h>\n",
                                "#include <stdlib.h>\n\n",
+                               "#define GVM_ZZE(I) ((((int64_t) I) >> 63) ^ (((int64_t) I) << 1))\n",
+                               "#define GVM_ZZD(I) ((((int64_t) I) >> 1) ^ -(((int64_t) I) & 1))\n",
+                               "#define GVM_U2I(X) ({uint64_t x = X;GVM_ZZE(*((int64_t*) &x));})\n",
+                               "#define GVM_U2F(X) ({uint64_t x = X;*((double*) &x);})\n",
+                               "#define GVM_I2U(X) ({int64_t x = GVM_ZZD(X);*((uint64_t*) &x);})\n",
+                               "#define GVM_I2F(X) ({int64_t x = GVM_ZZD(X);*((double*) &x);})\n",
+                               "#define GVM_F2U(X) ({double x = X;*((uint64_t*) &x);})\n",
+                               "#define GVM_F2I(X) ({double x = X;GVM_ZZE(*((uint64_t*) &x));})\n\n",
                                "bytecode",
                                "statements",
                                "functionName",
@@ -458,6 +477,7 @@ const char *const_text[317] = {"undefined",
                                "char *global_text[",
                                "globalFuncSize",
                                "void *global_func[",
+                               "];\n\n",
                                "globalCmplxSize",
                                "void *global_cmplx[",
                                "Transpile2StatementsResult(statements:text,functionName:text)",
@@ -474,6 +494,13 @@ const char *const_text[317] = {"undefined",
                                "local_num16[",
                                "local_num32[",
                                "local_num64[",
+                               ")))",
+                               ") + GVM_U2I(",
+                               "(GVM_I2U(GVM_U2I(",
+                               ")",
+                               " + ",
+                               ") + GVM_U2F(",
+                               "(GVM_F2U(GVM_U2F(",
                                "fl",
                                "ResultTxt(content:text,error:text)",
                                "ResultFile(file:text,error:text)",
@@ -498,6 +525,7 @@ uint64_t global_num64[0];
 char *global_text[8];
 void *global_func[0];
 void *global_cmplx[15];
+
 void $function0(void)
 { /* $function0 */
     uint8_t local_num8[0];
@@ -558,7 +586,7 @@ void $function2(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num32[0] = const_num8[0];
-    local_num32[0] = const_num8[1];
+    local_num32[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num32[0])));
 }
 void $function3(void)
 { /* ./libs/std.gsm:same/txt/txt/ */
@@ -570,7 +598,7 @@ void $function3(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num32[0] = const_num8[0];
-    local_num32[0] = const_num8[1];
+    local_num32[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num32[0])));
 }
 void $function4(void)
 { /* ./libs/std.gsm:upper/txt/ */
@@ -594,7 +622,7 @@ void $function5(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[0] = const_num8[1];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function6(void)
 { /* ./libs/std.gsm:pause/txt/ */
@@ -678,10 +706,10 @@ void $function13(void)
     local_num64[3] = global_num64[1];
     local_num64[4] = global_num64[2];
     local_num64[5] = const_num8[17];
-    local_num64[5] = const_num8[18];
+    local_num64[5] = (const_num8[18] + global_num64[5]);
     local_num64[5] = const_num8[17];
-    local_num64[5] = const_num8[18];
-    local_num64[5] = const_num8[18];
+    local_num64[5] = (const_num8[18] + global_num64[5]);
+    local_num64[5] = (const_num8[18] + global_num64[5]);
 }
 void $function14(void)
 { /* ./libs/std.gsm:fill/txt// */
@@ -702,11 +730,11 @@ void $function15(void)
     char *local_text[2];
     void *local_func[0];
     void *local_cmplx[0];
-    local_num64[1] = const_num8[18];
-    local_num64[1] = const_num8[18];
+    local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[18]) + GVM_U2I(global_num64[0])));
+    local_num64[1] = (const_num8[18] + global_num64[1]);
     local_num64[0] = const_num8[1];
-    local_num64[1] = const_num8[18];
-    local_num64[1] = const_num8[18];
+    local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[18]) + GVM_U2I(global_num64[0])));
+    local_num64[1] = (const_num8[18] + global_num64[1]);
 }
 void $function16(void)
 { /* ./libs/std.gsm:indexOfTxtInList/multi/txt/ */
@@ -718,7 +746,7 @@ void $function16(void)
     void *local_func[0];
     void *local_cmplx[1];
     local_num64[0] = const_num8[17];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function17(void)
 { /* ./libs/std.gsm:indexOfSameTxtInList/multi/txt/ */
@@ -730,7 +758,7 @@ void $function17(void)
     void *local_func[0];
     void *local_cmplx[1];
     local_num64[0] = const_num8[17];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function18(void)
 { /* ./libs/std.gsm:toBytes/txt/ */
@@ -742,7 +770,7 @@ void $function18(void)
     void *local_func[0];
     void *local_cmplx[1];
     local_num64[0] = const_num8[0];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function19(void)
 { /* ./libs/std.gsm:ccolor// */
@@ -824,7 +852,7 @@ void $function26(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[0] = const_num8[0];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function27(void)
 { /* ./libs/std.gsm:filter/txt/txt/ */
@@ -837,7 +865,7 @@ void $function27(void)
     void *local_cmplx[0];
     local_num64[0] = const_num8[0];
     local_num64[2] = global_num64[0];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function28(void)
 { /* ./libs/std.gsm:insertText/txt/txt// */
@@ -849,10 +877,10 @@ void $function28(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[1] = const_num8[17];
-    local_num64[1] = const_num8[18];
+    local_num64[1] = (const_num8[18] + global_num64[1]);
     local_num64[2] = const_num8[17];
-    local_num64[2] = const_num8[18];
-    local_num64[1] = const_num8[18];
+    local_num64[2] = (const_num8[18] + global_num64[2]);
+    local_num64[1] = (const_num8[18] + global_num64[1]);
 }
 void $function29(void)
 { /* ./libs/std.gsm:subText/txt/// */
@@ -864,7 +892,7 @@ void $function29(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[2] = global_num64[0];
-    local_num64[2] = const_num8[18];
+    local_num64[2] = (const_num8[18] + global_num64[2]);
 }
 void $function30(void)
 { /* ./libs/std.gsm:StringRepresentation/txt/ */
@@ -876,7 +904,7 @@ void $function30(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[0] = const_num8[17];
-    local_num64[0] = const_num8[18];
+    local_num64[0] = (const_num8[18] + global_num64[0]);
 }
 void $function31(void)
 { /* ./libs/std.gsm:SQLStringRepresentation/txt/ */
@@ -888,7 +916,7 @@ void $function31(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[0] = const_num8[17];
-    local_num64[0] = const_num8[18];
+    local_num64[0] = (const_num8[18] + global_num64[0]);
 }
 void $function32(void)
 { /* ./libs/std.gsm:getChar/txt// */
@@ -910,7 +938,7 @@ void $function33(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[1] = const_num8[0];
-    local_num64[1] = const_num8[1];
+    local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[1])));
 }
 void $function34(void)
 { /* ./libs/std.gsm:Str/ */
@@ -922,7 +950,7 @@ void $function34(void)
     void *local_func[0];
     void *local_cmplx[2];
     local_num64[0] = const_num8[17];
-    local_num64[0] = const_num8[18];
+    local_num64[0] = (const_num8[18] + global_num64[0]);
 }
 void $function35(void)
 { /* ./libs/std.gsm:getIndexInText/txt// */
@@ -934,7 +962,7 @@ void $function35(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[0] = const_num8[0];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function36(void)
 { /* ./libs/std.gsm:stripMargin/txt/ */
@@ -948,9 +976,9 @@ void $function36(void)
     local_num64[0] = const_num8[17];
     local_num8[1] = global_num64[0];
     local_num8[1] = global_num64[0];
+    local_num64[0] = (const_num8[18] + global_num64[0]);
     local_num64[0] = const_num8[18];
-    local_num64[0] = const_num8[18];
-    local_num64[0] = const_num8[18];
+    local_num64[0] = (const_num8[18] + global_num64[0]);
 }
 void $function37(void)
 { /* ./libs/std.gsm:makeString/multi/txt/ */
@@ -962,7 +990,7 @@ void $function37(void)
     void *local_func[0];
     void *local_cmplx[1];
     local_num64[0] = const_num8[17];
-    local_num64[0] = const_num8[18];
+    local_num64[0] = (const_num8[18] + global_num64[0]);
 }
 void $function38(void)
 { /* ./libs/std.gsm:replace/txt/txt/txt/ */
@@ -977,7 +1005,7 @@ void $function38(void)
     local_num64[1] = const_num8[0];
     local_num64[0] = const_num8[1];
     local_num64[0] = global_num64[1];
-    local_num64[1] = global_num64[0];
+    local_num64[1] = (GVM_I2U(GVM_U2I(global_num64[0]) + GVM_U2I(global_num64[1])));
 }
 void $function39(void)
 { /* ./libs/std.gsm:countChar/txt// */
@@ -990,8 +1018,8 @@ void $function39(void)
     void *local_cmplx[0];
     local_num64[0] = const_num8[0];
     local_num64[1] = const_num8[0];
-    local_num64[0] = const_num8[1];
-    local_num64[1] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
+    local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[1])));
 }
 void $function40(void)
 { /* ./libs/std.gsm:startsWith/txt/txt/ */
@@ -1013,8 +1041,8 @@ void $function41(void)
     void *local_func[0];
     void *local_cmplx[1];
     local_num64[0] = const_num8[0];
-    local_num64[0] = const_num8[1];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function42(void)
 { /* ./libs/std.gsm:getArgument/multi/txt/ */
@@ -1026,7 +1054,7 @@ void $function42(void)
     void *local_func[0];
     void *local_cmplx[1];
     local_num64[0] = const_num8[0];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function43(void)
 { /* ./libs/tracer.gsm:function_tracer_enter/txt// */
@@ -1067,7 +1095,7 @@ void $function45(void)
     local_num8[0] = const_num8[17];
     local_num8[0] = const_num8[18];
     local_num64[0] = global_num64[4];
-    local_num64[2] = const_num8[18];
+    local_num64[2] = (const_num8[18] + global_num64[2]);
 }
 void $function46(void)
 { /* ./libs/tracer.gsm:$$GVMErrorHandler$$/ */
@@ -1090,16 +1118,16 @@ void $function47(void)
     void *local_cmplx[0];
     local_num64[0] = const_num8[0];
     local_num64[1] = const_num8[0];
-    local_num64[0] = global_num64[1];
-    local_num64[1] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(global_num64[1]) + GVM_U2I(global_num64[0])));
+    local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[1])));
     local_num64[2] = const_num8[8];
     local_num64[1] = const_num8[0];
-    local_num64[2] = global_num64[1];
-    local_num64[1] = const_num8[1];
+    local_num64[2] = (GVM_I2U(GVM_U2I(global_num64[1]) + GVM_U2I(global_num64[2])));
+    local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[1])));
     local_num64[3] = const_num8[37];
     local_num64[1] = const_num8[0];
-    local_num64[3] = global_num64[1];
-    local_num64[1] = const_num8[1];
+    local_num64[3] = (GVM_I2U(GVM_U2I(global_num64[1]) + GVM_U2I(global_num64[3])));
+    local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[1])));
 }
 void $function48(void)
 { /* ./libs/classic.gsm:UInt// */
@@ -1340,7 +1368,7 @@ void $function70(void)
     void *local_func[0];
     void *local_cmplx[1];
     local_num64[0] = const_num8[0];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function71(void)
 { /* main.gsm:help/ */
@@ -1395,7 +1423,7 @@ void $function75(void)
     local_num64[0] = const_num8[17];
     local_num64[1] = const_num8[18];
     local_num64[3] = global_num64[1];
-    local_num64[1] = const_num8[18];
+    local_num64[1] = (const_num8[18] + global_num64[1]);
 }
 void $function76(void)
 { /* ./libs/system.gsm:$_selectText_$/txt/txt/ */
@@ -1530,7 +1558,7 @@ void $function87(void)
     local_num32[11] = const_num8[5];
     local_num32[12] = global_num8[1];
     local_num32[13] = const_num8[4];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function88(void)
 { /* ./src/transpiler.gsm:Transpile2StatementsResult */
@@ -1548,7 +1576,7 @@ void $function89(void)
     uint16_t local_num16[0];
     uint32_t local_num32[0];
     uint64_t local_num64[5];
-    char *local_text[7];
+    char *local_text[11];
     void *local_func[0];
     void *local_cmplx[4];
     local_num8[1] = const_num8[0];
@@ -1736,11 +1764,11 @@ void $function107(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[0] = const_num8[17];
-    local_num64[0] = const_num8[47];
-    local_num64[0] = const_num8[34];
-    local_num64[0] = const_num8[48];
     local_num64[0] = const_num8[49];
+    local_num64[0] = const_num8[34];
     local_num64[0] = const_num8[50];
+    local_num64[0] = const_num8[51];
+    local_num64[0] = const_num8[52];
     local_num64[0] = const_num8[25];
     local_num64[0] = const_num8[24];
     local_num64[0] = global_num64[0];
@@ -1755,7 +1783,7 @@ void $function108(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num32[0] = const_num8[17];
-    local_num32[0] = const_num8[50];
+    local_num32[0] = const_num8[52];
     local_num32[0] = const_num8[25];
     local_num32[0] = const_num8[24];
     local_num32[0] = global_num32[0];
@@ -1783,5 +1811,5 @@ void $function110(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[0] = const_num8[0];
-    local_num64[0] = const_num8[1];
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
