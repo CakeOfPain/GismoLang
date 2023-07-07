@@ -23,8 +23,10 @@ collectConstants(GismoInstructions instr) txt {
 	protos is txt[]
 	funcs  is txt[]
 
-	function_count = 0
+	functionCount is ulong = 0
 	for reader.hasNext() {
+		// output(reader.count, "/", reader.buffer.Length())
+		// progressbar@std(" transpilation ", reader.count, reader.buffer.Length(), 100)
 		instruction := reader.next()
 		if instruction == 0 {
 			// NOP
@@ -54,50 +56,89 @@ collectConstants(GismoInstructions instr) txt {
 			local_cmplx := reader.nextUInt()
 			instructions := reader.nextBuffer()
 
-			function_name := "$function".fmt(function_count)
-			dis_instructions := ""
+			transpile2StatementsResult := transpile2Statements(instructions, functionCount)
+			cStatements := transpile2StatementsResult.statements
+			functionName := transpile2StatementsResult.functionName
 
-			fReader := ByteReader(instructions, 0)
-			for fReader.hasNext() {
-				fInstr := fReader.next()
-				name := bytecode_name@bytecode[fInstr]
-				len := bytecode_arglen@bytecode[fInstr]
-				
-				if fInstr == 149 {
-					// Hint
-					hint := fReader.nextBuffer()
-					hint_args is split@std(hint, ";")
-					if hint_args[0u].cmp@std("fl") {
-						function_name = hint_args[1u]
-					}
-				} else {
-					dis_instructions += "\t" + name
-					if len == (-1) {
-						dis_instructions += fmt("\t", StringRepresentation@std(fReader.nextBuffer()))
-					} else if len == 2 {
-						dis_instructions += fmt("\t", fReader.nextUShort())
-					} else if len == 4 {
-						dis_instructions += fmt("\t", fReader.nextUInt())
-					}
-
-					dis_instructions += "\n"
-				}
-			}
-
-			protos.Add("void " + "$function".fmt(function_count) + "(void); /* " + function_name.replace@std("*", "multi") + " */")
-			funcs.Add("void " + "$function".fmt(function_count) + "(void) {/* " + function_name.replace@std("*", "multi") + " */" + "/*\n" + dis_instructions + "\n*/\n}")
-			function_count += 1
+			protos.Add("void " + "$function".fmt(functionCount) + "(void); /* " + functionName.replace@std("*", "multi") + " */")
+			funcs.Add("void " + "$function".fmt(functionCount) + "(void) {/* " + functionName.replace@std("*", "multi") + " */" + "\n" + cStatements + "\n}")
+			functionCount += 1
 		}
 	}
 
 	code := ""
 	code += makeString@std(protos, "\n") + "\n"
-	code += "uint8_t  const_num8["+instr.constNum8Size.fmt()+"] = {"+makeString@std(num8s, ",\n")+"};\n"
-	code += "uint16_t const_num16["+instr.constNum16Size.fmt()+"] = {"+makeString@std(num16s, ",\n")+"};\n"
-	code += "uint32_t const_num32["+instr.constNum32Size.fmt()+"] = {"+makeString@std(num32s, ",\n")+"};\n"
-	code += "uint64_t const_num64["+instr.constNum64Size.fmt()+"] = {"+makeString@std(num64s, ",\n")+"};\n"
-	code += "char *const_text["+instr.constTextSize.fmt()+"] = {"+makeString@std(texts, ",\n")+"};\n"
+	code += "const uint8_t  const_num8["+instr.constNum8Size.fmt()+"] = {"+makeString@std(num8s, ",\n")+"};\n"
+	code += "const uint16_t const_num16["+instr.constNum16Size.fmt()+"] = {"+makeString@std(num16s, ",\n")+"};\n"
+	code += "const uint32_t const_num32["+instr.constNum32Size.fmt()+"] = {"+makeString@std(num32s, ",\n")+"};\n"
+	code += "const uint64_t const_num64["+instr.constNum64Size.fmt()+"] = {"+makeString@std(num64s, ",\n")+"};\n"
+	code += "const char *const_text["+instr.constTextSize.fmt()+"] = {"+makeString@std(texts, ",\n")+"};\n"
+	code += "\n"
+	code += "uint8_t global_num8[" + instr.globalNum8Size.fmt() + "];\n"
+	code += "uint16_t global_num16[" + instr.globalNum16Size.fmt() + "];\n"
+	code += "uint32_t global_num32[" + instr.globalNum32Size.fmt() + "];\n"
+	code += "uint64_t global_num64[" + instr.globalNum64Size.fmt() + "];\n"
+	code += "char *global_text[" + instr.globalTextSize.fmt() + "];\n"
+	code += "void *global_func[" + instr.globalFuncSize.fmt() + "];\n"
+	code += "void *global_cmplx[" + instr.globalCmplxSize.fmt() + "];\n"
 	code += makeString@std(funcs, "\n") + "\n"
 
 	return code
+}
+
+Transpile2StatementsResult(txt statements, txt functionName) struct;
+transpile2Statements(txt instructions, ulong functionCount) Transpile2StatementsResult {
+	functionName := "$function".fmt(functionCount)
+	fReader := ByteReader(instructions, 0)
+
+	// statements is txt[]
+	stack is txt[]
+
+	for fReader.hasNext() {
+		fInstr := fReader.next()
+		name := bytecode_name@bytecode[fInstr]
+		len := bytecode_arglen@bytecode[fInstr]
+		
+		if fInstr == 1 { // LoadConstNum8
+			stack.Add(fmt("const_num8[", fReader.nextUInt(), "]"))
+		} else if fInstr == 2 { // LoadConstNum16
+			stack.Add(fmt("const_num16[", fReader.nextUInt(), "]"))
+		} else if fInstr == 3 { // LoadConstNum32
+			stack.Add(fmt("const_num32[", fReader.nextUInt(), "]"))
+		} else if fInstr == 4 { // LoadConstNum64
+			stack.Add(fmt("const_num64[", fReader.nextUInt(), "]"))
+		} else if fInstr == 5 { // LoadConstText
+			stack.Add(fmt("const_text[", fReader.nextUInt(), "]"))
+		} else if fInstr == 6 { // LoadGlobalNum8
+			stack.Add(fmt("global_num8[", fReader.nextUInt(), "]"))
+		} else if fInstr == 7 { // LoadGlobalNum16
+			stack.Add(fmt("global_num16[", fReader.nextUInt(), "]"))
+		} else if fInstr == 8 { // LoadGlobalNum32
+			stack.Add(fmt("global_num32[", fReader.nextUInt(), "]"))
+		} else if fInstr == 9 { // LoadGlobalNum64
+			stack.Add(fmt("global_num64[", fReader.nextUInt(), "]"))
+		} else if fInstr == 10 { // LoadGlobalText
+			stack.Add(fmt("global_text[", fReader.nextUInt(), "]"))
+		} else if fInstr == 11 { // LoadGlobalFunc
+			stack.Add(fmt("global_func[", fReader.nextUInt(), "]"))
+		} else if fInstr == 12 { // LoadGlobalCmplx
+			stack.Add(fmt("global_cmplx[", fReader.nextUInt(), "]"))
+		} else if fInstr == 149 {
+			// Hint
+			hint := fReader.nextBuffer()
+			hint_args is split@std(hint, ";")
+			if hint_args[0u].cmp@std("fl") {
+				functionName = hint_args[1u]
+			}
+		} else {
+			if len == (-1) {
+				fReader.nextBuffer()
+			} else if len == 2 {
+				fReader.nextUShort()
+			} else if len == 4 {
+				fReader.nextUInt()
+			}
+		}
+	}
+	return Transpile2StatementsResult(makeString@std(stack, ";\n"), functionName)
 }

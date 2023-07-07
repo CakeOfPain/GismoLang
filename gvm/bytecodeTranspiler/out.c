@@ -448,6 +448,12 @@ char *const_text[281] = {"undefined",
 "ByteReader(buffer:text,count:uint)",
 "buffer",
 "count"};
+
+int main(void) {
+	printf("%s\n", "Hello World!");
+	return 0;
+}
+
 void $function0(void) {/* $function0 *//*
 	LoadConstNum8	0
 	StoreGlobalNum8	0
