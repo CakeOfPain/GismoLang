@@ -122,9 +122,9 @@ void $function107(void); /* ./src/byteReader.gsm:nextULong/ByteReader/ */
 void $function108(void); /* ./src/byteReader.gsm:nextUInt/ByteReader/ */
 void $function109(void); /* ./src/byteReader.gsm:nextUShort/ByteReader/ */
 void $function110(void); /* ./src/byteReader.gsm:nextBuffer/ByteReader/ */
-const uint8_t const_num8[53] = {0,
+const uint8_t const_num8[82] = {0,
                                 0,
-                                77,
+                                104,
                                 0,
                                 2,
                                 4,
@@ -171,6 +171,35 @@ const uint8_t const_num8[53] = {0,
                                 40,
                                 42,
                                 44,
+                                46,
+                                50,
+                                52,
+                                54,
+                                56,
+                                58,
+                                60,
+                                62,
+                                66,
+                                68,
+                                70,
+                                72,
+                                74,
+                                76,
+                                78,
+                                80,
+                                82,
+                                84,
+                                86,
+                                88,
+                                90,
+                                92,
+                                94,
+                                96,
+                                98,
+                                100,
+                                102,
+                                104,
+                                106,
                                 15,
                                 102,
                                 100,
@@ -184,7 +213,7 @@ const uint16_t const_num16[2] = {0,
 const uint32_t const_num32[1] = {0,
                                  6777197};
 const uint64_t const_num64[1] = {0};
-const char *const_text[333] = {"undefined",
+const char *const_text[360] = {"undefined",
                                "none",
                                "ubyte",
                                "byte",
@@ -501,6 +530,33 @@ const char *const_text[333] = {"undefined",
                                " + ",
                                ") + GVM_U2F(",
                                "(GVM_F2U(GVM_U2F(",
+                               ") - GVM_U2I(",
+                               " - ",
+                               ") - GVM_U2F(",
+                               ") * GVM_U2I(",
+                               " * ",
+                               ") * GVM_U2F(",
+                               ") / GVM_U2I(",
+                               " / ",
+                               ") / GVM_U2F(",
+                               " & ",
+                               " | ",
+                               "(!",
+                               "))",
+                               ") == GVM_U2I(",
+                               "(GVM_U2I(",
+                               " == ",
+                               ") == GVM_U2F(",
+                               "(GVM_U2F(",
+                               ") == ",
+                               ") < GVM_U2I(",
+                               " < ",
+                               ") < GVM_U2F(",
+                               ") < ",
+                               ") > GVM_U2I(",
+                               " > ",
+                               ") > GVM_U2F(",
+                               ") > ",
                                "fl",
                                "ResultTxt(content:text,error:text)",
                                "ResultFile(file:text,error:text)",
@@ -610,7 +666,7 @@ void $function4(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[1] = const_num8[0];
-    local_num64[1] = const_num8[28];
+    local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[28]) - GVM_U2I(global_num64[1])));
 }
 void $function5(void)
 { /* ./libs/std.gsm:reverse/txt/ */
@@ -703,8 +759,8 @@ void $function13(void)
     char *local_text[1];
     void *local_func[0];
     void *local_cmplx[0];
-    local_num64[3] = global_num64[1];
-    local_num64[4] = global_num64[2];
+    local_num64[3] = (GVM_F2U(GVM_U2F(global_num64[1]) / GVM_U2F(global_num64[0])));
+    local_num64[4] = (GVM_F2U(GVM_U2F(global_num64[2]) * GVM_U2F(global_num64[3])));
     local_num64[5] = const_num8[17];
     local_num64[5] = (const_num8[18] + global_num64[5]);
     local_num64[5] = const_num8[17];
@@ -730,10 +786,10 @@ void $function15(void)
     char *local_text[2];
     void *local_func[0];
     void *local_cmplx[0];
-    local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[18]) + GVM_U2I(global_num64[0])));
+    local_num64[1] = (GVM_U2I((GVM_I2U(GVM_U2I(const_num8[18]) + GVM_U2I(global_num64[0])))) < (GVM_U2I(const_num8[0]) > GVM_U2I(global_num64[0])));
     local_num64[1] = (const_num8[18] + global_num64[1]);
-    local_num64[0] = const_num8[1];
-    local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[18]) + GVM_U2I(global_num64[0])));
+    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) * GVM_U2I(global_num64[0])));
+    local_num64[1] = (GVM_U2I((GVM_I2U(GVM_U2I(const_num8[18]) + GVM_U2I(global_num64[0])))) < (GVM_U2I((GVM_I2U(GVM_U2I(const_num8[18]) + GVM_U2I(global_num64[0])))) < global_num64[1]));
     local_num64[1] = (const_num8[18] + global_num64[1]);
 }
 void $function16(void)
@@ -977,7 +1033,7 @@ void $function36(void)
     local_num8[1] = global_num64[0];
     local_num8[1] = global_num64[0];
     local_num64[0] = (const_num8[18] + global_num64[0]);
-    local_num64[0] = const_num8[18];
+    local_num64[0] = (const_num8[18] - global_num64[0]);
     local_num64[0] = (const_num8[18] + global_num64[0]);
 }
 void $function37(void)
@@ -1041,7 +1097,7 @@ void $function41(void)
     void *local_func[0];
     void *local_cmplx[1];
     local_num64[0] = const_num8[0];
-    local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
+    local_num64[0] = (GVM_I2U(GVM_U2I((GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[0])))) + GVM_U2I(global_num64[0])));
     local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function42(void)
@@ -1076,7 +1132,7 @@ void $function44(void)
     char *local_text[1];
     void *local_func[0];
     void *local_cmplx[0];
-    local_num64[1] = const_num8[18];
+    local_num64[1] = (const_num8[18] - const_num8[17]);
 }
 void $function45(void)
 { /* ./libs/tracer.gsm:printStackTrace/ */
@@ -1089,9 +1145,9 @@ void $function45(void)
     void *local_cmplx[0];
     local_num64[0] = const_num8[17];
     local_num8[0] = const_num8[17];
-    local_num64[1] = const_num8[18];
+    local_num64[1] = (const_num8[18] - const_num8[17]);
     local_num64[2] = const_num8[17];
-    local_num64[4] = const_num8[18];
+    local_num64[4] = (const_num8[18] - global_num64[1]);
     local_num8[0] = const_num8[17];
     local_num8[0] = const_num8[18];
     local_num64[0] = global_num64[4];
@@ -1527,8 +1583,7 @@ void $function85(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num32[0] = const_num8[0];
-    local_num32[1] = const_num32[0];
-    local_num32[2] = global_num32[0];
+    local_num32[1] = (!(const_num32[0] == global_num32[0]));
 }
 void $function86(void)
 { /* ./src/transpiler.gsm:transpile2C/GismoInstructions/ */
@@ -1551,13 +1606,13 @@ void $function87(void)
     void *local_cmplx[7];
     local_num64[0] = const_num8[0];
     local_num8[1] = const_num8[0];
-    local_num32[7] = const_num8[7];
-    local_num32[8] = global_num8[1];
-    local_num32[9] = const_num8[6];
-    local_num32[10] = global_num8[1];
-    local_num32[11] = const_num8[5];
-    local_num32[12] = global_num8[1];
-    local_num32[13] = const_num8[4];
+    local_num32[7] = ((GVM_U2I(const_num8[7]) == global_num8[1]) | (GVM_U2I(const_num8[6]) == global_num8[1]));
+    local_num32[8] = (GVM_U2I(const_num8[5]) == global_num8[1]);
+    local_num32[9] = (GVM_U2I(const_num8[4]) == global_num8[1]);
+    local_num32[10] = (GVM_U2I(const_num8[3]) == global_num8[1]);
+    local_num32[11] = (GVM_U2I(const_num8[2]) == global_num8[1]);
+    local_num32[12] = (GVM_U2I(const_num8[1]) == global_num8[1]);
+    local_num32[13] = (GVM_U2I(const_num8[0]) == global_num8[1]);
     local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 }
 void $function88(void)
@@ -1576,12 +1631,12 @@ void $function89(void)
     uint16_t local_num16[0];
     uint32_t local_num32[0];
     uint64_t local_num64[5];
-    char *local_text[11];
+    char *local_text[13];
     void *local_func[0];
     void *local_cmplx[4];
     local_num8[1] = const_num8[0];
     local_num64[3] = global_num8[1];
-    local_num64[4] = const_num8[1];
+    local_num64[4] = (GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num8[1])));
 }
 void $function90(void)
 { /* ./libs/fs.gsm:ResultTxt */
@@ -1764,13 +1819,13 @@ void $function107(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num64[0] = const_num8[17];
-    local_num64[0] = const_num8[49];
-    local_num64[0] = const_num8[34];
-    local_num64[0] = const_num8[50];
-    local_num64[0] = const_num8[51];
-    local_num64[0] = const_num8[52];
-    local_num64[0] = const_num8[25];
-    local_num64[0] = const_num8[24];
+    local_num64[0] = (const_num8[78] | global_num64[0]);
+    local_num64[0] = (const_num8[34] | global_num64[0]);
+    local_num64[0] = (const_num8[79] | global_num64[0]);
+    local_num64[0] = (const_num8[80] | global_num64[0]);
+    local_num64[0] = (const_num8[81] | global_num64[0]);
+    local_num64[0] = (const_num8[25] | global_num64[0]);
+    local_num64[0] = (const_num8[24] | global_num64[0]);
     local_num64[0] = global_num64[0];
 }
 void $function108(void)
@@ -1783,9 +1838,9 @@ void $function108(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num32[0] = const_num8[17];
-    local_num32[0] = const_num8[52];
-    local_num32[0] = const_num8[25];
-    local_num32[0] = const_num8[24];
+    local_num32[0] = (const_num8[81] | global_num32[0]);
+    local_num32[0] = (const_num8[25] | global_num32[0]);
+    local_num32[0] = (const_num8[24] | global_num32[0]);
     local_num32[0] = global_num32[0];
 }
 void $function109(void)
@@ -1798,7 +1853,7 @@ void $function109(void)
     void *local_func[0];
     void *local_cmplx[0];
     local_num16[0] = const_num8[17];
-    local_num16[0] = const_num8[24];
+    local_num16[0] = (const_num8[24] | global_num16[0]);
     local_num16[0] = global_num16[0];
 }
 void $function110(void)

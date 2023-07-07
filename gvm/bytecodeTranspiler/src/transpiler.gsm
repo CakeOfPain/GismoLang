@@ -194,11 +194,160 @@ transpile2Statements(txt instructions, ulong functionCount) Transpile2Statements
 			a = stack.Remove(top)
 			b = stack.Remove(top-1)
 			stack.Add("("+a+" + "+b+")")
-		} else if fInstr == 22 && stack.Size() > 1 {
+		} else if fInstr == 23 && stack.Size() > 1 {
 			// AddF()(a: double, b: double) -> double
 			a = stack.Remove(top)
 			b = stack.Remove(top-1)
 			stack.Add("(GVM_F2U(GVM_U2F("+a+") + GVM_U2F("+b+")))")
+		} else if fInstr == 24 && stack.Size() > 1 {
+			// SubI()(a: int, b: int) -> int
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_I2U(GVM_U2I("+a+") - GVM_U2I("+b+")))")
+		} else if fInstr == 25 && stack.Size() > 1 {
+			// SubU()(a: uint, b: uint) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("("+a+" - "+b+")")
+		} else if fInstr == 26 && stack.Size() > 1 {
+			// SubF()(a: double, b: double) -> double
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_F2U(GVM_U2F("+a+") - GVM_U2F("+b+")))")
+		} else if fInstr == 27 && stack.Size() > 1 {
+			// MulI()(a: int, b: int) -> int
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_I2U(GVM_U2I("+a+") * GVM_U2I("+b+")))")
+		} else if fInstr == 28 && stack.Size() > 1 {
+			// MulU()(a: uint, b: uint) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("("+a+" * "+b+")")
+		} else if fInstr == 29 && stack.Size() > 1 {
+			// MulF()(a: double, b: double) -> double
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_F2U(GVM_U2F("+a+") * GVM_U2F("+b+")))")
+		} else if fInstr == 30 && stack.Size() > 1 {
+			// DivI()(a: int, b: int) -> int
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_I2U(GVM_U2I("+a+") / GVM_U2I("+b+")))")
+		} else if fInstr == 31 && stack.Size() > 1 {
+			// DivU()(a: uint, b: uint) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("("+a+" / "+b+")")
+		} else if fInstr == 32 && stack.Size() > 1 {
+			// DivF()(a: double, b: double) -> double
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_F2U(GVM_U2F("+a+") / GVM_U2F("+b+")))")
+		} else if fInstr == 33 && stack.Size() > 1 {
+			// And()(a: uint, b: uint) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("("+a+" & "+b+")")
+		} else if fInstr == 34 && stack.Size() > 1 {
+			// Or()(a: uint, b: uint) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("("+a+" | "+b+")")
+		} else if fInstr == 35 && stack.Size() > 0 {
+			// Not()(x: uint) -> double
+			x = stack.Remove(top)
+			stack.Add("(!"+ x +")")
+		} else if fInstr == 36 && stack.Size() > 1 {
+			// EqI()(int a, int b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2I("+a+") == GVM_U2I("+b+"))")
+		} else if fInstr == 37 && stack.Size() > 1 {
+			// EqU()(uint a, uint b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("("+a+" == "+b+")")
+		} else if fInstr == 38 && stack.Size() > 1 {
+			// EqF()(double a, double b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2F("+a+") == GVM_U2F("+b+"))")
+		} else if fInstr == 39 && stack.Size() > 1 {
+			// EqIU()(uint a, int b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2I("+a+") == "+b+")")
+		} else if fInstr == 40 && stack.Size() > 1 {
+			// EqFI()(double a, int b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2F("+a+") == GVM_U2I("+b+"))")
+		} else if fInstr == 41 && stack.Size() > 1 {
+			// EqFU()(double a, uint b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2F("+a+") == "+b+")")
+		} else if fInstr == 42 && stack.Size() > 1 {
+			// GreaterI()(int a, int b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2I("+a+") < GVM_U2I("+b+"))")
+		} else if fInstr == 43 && stack.Size() > 1 {
+			// GreaterU()(uint a, uint b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("("+a+" < "+b+")")
+		} else if fInstr == 44 && stack.Size() > 1 {
+			// GreaterF()(double a, double b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2F("+a+") < GVM_U2F("+b+"))")
+		} else if fInstr == 45 && stack.Size() > 1 {
+			// GreaterIU()(int a, uint b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2I("+a+") < "+b+")")
+		} else if fInstr == 46 && stack.Size() > 1 {
+			// GreaterFI()(double a, int b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2F("+a+") < GVM_U2I("+b+"))")
+		} else if fInstr == 47 && stack.Size() > 1 {
+			// GreaterFU()(double a, uint b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2F("+a+") < "+b+")")
+		} else if fInstr == 48 && stack.Size() > 1 {
+			// LessI()(int a, int b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2I("+a+") > GVM_U2I("+b+"))")
+		} else if fInstr == 49 && stack.Size() > 1 {
+			// LessU()(uint a, uint b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("("+a+" > "+b+")")
+		} else if fInstr == 50 && stack.Size() > 1 {
+			// LessF()(double a, double b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2F("+a+") > GVM_U2F("+b+"))")
+		} else if fInstr == 51 && stack.Size() > 1 {
+			// LessIU()(int a, uint b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2I("+a+") > "+b+")")
+		} else if fInstr == 52 && stack.Size() > 1 {
+			// LessFI()(double a, int b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2F("+a+") > GVM_U2I("+b+"))")
+		} else if fInstr == 53 && stack.Size() > 1 {
+			// LessFU()(double a, uint b) -> uint
+			a = stack.Remove(top)
+			b = stack.Remove(top-1)
+			stack.Add("(GVM_U2F("+a+") > "+b+")")
 		} else if fInstr == 149 {
 			// Hint
 			hint := fReader.nextBuffer()
