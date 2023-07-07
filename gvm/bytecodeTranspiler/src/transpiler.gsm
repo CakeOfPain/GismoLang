@@ -61,7 +61,23 @@ collectConstants(GismoInstructions instr) txt {
 			functionName := transpile2StatementsResult.functionName
 
 			protos.Add("void " + "$function".fmt(functionCount) + "(void); /* " + functionName.replace@std("*", "multi") + " */")
-			funcs.Add("void " + "$function".fmt(functionCount) + "(void) {/* " + functionName.replace@std("*", "multi") + " */" + "\n" + cStatements + "\n}")
+			funcs.Add(fmt(
+				"void ",
+				"$function".fmt(functionCount),
+				"(void) {/* ",
+				functionName.replace@std("*", "multi"),
+				" */",
+				"\n",
+				"uint8_t local_num8[", local_num8, "];\n",
+				"uint16_t local_num16[", local_num16, "];\n",
+				"uint32_t local_num32[", local_num32, "];\n",
+				"uint64_t local_num64[", local_num64, "];\n",
+				"char *local_text[", local_text, "];\n",
+				"void *local_func[", local_func, "];\n",
+				"void *local_cmplx[", local_cmplx, "];\n",
+				cStatements,
+				"\n}"
+			))
 			functionCount += 1
 		}
 	}
@@ -91,38 +107,75 @@ transpile2Statements(txt instructions, ulong functionCount) Transpile2Statements
 	functionName := "$function".fmt(functionCount)
 	fReader := ByteReader(instructions, 0)
 
-	// statements is txt[]
+	statements is txt[]
 	stack is txt[]
 
 	for fReader.hasNext() {
 		fInstr := fReader.next()
 		name := bytecode_name@bytecode[fInstr]
 		len := bytecode_arglen@bytecode[fInstr]
+		top := stack.Size() - 1
 		
-		if fInstr == 1 { // LoadConstNum8
+		if fInstr == 1 { 
+			// LoadConstNum8
 			stack.Add(fmt("const_num8[", fReader.nextUInt(), "]"))
-		} else if fInstr == 2 { // LoadConstNum16
+		} else if fInstr == 2 {
+			// LoadConstNum16
 			stack.Add(fmt("const_num16[", fReader.nextUInt(), "]"))
-		} else if fInstr == 3 { // LoadConstNum32
+		} else if fInstr == 3 {
+			// LoadConstNum32
 			stack.Add(fmt("const_num32[", fReader.nextUInt(), "]"))
-		} else if fInstr == 4 { // LoadConstNum64
+		} else if fInstr == 4 {
+			// LoadConstNum64
 			stack.Add(fmt("const_num64[", fReader.nextUInt(), "]"))
-		} else if fInstr == 5 { // LoadConstText
-			stack.Add(fmt("const_text[", fReader.nextUInt(), "]"))
-		} else if fInstr == 6 { // LoadGlobalNum8
+		} else if fInstr == 5 {
+			// LoadGlobalNum8
 			stack.Add(fmt("global_num8[", fReader.nextUInt(), "]"))
-		} else if fInstr == 7 { // LoadGlobalNum16
+		} else if fInstr == 6 {
+			// LoadGlobalNum16
 			stack.Add(fmt("global_num16[", fReader.nextUInt(), "]"))
-		} else if fInstr == 8 { // LoadGlobalNum32
+		} else if fInstr == 7 {
+			// LoadGlobalNum32
 			stack.Add(fmt("global_num32[", fReader.nextUInt(), "]"))
-		} else if fInstr == 9 { // LoadGlobalNum64
+		} else if fInstr == 8 {
+			// LoadGlobalNum64
 			stack.Add(fmt("global_num64[", fReader.nextUInt(), "]"))
-		} else if fInstr == 10 { // LoadGlobalText
-			stack.Add(fmt("global_text[", fReader.nextUInt(), "]"))
-		} else if fInstr == 11 { // LoadGlobalFunc
-			stack.Add(fmt("global_func[", fReader.nextUInt(), "]"))
-		} else if fInstr == 12 { // LoadGlobalCmplx
-			stack.Add(fmt("global_cmplx[", fReader.nextUInt(), "]"))
+		} else if fInstr == 9 && stack.Size() > 0 {
+			// StoreGlobalNum8
+			statements.Add(fmt("global_num8[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+		} else if fInstr == 10 && stack.Size() > 0 {
+			// StoreGlobalNum16
+			statements.Add(fmt("global_num16[",fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+		} else if fInstr == 11 && stack.Size() > 0 {
+			// StoreGlobalNum32
+			statements.Add(fmt("global_num32[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+		} else if fInstr == 12 && stack.Size() > 0 {
+			// StoreGlobalNum64
+			statements.Add(fmt("global_num64[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+		} else if fInstr == 13 {
+			// LoadLocalNum8
+			stack.Add(fmt("global_num8[", fReader.nextUInt(), "]"))
+		} else if fInstr == 14 {
+			// LoadLocalNum16
+			stack.Add(fmt("global_num16[", fReader.nextUInt(), "]"))
+		} else if fInstr == 15 {
+			// LoadLocalNum32
+			stack.Add(fmt("global_num32[", fReader.nextUInt(), "]"))
+		} else if fInstr == 16 {
+			// LoadLocalNum64
+			stack.Add(fmt("global_num64[", fReader.nextUInt(), "]"))
+		} else if fInstr == 17 && stack.Size() > 0 {
+			// StoreLocalNum8
+			statements.Add(fmt("local_num8[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+		} else if fInstr == 18 && stack.Size() > 0 {
+			// StoreLocalNum16
+			statements.Add(fmt("local_num16[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+		} else if fInstr == 19 && stack.Size() > 0 {
+			// StoreLocalNum32
+			statements.Add(fmt("local_num32[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+		} else if fInstr == 20 && stack.Size() > 0 {
+			// StoreLocalNum64
+			statements.Add(fmt("local_num64[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
 		} else if fInstr == 149 {
 			// Hint
 			hint := fReader.nextBuffer()
@@ -140,5 +193,5 @@ transpile2Statements(txt instructions, ulong functionCount) Transpile2Statements
 			}
 		}
 	}
-	return Transpile2StatementsResult(makeString@std(stack, ";\n"), functionName)
+	return Transpile2StatementsResult(makeString@std(statements, "\n"), functionName)
 }
