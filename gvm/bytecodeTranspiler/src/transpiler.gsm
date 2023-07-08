@@ -4,17 +4,93 @@ include * @src.byteReader
 transpile2C(GismoInstructions instr) txt {
 	code := ""
 
-	code += "#include <stdio.h>\n"
-	code += "#include <stdint.h>\n"
-	code += "#include <stdlib.h>\n\n"
-	code += "#define GVM_ZZE(I) ((((int64_t) I) >> 63) ^ (((int64_t) I) << 1))\n"
-	code += "#define GVM_ZZD(I) ((((int64_t) I) >> 1) ^ -(((int64_t) I) & 1))\n"
-	code += "#define GVM_U2I(X) ({uint64_t x = X;GVM_ZZE(*((int64_t*) &x));})\n"
-	code += "#define GVM_U2F(X) ({uint64_t x = X;*((double*) &x);})\n"
-	code += "#define GVM_I2U(X) ({int64_t x = GVM_ZZD(X);*((uint64_t*) &x);})\n"
-	code += "#define GVM_I2F(X) ({int64_t x = GVM_ZZD(X);*((double*) &x);})\n"
-	code += "#define GVM_F2U(X) ({double x = X;*((uint64_t*) &x);})\n"
-	code += "#define GVM_F2I(X) ({double x = X;GVM_ZZE(*((uint64_t*) &x));})\n\n"
+	code += "
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#define GVM_ZZE(I) ((((int64_t)I) >> 63) ^ (((int64_t)I) << 1))
+#define GVM_ZZD(I) ((((int64_t)I) >> 1) ^ -(((int64_t)I) & 1))
+#define GVM_U2I(X) ({uint64_t x = X;GVM_ZZE(*((int64_t*) &x)); })
+#define GVM_U2F(X) ({uint64_t x = X;*((double*) &x); })
+#define GVM_I2U(X) ({int64_t x = GVM_ZZD(X);*((uint64_t*) &x); })
+#define GVM_I2F(X) ({int64_t x = GVM_ZZD(X);*((double*) &x); })
+#define GVM_F2U(X) ({double x = X;*((uint64_t*) &x); })
+#define GVM_F2I(X) ({double x = X;GVM_ZZE(*((uint64_t*) &x)); })
+
+#define GVM_CMPLX_TAKE(V) ({ /*(V: variable of type cmplx*) -> cmplx**/\\
+	gvm_cmplx_t *c = V;\\
+	V = NULL;\\
+	c;\\
+})
+
+#define GVM_CMPLX_ASSIGN(V, C) ({/*(V: variable of type cmplx*, C: cmplx*) -> none*/\\
+    gvm_clear_cmplx(V);\\
+    V = (gvm_cmplx_t*) C;\\
+})
+
+#define GVM_CMPLX_STORE(C, I, E) ({\\
+	gvm_cmplx_t * c = C;\\
+	uint64_t i = I;\\
+	if(c->types[i] == GVM_TYPE_CMPLX) gvm_clear_cmplx((gvm_cmplx_t*) c->elements[i]);\\
+	c->elements[i] = (uint64_t) E;\\
+	c;\\
+})
+
+typedef enum gvm_type {
+	GVM_TYPE_NUM,
+	GVM_TYPE_TXT,
+	GVM_TYPE_CMPLX
+} gvm_type_t;
+
+typedef struct gvm_cmplx {
+	uint64_t *elements;
+	gvm_type_t *types;
+	uint64_t number_of_elements;
+	uint64_t capacity;
+} gvm_cmplx_t;
+
+gvm_cmplx_t *gvm_cmplx_create() {
+	gvm_cmplx_t *c = (gvm_cmplx_t*) malloc(sizeof(gvm_cmplx_t));
+	*c = (gvm_cmplx_t){.elements=NULL,.types=NULL,.number_of_elements=0,.capacity=0};
+	return c;
+}
+
+gvm_cmplx_t *gvm_cmplx_add(gvm_cmplx_t *cmplx, uint64_t element, gvm_type_t type) {
+	if(cmplx->number_of_elements >= cmplx->capacity) {
+		cmplx->capacity = (cmplx->capacity + 1) * 2;
+		cmplx->elements = (uint64_t*) realloc(cmplx->elements, cmplx->capacity * sizeof(uint64_t));
+		cmplx->types    = (gvm_type_t*) realloc(cmplx->elements, cmplx->capacity * sizeof(gvm_type_t));
+	}
+	cmplx->elements[cmplx->number_of_elements] = element;
+	cmplx->types[cmplx->number_of_elements] = type;
+	++cmplx->number_of_elements;
+	return cmplx;
+}
+
+uint64_t gvm_cmplx_remove(gvm_cmplx_t *cmplx, uint64_t index) {
+	if(!cmplx || index >= cmplx->number_of_elements) {
+		fprintf(stderr, \"Accessed an array out of bounds!\");
+		abort();
+	}
+	uint64_t element = cmplx->elements[index];
+	for(uint64_t i=index; i < (cmplx->number_of_elements-1); ++i) {
+		cmplx->elements[i] = cmplx->elements[i+1];
+	}
+	--cmplx->number_of_elements;
+	return element;
+}
+
+gvm_cmplx_t *gvm_clear_cmplx(gvm_cmplx_t *cmplx) {
+	if(!cmplx) return NULL;
+	for(uint64_t i=0; i < cmplx->number_of_elements; ++i) {
+		if(cmplx->types[i] == GVM_TYPE_CMPLX) gvm_clear_cmplx((gvm_cmplx_t*) cmplx->elements[i]);
+		else if(cmplx->types[i] == GVM_TYPE_TXT) free((void*) cmplx->elements[i]);
+	}
+	free(cmplx);
+	return NULL;
+}
+"
 	code += collectConstants(instr)
 
 	return code
@@ -76,13 +152,13 @@ collectConstants(GismoInstructions instr) txt {
 				functionName.replace@std("*", "multi"),
 				" */",
 				"\n",
-				"uint8_t local_num8[", local_num8, "];\n",
-				"uint16_t local_num16[", local_num16, "];\n",
-				"uint32_t local_num32[", local_num32, "];\n",
-				"uint64_t local_num64[", local_num64, "];\n",
-				"char *local_text[", local_text, "];\n",
-				"void *local_func[", local_func, "];\n",
-				"void *local_cmplx[", local_cmplx, "];\n",
+				"\tuint8_t local_num8[", local_num8, "] = {0};\n",
+				"\tuint16_t local_num16[", local_num16, "] = {0};\n",
+				"\tuint32_t local_num32[", local_num32, "] = {0};\n",
+				"\tuint64_t local_num64[", local_num64, "] = {0};\n",
+				"\tchar *local_text[", local_text, "] = {NULL};\n",
+				"\tvoid *local_func[", local_func, "] = {NULL};\n",
+				"\tgvm_cmplx_t *local_cmplx[", local_cmplx, "] = {NULL};\n\t",
 				cStatements,
 				"\n}"
 			))
@@ -98,13 +174,13 @@ collectConstants(GismoInstructions instr) txt {
 	code += "const uint64_t const_num64["+instr.constNum64Size.fmt()+"] = {"+makeString@std(num64s, ",\n")+"};\n"
 	code += "const char *const_text["+instr.constTextSize.fmt()+"] = {"+makeString@std(texts, ",\n")+"};\n"
 	code += "\n"
-	code += "uint8_t global_num8[" + instr.globalNum8Size.fmt() + "];\n"
-	code += "uint16_t global_num16[" + instr.globalNum16Size.fmt() + "];\n"
-	code += "uint32_t global_num32[" + instr.globalNum32Size.fmt() + "];\n"
-	code += "uint64_t global_num64[" + instr.globalNum64Size.fmt() + "];\n"
-	code += "char *global_text[" + instr.globalTextSize.fmt() + "];\n"
-	code += "void *global_func[" + instr.globalFuncSize.fmt() + "];\n"
-	code += "void *global_cmplx[" + instr.globalCmplxSize.fmt() + "];\n\n"
+	code += "uint8_t global_num8[" + instr.globalNum8Size.fmt() + "] = {0};\n"
+	code += "uint16_t global_num16[" + instr.globalNum16Size.fmt() + "] = {0};\n"
+	code += "uint32_t global_num32[" + instr.globalNum32Size.fmt() + "] = {0};\n"
+	code += "uint64_t global_num64[" + instr.globalNum64Size.fmt() + "] = {0};\n"
+	code += "char *global_text[" + instr.globalTextSize.fmt() + "] = {NULL};\n"
+	code += "void *global_func[" + instr.globalFuncSize.fmt() + "] = {NULL};\n"
+	code += "gvm_cmplx_t *global_cmplx[" + instr.globalCmplxSize.fmt() + "] = {NULL};\n\n"
 	code += makeString@std(funcs, "\n") + "\n"
 
 	return code
@@ -117,6 +193,11 @@ transpile2Statements(txt instructions, ulong functionCount) Transpile2Statements
 
 	statements is txt[]
 	stack is txt[]
+	ST_NUM := 0
+	ST_TXT := 1
+	ST_CMPLX := 2
+	ST_UNKNOWN := 3
+	typesStack is ubyte[]
 
 	for fReader.hasNext() {
 		fInstr := fReader.next()
@@ -127,227 +208,405 @@ transpile2Statements(txt instructions, ulong functionCount) Transpile2Statements
 		if fInstr == 1 { 
 			// LoadConstNum8(index: num32)() -> num8
 			stack.Add(fmt("const_num8[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 2 {
 			// LoadConstNum16(index: num32)() -> num16
 			stack.Add(fmt("const_num16[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 3 {
 			// LoadConstNum32(index: num32)() -> num32
 			stack.Add(fmt("const_num32[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 4 {
 			// LoadConstNum64(index: num32)() -> num64
 			stack.Add(fmt("const_num64[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 5 {
 			// LoadGlobalNum8(index: num32)() -> num8
 			stack.Add(fmt("global_num8[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 6 {
 			// LoadGlobalNum16(index: num32)() -> num16
 			stack.Add(fmt("global_num16[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 7 {
 			// LoadGlobalNum32(index: num32)() -> num32
 			stack.Add(fmt("global_num32[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 8 {
 			// LoadGlobalNum64(index: num32)() -> num64
 			stack.Add(fmt("global_num64[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 9 && stack.Size() > 0 {
 			// StoreGlobalNum8(index: num32)(value: num8) -> none
 			statements.Add(fmt("global_num8[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+			typesStack.Remove(top)
 		} else if fInstr == 10 && stack.Size() > 0 {
 			// StoreGlobalNum16(index: num32)(value: num16) -> none
 			statements.Add(fmt("global_num16[",fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+			typesStack.Remove(top)
 		} else if fInstr == 11 && stack.Size() > 0 {
 			// StoreGlobalNum32(index: num32)(value: num32) -> none
 			statements.Add(fmt("global_num32[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+			typesStack.Remove(top)
 		} else if fInstr == 12 && stack.Size() > 0 {
 			// StoreGlobalNum64(index: num32)(value: num64) -> none
 			statements.Add(fmt("global_num64[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+			typesStack.Remove(top)
 		} else if fInstr == 13 {
 			// LoadLocalNum8(index: num32)() -> num8
 			stack.Add(fmt("global_num8[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 14 {
 			// LoadLocalNum16(index: num32)() -> num16
 			stack.Add(fmt("global_num16[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 15 {
 			// LoadLocalNum32(index: num32)() -> num32
 			stack.Add(fmt("global_num32[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 16 {
 			// LoadLocalNum64(index: num32)() -> num64
 			stack.Add(fmt("global_num64[", fReader.nextUInt(), "]"))
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 17 && stack.Size() > 0 {
 			// StoreLocalNum8(index: num32)(value: num8) -> none
 			statements.Add(fmt("local_num8[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+			typesStack.Remove(top)
 		} else if fInstr == 18 && stack.Size() > 0 {
 			// StoreLocalNum16(index: num32)(value: num16) -> none
 			statements.Add(fmt("local_num16[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+			typesStack.Remove(top)
 		} else if fInstr == 19 && stack.Size() > 0 {
 			// StoreLocalNum32(index: num32)(value: num32) -> none
 			statements.Add(fmt("local_num32[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+			typesStack.Remove(top)
 		} else if fInstr == 20 && stack.Size() > 0 {
 			// StoreLocalNum64(index: num32)(value: num64) -> none
 			statements.Add(fmt("local_num64[", fReader.nextUInt(), "] = ", stack.Remove(top), ";"))
+			typesStack.Remove(top)
 		} else if fInstr == 21 && stack.Size() > 1 {
 			// AddI()(a: int, b: int) -> int
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_I2U(GVM_U2I("+a+") + GVM_U2I("+b+")))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 22 && stack.Size() > 1 {
 			// AddU()(a: uint, b: uint) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("("+a+" + "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 23 && stack.Size() > 1 {
 			// AddF()(a: double, b: double) -> double
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_F2U(GVM_U2F("+a+") + GVM_U2F("+b+")))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 24 && stack.Size() > 1 {
 			// SubI()(a: int, b: int) -> int
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_I2U(GVM_U2I("+a+") - GVM_U2I("+b+")))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 25 && stack.Size() > 1 {
 			// SubU()(a: uint, b: uint) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("("+a+" - "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 26 && stack.Size() > 1 {
 			// SubF()(a: double, b: double) -> double
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_F2U(GVM_U2F("+a+") - GVM_U2F("+b+")))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 27 && stack.Size() > 1 {
 			// MulI()(a: int, b: int) -> int
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_I2U(GVM_U2I("+a+") * GVM_U2I("+b+")))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 28 && stack.Size() > 1 {
 			// MulU()(a: uint, b: uint) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("("+a+" * "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 29 && stack.Size() > 1 {
 			// MulF()(a: double, b: double) -> double
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_F2U(GVM_U2F("+a+") * GVM_U2F("+b+")))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 30 && stack.Size() > 1 {
 			// DivI()(a: int, b: int) -> int
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_I2U(GVM_U2I("+a+") / GVM_U2I("+b+")))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 31 && stack.Size() > 1 {
 			// DivU()(a: uint, b: uint) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("("+a+" / "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 32 && stack.Size() > 1 {
 			// DivF()(a: double, b: double) -> double
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_F2U(GVM_U2F("+a+") / GVM_U2F("+b+")))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 33 && stack.Size() > 1 {
 			// And()(a: uint, b: uint) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("("+a+" & "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 34 && stack.Size() > 1 {
 			// Or()(a: uint, b: uint) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("("+a+" | "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 35 && stack.Size() > 0 {
-			// Not()(x: uint) -> double
+			// Not()(x: uint) -> uint
 			x = stack.Remove(top)
+			typesStack.Remove(top)
 			stack.Add("(!"+ x +")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 36 && stack.Size() > 1 {
 			// EqI()(int a, int b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2I("+a+") == GVM_U2I("+b+"))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 37 && stack.Size() > 1 {
 			// EqU()(uint a, uint b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("("+a+" == "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 38 && stack.Size() > 1 {
 			// EqF()(double a, double b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2F("+a+") == GVM_U2F("+b+"))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 39 && stack.Size() > 1 {
 			// EqIU()(uint a, int b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2I("+a+") == "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 40 && stack.Size() > 1 {
 			// EqFI()(double a, int b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2F("+a+") == GVM_U2I("+b+"))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 41 && stack.Size() > 1 {
 			// EqFU()(double a, uint b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2F("+a+") == "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 42 && stack.Size() > 1 {
 			// GreaterI()(int a, int b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2I("+a+") < GVM_U2I("+b+"))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 43 && stack.Size() > 1 {
 			// GreaterU()(uint a, uint b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("("+a+" < "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 44 && stack.Size() > 1 {
 			// GreaterF()(double a, double b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2F("+a+") < GVM_U2F("+b+"))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 45 && stack.Size() > 1 {
 			// GreaterIU()(int a, uint b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2I("+a+") < "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 46 && stack.Size() > 1 {
 			// GreaterFI()(double a, int b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2F("+a+") < GVM_U2I("+b+"))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 47 && stack.Size() > 1 {
 			// GreaterFU()(double a, uint b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2F("+a+") < "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 48 && stack.Size() > 1 {
 			// LessI()(int a, int b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2I("+a+") > GVM_U2I("+b+"))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 49 && stack.Size() > 1 {
 			// LessU()(uint a, uint b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("("+a+" > "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 50 && stack.Size() > 1 {
 			// LessF()(double a, double b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2F("+a+") > GVM_U2F("+b+"))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 51 && stack.Size() > 1 {
 			// LessIU()(int a, uint b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2I("+a+") > "+b+")")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 52 && stack.Size() > 1 {
 			// LessFI()(double a, int b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2F("+a+") > GVM_U2I("+b+"))")
+			typesStack.Add(ST_NUM)
 		} else if fInstr == 53 && stack.Size() > 1 {
 			// LessFU()(double a, uint b) -> uint
 			a = stack.Remove(top)
+			typesStack.Remove(top)
 			b = stack.Remove(top-1)
+			typesStack.Remove(top-1)
 			stack.Add("(GVM_U2F("+a+") > "+b+")")
+			typesStack.Add(ST_NUM)
+		} else if fInstr == 54 {
+			// LoadGlobalCmplx(index: uint32)() -> void*
+			stack.Add(fmt("(GVM_CMPLX_TAKE(global_cmplx[", fReader.nextUInt(), "]))"))
+			typesStack.Add(ST_CMPLX)
+		} else if fInstr == 55 {
+			// LoadLocalCmplx(index: uint32)() -> void*
+			stack.Add(fmt("(GVM_CMPLX_TAKE(local_cmplx[", fReader.nextUInt(), "]))"))
+			typesStack.Add(ST_CMPLX)
+		} else if fInstr == 56 && stack.Size() > 0 {
+			// StoreGlobalCmplx(index: uint32)(value: void*) -> none
+			x = stack.Remove(top)
+			typesStack.Remove(top)
+			statements.Add(fmt("GVM_CMPLX_ASSIGN(global_cmplx[", fReader.nextUInt(),"], ", x, ");"))
+		} else if fInstr == 57 && stack.Size() > 0 {
+			// StoreLocalCmplx(index: uint32)(value: void*) -> none
+			x = stack.Remove(top)
+			typesStack.Remove(top)
+			statements.Add(fmt("GVM_CMPLX_ASSIGN(local_cmplx[", fReader.nextUInt(), "], ", x, ");"))
+		} else if fInstr == 58 && stack.Size() > 1 {
+			// CmplxAddElement()(element: any, cmplx: cmplx*) -> none
+			element = stack.Remove(top)
+			elementType = typesStack.Remove(top)
+			complex = stack.Remove(top-1)
+			typesStack.Remove(top-1)
+			stack.Add(fmt("(gvm_cmplx_add(", complex, ", ((uint64_t)", element, "), ", elementType, "))"))
+			typesStack.Add(ST_CMPLX)
+		} else if fInstr == 59 && stack.Size() > 1 {
+			// CmplxRemoveElement()(index: uint64_t, cmplx: cmplx) -> none
+			index = stack.Remove(top)
+			typesStack.Remove(top)
+			complex = stack.Remove(top-1)
+			typesStack.Remove(top-1)
+			stack.Add(fmt("(gvm_cmplx_remove(", complex, ", ((uint64_t)", index, ")))"))
+			typesStack.Add(ST_UNKNOWN)
+			stack.Add(a)
+			typesStack.Add(ST_CMPLX)
+		} else if fInstr == 60 && stack.Size() > 0 {
+			// CmplxSize()(cmplx: cmplx*) -> uint64_t
+			x = stack.Remove(top)
+			typesStack.Remove(top)
+			stack.Add(fmt("(", x, "->number_of_elements)"))
+			typesStack.Add(ST_NUM)
+		} else if fInstr == 61 && stack.Size() > 1 {
+			// CmplxLoadElement()(index: uint64_t, cmplx: cmplx) -> any
+			index = stack.Remove(top)
+			typesStack.Remove(top)
+			cmplx = stack.Remove(top-1)
+			typesStack.Remove(top-1)
+			stack.Add(fmt("(", cmplx, "->elements[", index, "])"))
+			typesStack.Add(ST_UNKNOWN)
+		} else if fInstr == 62 && stack.Size() > 2 {
+			// CmplxStoreElement()(index: uint64_t, element: any, cmplx: cmplx) -> cmplx
+			cmplx = stack.Remove(top)
+			typesStack.Remove(top)
+			element = stack.Remove(top-1)
+			typesStack.Remove(top-1)
+			index = stack.Remove(top-2)
+			typesStack.Remove(top-2)
+			stack.Add(fmt("(GVM_CMPLX_STORE(",cmplx,", ",index,", ",element,"))"))
+			typesStack.Add(ST_CMPLX)
 		} else if fInstr == 149 {
 			// Hint
 			hint := fReader.nextBuffer()
@@ -356,6 +615,7 @@ transpile2Statements(txt instructions, ulong functionCount) Transpile2Statements
 				functionName = hint_args[1u]
 			}
 		} else {
+			statements.Add("/*WARNING: Incomplete Instruction Set Translation*/")
 			if len == (-1) {
 				fReader.nextBuffer()
 			} else if len == 2 {
@@ -365,5 +625,5 @@ transpile2Statements(txt instructions, ulong functionCount) Transpile2Statements
 			}
 		}
 	}
-	return Transpile2StatementsResult(makeString@std(statements, "\n"), functionName)
+	return Transpile2StatementsResult(makeString@std(statements, "\n\t"), functionName)
 }
