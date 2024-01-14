@@ -1,16 +1,27 @@
-gsi := GLL_LOAD("<GSI>")
-gsiFetch := gsi.GLL_SYMBOL("fetch")
-fetch(txt file, int status) txt = gsi.GLL_EXEC(gsiFetch, txt, file, status)
+Boolean(bool value) struct;
 
-FILE_KIND    := 1
-FILE_SIZE    := 2
-FILE_CONTENT := 3
+True := Boolean(true)
+False := Boolean(false)
 
-actor main(txt[] args) {
-	if args.Size() < 2 abort@std("Not enough Arguments!")
-	path := args[1]
-	if (#path.fetch(FILE_KIND)) != 'f' abort@std("File does not exist or is a directory")
+not(Boolean x) Boolean {
+	return Boolean(!x.value)
+}
+and(Boolean a, Boolean b) Boolean {
+	return Boolean(a.value && b.value)
+}
+or(Boolean a, Boolean b) Boolean = Boolean(a.value || b.value)
 
-	content := fetch(path, FILE_CONTENT)
-	content.output()
+convert_uint(Boolean x) bool = x.value
+convert_text(Boolean x) txt {
+	if x.value {
+		return "true"
+	}
+	return "false"
+}
+
+actor main() {
+	a := True
+	b := False
+	c := a && b
+	output(c as txt)
 }

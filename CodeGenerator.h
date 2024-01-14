@@ -2419,31 +2419,6 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
         switch (binOpNode->operator.type)
         {
 
-            // New In node
-
-            // case TTK_In:
-            // {
-            //     // TODO: Finish to implement the In-Operator
-            //     // 1. Get Variables on both sides
-            //     // 2. Create Variable on left side
-            //     // 3. check what mode it uses
-            //     // 4. react accordingly
-            //     // 5. generate bytecode
-
-            //     if (binOpNode->left.type != ID_ValueNode) {
-            //         puts ("In Loop needs an identifier as variable");
-            //         markTokenError( binOpNode->operator);
-            //         exit (1);
-            //     }
-
-            //     SyntaxNode right = binOpNode->right;
-            //     // Making sure that right is a list or a range
-
-            //     ValueNode iter_identifier = *binOpNode->left.valueNode;
-            //     Symbol iter = VariableTable_findVariableByName (&codeGenerator->table, iter_identifier.value);
-            // }
-            //     break;
-
         case TT_Plus:
         {
             char *left_ops = NULL;
@@ -2504,10 +2479,7 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     ByteWriter_writeByte(byteWriter, BC_ADD_F);
                     return type_double;
                     break;
-                default:
-                    puts("Cannot use this Datatype with + Operator!");
-                    markTokenError(binOpNode->operator);
-                    exit(1);
+                default: break;
                 }
                 break;
             case type_byte:
@@ -2547,10 +2519,7 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     ByteWriter_writeByte(byteWriter, BC_ADD_F);
                     return type_double;
                     break;
-                default:
-                    puts("Cannot use this Datatype with + Operator!");
-                    markTokenError(binOpNode->operator);
-                    exit(1);
+                default: break;
                 }
                 break;
             case type_float:
@@ -2588,10 +2557,7 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     ByteWriter_writeByte(byteWriter, BC_ADD_F);
                     return type_double;
                     break;
-                default:
-                    puts("Cannot use this Datatype with + Operator!");
-                    markTokenError(binOpNode->operator);
-                    exit(1);
+                default: break;
                 }
                 break;
             case type_text:
@@ -2602,24 +2568,22 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     ByteWriter_writeByte(byteWriter, BC_CONCAT);
                     return type_text;
                 }
-                else
-                {
-                    puts("Cannot use this Datatype with + Operator!");
-                    markTokenError(binOpNode->operator);
-                    exit(1);
-                }
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
                 break;
             default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
                 break;
             }
+
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "add"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
         case TT_Minus:
@@ -2760,22 +2724,22 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "sub"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
         case TT_Multiply:
@@ -2916,22 +2880,21 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "mul"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
         case TT_Divide:
@@ -3072,22 +3035,21 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "div"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
         case TT_Modulo:
@@ -3167,22 +3129,22 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "mod"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -3321,23 +3283,22 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "isequal"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -3473,22 +3434,22 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "shiftl"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -3624,22 +3585,22 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection:  break;
+            default: break;
             }
+
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "shiftr"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -3778,22 +3739,21 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "less"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -3933,22 +3893,21 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "greater"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -3971,7 +3930,6 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
         break;
 
         case TT_GreaterEquals:
-
         {
             SyntaxNode nodeleft = binOpNode->left;
             SyntaxNode noderight = binOpNode->right;
@@ -4086,22 +4044,21 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "band"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -4188,22 +4145,21 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "bor"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -4292,22 +4248,22 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "and"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -4396,22 +4352,22 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     break;
                 }
                 break;
-            case type_text:
-                puts("Cannot work with text yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            case type_Collection:
-                puts("Cannot work with collections yet!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
-            default:
-                puts("Unusable Datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
-                break;
+            case type_text: break;
+            case type_Collection: break;
+            default: break;
             }
+
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "or"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -4811,43 +4767,33 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
 
         case TT_Comma:
         {
-            SyntaxNode tuple = (SyntaxNode) {
-                .type = ID_BinOpNode,
-                .binOpNode = binOpNode};
-            
-            unsigned int numberOfElements = 1;
-            unsigned char element_type = type_none;
-            Token element_cmplx = (Token) {.type = TT_None};
-            while(tuple.type == ID_BinOpNode && tuple.binOpNode->operator.type == TT_Comma) {
-                char result_type = CodeGenerator_generateExpression(codeGenerator, tuple.binOpNode->right, scope, byteWriter);
-                if(element_type == type_none) {
-                    element_type = result_type;
-                    element_cmplx = Complex_return;
-                } else {
-                    // Type Error
-                }
-                
-                tuple = tuple.binOpNode->left;
-                numberOfElements++;
-            }
-            CodeGenerator_generateExpression(codeGenerator, tuple, scope, byteWriter);
-
-            ByteWriter_writeByte(byteWriter, BC_BUILD_COLLECTION);
-            ByteWriter_writeUInt(byteWriter, numberOfElements);
-            return type_Collection;
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "append"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
             break;
 
         case TT_Colon:
         {
-            SyntaxNode nodeleft = binOpNode->left;
-            SyntaxNode noderight = binOpNode->right;
-
-
-
-            puts("Deprecation Error: Colon is in this version of Gismo deprecated!");
-            markTokenError(binOpNode->operator);
-            exit(1);
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = "colon"}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            FunctionCallNode_add(fnCallNode, binOpNode->right);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -5892,39 +5838,40 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                 {
                 case type_ulong:
                     ByteWriter_writeByte(byteWriter, BC_I2U);
+                    return srtype;
                     break;
                 case type_long:
                     break;
                 case type_double:
                     ByteWriter_writeByte(byteWriter, BC_I2F);
+                    return srtype;
                     break;
                 case type_text:
                     ByteWriter_writeByte(byteWriter, BC_TO_STRING_I);
+                    return srtype;
                     break;
-                default:
-                    puts("Type conversation, unsupported datatype!");
-                    markTokenError(binOpNode->operator);
-                    exit(1);
+                default: break;
                 }
                 break;
             case type_ulong:
                 switch (srtype)
                 {
                 case type_ulong:
+                    return srtype;
                     break;
                 case type_long:
                     ByteWriter_writeByte(byteWriter, BC_U2I);
+                    return srtype;
                     break;
                 case type_double:
                     ByteWriter_writeByte(byteWriter, BC_U2F);
+                    return srtype;
                     break;
                 case type_text:
                     ByteWriter_writeByte(byteWriter, BC_TO_STRING_U);
+                    return srtype;
                     break;
-                default:
-                    puts("Type conversation, unsupported datatype!");
-                    markTokenError(binOpNode->operator);
-                    exit(1);
+                default: break;
                 }
                 break;
             case type_double:
@@ -5932,19 +5879,20 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                 {
                 case type_ulong:
                     ByteWriter_writeByte(byteWriter, BC_F2U);
+                    return srtype;
                     break;
                 case type_long:
                     ByteWriter_writeByte(byteWriter, BC_F2I);
+                    return srtype;
                     break;
                 case type_double:
+                    return srtype;
                     break;
                 case type_text:
                     ByteWriter_writeByte(byteWriter, BC_TO_STRING_F);
+                    return srtype;
                     break;
-                default:
-                    puts("Type conversation, unsupported datatype!");
-                    markTokenError(binOpNode->operator);
-                    exit(1);
+                default: break;
                 }
                 break;
             case type_text:
@@ -5952,31 +5900,49 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                 {
                 case type_ulong:
                     ByteWriter_writeByte(byteWriter, BC_STR_TO_U);
+                    return srtype;
                     break;
                 case type_long:
                     ByteWriter_writeByte(byteWriter, BC_STR_TO_I);
+                    return srtype;
                     break;
                 case type_double:
                     ByteWriter_writeByte(byteWriter, BC_STR_TO_F);
+                    return srtype;
                     break;
                 case type_text:
+                    return srtype;
                     break;
                 case type_complex:
+                    return srtype;
                     break;
-                default:
-                    puts("Type conversation, unsupported datatype!");
-                    markTokenError(binOpNode->operator);
-                    exit(1);
+                default: break;
                 }
                 break;
             case type_any:
+                    return srtype;
                 break;
-            default:
-                puts("Type conversation, unsupported datatype!");
-                markTokenError(binOpNode->operator);
-                exit(1);
+            default: break;
             }
-            return srtype;
+
+            char convertFunctionToken[1024] = "";
+
+            strncat(convertFunctionToken, "convert_", 1024);
+            if(srtype != type_complex)
+                strncat(convertFunctionToken, getTypeRepresentation(srtype), 1024);
+            else
+                strncat(convertFunctionToken, Complex_return.value.word, 1024);
+
+            SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                    .code = binOpNode->operator.code,
+                                    .file_path = binOpNode->operator.file_path,
+                                    .lineNumber = binOpNode->operator.lineNumber,
+                                    .begin = binOpNode->operator.begin,
+                                    .end = binOpNode->operator.end,
+                                    .type = TT_Identifier,
+                                    .value.word = convertFunctionToken}));
+            FunctionCallNode_add(fnCallNode, binOpNode->left);
+            return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
 
@@ -6545,7 +6511,11 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                 }
             }
 
-        unsigned char type = typeToStackType(CodeGenerator_generateExpression(codeGenerator, unaryOpNode->operand, scope, byteWriter));
+        char *unary_ops = NULL;
+        unsigned int unary_ops_length = 0;
+        ByteWriter tmpWriter = ByteWriter_init(&unary_ops, &unary_ops_length);
+        unsigned char type = typeToStackType(CodeGenerator_generateExpression(codeGenerator, unaryOpNode->operand, scope, &tmpWriter));
+        
         switch (unaryOpNode->operator.type)
         {
         case TT_Minus:
@@ -6557,22 +6527,44 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
             }
             else if (type == type_double)
             {
+                ByteWriter_addOps(byteWriter, unary_ops, unary_ops_length);
                 ByteWriter_writeByte(byteWriter, BC_UNARY_MINUS_F);
                 return type_double;
             }
             else if (type == type_long)
             {
+                ByteWriter_addOps(byteWriter, unary_ops, unary_ops_length);
                 ByteWriter_writeByte(byteWriter, BC_UNARY_MINUS_I);
                 return type_long;
             }
             else
             {
-                puts("Cannot use binary minus other types then floats and ints");
-                markTokenError(unaryOpNode->operator);
-                exit(1);
+                SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                        .code = unaryOpNode->operator.code,
+                                        .file_path = unaryOpNode->operator.file_path,
+                                        .lineNumber = unaryOpNode->operator.lineNumber,
+                                        .begin = unaryOpNode->operator.begin,
+                                        .end = unaryOpNode->operator.end,
+                                        .type = TT_Identifier,
+                                        .value.word = "minus"}));
+                FunctionCallNode_add(fnCallNode, unaryOpNode->operand);
+                return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
             }
             break;
         case TT_Plus:
+            if(type != type_long && type != type_double && type != type_ulong)
+            {
+                SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                        .code = unaryOpNode->operator.code,
+                                        .file_path = unaryOpNode->operator.file_path,
+                                        .lineNumber = unaryOpNode->operator.lineNumber,
+                                        .begin = unaryOpNode->operator.begin,
+                                        .end = unaryOpNode->operator.end,
+                                        .type = TT_Identifier,
+                                        .value.word = "plus"}));
+                FunctionCallNode_add(fnCallNode, unaryOpNode->operand);
+                return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+            }
             break;
 
         case TT_Exclamationmark:
@@ -6589,14 +6581,24 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
             case type_short:
             case type_int:
             case type_long:
+                ByteWriter_addOps(byteWriter, unary_ops, unary_ops_length);
                 ByteWriter_writeByte(byteWriter, BC_NOT);
                 return type_ubyte;
                 break;
 
             default:
-                markTokenError(unaryOpNode->operator);
-                puts("Unusable datatype!");
-                exit(1);
+            {
+                SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                    .code = unaryOpNode->operator.code,
+                    .file_path = unaryOpNode->operator.file_path,
+                    .lineNumber = unaryOpNode->operator.lineNumber,
+                    .begin = unaryOpNode->operator.begin,
+                    .end = unaryOpNode->operator.end,
+                    .type = TT_Identifier,
+                    .value.word = "not"}));
+                FunctionCallNode_add(fnCallNode, unaryOpNode->operand);
+                return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+            }
             }
         }
         break;
@@ -6606,23 +6608,41 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
             {
 
             case type_text:
+                ByteWriter_addOps(byteWriter, unary_ops, unary_ops_length);
                 ByteWriter_writeByte(byteWriter, BC_TEXT_HASH);
                 return type_uint;
                 break;
 
             default:
-                markTokenError(unaryOpNode->operator);
-                puts("Unusable datatype!");
-                exit(1);
+                {
+                    SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                            .code = unaryOpNode->operator.code,
+                                            .file_path = unaryOpNode->operator.file_path,
+                                            .lineNumber = unaryOpNode->operator.lineNumber,
+                                            .begin = unaryOpNode->operator.begin,
+                                            .end = unaryOpNode->operator.end,
+                                            .type = TT_Identifier,
+                                            .value.word = "hash"}));
+                    FunctionCallNode_add(fnCallNode, unaryOpNode->operand);
+                    return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
+                }
             }
         }
         break;
 
         case TT_Multiply:
         {
-            markTokenError(unaryOpNode->operator);
-            puts("Function call required in order to insert it's statements.");
-            exit(1);
+            
+                SyntaxNode fnCallNode = newFunctionCallNode(newValueNode((Token){
+                                        .code = unaryOpNode->operator.code,
+                                        .file_path = unaryOpNode->operator.file_path,
+                                        .lineNumber = unaryOpNode->operator.lineNumber,
+                                        .begin = unaryOpNode->operator.begin,
+                                        .end = unaryOpNode->operator.end,
+                                        .type = TT_Identifier,
+                                        .value.word = "deref"}));
+                FunctionCallNode_add(fnCallNode, unaryOpNode->operand);
+                return CodeGenerator_generateExpression(codeGenerator, fnCallNode, scope, byteWriter);
         }
         break;
         default:
@@ -7665,6 +7685,7 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
             // First we need to make sure enough parameters where given
             // Regulare
             char *implementation = NULL;
+            char *implementationOrigin = NULL;
 
             Symbol vardec = (Symbol){.type = type_undefined};
             {
@@ -7737,6 +7758,7 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                 // printf("FunctionCall: [%s]. vs. [%s]\n", identifier, functionCallNode.identifier.valueNode->value.value.word);
 
                 implementation = functionCallNode.identifier.valueNode->value.value.word;
+                implementationOrigin = implementation;
                 functionCallNode.identifier.valueNode->value.value.word = before_id;
             }
 
@@ -7793,7 +7815,7 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
 
             if (vardec.type == type_undefined)
             {
-                printf("Undefined function of implementation: %s\n", implementation);
+                printf("Undefined function of implementation: %s\n", implementationOrigin);
                 if (implementation)
                     free(implementation);
                 markTokenError(functionCallNode.identifier.valueNode->value);

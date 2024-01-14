@@ -3,8 +3,8 @@
 | Instruction        | Parameter   | Stack-Parameter                     | Description                                      |
 | ------------------ | ----------- | ----------------------------------- | ------------------------------------------------ |
 | Nop                | ()          | ()                                  | Will be ignored by the GVM                       |
-| LoadConstNum8      | (id: num32) | () -> num8                          | Loads a 8 bit part of the constant num8 register |
-| LoadConstNum16     | (id: num32) | () -> num16                         |                                                  |
+| LoadConstNum8      | (id: num32) | () -> num8                          | Loads an 8 bit part of the constant num8 register |
+| LoadConstNum16     | (id: num32) | () -> num16                         | Loads an 16 bit part of the constant num16 register                                                 |
 | LoadConstNum32     | (id: num32) | () -> num32                         |                                                  |
 | LoadConstNum64     | (id: num32) | () -> num64                         |                                                  |
 | LoadGlobalNum8     | (id: num32) | () -> num8                          |                                                  |
