@@ -7688,10 +7688,7 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
             char *implementationOrigin = NULL;
 
             Symbol vardec = (Symbol){.type = type_undefined};
-            {
-
-                vardec = VariableTable_findVariableByName(&codeGenerator->table, functionCallNode.identifier.valueNode->value);
-            }
+            vardec = VariableTable_findVariableByName(&codeGenerator->table, functionCallNode.identifier.valueNode->value);
 
             if (vardec.type == type_undefined)
             {
@@ -7721,7 +7718,6 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
 
                 for (unsigned int i = 0; i < functionCallNode.numbersOfArguments; i++)
                 {
-
                     unsigned char arg_type = CodeGenerator_generateExpression(codeGenerator, functionCallNode.arguments[i], scope, &arg_writer);
                     switch (arg_type)
                     {

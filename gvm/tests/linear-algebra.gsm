@@ -1,0 +1,234 @@
+
+// Vectors:
+Vector2(double x, double y) struct;
+Vector3(double x, double y, double z) struct;
+Vector(double x, double y) Vector2 = Vector2(x, y)
+Vector(double x, double y, double z) Vector3 = Vector3(x, y, z)
+
+getX(Vector2 v) double = v.x
+getX(Vector3 v) double = v.x
+getY(Vector2 v) double = v.y
+getY(Vector3 v) double = v.y
+getZ(Vector3 v) double = v.z
+
+add(Vector2 a, Vector2 b) Vector2 = Vector2(a.x + b.x, a.y + b.y)
+add(Vector3 a, Vector3 b) Vector3 = Vector3(a.x + b.x, a.y + b.y, a.z + b.z)
+
+sub(Vector2 a, Vector2 b) Vector2 = Vector2(a.x - b.x, a.y - b.y)
+sub(Vector3 a, Vector3 b) Vector3 = Vector3(a.x - b.x, a.y - b.y, a.z - b.z)
+
+mul(Vector2 a, double scalar) Vector2 = Vector2(a.x * scalar, a.y * scalar)
+mul(Vector3 a, double scalar) Vector3 = Vector3(a.x * scalar, a.y * scalar, a.z * scalar)
+
+dot(Vector2 a, Vector2 b) double = a.x * b.x + a.y * b.y
+dot(Vector3 a, Vector3 b) double = a.x * b.x + a.y * b.y + a.z * b.z
+
+linearComb(Vector2 a, Vector2 b, Vector2 l) Vector2 = add(mul(a, l.x), mul(b, l.y))
+linearComb(Vector2 a, Vector2 b, Vector2 c, Vector3 l) Vector2 = add(add(mul(a, l.x), mul(b, l.y)), mul(c, l.z))
+linearComb(Vector3 a, Vector3 b, Vector2 l) Vector3 = add(mul(a, l.x), mul(b, l.y))
+linearComb(Vector3 a, Vector3 b, Vector3 c, Vector3 l) Vector3 = add(add(mul(a, l.x), mul(b, l.y)), mul(c, l.z))
+
+text(Vector2 v) txt = fmt("(", v.x, " ", v.y, ")")
+text(Vector3 v) txt = fmt("(", v.x, " ", v.y, " ", v.z, ")")
+
+// Matrix
+Matrix2x2(Vector2 a, Vector2 b) struct;
+Matrix2x3(Vector3 a, Vector3 b) struct;
+Matrix3x2(Vector2 a, Vector2 b, Vector2 c) struct;
+Matrix3x3(Vector3 a, Vector3 b, Vector3 c) struct;
+Matrix(Vector2 a, Vector2 b) Matrix2x2 = Matrix2x2(a, b)
+Matrix(Vector3 a, Vector3 b) Matrix2x3 = Matrix2x3(a, b)
+Matrix(Vector2 a, Vector2 b, Vector2 c) Matrix3x2 = Matrix3x2(a, b, c)
+Matrix(Vector3 a, Vector3 b, Vector3 c) Matrix3x3 = Matrix3x3(a, b, c)
+
+// a.x a.y    b.x a.x
+// b.x b.y => b.y a.y
+rotate(Matrix2x2 m) Matrix2x2 = Matrix(
+	Vector(m.b.getX(), m.a.getX()),
+	Vector(m.b.getY(), m.a.getY())
+)
+
+// a.x a.y    c.x b.x a.x
+// b.x b.y => c.y b.y a.y
+// c.x c.y
+rotate(Matrix3x2 m) Matrix2x3 = Matrix(
+	Vector(m.c.getX(), m.b.getX(), m.a.getX()),
+	Vector(m.c.getY(), m.b.getY(), m.a.getY())
+)
+
+// a.x a.y a.z    b.x a.x
+// b.x b.y b.z => b.y a.y
+//                b.z a.z
+rotate(Matrix2x3 m) Matrix3x2 = Matrix(
+	Vector(m.b.getX(), m.a.getX()),
+	Vector(m.b.getY(), m.a.getY()),
+	Vector(m.b.getZ(), m.a.getZ())
+)
+
+// a.x a.y a.z    c.x b.x a.x
+// b.x b.y b.z => c.y b.y a.y
+// c.x c.y c.z    c.z b.z a.z
+rotate(Matrix3x3 m) Matrix3x3 = Matrix(
+	Vector(m.c.getX(), m.b.getX(), m.a.getX()),
+	Vector(m.b.getY(), m.b.getY(), m.a.getY()),
+	Vector(m.c.getZ(), m.b.getZ(), m.a.getZ())
+)
+
+
+add(Matrix2x2 a, Matrix2x2 b) Matrix2x2 = Matrix(
+	Vector(a.a.getX() + b.a.getX(), a.a.getY() + b.a.getY()),
+	Vector(a.b.getX() + b.b.getX(), a.b.getY() + b.b.getY())
+)
+
+add(Matrix2x3 a, Matrix2x3 b) Matrix2x3 = Matrix(
+	Vector(a.a.getX() + b.a.getX(), a.a.getY() + b.a.getY(), a.a.getZ() + b.a.getZ()),
+	Vector(a.b.getX() + b.b.getX(), a.b.getY() + b.b.getY(), a.b.getZ() + a.b.getZ())
+)
+
+add(Matrix2x3 a, Matrix2x3 b) Matrix2x3 = Matrix(
+	Vector(a.a.getX() + b.a.getX(), a.a.getY() + b.a.getY(), a.a.getZ() + b.a.getZ()),
+	Vector(a.b.getX() + b.b.getX(), a.b.getY() + b.b.getY(), a.b.getZ() + a.b.getZ())
+)
+
+add(Matrix3x2 a, Matrix3x2 b) Matrix3x2 = Matrix(
+	Vector(a.a.getX() + b.a.getX(), a.a.getY() + b.a.getY()),
+	Vector(a.b.getX() + b.b.getX(), a.b.getY() + b.b.getY()),
+	Vector(a.c.getX() + b.c.getX(), a.c.getY() + b.c.getY())
+)
+
+add(Matrix3x3 a, Matrix3x3 b) Matrix3x3 = Matrix(
+	Vector(a.a.getX() + b.a.getX(), a.a.getY() + b.a.getY(), a.a.getZ() + b.a.getZ()),
+	Vector(a.b.getX() + b.b.getX(), a.b.getY() + b.b.getY(), a.b.getZ() + b.b.getZ()),
+	Vector(a.c.getX() + b.c.getX(), a.c.getY() + b.c.getY(), a.c.getZ() + b.c.getZ())
+)
+
+sub(Matrix2x2 a, Matrix2x2 b) Matrix2x2 = Matrix(
+	Vector(a.a.getX() - b.a.getX(), a.a.getY() - b.a.getY()),
+	Vector(a.b.getX() - b.b.getX(), a.b.getY() - b.b.getY())
+)
+
+sub(Matrix2x3 a, Matrix2x3 b) Matrix2x3 = Matrix(
+	Vector(a.a.getX() - b.a.getX(), a.a.getY() - b.a.getY(), a.a.getZ() - b.a.getZ()),
+	Vector(a.b.getX() - b.b.getX(), a.b.getY() - b.b.getY(), a.b.getZ() - a.b.getZ())
+)
+
+sub(Matrix2x3 a, Matrix2x3 b) Matrix2x3 = Matrix(
+	Vector(a.a.getX() - b.a.getX(), a.a.getY() - b.a.getY(), a.a.getZ() - b.a.getZ()),
+	Vector(a.b.getX() - b.b.getX(), a.b.getY() - b.b.getY(), a.b.getZ() - a.b.getZ())
+)
+
+sub(Matrix3x2 a, Matrix3x2 b) Matrix3x2 = Matrix(
+	Vector(a.a.getX() - b.a.getX(), a.a.getY() - b.a.getY()),
+	Vector(a.b.getX() - b.b.getX(), a.b.getY() - b.b.getY()),
+	Vector(a.c.getX() - b.c.getX(), a.c.getY() - b.c.getY())
+)
+
+sub(Matrix3x3 a, Matrix3x3 b) Matrix3x3 = Matrix(
+	Vector(a.a.getX() - b.a.getX(), a.a.getY() - b.a.getY(), a.a.getZ() - b.a.getZ()),
+	Vector(a.b.getX() - b.b.getX(), a.b.getY() - b.b.getY(), a.b.getZ() - b.b.getZ()),
+	Vector(a.c.getX() - b.c.getX(), a.c.getY() - b.c.getY(), a.c.getZ() - b.c.getZ())
+)
+
+mul(Matrix2x2 a, double l) Matrix2x2 = Matrix(
+	Vector(a.a.getX() * l, a.a.getY() * l),
+	Vector(a.b.getX() * l, a.b.getY() * l)
+)
+
+mul(Matrix2x3 a, double l) Matrix2x3 = Matrix(
+	Vector(a.a.getX() * l, a.a.getY() * l, a.a.getZ() * l),
+	Vector(a.b.getX() * l, a.b.getY() * l, a.b.getZ() * l)
+)
+
+mul(Matrix2x3 a, double l) Matrix2x3 = Matrix(
+	Vector(a.a.getX() * l, a.a.getY() * l, a.a.getZ() * l),
+	Vector(a.b.getX() * l, a.b.getY() * l, a.b.getZ() * l)
+)
+
+mul(Matrix3x2 a, double l) Matrix3x2 = Matrix(
+	Vector(a.a.getX() * l, a.a.getY() * l),
+	Vector(a.b.getX() * l, a.b.getY() * l),
+	Vector(a.c.getX() * l, a.c.getY() * l)
+)
+
+mul(Matrix3x3 a, double l) Matrix3x3 = Matrix(
+	Vector(a.a.getX() * l, a.a.getY() * l, a.a.getZ() * l),
+	Vector(a.b.getX() * l, a.b.getY() * l, a.b.getZ() * l),
+	Vector(a.c.getX() * l, a.c.getY() * l, a.c.getZ() * l)
+)
+
+mul(Matrix2x2 a, Matrix2x2 b) Matrix2x2 = Matrix(
+	Vector(
+		a.a.getX() * b.a.getX() + a.b.getX() * b.a.getY(),
+		a.a.getY() * b.a.getX() + a.b.getY() * b.a.getY()),
+	Vector(
+		a.a.getX() * b.b.getX() + a.b.getX() * b.b.getY(),
+		a.a.getY() * b.b.getX() + a.b.getY() * b.b.getY())
+)
+
+// a.a.x a.b.x   b.a.x b.b.x b.c.x  
+// a.a.y a.b.y * b.a.y b.b.y b.c.y =
+// a.a.z a.b.z                      
+// 
+// [0, 0] = a.a.x * b.a.x + a.b.x * b.a.y
+// [0, 1] = a.a.x * b.b.x + a.b.x * b.b.y
+// [0, 2] = a.a.x * b.c.x + a.b.x * b.c.y
+
+// [1, 0] = a.a.y * b.a.x + a.b.y * b.a.y
+// [1, 1] = a.a.y * b.b.x + a.b.y * b.b.y
+// [1, 2] = a.a.y * b.c.x + a.b.y * b.c.y
+
+// [2, 0] = a.a.z * b.a.x + a.b.z * b.a.y
+// [2, 1] = a.a.z * b.b.x + a.b.z * b.b.y
+// [2, 2] = a.a.z * b.c.x + a.b.z * b.c.y
+mul(Matrix2x3 a, Matrix3x2 b) Matrix3x3 = Matrix(
+	Vector(
+		a.a.getX() * b.a.getX() + a.b.getX() * b.a.getY(),
+		a.a.getX() * b.b.getX() + a.b.getX() * b.b.getY(),
+		a.a.getX() * b.c.getX() + a.b.getX() * b.c.getY()),
+	Vector(
+		a.a.getY() * b.a.getX() + a.b.getY() * b.a.getY(),
+		a.a.getY() * b.b.getX() + a.b.getY() * b.b.getY(),
+		a.a.getY() * b.c.getX() + a.b.getY() * b.c.getY()),
+	Vector(
+		a.a.getZ() * b.a.getX() + a.b.getZ() * b.a.getY(),
+		a.a.getZ() * b.b.getX() + a.b.getZ() * b.b.getY(),
+		a.a.getZ() * b.c.getX() + a.b.getZ() * b.c.getY())
+)
+
+text(Matrix2x2 m) txt = fmt(
+	m.a.getX(), " ", m.b.getX(), "\n",
+	m.a.getY(), " ", m.b.getY()
+)
+
+text(Matrix3x2 m) txt = fmt(
+	m.a.getX(), " ", m.b.getX(), " ", m.c.getX(), "\n",
+	m.a.getY(), " ", m.b.getY(), " ", m.c.getY()
+)
+
+text(Matrix2x3 m) txt = fmt(
+	m.a.getX(), " ", m.b.getX(), "\n",
+	m.a.getY(), " ", m.b.getY(), "\n",
+	m.a.getZ(), " ", m.b.getZ()
+)
+
+text(Matrix3x3 m) txt = fmt(
+	m.a.getX(), " ", m.b.getX(), " ", m.c.getX(), "\n",
+	m.a.getY(), " ", m.b.getY(), " ", m.c.getY(), "\n",
+	m.a.getZ(), " ", m.b.getZ(), " ", m.c.getZ()
+)
+
+actor main() {
+	a := Matrix(
+		Vector(3, 4, 2),
+		Vector(4, 2, 3)
+	)
+	b := Matrix(
+		Vector(3, 4),
+		Vector(4, 2),
+		Vector(-1, -1)
+	)
+	c := a * b
+	a.text().output("\n")
+	b.text().output("\n")
+	c.text().output("\n")
+}

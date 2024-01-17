@@ -1,27 +1,98 @@
-Boolean(bool value) struct;
+Range(int start, int end) struct;
+colon(int start, int end) Range = Range(start, end)
 
-True := Boolean(true)
-False := Boolean(false)
+List(int count, Node head) struct;
+Node(double value, Node next) struct;
 
-not(Boolean x) Boolean {
-	return Boolean(!x.value)
-}
-and(Boolean a, Boolean b) Boolean {
-	return Boolean(a.value && b.value)
-}
-or(Boolean a, Boolean b) Boolean = Boolean(a.value || b.value)
+append(double a, double b) List = List(2, Node(b, Node(a, null)))
+append(List list, double x) List = List(list.count+1, Node(x, list.head))
 
-convert_uint(Boolean x) bool = x.value
-convert_text(Boolean x) txt {
-	if x.value {
-		return "true"
-	}
-	return "false"
+count(List list) int = list.count
+colon(int index, List list) double = (list.count - index - 1):list.head
+colon(int n, Node node) double {
+	if n < 1 return node.value
+	return (n-1):node.next
 }
+colon(Range range, List list) List = List(
+	range.end - range.start + 1,
+	Range(
+		list.count - range.end - 1,
+		list.count - range.start - 1) : list.head)
+	
+colon(Range range, Node node) Node {
+	if node == null return node
+	if (range.start < 1 && range.end < 1) return Node(node.value, null)
+	if range.start < 1 return Node(node.value, 0:(range.end-1):node.next)
+	return (range.start-1):(range.end-1):node.next
+}
+
+convert_text(List list) txt {
+	if list.count < 1 return ""
+	text := list.head as txt
+	return fmt("(", text, ")")
+}
+convert_text(Node node) txt {
+	if node.next == null return fmt(node.value)
+	return fmt(node.next as txt, ", ", node.value)
+}
+
+sub(List list, int index) List = List(list.count-1, list.head - (list.count - index - 1))
+sub(Node node, int n) Node {
+	if n > 0 return Node(node.value, node.next - (n-1))
+	return node.next
+}
+
+hash(List list) int = list.count()
+
+// Meta
+
+MetaList(int count, MetaNode head) struct;
+MetaNode(List value, MetaNode next) struct;
+
+append(List a, List b) MetaList = MetaList(2, MetaNode(b, MetaNode(a, null)))
+append(MetaList list, List x) MetaList = MetaList(list.count+1, MetaNode(x, list.head))
+
+count(MetaList list) int = list.count
+colon(int index, MetaList list) List = (list.count - index - 1):list.head
+colon(int n, MetaNode node) List {
+	if n < 1 return node.value
+	return (n-1):node.next
+}
+colon(Range range, MetaList list) MetaList = MetaList(
+	range.end - range.start + 1,
+	Range(
+		list.count - range.end - 1,
+		list.count - range.start - 1) : list.head)
+	
+colon(Range range, MetaNode node) MetaNode {
+	if node == null return node
+	if (range.start < 1 && range.end < 1) return MetaNode(node.value, null)
+	if range.start < 1 return MetaNode(node.value, 0:(range.end-1):node.next)
+	return (range.start-1):(range.end-1):node.next
+}
+
+convert_text(MetaList list) txt {
+	if list.count < 1 return ""
+	text := list.head as txt
+	return fmt("(", text, ")")
+}
+convert_text(MetaNode node) txt {
+	textValue := node.value as txt
+	if node.next == null return textValue
+	textNext := node.next as txt
+	return fmt(node.next as txt, ", ", textValue)
+}
+
+sub(MetaList list, int index) MetaList = MetaList(list.count-1, list.head - (list.count - index - 1))
+sub(MetaNode node, int n) MetaNode {
+	if n > 0 return MetaNode(node.value, node.next - (n-1))
+	return node.next
+}
+
+hash(MetaList list) int = list.count()
 
 actor main() {
-	a := True
-	b := False
-	c := a && b
-	output(c as txt)
+	matrix := ((1, 2, 3),(2, 3, 4),(5, 6, 7))
+	output(#matrix)
+	output(matrix as txt)
 }

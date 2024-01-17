@@ -549,43 +549,45 @@ SyntaxNode Parser_parseLiteral(Parser* parser) {
 int Parser_getBinOpPrecedence(Token token) {
     switch(token.type) {
         case TT_Dot:
-            return 14;
+            return 15;
             break;
         case TTK_As:
-            return 13;
+            return 14;
         case TT_Plus:
         case TT_Minus:
-            return 11;
+            return 12;
             break;
         case TT_Multiply:
         case TT_Divide:
         case TT_Modulo:
-            return 12;
+            return 13;
             break;
         case TT_ShiftL:
         case TT_ShiftR:
-            return 9;
+            return 10;
             break;
         case TT_Less:
         case TT_LessEquals:
         case TT_Greater:
         case TT_GreaterEquals:
-            return 8;
+            return 9;
             break;
         case TT_EqualsEquals:
         case TT_NotEquals:
-            return 7;
+            return 8;
             break;
         case TT_And:
-            return 6;
+            return 7;
             break;
         case TT_Or:
-            return 5;
+            return 6;
             break;
         case TT_AndAnd:
-            return 4;
+            return 5;
             break;
         case TT_OrOr:
+            return 4;
+        case TT_Colon:
             return 3;
 
         case TT_Comma:
@@ -599,7 +601,6 @@ int Parser_getBinOpPrecedence(Token token) {
         case TT_ModEqual:
         case TT_HashEqual:
         case TTK_Is:
-        case TT_Colon:
         case TT_DefineOnce:
             return 1;
         default:

@@ -106,6 +106,12 @@ print(ByteCode byteCode) {
 	output("global text:  ", global_text)
 	output("global cmplx: ", global_cmplx)
 
+	const_num8_reg is ulong[]
+	const_num16_reg is ulong[]
+	const_num32_reg is ulong[]
+	const_num64_reg is ulong[]
+	const_text_reg is txt[]
+
 	// next the consts
 	for reader.hasNext() {
 		instr := reader.next()
@@ -114,19 +120,29 @@ print(ByteCode byteCode) {
 			// NOP
 		} else if instr == 1 {
 			// Num8
-			output("num8: ", reader.next())
+			num8 := reader.next()
+			const_num8_reg.Add(num8)
+			output("num8: ", num8)
 		} else if instr == 2 {
 			// Num16
-			output("num16: ", reader.nextUShort())
+			num16 := reader.next()
+			const_num16_reg.Add(num16)
+			output("num16: ", num16)
 		} else if instr == 3 {
 			// Num32
-			output("num32: ", reader.nextUInt())
+			num32 := reader.next()
+			const_num32_reg.Add(num32)
+			output("num32: ", num32)
 		} else if instr == 4 {
 			// Num64
-			output("num64: ", reader.nextULong())
+			num64 := reader.next()
+			const_num64_reg.Add(num64)
+			output("num64: ", num64)
 		} else if instr == 5 {
 			// Text
-			output("text: ", StringRepresentation@std(reader.nextBuffer()))
+			text := reader.nextBuffer()
+			const_text_reg.Add(text)
+			output("text: ", StringRepresentation@std(text))
 		} else if instr == 6 || instr == 7 {
 			// Function
 			local_num8 := reader.nextUInt()
@@ -162,8 +178,15 @@ print(ByteCode byteCode) {
 					} else if len == 2 {
 						dis_instructions += fmt("\t", fReader.nextUShort())
 					} else if len == 4 {
-						dis_instructions += fmt("\t", fReader.nextUInt())
+						index = fReader.nextUInt()
+						dis_instructions += fmt("\t", index)
 					}
+
+					if fInstr == 1 dis_instructions += fmt(" -> ", const_num8_reg[index])
+					else if fInstr == 2 dis_instructions += fmt(" -> ", const_num16_reg[index])
+					else if fInstr == 3 dis_instructions += fmt(" -> ", const_num32_reg[index])
+					else if fInstr == 4 dis_instructions += fmt(" -> ", const_num64_reg[index])
+					else if fInstr == 74 dis_instructions += fmt(" -> ", StringRepresentation@std(const_text_reg[index]))
 
 					dis_instructions += "\n"
 				}
