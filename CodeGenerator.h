@@ -5821,7 +5821,11 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
 
         case TTK_As:
         {
-            unsigned char type = CodeGenerator_generateExpression(codeGenerator, binOpNode->left, scope, byteWriter);
+            char *as_buffer = NULL;
+            unsigned int as_buffer_length = 0;
+            ByteWriter as_buffer_writer = ByteWriter_init(&as_buffer, &as_buffer_length);
+
+            unsigned char type = CodeGenerator_generateExpression(codeGenerator, binOpNode->left, scope, &as_buffer_writer);
             unsigned char stype = typeToStackType(type);
             if (binOpNode->right.type != ID_ValueNode)
             {
@@ -5837,17 +5841,20 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                 switch (srtype)
                 {
                 case type_ulong:
-                    ByteWriter_writeByte(byteWriter, BC_I2U);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_I2U);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 case type_long:
                     break;
                 case type_double:
-                    ByteWriter_writeByte(byteWriter, BC_I2F);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_I2F);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 case type_text:
-                    ByteWriter_writeByte(byteWriter, BC_TO_STRING_I);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_TO_STRING_I);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 default: break;
@@ -5860,15 +5867,18 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                     return srtype;
                     break;
                 case type_long:
-                    ByteWriter_writeByte(byteWriter, BC_U2I);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_U2I);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 case type_double:
-                    ByteWriter_writeByte(byteWriter, BC_U2F);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_U2F);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 case type_text:
-                    ByteWriter_writeByte(byteWriter, BC_TO_STRING_U);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_TO_STRING_U);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 default: break;
@@ -5878,18 +5888,21 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                 switch (srtype)
                 {
                 case type_ulong:
-                    ByteWriter_writeByte(byteWriter, BC_F2U);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_F2U);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 case type_long:
-                    ByteWriter_writeByte(byteWriter, BC_F2I);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_F2I);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 case type_double:
                     return srtype;
                     break;
                 case type_text:
-                    ByteWriter_writeByte(byteWriter, BC_TO_STRING_F);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_TO_STRING_F);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 default: break;
@@ -5899,27 +5912,33 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
                 switch (srtype)
                 {
                 case type_ulong:
-                    ByteWriter_writeByte(byteWriter, BC_STR_TO_U);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_STR_TO_U);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 case type_long:
-                    ByteWriter_writeByte(byteWriter, BC_STR_TO_I);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_STR_TO_I);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 case type_double:
-                    ByteWriter_writeByte(byteWriter, BC_STR_TO_F);
+                    ByteWriter_writeByte(&as_buffer_writer, BC_STR_TO_F);
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 case type_text:
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 case type_complex:
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                     break;
                 default: break;
                 }
                 break;
             case type_any:
+                    ByteWriter_addOps(byteWriter, as_buffer, as_buffer_length);
                     return srtype;
                 break;
             default: break;
@@ -7679,6 +7698,24 @@ unsigned char CodeGenerator_generateExpression(struct CodeGenerator *codeGenerat
             puts("Isn't supported by the VM yet!");
             markTokenError(name);
             exit(1);
+        }
+        else if (strcmp(name.value.word, "$$debug_opstack$$") == 0)
+        {
+            if (functionCallNode.numbersOfArguments > 0)
+            {
+                puts("Too many arguments!");
+                markTokenError(name);
+                exit(1);
+            }
+            ByteWriter_writeByte(byteWriter, BC_HINT);
+            ByteWriter_writeUInt(byteWriter, 6);
+            ByteWriter_writeByte(byteWriter, 'd');
+            ByteWriter_writeByte(byteWriter, 'b');
+            ByteWriter_writeByte(byteWriter, 'g');
+            ByteWriter_writeByte(byteWriter, 's');
+            ByteWriter_writeByte(byteWriter, 't');
+            ByteWriter_writeByte(byteWriter, 'k');
+            return type_ulong;
         }
         else
         {

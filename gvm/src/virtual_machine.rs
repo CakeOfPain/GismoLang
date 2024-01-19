@@ -697,6 +697,17 @@ impl GismoVirtualMachine {
                                     .parse::<u32>()
                                     .expect("GVM: [Hint] lc: Local Symbol requires an u32 number as index at argument pos 3!")
                             });
+                        },
+                        "dbgstk" => {
+                            for element in &operation_stack {
+                                match element {
+                                    StackElement::Text(text) => println!("<Text size={}>", text.get_size(self)),
+                                    StackElement::Func(func) => println!("<Func const_index={}>", func),
+                                    StackElement::Cmplx(cmplx) => println!("<Cmplx size={}>", cmplx.len()),
+                                    StackElement::Num(number) => println!("<Number {}>", number),
+                                    StackElement::Nothing => println!("<Nothing>"),
+                                }
+                            }
                         }
                         _ => {}
                     }

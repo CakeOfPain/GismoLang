@@ -36,6 +36,13 @@ convert_text(Node node) txt {
 	return fmt(node.next as txt, ", ", node.value)
 }
 
+convert_int(List list) int = (list.head) as int
+convert_int(Node node) int {
+	if node == null return 0
+	sum := (node.next) as int
+	return node.value + sum
+}
+
 sub(List list, int index) List = List(list.count-1, list.head - (list.count - index - 1))
 sub(Node node, int n) Node {
 	if n > 0 return Node(node.value, node.next - (n-1))
@@ -92,7 +99,8 @@ sub(MetaNode node, int n) MetaNode {
 hash(MetaList list) int = list.count()
 
 actor main() {
-	matrix := ((1, 2, 3),(2, 3, 4),(5, 6, 7))
-	output(#matrix)
-	output(matrix as txt)
+	list := 1, 2, 3, 4, 5, 6, 7
+	list as int
+	// output(list as txt)
+	$$debug_opstack$$()
 }

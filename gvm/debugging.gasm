@@ -1,0 +1,4020 @@
+const-register
+const num8:  41
+const num16: 1
+const num32: 0
+const num64: 1
+const func:  116
+const text:  88
+global-register
+global num8:  27
+global num16: 1
+global num32: 0
+global num64: 0
+global func:  0
+global text:  8
+global cmplx: 13
+num8: 0
+num8: 2
+num8: 4
+num8: 6
+num8: 8
+num8: 10
+num8: 12
+num8: 14
+num8: 16
+num8: 18
+num8: 20
+num8: 22
+num8: 24
+num8: 26
+num8: 28
+num8: 30
+num8: 32
+num8: 0
+num8: 1
+num8: 2
+num8: 3
+num8: 4
+num8: 5
+num8: 6
+num8: 8
+num8: 16
+num8: 246
+num8: 192
+num8: 64
+num8: 90
+num8: 65
+num8: 122
+num8: 97
+num8: 57
+num8: 48
+num8: 10
+num8: 124
+num8: 48
+num8: 12
+num8: 15
+num8: 11
+num16: 7
+num64: 0
+text: "undefined"
+text: "none"
+text: "ubyte"
+text: "byte"
+text: "ushort"
+text: "short"
+text: "uint"
+text: "int"
+text: "float"
+text: "ulong"
+text: "long"
+text: "double"
+text: "text"
+text: "function"
+text: "Collection"
+text: "complex"
+text: "any"
+text: "\n"
+text: " \n\t"
+text: "1234567890"
+text: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+text: "abcdefghijklmnopqrstuvwxyz"
+text: ""
+text: "Too few arguments . . ."
+text: "Too many arguments . . ."
+text: "Full stack trace: "
+text: "\r \r"
+text: "["
+text: "#"
+text: " "
+text: "]"
+text: "\""
+text: "\\\""
+text: "\\"
+text: "\\\\"
+text: "\\n"
+text: "\t"
+text: "\\t"
+text: "\a"
+text: "\\a"
+text: "\r"
+text: "\\r"
+text: "\b"
+text: "\\b"
+text: "0"
+text: "\"\""
+text: "Wrong Datatype"
+text: "="
+text: "\027[0;31m"
+text: "Error = Too many function calls. Recursion calls?"
+text: "\027[0m"
+text: "----------------Traced-Functions----------------"
+text: "If Functioncall Stack is empty, you might want to enable debbuging mode"
+text: "Use instead of 'run' and 'build' the prefix 'debug='"
+text: "..."
+text: " - Function Call At Line "
+text: ": "
+text: "------------------------------------------------"
+text: "[NIL]"
+text: "Memory used: \n"
+text: "\tuint["
+text: "] = "
+text: " bytes \n"
+text: "\tint["
+text: "\tfloat["
+text: "\ttxt["
+text: "\tObject["
+text: "\tObjNode["
+text: "{"
+text: "}"
+text: "G2.9"
+text: "Range(start:int,end:int)"
+text: "List(count:int,head:text)"
+text: "Node(value:float,next:text)"
+text: "count"
+text: "head"
+text: "value"
+text: "next"
+text: "start"
+text: "end"
+text: "("
+text: ")"
+text: ", "
+text: "MetaList(count:int,head:text)"
+text: "MetaNode(value:text,next:text)"
+text: ","
+text: ":"
+text: "Field isn't a valid formatType!"
+$function0:
+	LoadConstNum8	0 -> 0
+	StoreGlobalNum8	0
+	LoadConstNum8	1 -> 2
+	StoreGlobalNum8	1
+	LoadConstNum8	2 -> 4
+	StoreGlobalNum8	2
+	LoadConstNum8	3 -> 6
+	StoreGlobalNum8	3
+	LoadConstNum8	4 -> 8
+	StoreGlobalNum8	4
+	LoadConstNum8	5 -> 10
+	StoreGlobalNum8	5
+	LoadConstNum8	6 -> 12
+	StoreGlobalNum8	6
+	LoadConstNum8	7 -> 14
+	StoreGlobalNum8	7
+	LoadConstNum8	8 -> 16
+	StoreGlobalNum8	8
+	LoadConstNum8	9 -> 18
+	StoreGlobalNum8	9
+	LoadConstNum8	10 -> 20
+	StoreGlobalNum8	10
+	LoadConstNum8	11 -> 22
+	StoreGlobalNum8	11
+	LoadConstNum8	12 -> 24
+	StoreGlobalNum8	12
+	LoadConstNum8	13 -> 26
+	StoreGlobalNum8	13
+	LoadConstNum8	14 -> 28
+	StoreGlobalNum8	14
+	LoadConstNum8	15 -> 30
+	StoreGlobalNum8	15
+	LoadConstNum8	16 -> 32
+	StoreGlobalNum8	16
+	CmplxBuildEmpty
+	LoadConstText	0 -> "undefined"
+	CmplxAddElement
+	LoadConstText	1 -> "none"
+	CmplxAddElement
+	LoadConstText	2 -> "ubyte"
+	CmplxAddElement
+	LoadConstText	3 -> "byte"
+	CmplxAddElement
+	LoadConstText	4 -> "ushort"
+	CmplxAddElement
+	LoadConstText	5 -> "short"
+	CmplxAddElement
+	LoadConstText	6 -> "uint"
+	CmplxAddElement
+	LoadConstText	7 -> "int"
+	CmplxAddElement
+	LoadConstText	8 -> "float"
+	CmplxAddElement
+	LoadConstText	9 -> "ulong"
+	CmplxAddElement
+	LoadConstText	10 -> "long"
+	CmplxAddElement
+	LoadConstText	11 -> "double"
+	CmplxAddElement
+	LoadConstText	12 -> "text"
+	CmplxAddElement
+	LoadConstText	13 -> "function"
+	CmplxAddElement
+	LoadConstText	14 -> "Collection"
+	CmplxAddElement
+	LoadConstText	15 -> "complex"
+	CmplxAddElement
+	LoadConstText	16 -> "any"
+	CmplxAddElement
+	StoreGlobalCmplx	0
+	LoadConstText	17 -> "\n"
+	StoreGlobalText	0
+	LoadConstNum8	17 -> 0
+	StoreGlobalNum8	17
+	LoadConstNum8	18 -> 1
+	StoreGlobalNum8	18
+	LoadConstNum8	19 -> 2
+	StoreGlobalNum8	19
+	LoadConstNum8	20 -> 3
+	StoreGlobalNum8	20
+	LoadConstNum8	21 -> 4
+	StoreGlobalNum8	21
+	LoadConstNum8	22 -> 5
+	StoreGlobalNum8	22
+	LoadConstNum8	23 -> 6
+	StoreGlobalNum8	23
+	LoadConstNum8	24 -> 8
+	StoreGlobalNum8	24
+	LoadConstNum8	25 -> 16
+	StoreGlobalNum8	25
+	LoadConstText	18 -> " \n\t"
+	StoreGlobalText	1
+	LoadConstText	19 -> "1234567890"
+	StoreGlobalText	2
+	LoadConstText	20 -> "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	StoreGlobalText	3
+	LoadConstText	21 -> "abcdefghijklmnopqrstuvwxyz"
+	StoreGlobalText	4
+	LoadGlobalText	3
+	LoadGlobalText	4
+	TextConcat
+	StoreGlobalText	5
+	CmplxBuildEmpty
+	StoreGlobalCmplx	1
+	CmplxBuildEmpty
+	StoreGlobalCmplx	2
+	LoadConstNum16	0 -> 7
+	StoreGlobalNum16	0
+	LoadConstNum8	17 -> 0
+	StoreGlobalNum8	26
+	CmplxBuildEmpty
+	LoadConstNum8	17 -> 0
+	CmplxAddElement
+	StoreGlobalCmplx	3
+	CmplxBuildEmpty
+	LoadConstNum8	0 -> 0
+	CmplxAddElement
+	StoreGlobalCmplx	4
+	CmplxBuildEmpty
+	LoadConstNum64	0 -> 0
+	CmplxAddElement
+	StoreGlobalCmplx	5
+	CmplxBuildEmpty
+	LoadConstText	58 -> "[NIL]"
+	CmplxAddElement
+	StoreGlobalCmplx	6
+	CmplxBuildEmpty
+	LoadConstNum8	17 -> 0
+	CmplxAddElement
+	StoreGlobalCmplx	7
+	CmplxBuildEmpty
+	LoadConstText	22 -> ""
+	CmplxAddElement
+	StoreGlobalCmplx	8
+	CmplxBuildEmpty
+	LoadConstNum8	17 -> 0
+	CmplxAddElement
+	StoreGlobalCmplx	9
+	CmplxBuildEmpty
+	LoadConstNum8	17 -> 0
+	CmplxAddElement
+	StoreGlobalCmplx	10
+	CmplxBuildEmpty
+	LoadConstText	22 -> ""
+	CmplxAddElement
+	StoreGlobalCmplx	11
+	CmplxBuildEmpty
+	LoadConstNum8	17 -> 0
+	CmplxAddElement
+	StoreGlobalCmplx	12
+	LoadConstText	44 -> "0"
+	StoreGlobalText	6
+	LoadConstText	70 -> "G2.9"
+	StoreGlobalText	7
+	LoadArgument	0
+	CmplxClone
+	LoadConstFunc	103
+	CallFunc	1
+	Pop
+
+./libs/std.gsm:getFormatType//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadGlobalNum8	2
+	Swap
+	EqIU
+	JumpPosIfTrue	153
+	LoadLocalNum64	0
+	LoadGlobalNum8	4
+	Swap
+	EqIU
+	JumpPosIfTrue	128
+	LoadLocalNum64	0
+	LoadGlobalNum8	6
+	Swap
+	EqIU
+	JumpPosIfTrue	103
+	LoadLocalNum64	0
+	LoadGlobalNum8	3
+	Swap
+	EqIU
+	JumpPosIfTrue	78
+	LoadLocalNum64	0
+	LoadGlobalNum8	5
+	Swap
+	EqIU
+	JumpPosIfTrue	53
+	LoadLocalNum64	0
+	LoadGlobalNum8	7
+	Swap
+	EqIU
+	JumpPosIfTrue	28
+	LoadLocalNum64	0
+	LoadGlobalNum8	8
+	Swap
+	EqIU
+	JumpPosIfTrue	3
+	JumpPos	7
+	LoadGlobalNum8	11
+	I2U
+	ReturnElement
+	JumpPos	7
+	LoadGlobalNum8	10
+	I2U
+	ReturnElement
+	JumpPos	7
+	LoadGlobalNum8	10
+	I2U
+	ReturnElement
+	JumpPos	7
+	LoadGlobalNum8	10
+	I2U
+	ReturnElement
+	JumpPos	7
+	LoadGlobalNum8	9
+	I2U
+	ReturnElement
+	JumpPos	7
+	LoadGlobalNum8	9
+	I2U
+	ReturnElement
+	JumpPos	7
+	LoadGlobalNum8	9
+	I2U
+	ReturnElement
+	LoadLocalNum64	0
+	ReturnElement
+
+./libs/std.gsm:cmp/txt/txt/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	TextGetSize
+	LoadLocalText	1
+	TextGetSize
+	EqU
+	Not
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	17 -> 0
+	ReturnElement
+	LoadConstNum8	0 -> 0
+	I2U
+	StoreLocalNum32	0
+	LoadLocalNum32	0
+	LoadLocalText	0
+	TextGetSize
+	LessU
+	JumpPosIfFalse	57
+	LoadLocalText	0
+	LoadLocalNum32	0
+	TextGetChar
+	LoadLocalText	1
+	LoadLocalNum32	0
+	TextGetChar
+	EqU
+	Not
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	17 -> 0
+	ReturnElement
+	LoadLocalNum32	0
+	U2I
+	LoadConstNum8	1 -> 2
+	AddI
+	I2U
+	StoreLocalNum32	0
+	JumpNeg	69
+	LoadConstNum8	18 -> 1
+	ReturnElement
+
+./libs/std.gsm:same/txt/txt/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	LoadConstFunc	4
+	CallFunc	1
+	StoreLocalText	0
+	LoadLocalText	1
+	LoadConstFunc	4
+	CallFunc	1
+	StoreLocalText	1
+	LoadLocalText	0
+	TextGetSize
+	LoadLocalText	1
+	TextGetSize
+	EqU
+	Not
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	17 -> 0
+	ReturnElement
+	LoadConstNum8	0 -> 0
+	I2U
+	StoreLocalNum32	0
+	LoadLocalNum32	0
+	LoadLocalText	0
+	TextGetSize
+	LessU
+	JumpPosIfFalse	57
+	LoadLocalText	0
+	LoadLocalNum32	0
+	TextGetChar
+	LoadLocalText	1
+	LoadLocalNum32	0
+	TextGetChar
+	EqU
+	Not
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	17 -> 0
+	ReturnElement
+	LoadLocalNum32	0
+	U2I
+	LoadConstNum8	1 -> 2
+	AddI
+	I2U
+	StoreLocalNum32	0
+	JumpNeg	69
+	LoadConstNum8	18 -> 1
+	ReturnElement
+
+./libs/std.gsm:upper/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstText	22 -> ""
+	StoreLocalText	1
+	LoadLocalText	0
+	TextGetSize
+	JumpPosIfFalse	102
+	LoadLocalText	0
+	LoadConstNum8	0 -> 0
+	I2U
+	TextGetChar
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadConstNum8	27 -> 192
+	Swap
+	LessIU
+	LoadLocalNum64	1
+	LoadConstNum8	26 -> 246
+	Swap
+	GreaterIU
+	And
+	JumpPosIfTrue	3
+	JumpPos	18
+	LoadLocalNum64	1
+	U2I
+	LoadConstNum8	28 -> 64
+	SubI
+	I2U
+	StoreLocalNum64	1
+	LoadLocalText	1
+	LoadLocalNum64	1
+	TextAddChar
+	StoreLocalText	1
+	LoadLocalText	0
+	LoadConstNum8	0 -> 0
+	I2U
+	TextRemoveChar
+	StoreLocalText	0
+	JumpNeg	108
+	LoadLocalText	1
+	ReturnElement
+
+./libs/std.gsm:reverse/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstNum8	1 -> 2
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessIU
+	JumpPosIfFalse	87
+	LoadLocalText	0
+	LoadLocalText	0
+	LoadLocalText	0
+	TextGetSize
+	U2I
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalNum64	0
+	SubI
+	I2U
+	TextGetChar
+	TextAddChar
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadLocalText	0
+	TextGetSize
+	U2I
+	LoadConstNum8	2 -> 4
+	SubI
+	LoadLocalNum64	0
+	SubI
+	I2U
+	TextRemoveChar
+	StoreLocalText	0
+	LoadLocalNum64	0
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	0
+	JumpNeg	99
+	LoadLocalText	0
+	ReturnElement
+
+./libs/std.gsm:pause/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	PrintText
+	InputChar
+	Pop
+	LoadGlobalText	0
+	PrintText
+
+./libs/std.gsm:argsCheck/*///:
+	LoadArgument	2
+	StoreLocalCmplx	0
+	LoadArgument	1
+	StoreLocalNum32	0
+	LoadArgument	0
+	StoreLocalNum32	1
+	LoadLocalCmplx	0
+	CmplxSize
+	StoreLocalCmplx	0
+	StoreLocalNum32	2
+	LoadLocalNum32	2
+	LoadLocalNum32	0
+	LessU
+	JumpPosIfTrue	36
+	LoadLocalNum32	2
+	LoadLocalNum32	1
+	GreaterU
+	JumpPosIfTrue	3
+	JumpPos	16
+	LoadConstText	24 -> "Too many arguments . . ."
+	LoadConstFunc	9
+	CallFunc	1
+	Pop
+	JumpPos	16
+	LoadConstText	23 -> "Too few arguments . . ."
+	LoadConstFunc	9
+	CallFunc	1
+	Pop
+
+./libs/std.gsm:outerr/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	PrintText
+	Newline
+	LoadConstText	25 -> "Full stack trace: "
+	PrintText
+	Newline
+	LoadConstFunc	45
+	CallFunc	0
+	Pop
+
+./libs/std.gsm:jErr/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstFunc	8
+	CallFunc	1
+	Pop
+	LoadConstNum8	1 -> 2
+	Exit
+
+./libs/std.gsm:logWarning/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	PrintText
+	Newline
+
+./libs/std.gsm:abort/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstFunc	9
+	CallFunc	1
+	Pop
+
+./libs/std.gsm:assert//txt/:
+	LoadArgument	1
+	StoreLocalNum8	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalNum8	0
+	JumpPosIfTrue	3
+	JumpPos	16
+	LoadLocalText	0
+	LoadConstFunc	11
+	CallFunc	1
+	Pop
+
+./libs/std.gsm:progressbar/txt////:
+	LoadArgument	3
+	StoreLocalText	0
+	LoadArgument	2
+	StoreLocalNum64	0
+	LoadArgument	1
+	StoreLocalNum64	1
+	LoadArgument	0
+	StoreLocalNum64	2
+	LoadLocalNum64	0
+	LoadLocalNum64	1
+	DivF
+	StoreLocalNum64	3
+	LoadLocalNum64	3
+	LoadLocalNum64	2
+	I2F
+	MulF
+	F2I
+	StoreLocalNum64	4
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	5
+	LoadLocalNum64	5
+	LoadLocalNum64	2
+	LoadConstNum8	2 -> 4
+	AddI
+	LoadLocalText	0
+	TextGetSize
+	U2I
+	AddI
+	Swap
+	GreaterIU
+	JumpPosIfFalse	25
+	LoadConstText	26 -> "\r \r"
+	PrintText
+	LoadLocalNum64	5
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	5
+	JumpNeg	51
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	5
+	LoadLocalText	0
+	PrintText
+	LoadConstText	27 -> "["
+	PrintText
+	LoadLocalNum64	5
+	LoadLocalNum64	4
+	Swap
+	GreaterIU
+	JumpPosIfFalse	25
+	LoadConstText	28 -> "#"
+	PrintText
+	LoadLocalNum64	5
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	5
+	JumpNeg	37
+	LoadLocalNum64	5
+	LoadLocalNum64	2
+	Swap
+	GreaterIU
+	JumpPosIfFalse	25
+	LoadConstText	29 -> " "
+	PrintText
+	LoadLocalNum64	5
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	5
+	JumpNeg	37
+	LoadConstText	30 -> "]"
+	PrintText
+
+./libs/std.gsm:fill/txt//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadConstText	29 -> " "
+	LoadLocalText	0
+	LoadLocalNum64	0
+	LoadConstFunc	15
+	CallFunc	3
+	ReturnElement
+
+./libs/std.gsm:fillWith/txt/txt//:
+	LoadArgument	2
+	StoreLocalText	0
+	LoadArgument	1
+	StoreLocalText	1
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadConstNum8	0 -> 0
+	LessI
+	JumpPosIfTrue	97
+	LoadLocalText	1
+	TextGetSize
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	U2I
+	AddI
+	Swap
+	GreaterIU
+	JumpPosIfTrue	3
+	JumpPos	68
+	LoadLocalText	1
+	TextGetSize
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	U2I
+	AddI
+	Swap
+	GreaterIU
+	JumpPosIfFalse	35
+	LoadLocalText	0
+	LoadLocalText	1
+	TextConcat
+	StoreLocalText	1
+	LoadLocalNum64	1
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	1
+	JumpNeg	54
+	JumpPos	111
+	LoadLocalNum64	0
+	LoadConstNum8	1 -> 2
+	UnaryMinusI
+	MulI
+	StoreLocalNum64	0
+	LoadLocalText	1
+	TextGetSize
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	U2I
+	AddI
+	Swap
+	GreaterIU
+	JumpPosIfTrue	3
+	JumpPos	68
+	LoadLocalText	1
+	TextGetSize
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	U2I
+	AddI
+	Swap
+	GreaterIU
+	JumpPosIfFalse	35
+	LoadLocalText	1
+	LoadLocalText	0
+	TextConcat
+	StoreLocalText	1
+	LoadLocalNum64	1
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	1
+	JumpNeg	54
+	LoadLocalText	1
+	ReturnElement
+
+./libs/std.gsm:indexOfTxtInList/*/txt/:
+	LoadArgument	1
+	StoreLocalCmplx	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalCmplx	0
+	CmplxSize
+	StoreLocalCmplx	0
+	LessU
+	JumpPosIfFalse	65
+	LoadLocalCmplx	0
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreLocalCmplx	0
+	LoadLocalText	0
+	LoadConstFunc	2
+	CallFunc	2
+	JumpPosIfTrue	3
+	JumpPos	7
+	LoadLocalNum64	0
+	U2I
+	ReturnElement
+	LoadLocalNum64	0
+	U2I
+	LoadConstNum8	1 -> 2
+	AddI
+	I2U
+	StoreLocalNum64	0
+	JumpNeg	82
+	LoadConstNum8	1 -> 2
+	UnaryMinusI
+	ReturnElement
+
+./libs/std.gsm:indexOfSameTxtInList/*/txt/:
+	LoadArgument	1
+	StoreLocalCmplx	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalCmplx	0
+	CmplxSize
+	StoreLocalCmplx	0
+	LessU
+	JumpPosIfFalse	65
+	LoadLocalCmplx	0
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreLocalCmplx	0
+	LoadLocalText	0
+	LoadConstFunc	3
+	CallFunc	2
+	JumpPosIfTrue	3
+	JumpPos	7
+	LoadLocalNum64	0
+	U2I
+	ReturnElement
+	LoadLocalNum64	0
+	U2I
+	LoadConstNum8	1 -> 2
+	AddI
+	I2U
+	StoreLocalNum64	0
+	JumpNeg	82
+	LoadConstNum8	1 -> 2
+	UnaryMinusI
+	ReturnElement
+
+./libs/std.gsm:toBytes/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	CmplxBuildEmpty
+	StoreLocalCmplx	0
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessIU
+	JumpPosIfFalse	42
+	LoadLocalCmplx	0
+	LoadLocalText	0
+	LoadLocalNum64	0
+	I2U
+	TextGetChar
+	CmplxAddElement
+	StoreLocalCmplx	0
+	LoadLocalNum64	0
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	0
+	JumpNeg	54
+	LoadLocalCmplx	0
+	ReturnElement
+
+./libs/std.gsm:ccolor//:
+	LoadArgument	0
+	StoreLocalNum16	0
+	LoadConstText	22 -> ""
+	ReturnElement
+
+./libs/std.gsm:isUpper//:
+	LoadArgument	0
+	StoreLocalNum8	0
+	LoadLocalNum8	0
+	LoadConstNum8	30 -> 65
+	LoadConstNum8	18 -> 1
+	SubU
+	GreaterU
+	LoadLocalNum8	0
+	LoadConstNum8	29 -> 90
+	LoadConstNum8	18 -> 1
+	SubU
+	LessU
+	And
+	ReturnElement
+
+./libs/std.gsm:isLower//:
+	LoadArgument	0
+	StoreLocalNum8	0
+	LoadLocalNum8	0
+	LoadConstNum8	32 -> 97
+	LoadConstNum8	18 -> 1
+	SubU
+	GreaterU
+	LoadLocalNum8	0
+	LoadConstNum8	31 -> 122
+	LoadConstNum8	18 -> 1
+	SubU
+	LessU
+	And
+	ReturnElement
+
+./libs/std.gsm:isNumeric//:
+	LoadArgument	0
+	StoreLocalNum8	0
+	LoadLocalNum8	0
+	LoadConstNum8	34 -> 48
+	LoadConstNum8	18 -> 1
+	SubU
+	GreaterU
+	LoadLocalNum8	0
+	LoadConstNum8	33 -> 57
+	LoadConstNum8	18 -> 1
+	SubU
+	LessU
+	And
+	ReturnElement
+
+./libs/std.gsm:isAlpha//:
+	LoadArgument	0
+	StoreLocalNum8	0
+	LoadLocalNum8	0
+	LoadConstFunc	20
+	CallFunc	1
+	LoadLocalNum8	0
+	LoadConstFunc	21
+	CallFunc	1
+	Or
+	ReturnElement
+
+./libs/std.gsm:isAlphaNumeric//:
+	LoadArgument	0
+	StoreLocalNum8	0
+	LoadLocalNum8	0
+	LoadConstFunc	23
+	CallFunc	1
+	LoadLocalNum8	0
+	LoadConstFunc	22
+	CallFunc	1
+	Or
+	ReturnElement
+
+./libs/std.gsm:isWhitespace//:
+	LoadArgument	0
+	StoreLocalNum8	0
+	LoadLocalNum8	0
+	LoadGlobalText	1
+	LoadConstFunc	26
+	CallFunc	2
+	ReturnElement
+
+./libs/std.gsm:isInText//txt/:
+	LoadArgument	1
+	StoreLocalNum8	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessIU
+	JumpPosIfFalse	49
+	LoadLocalNum8	0
+	LoadLocalText	0
+	LoadLocalNum64	0
+	I2U
+	TextGetChar
+	EqU
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	18 -> 1
+	ReturnElement
+	LoadLocalNum64	0
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	0
+	JumpNeg	61
+	LoadConstNum8	17 -> 0
+	ReturnElement
+
+./libs/std.gsm:filter/txt/txt/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadConstText	22 -> ""
+	StoreLocalText	2
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessIU
+	JumpPosIfFalse	79
+	LoadLocalText	0
+	LoadLocalNum64	0
+	I2U
+	TextGetChar
+	StoreLocalNum64	2
+	LoadLocalNum64	2
+	LoadLocalText	1
+	LoadConstFunc	26
+	CallFunc	2
+	Not
+	JumpPosIfTrue	3
+	JumpPos	16
+	LoadLocalText	2
+	LoadLocalNum64	2
+	TextAddChar
+	StoreLocalText	2
+	LoadLocalNum64	0
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	0
+	JumpNeg	91
+	LoadLocalText	2
+	ReturnElement
+
+./libs/std.gsm:insertText/txt/txt//:
+	LoadArgument	2
+	StoreLocalText	0
+	LoadArgument	1
+	StoreLocalText	1
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadConstText	22 -> ""
+	StoreLocalText	2
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	SubU
+	LessU
+	LoadLocalNum64	1
+	LoadLocalText	0
+	TextGetSize
+	LessU
+	And
+	JumpPosIfFalse	41
+	LoadLocalText	2
+	LoadLocalText	0
+	LoadLocalNum64	1
+	TextGetChar
+	TextAddChar
+	StoreLocalText	2
+	LoadLocalNum64	1
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	1
+	JumpNeg	71
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	2
+	LoadLocalNum64	2
+	LoadLocalText	1
+	TextGetSize
+	LessU
+	JumpPosIfFalse	41
+	LoadLocalText	2
+	LoadLocalText	1
+	LoadLocalNum64	2
+	TextGetChar
+	TextAddChar
+	StoreLocalText	2
+	LoadLocalNum64	2
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	2
+	JumpNeg	53
+	LoadLocalNum64	1
+	LoadLocalText	0
+	TextGetSize
+	LessU
+	JumpPosIfFalse	41
+	LoadLocalText	2
+	LoadLocalText	0
+	LoadLocalNum64	1
+	TextGetChar
+	TextAddChar
+	StoreLocalText	2
+	LoadLocalNum64	1
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	1
+	JumpNeg	53
+	LoadLocalText	2
+	ReturnElement
+
+./libs/std.gsm:subText/txt///:
+	LoadArgument	2
+	StoreLocalText	0
+	LoadArgument	1
+	StoreLocalNum64	0
+	LoadArgument	0
+	StoreLocalNum64	1
+	LoadConstText	22 -> ""
+	StoreLocalText	1
+	LoadLocalNum64	0
+	StoreLocalNum64	2
+	LoadLocalNum64	2
+	LoadLocalText	0
+	TextGetSize
+	LessU
+	LoadLocalNum64	2
+	LoadLocalNum64	1
+	LessU
+	And
+	JumpPosIfFalse	41
+	LoadLocalText	1
+	LoadLocalText	0
+	LoadLocalNum64	2
+	TextGetChar
+	TextAddChar
+	StoreLocalText	1
+	LoadLocalNum64	2
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	2
+	JumpNeg	65
+	LoadLocalText	1
+	ReturnElement
+
+./libs/std.gsm:StringRepresentation/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstText	31 -> "\""
+	StoreLocalText	1
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessU
+	JumpPosIfFalse	394
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	LoadConstText	31 -> "\""
+	TextHash
+	EqU
+	JumpPosIfTrue	338
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	LoadConstText	33 -> "\\"
+	TextHash
+	EqU
+	JumpPosIfTrue	298
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	LoadConstText	17 -> "\n"
+	TextHash
+	EqU
+	JumpPosIfTrue	258
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	LoadConstText	36 -> "\t"
+	TextHash
+	EqU
+	JumpPosIfTrue	218
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	LoadConstText	38 -> "\a"
+	TextHash
+	EqU
+	JumpPosIfTrue	178
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	LoadConstText	40 -> "\r"
+	TextHash
+	EqU
+	JumpPosIfTrue	138
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	LoadConstText	42 -> "\b"
+	TextHash
+	EqU
+	JumpPosIfTrue	98
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	LoadConstNum8	28 -> 64
+	Swap
+	GreaterIU
+	JumpPosIfTrue	25
+	LoadLocalText	1
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	TextAddChar
+	StoreLocalText	1
+	JumpPos	49
+	LoadLocalText	1
+	LoadConstText	33 -> "\\"
+	LoadConstText	44 -> "0"
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	U2Text
+	LoadConstNum8	2 -> 4
+	LoadConstFunc	15
+	CallFunc	3
+	TextConcat
+	TextConcat
+	StoreLocalText	1
+	JumpPos	16
+	LoadLocalText	1
+	LoadConstText	43 -> "\\b"
+	TextConcat
+	StoreLocalText	1
+	JumpPos	16
+	LoadLocalText	1
+	LoadConstText	41 -> "\\r"
+	TextConcat
+	StoreLocalText	1
+	JumpPos	16
+	LoadLocalText	1
+	LoadConstText	39 -> "\\a"
+	TextConcat
+	StoreLocalText	1
+	JumpPos	16
+	LoadLocalText	1
+	LoadConstText	37 -> "\\t"
+	TextConcat
+	StoreLocalText	1
+	JumpPos	16
+	LoadLocalText	1
+	LoadConstText	35 -> "\\n"
+	TextConcat
+	StoreLocalText	1
+	JumpPos	16
+	LoadLocalText	1
+	LoadConstText	34 -> "\\\\"
+	TextConcat
+	StoreLocalText	1
+	JumpPos	16
+	LoadLocalText	1
+	LoadConstText	32 -> "\\\""
+	TextConcat
+	StoreLocalText	1
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	0
+	JumpNeg	406
+	LoadLocalText	1
+	LoadConstText	31 -> "\""
+	TextConcat
+	ReturnElement
+
+./libs/std.gsm:SQLStringRepresentation/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstText	31 -> "\""
+	StoreLocalText	1
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessU
+	JumpPosIfFalse	81
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	LoadConstText	31 -> "\""
+	TextHash
+	EqU
+	JumpPosIfTrue	25
+	LoadLocalText	1
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	TextAddChar
+	StoreLocalText	1
+	JumpPos	16
+	LoadLocalText	1
+	LoadConstText	45 -> "\"\""
+	TextConcat
+	StoreLocalText	1
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	0
+	JumpNeg	93
+	LoadLocalText	1
+	LoadConstText	31 -> "\""
+	TextConcat
+	ReturnElement
+
+./libs/std.gsm:getChar/txt//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessU
+	JumpPosIfTrue	3
+	JumpPos	12
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	ReturnElement
+	LoadConstText	22 -> ""
+	TextHash
+	ReturnElement
+
+./libs/std.gsm:mulText/txt//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadConstText	22 -> ""
+	StoreLocalText	1
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadLocalNum64	0
+	LessIU
+	JumpPosIfFalse	35
+	LoadLocalText	1
+	LoadLocalText	0
+	TextConcat
+	StoreLocalText	1
+	LoadLocalNum64	1
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	1
+	JumpNeg	46
+	LoadLocalText	1
+	ReturnElement
+
+./libs/std.gsm:Str/:
+	LoadConstText	22 -> ""
+	StoreLocalText	0
+	LoadArgument	1
+	StoreLocalCmplx	0
+	LoadArgument	0
+	StoreLocalCmplx	1
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalCmplx	0
+	CmplxSize
+	StoreLocalCmplx	0
+	LessU
+	JumpPosIfFalse	101
+	LoadLocalCmplx	1
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreLocalCmplx	1
+	LoadGlobalNum8	9
+	Swap
+	EqIU
+	Not
+	LoadLocalCmplx	1
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreLocalCmplx	1
+	LoadGlobalNum8	10
+	Swap
+	EqIU
+	Not
+	And
+	JumpPosIfTrue	3
+	JumpPos	16
+	LoadConstText	46 -> "Wrong Datatype"
+	LoadConstFunc	11
+	CallFunc	1
+	Pop
+	LoadLocalText	0
+	TextAddChar
+	StoreLocalText	0
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	0
+	JumpNeg	118
+	LoadLocalText	0
+	ReturnElement
+
+./libs/std.gsm:getIndexInText/txt//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum8	0
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessIU
+	JumpPosIfFalse	49
+	LoadLocalText	0
+	LoadLocalNum64	0
+	I2U
+	TextGetChar
+	LoadLocalNum8	0
+	EqU
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadLocalNum64	0
+	ReturnElement
+	LoadLocalNum64	0
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	0
+	JumpNeg	61
+	LoadConstNum8	1 -> 2
+	UnaryMinusI
+	ReturnElement
+
+./libs/std.gsm:stripMargin/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstText	22 -> ""
+	StoreLocalText	1
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessU
+	JumpPosIfFalse	147
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	StoreLocalNum8	1
+	LoadLocalNum8	1
+	LoadConstNum8	35 -> 10
+	EqU
+	JumpPosIfTrue	19
+	LoadLocalText	1
+	LoadLocalNum8	1
+	TextAddChar
+	StoreLocalText	1
+	JumpPos	79
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessU
+	LoadLocalNum8	1
+	LoadConstNum8	36 -> 124
+	EqU
+	Not
+	And
+	JumpPosIfFalse	35
+	LoadLocalText	0
+	LoadLocalNum64	0
+	TextGetChar
+	StoreLocalNum8	1
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	0
+	JumpNeg	60
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	SubU
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	0
+	JumpNeg	159
+	LoadLocalText	1
+	ReturnElement
+
+./libs/std.gsm:makeString/*/txt/:
+	LoadArgument	1
+	StoreLocalCmplx	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstText	22 -> ""
+	StoreLocalText	1
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalCmplx	0
+	CmplxSize
+	StoreLocalCmplx	0
+	LessU
+	JumpPosIfFalse	109
+	LoadLocalNum64	0
+	U2I
+	LoadConstNum8	1 -> 2
+	AddI
+	LoadLocalCmplx	0
+	CmplxSize
+	StoreLocalCmplx	0
+	LessIU
+	JumpPosIfTrue	30
+	LoadLocalText	1
+	LoadLocalCmplx	0
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreLocalCmplx	0
+	TextConcat
+	StoreLocalText	1
+	JumpPos	33
+	LoadLocalText	1
+	LoadLocalCmplx	0
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreLocalCmplx	0
+	LoadLocalText	0
+	TextConcat
+	TextConcat
+	StoreLocalText	1
+	LoadLocalNum64	0
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	0
+	JumpNeg	126
+	LoadLocalText	1
+	ReturnElement
+
+./libs/std.gsm:replace/txt/txt/txt/:
+	LoadArgument	2
+	StoreLocalText	0
+	LoadArgument	1
+	StoreLocalText	1
+	LoadArgument	0
+	StoreLocalText	2
+	LoadConstText	22 -> ""
+	StoreLocalText	3
+	LoadConstNum8	1 -> 2
+	StoreLocalNum64	0
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadLocalText	0
+	TextGetSize
+	LessIU
+	JumpPosIfFalse	136
+	LoadLocalText	1
+	LoadLocalText	0
+	LoadLocalNum64	1
+	I2U
+	LoadLocalNum64	1
+	LoadLocalText	1
+	TextGetSize
+	U2I
+	AddI
+	I2U
+	LoadConstFunc	29
+	CallFunc	3
+	LoadConstFunc	2
+	CallFunc	2
+	JumpPosIfTrue	36
+	LoadLocalText	3
+	LoadLocalText	0
+	LoadLocalNum64	1
+	I2U
+	TextGetChar
+	TextAddChar
+	StoreLocalText	3
+	LoadConstNum8	1 -> 2
+	StoreLocalNum64	0
+	JumpPos	28
+	LoadLocalText	3
+	LoadLocalText	2
+	TextConcat
+	StoreLocalText	3
+	LoadLocalText	1
+	TextGetSize
+	U2I
+	StoreLocalNum64	0
+	LoadLocalNum64	1
+	LoadLocalNum64	0
+	AddI
+	StoreLocalNum64	1
+	JumpNeg	148
+	LoadLocalText	3
+	ReturnElement
+
+./libs/std.gsm:countChar/txt//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum8	0
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	0
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadLocalText	0
+	TextGetSize
+	LessIU
+	JumpPosIfFalse	59
+	LoadLocalText	0
+	LoadLocalNum64	1
+	I2U
+	TextGetChar
+	LoadLocalNum8	0
+	EqU
+	JumpPosIfTrue	3
+	JumpPos	16
+	LoadLocalNum64	0
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	0
+	LoadLocalNum64	1
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	1
+	JumpNeg	71
+	LoadLocalNum64	0
+	ReturnElement
+
+./libs/std.gsm:startsWith/txt/txt/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	LoadConstNum8	0 -> 0
+	I2U
+	LoadLocalText	1
+	TextGetSize
+	LoadConstFunc	29
+	CallFunc	3
+	LoadLocalText	1
+	LoadConstFunc	2
+	CallFunc	2
+	ReturnElement
+
+./libs/std.gsm:split/txt/txt/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	CmplxBuildEmpty
+	StoreLocalCmplx	0
+	LoadConstText	22 -> ""
+	StoreLocalText	2
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	0
+	TextGetSize
+	LessIU
+	JumpPosIfFalse	148
+	LoadLocalText	0
+	LoadLocalNum64	0
+	I2U
+	LoadLocalNum64	0
+	LoadLocalText	1
+	TextGetSize
+	U2I
+	AddI
+	I2U
+	LoadConstFunc	29
+	CallFunc	3
+	LoadLocalText	1
+	LoadConstFunc	2
+	CallFunc	2
+	JumpPosIfTrue	26
+	LoadLocalText	2
+	LoadLocalText	0
+	LoadLocalNum64	0
+	I2U
+	TextGetChar
+	TextAddChar
+	StoreLocalText	2
+	JumpPos	50
+	LoadLocalCmplx	0
+	LoadLocalText	2
+	CmplxAddElement
+	StoreLocalCmplx	0
+	LoadConstText	22 -> ""
+	StoreLocalText	2
+	LoadLocalNum64	0
+	LoadLocalText	1
+	TextGetSize
+	U2I
+	LoadConstNum8	1 -> 2
+	SubI
+	AddI
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	0
+	JumpNeg	160
+	LoadLocalCmplx	0
+	LoadLocalText	2
+	CmplxAddElement
+	StoreLocalCmplx	0
+	LoadLocalCmplx	0
+	ReturnElement
+
+./libs/std.gsm:getArgument/*/txt/:
+	LoadArgument	1
+	StoreLocalCmplx	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstText	22 -> ""
+	StoreLocalText	1
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalCmplx	0
+	CmplxSize
+	StoreLocalCmplx	0
+	LessIU
+	JumpPosIfFalse	109
+	LoadLocalCmplx	0
+	LoadLocalNum64	0
+	I2U
+	CmplxLoadElement
+	StoreLocalCmplx	0
+	StoreLocalText	3
+	LoadLocalText	3
+	LoadLocalText	0
+	LoadConstText	47 -> "="
+	TextConcat
+	LoadConstFunc	40
+	CallFunc	2
+	JumpPosIfTrue	3
+	JumpPos	36
+	LoadLocalText	3
+	LoadLocalText	0
+	TextGetSize
+	U2I
+	LoadConstNum8	1 -> 2
+	AddI
+	I2U
+	LoadLocalText	3
+	TextGetSize
+	LoadConstFunc	29
+	CallFunc	3
+	ReturnElement
+	LoadLocalNum64	0
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	0
+	JumpNeg	126
+	LoadConstText	22 -> ""
+	ReturnElement
+
+./libs/tracer.gsm:function_tracer_enter/txt//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalNum8	26
+	Not
+	JumpPosIfTrue	3
+	JumpPos	77
+	LoadGlobalCmplx	1
+	CmplxSize
+	StoreGlobalCmplx	1
+	LoadGlobalNum16	0
+	LoadConstNum8	18 -> 1
+	U2I
+	SubI
+	Swap
+	LessIU
+	JumpPosIfTrue	3
+	JumpPos	46
+	LoadConstNum8	18 -> 1
+	StoreGlobalNum8	26
+	LoadConstText	48 -> "\027[0;31m"
+	PrintText
+	LoadConstText	49 -> "Error = Too many function calls. Recursion calls?"
+	PrintText
+	Newline
+	LoadConstFunc	45
+	CallFunc	0
+	Pop
+	LoadConstText	50 -> "\027[0m"
+	PrintText
+	LoadConstNum8	1 -> 2
+	Exit
+	LoadGlobalCmplx	1
+	LoadLocalText	0
+	CmplxAddElement
+	StoreGlobalCmplx	1
+	LoadGlobalCmplx	2
+	LoadLocalNum64	0
+	CmplxAddElement
+	StoreGlobalCmplx	2
+	LoadConstNum8	18 -> 1
+	ReturnElement
+
+./libs/tracer.gsm:function_tracer_leave/txt//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadConstNum8	17 -> 0
+	LoadGlobalCmplx	1
+	CmplxSize
+	StoreGlobalCmplx	1
+	LessU
+	JumpPosIfTrue	3
+	JumpPos	56
+	LoadGlobalCmplx	1
+	CmplxSize
+	StoreGlobalCmplx	1
+	LoadConstNum8	18 -> 1
+	SubU
+	StoreLocalNum64	1
+	LoadGlobalCmplx	1
+	LoadLocalNum64	1
+	CmplxRemoveElement
+	StoreGlobalCmplx	1
+	Pop
+	LoadGlobalCmplx	2
+	LoadLocalNum64	1
+	CmplxRemoveElement
+	StoreGlobalCmplx	2
+	Pop
+	LoadConstNum8	18 -> 1
+	ReturnElement
+
+./libs/tracer.gsm:printStackTrace/:
+	Newline
+	LoadConstText	51 -> "----------------Traced-Functions----------------"
+	PrintText
+	Newline
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	0
+	LoadConstNum8	17 -> 0
+	StoreLocalNum8	0
+	LoadGlobalCmplx	1
+	CmplxSize
+	StoreGlobalCmplx	1
+	LoadConstNum8	17 -> 0
+	EqU
+	JumpPosIfTrue	305
+	LoadGlobalCmplx	2
+	CmplxSize
+	StoreGlobalCmplx	2
+	LoadConstNum8	18 -> 1
+	SubU
+	StoreLocalNum64	1
+	LoadGlobalCmplx	1
+	LoadLocalNum64	1
+	CmplxRemoveElement
+	StoreGlobalCmplx	1
+	Pop
+	LoadGlobalCmplx	2
+	LoadLocalNum64	1
+	CmplxRemoveElement
+	StoreGlobalCmplx	2
+	Pop
+	LoadConstNum8	17 -> 0
+	StoreLocalNum64	2
+	LoadGlobalCmplx	1
+	CmplxSize
+	StoreGlobalCmplx	1
+	JumpPosIfFalse	222
+	LoadGlobalCmplx	1
+	CmplxSize
+	StoreGlobalCmplx	1
+	LoadConstNum8	18 -> 1
+	SubU
+	StoreLocalNum64	4
+	LoadGlobalCmplx	2
+	LoadLocalNum64	4
+	CmplxLoadElement
+	StoreGlobalCmplx	2
+	LoadLocalNum64	0
+	EqU
+	JumpPosIfTrue	72
+	LoadConstNum8	17 -> 0
+	StoreLocalNum8	0
+	LoadConstText	28 -> "#"
+	PrintText
+	LoadLocalNum64	2
+	PrintU
+	LoadConstText	55 -> " - Function Call At Line "
+	PrintText
+	LoadGlobalCmplx	2
+	LoadLocalNum64	4
+	CmplxLoadElement
+	StoreGlobalCmplx	2
+	PrintU
+	LoadConstText	56 -> ": "
+	PrintText
+	LoadGlobalCmplx	1
+	LoadLocalNum64	4
+	CmplxLoadElement
+	StoreGlobalCmplx	1
+	PrintText
+	Newline
+	JumpPos	29
+	LoadLocalNum8	0
+	Not
+	JumpPosIfTrue	3
+	JumpPos	17
+	LoadConstText	54 -> "..."
+	PrintText
+	Newline
+	LoadConstNum8	18 -> 1
+	StoreLocalNum8	0
+	LoadGlobalCmplx	2
+	LoadLocalNum64	4
+	CmplxLoadElement
+	StoreGlobalCmplx	2
+	StoreLocalNum64	0
+	LoadGlobalCmplx	2
+	LoadLocalNum64	4
+	CmplxRemoveElement
+	StoreGlobalCmplx	2
+	Pop
+	LoadGlobalCmplx	1
+	LoadLocalNum64	4
+	CmplxRemoveElement
+	StoreGlobalCmplx	1
+	Pop
+	LoadLocalNum64	2
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	2
+	JumpNeg	233
+	JumpPos	14
+	LoadConstText	52 -> "If Functioncall Stack is empty, you might want to enable debbuging mode"
+	PrintText
+	Newline
+	LoadConstText	53 -> "Use instead of 'run' and 'build' the prefix 'debug='"
+	PrintText
+	Newline
+	LoadConstText	57 -> "------------------------------------------------"
+	PrintText
+	Newline
+
+./libs/tracer.gsm:$$GVMErrorHandler$$/:
+	LoadConstFunc	45
+	CallFunc	0
+	Pop
+
+./libs/classic.gsm:dumpMemoryUse/:
+	LoadConstText	59 -> "Memory used: \n"
+	LoadConstText	60 -> "\tuint["
+	TextConcat
+	LoadGlobalCmplx	3
+	CmplxSize
+	StoreGlobalCmplx	3
+	U2Text
+	TextConcat
+	LoadConstText	61 -> "] = "
+	TextConcat
+	LoadGlobalCmplx	3
+	CmplxSize
+	StoreGlobalCmplx	3
+	U2I
+	LoadConstNum8	8 -> 16
+	MulI
+	I2Text
+	TextConcat
+	LoadConstText	62 -> " bytes \n"
+	TextConcat
+	LoadConstText	63 -> "\tint["
+	TextConcat
+	LoadGlobalCmplx	4
+	CmplxSize
+	StoreGlobalCmplx	4
+	U2Text
+	TextConcat
+	LoadConstText	61 -> "] = "
+	TextConcat
+	LoadGlobalCmplx	4
+	CmplxSize
+	StoreGlobalCmplx	4
+	U2I
+	LoadConstNum8	8 -> 16
+	MulI
+	I2Text
+	TextConcat
+	LoadConstText	62 -> " bytes \n"
+	TextConcat
+	LoadConstText	64 -> "\tfloat["
+	TextConcat
+	LoadGlobalCmplx	5
+	CmplxSize
+	StoreGlobalCmplx	5
+	U2Text
+	TextConcat
+	LoadConstText	61 -> "] = "
+	TextConcat
+	LoadGlobalCmplx	5
+	CmplxSize
+	StoreGlobalCmplx	5
+	U2I
+	LoadConstNum8	8 -> 16
+	MulI
+	I2Text
+	TextConcat
+	LoadConstText	62 -> " bytes \n"
+	TextConcat
+	LoadConstText	65 -> "\ttxt["
+	TextConcat
+	LoadGlobalCmplx	6
+	CmplxSize
+	StoreGlobalCmplx	6
+	U2Text
+	TextConcat
+	LoadConstText	61 -> "] = "
+	TextConcat
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	0
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadGlobalCmplx	6
+	CmplxSize
+	StoreGlobalCmplx	6
+	LessIU
+	JumpPosIfFalse	49
+	LoadLocalNum64	0
+	LoadGlobalCmplx	6
+	LoadLocalNum64	1
+	I2U
+	CmplxLoadElement
+	StoreGlobalCmplx	6
+	TextGetSize
+	U2I
+	AddI
+	StoreLocalNum64	0
+	LoadLocalNum64	1
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	1
+	JumpNeg	66
+	LoadLocalNum64	0
+	I2Text
+	TextConcat
+	LoadConstText	62 -> " bytes \n"
+	TextConcat
+	LoadConstText	66 -> "\tObject["
+	TextConcat
+	LoadGlobalCmplx	12
+	CmplxSize
+	StoreGlobalCmplx	12
+	U2Text
+	TextConcat
+	LoadConstText	61 -> "] = "
+	TextConcat
+	LoadConstNum8	8 -> 16
+	StoreLocalNum64	2
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadGlobalCmplx	12
+	CmplxSize
+	StoreGlobalCmplx	12
+	LessIU
+	JumpPosIfFalse	49
+	LoadLocalNum64	2
+	LoadGlobalCmplx	11
+	LoadLocalNum64	1
+	I2U
+	CmplxLoadElement
+	StoreGlobalCmplx	11
+	TextGetSize
+	U2I
+	AddI
+	StoreLocalNum64	2
+	LoadLocalNum64	1
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	1
+	JumpNeg	66
+	LoadLocalNum64	2
+	I2Text
+	TextConcat
+	LoadConstText	62 -> " bytes \n"
+	TextConcat
+	LoadConstText	67 -> "\tObjNode["
+	TextConcat
+	LoadGlobalCmplx	8
+	CmplxSize
+	StoreGlobalCmplx	8
+	U2Text
+	TextConcat
+	LoadConstText	61 -> "] = "
+	TextConcat
+	LoadConstNum8	37 -> 48
+	StoreLocalNum64	3
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadGlobalCmplx	8
+	CmplxSize
+	StoreGlobalCmplx	8
+	LessIU
+	JumpPosIfFalse	49
+	LoadLocalNum64	3
+	LoadGlobalCmplx	8
+	LoadLocalNum64	1
+	I2U
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	TextGetSize
+	U2I
+	AddI
+	StoreLocalNum64	3
+	LoadLocalNum64	1
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	1
+	JumpNeg	66
+	LoadLocalNum64	3
+	I2Text
+	TextConcat
+	LoadConstText	62 -> " bytes \n"
+	TextConcat
+	ReturnElement
+
+./libs/classic.gsm:UInt//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalCmplx	3
+	CmplxSize
+	StoreGlobalCmplx	3
+	StoreLocalNum64	1
+	LoadGlobalCmplx	3
+	LoadLocalNum64	0
+	CmplxAddElement
+	StoreGlobalCmplx	3
+	LoadLocalNum64	1
+	ReturnElement
+
+./libs/classic.gsm:getUInt//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalCmplx	3
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	3
+	ReturnElement
+
+./libs/classic.gsm:updateUInt///:
+	LoadArgument	1
+	StoreLocalNum64	0
+	LoadArgument	0
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadGlobalCmplx	3
+	Swap
+	LoadLocalNum64	0
+	CmplxStoreElement
+	StoreGlobalCmplx	3
+
+./libs/classic.gsm:Int//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalCmplx	4
+	CmplxSize
+	StoreGlobalCmplx	4
+	StoreLocalNum64	1
+	LoadGlobalCmplx	4
+	LoadLocalNum64	0
+	CmplxAddElement
+	StoreGlobalCmplx	4
+	LoadLocalNum64	1
+	ReturnElement
+
+./libs/classic.gsm:getInt//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalCmplx	4
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	4
+	ReturnElement
+
+./libs/classic.gsm:updateInt///:
+	LoadArgument	1
+	StoreLocalNum64	0
+	LoadArgument	0
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadGlobalCmplx	4
+	Swap
+	LoadLocalNum64	0
+	CmplxStoreElement
+	StoreGlobalCmplx	4
+
+./libs/classic.gsm:Float//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalCmplx	5
+	CmplxSize
+	StoreGlobalCmplx	5
+	StoreLocalNum64	1
+	LoadGlobalCmplx	5
+	LoadLocalNum64	0
+	CmplxAddElement
+	StoreGlobalCmplx	5
+	LoadLocalNum64	1
+	ReturnElement
+
+./libs/classic.gsm:getFloat//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalCmplx	5
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	5
+	ReturnElement
+
+./libs/classic.gsm:updateFloat///:
+	LoadArgument	1
+	StoreLocalNum64	0
+	LoadArgument	0
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadGlobalCmplx	5
+	Swap
+	LoadLocalNum64	0
+	CmplxStoreElement
+	StoreGlobalCmplx	5
+
+./libs/classic.gsm:Text/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadGlobalCmplx	6
+	CmplxSize
+	StoreGlobalCmplx	6
+	StoreLocalNum64	0
+	LoadGlobalCmplx	6
+	LoadLocalText	0
+	CmplxAddElement
+	StoreGlobalCmplx	6
+	LoadLocalNum64	0
+	ReturnElement
+
+./libs/classic.gsm:getText//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalCmplx	6
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	6
+	ReturnElement
+
+./libs/classic.gsm:updateText//txt/:
+	LoadArgument	1
+	StoreLocalNum64	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadGlobalCmplx	6
+	Swap
+	LoadLocalNum64	0
+	CmplxStoreElement
+	StoreGlobalCmplx	6
+
+./libs/classic.gsm:ObjectNode//txt///:
+	LoadArgument	3
+	StoreLocalNum64	0
+	LoadArgument	2
+	StoreLocalText	0
+	LoadArgument	1
+	StoreLocalNum64	1
+	LoadArgument	0
+	StoreLocalNum64	2
+	LoadGlobalCmplx	7
+	CmplxSize
+	StoreGlobalCmplx	7
+	StoreLocalNum64	3
+	LoadGlobalCmplx	7
+	LoadLocalNum64	0
+	CmplxAddElement
+	StoreGlobalCmplx	7
+	LoadGlobalCmplx	8
+	LoadLocalText	0
+	CmplxAddElement
+	StoreGlobalCmplx	8
+	LoadGlobalCmplx	9
+	LoadLocalNum64	1
+	CmplxAddElement
+	StoreGlobalCmplx	9
+	LoadGlobalCmplx	10
+	LoadLocalNum64	2
+	CmplxAddElement
+	StoreGlobalCmplx	10
+	LoadLocalNum64	3
+	ReturnElement
+
+./libs/classic.gsm:Object/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadGlobalCmplx	11
+	CmplxSize
+	StoreGlobalCmplx	11
+	StoreLocalNum64	0
+	LoadGlobalCmplx	11
+	LoadLocalText	0
+	CmplxAddElement
+	StoreGlobalCmplx	11
+	LoadGlobalCmplx	12
+	LoadConstNum8	17 -> 0
+	CmplxAddElement
+	StoreGlobalCmplx	12
+	LoadLocalNum64	0
+	ReturnElement
+
+./libs/classic.gsm:classOfObject//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalCmplx	11
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	11
+	ReturnElement
+
+./libs/classic.gsm:objectToText//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadConstText	68 -> "{"
+	LoadLocalNum64	0
+	LoadConstFunc	62
+	CallFunc	1
+	TextConcat
+	LoadConstText	69 -> "}"
+	TextConcat
+	ReturnElement
+
+./libs/classic.gsm:fieldsOfObject//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	CmplxBuildEmpty
+	StoreLocalCmplx	0
+	LoadLocalNum64	0
+	LoadConstNum8	17 -> 0
+	EqU
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadLocalCmplx	0
+	ReturnElement
+	LoadGlobalCmplx	12
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	12
+	StoreLocalNum64	1
+	LoadGlobalCmplx	7
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	7
+	LoadConstNum8	17 -> 0
+	EqU
+	Not
+	JumpPosIfFalse	51
+	LoadLocalCmplx	0
+	LoadGlobalCmplx	8
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	CmplxAddElement
+	StoreLocalCmplx	0
+	LoadGlobalCmplx	7
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	7
+	StoreLocalNum64	1
+	JumpNeg	74
+	LoadLocalNum64	1
+	LoadConstNum8	17 -> 0
+	EqU
+	Not
+	JumpPosIfTrue	3
+	JumpPos	27
+	LoadLocalCmplx	0
+	LoadGlobalCmplx	8
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	CmplxAddElement
+	StoreLocalCmplx	0
+	LoadLocalCmplx	0
+	ReturnElement
+
+./libs/classic.gsm:typeOfField//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalCmplx	10
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	10
+	ReturnElement
+
+./libs/classic.gsm:putField//txt///:
+	LoadArgument	3
+	StoreLocalNum64	0
+	LoadArgument	2
+	StoreLocalText	0
+	LoadArgument	1
+	StoreLocalNum64	1
+	LoadArgument	0
+	StoreLocalNum64	2
+	LoadLocalNum64	0
+	LoadConstNum8	17 -> 0
+	EqU
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	17 -> 0
+	ReturnElement
+	LoadConstNum8	17 -> 0
+	LoadLocalText	0
+	LoadLocalNum64	1
+	LoadLocalNum64	2
+	LoadConstFunc	60
+	CallFunc	4
+	StoreLocalNum64	3
+	LoadGlobalCmplx	12
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	12
+	StoreLocalNum64	4
+	LoadLocalNum64	4
+	LoadConstNum8	17 -> 0
+	EqU
+	JumpPosIfTrue	3
+	JumpPos	28
+	LoadLocalNum64	3
+	LoadGlobalCmplx	12
+	Swap
+	LoadLocalNum64	0
+	CmplxStoreElement
+	StoreGlobalCmplx	12
+	LoadConstNum8	18 -> 1
+	ReturnElement
+	LoadGlobalCmplx	7
+	LoadLocalNum64	4
+	CmplxLoadElement
+	StoreGlobalCmplx	7
+	LoadConstNum8	17 -> 0
+	EqU
+	Not
+	LoadGlobalCmplx	8
+	LoadLocalNum64	4
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	LoadLocalText	0
+	LoadConstFunc	2
+	CallFunc	2
+	Not
+	And
+	JumpPosIfFalse	24
+	LoadGlobalCmplx	7
+	LoadLocalNum64	4
+	CmplxLoadElement
+	StoreGlobalCmplx	7
+	StoreLocalNum64	4
+	JumpNeg	80
+	LoadGlobalCmplx	8
+	LoadLocalNum64	4
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	LoadLocalText	0
+	LoadConstFunc	2
+	CallFunc	2
+	JumpPosIfTrue	25
+	LoadLocalNum64	3
+	LoadGlobalCmplx	7
+	Swap
+	LoadLocalNum64	4
+	CmplxStoreElement
+	StoreGlobalCmplx	7
+	JumpPos	22
+	LoadLocalNum64	1
+	LoadGlobalCmplx	9
+	Swap
+	LoadLocalNum64	4
+	CmplxStoreElement
+	StoreGlobalCmplx	9
+	LoadConstNum8	18 -> 1
+	ReturnElement
+
+./libs/classic.gsm:getField//txt/:
+	LoadArgument	1
+	StoreLocalNum64	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalNum64	0
+	LoadConstNum8	17 -> 0
+	EqU
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	17 -> 0
+	ReturnElement
+	LoadGlobalCmplx	12
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	12
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadConstNum8	17 -> 0
+	EqU
+	Not
+	LoadGlobalCmplx	8
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	LoadLocalText	0
+	LoadConstFunc	2
+	CallFunc	2
+	And
+	JumpPosIfTrue	3
+	JumpPos	17
+	LoadGlobalCmplx	9
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	9
+	ReturnElement
+	LoadGlobalCmplx	7
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	7
+	LoadConstNum8	17 -> 0
+	EqU
+	Not
+	LoadGlobalCmplx	8
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	LoadLocalText	0
+	LoadConstFunc	2
+	CallFunc	2
+	Not
+	And
+	JumpPosIfFalse	24
+	LoadGlobalCmplx	7
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	7
+	StoreLocalNum64	1
+	JumpNeg	80
+	LoadGlobalCmplx	8
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	LoadLocalText	0
+	LoadConstFunc	2
+	CallFunc	2
+	Not
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	17 -> 0
+	ReturnElement
+	LoadGlobalCmplx	9
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	9
+	ReturnElement
+
+./libs/classic.gsm:getFieldReference//txt/:
+	LoadArgument	1
+	StoreLocalNum64	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalNum64	0
+	LoadConstNum8	17 -> 0
+	EqU
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	17 -> 0
+	ReturnElement
+	LoadGlobalCmplx	12
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	12
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadConstNum8	17 -> 0
+	EqU
+	Not
+	LoadGlobalCmplx	8
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	LoadLocalText	0
+	LoadConstFunc	2
+	CallFunc	2
+	And
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadLocalNum64	1
+	ReturnElement
+	LoadGlobalCmplx	7
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	7
+	LoadConstNum8	17 -> 0
+	EqU
+	Not
+	LoadGlobalCmplx	8
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	LoadLocalText	0
+	LoadConstFunc	2
+	CallFunc	2
+	Not
+	And
+	JumpPosIfFalse	24
+	LoadGlobalCmplx	7
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	7
+	StoreLocalNum64	1
+	JumpNeg	80
+	LoadGlobalCmplx	8
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreGlobalCmplx	8
+	LoadLocalText	0
+	LoadConstFunc	2
+	CallFunc	2
+	Not
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	17 -> 0
+	ReturnElement
+	LoadLocalNum64	1
+	ReturnElement
+
+./libs/classic.gsm:getFieldValue//:
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadGlobalCmplx	9
+	LoadLocalNum64	0
+	CmplxLoadElement
+	StoreGlobalCmplx	9
+	ReturnElement
+
+./libs/classic.gsm:collectByClass/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	CmplxBuildEmpty
+	StoreLocalCmplx	0
+	LoadConstNum8	0 -> 0
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadGlobalCmplx	11
+	CmplxSize
+	StoreGlobalCmplx	11
+	LessIU
+	JumpPosIfFalse	83
+	LoadGlobalCmplx	11
+	LoadLocalNum64	0
+	I2U
+	CmplxLoadElement
+	StoreGlobalCmplx	11
+	StoreLocalText	2
+	LoadLocalText	2
+	LoadLocalText	0
+	LoadConstFunc	2
+	CallFunc	2
+	JumpPosIfTrue	3
+	JumpPos	16
+	LoadLocalCmplx	0
+	LoadLocalNum64	0
+	CmplxAddElement
+	StoreLocalCmplx	0
+	LoadLocalNum64	0
+	LoadConstNum8	1 -> 2
+	AddI
+	StoreLocalNum64	0
+	JumpNeg	100
+	LoadLocalCmplx	0
+	ReturnElement
+
+tests/test.gsm:Range:
+	LoadArgument	1
+	StoreLocalNum32	0
+	LoadArgument	0
+	StoreLocalNum32	1
+	CmplxBuildEmpty
+	LoadConstText	71 -> "Range(start:int,end:int)"
+	CmplxAddElement
+	LoadLocalNum32	0
+	CmplxAddElement
+	LoadLocalNum32	1
+	CmplxAddElement
+	CmplxBuildEmpty
+	LoadConstNum8	38 -> 12
+	CmplxAddElement
+	LoadConstNum8	35 -> 10
+	CmplxAddElement
+	LoadConstNum8	35 -> 10
+	CmplxAddElement
+	LoadConstFunc	107
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:colon///:
+	LoadArgument	1
+	StoreLocalNum32	0
+	LoadArgument	0
+	StoreLocalNum32	1
+	LoadLocalNum32	0
+	LoadLocalNum32	1
+	LoadConstFunc	71
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:List:
+	LoadArgument	1
+	StoreLocalNum32	0
+	LoadArgument	0
+	StoreLocalText	0
+	CmplxBuildEmpty
+	LoadConstText	72 -> "List(count:int,head:text)"
+	CmplxAddElement
+	LoadLocalNum32	0
+	CmplxAddElement
+	LoadLocalText	0
+	CmplxAddElement
+	CmplxBuildEmpty
+	LoadConstNum8	38 -> 12
+	CmplxAddElement
+	LoadConstNum8	35 -> 10
+	CmplxAddElement
+	LoadConstNum8	39 -> 15
+	CmplxAddElement
+	LoadConstFunc	107
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:Node:
+	LoadArgument	1
+	StoreLocalNum64	0
+	LoadArgument	0
+	StoreLocalText	0
+	CmplxBuildEmpty
+	LoadConstText	73 -> "Node(value:float,next:text)"
+	CmplxAddElement
+	LoadLocalNum64	0
+	CmplxAddElement
+	LoadLocalText	0
+	CmplxAddElement
+	CmplxBuildEmpty
+	LoadConstNum8	38 -> 12
+	CmplxAddElement
+	LoadConstNum8	40 -> 11
+	CmplxAddElement
+	LoadConstNum8	39 -> 15
+	CmplxAddElement
+	LoadConstFunc	107
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:append///:
+	LoadArgument	1
+	StoreLocalNum64	0
+	LoadArgument	0
+	StoreLocalNum64	1
+	LoadConstNum8	2 -> 4
+	LoadLocalNum64	1
+	LoadLocalNum64	0
+	LoadGlobalText	6
+	LoadConstFunc	74
+	CallFunc	2
+	LoadConstFunc	74
+	CallFunc	2
+	LoadConstFunc	73
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:append/List//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum64	0
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	AddI
+	LoadLocalNum64	0
+	LoadLocalText	0
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	74
+	CallFunc	2
+	LoadConstFunc	73
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:count/List/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:colon//List/:
+	LoadArgument	1
+	StoreLocalNum32	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadLocalNum32	0
+	SubI
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalText	0
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	79
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:colon//Node/:
+	LoadArgument	1
+	StoreLocalNum32	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalNum32	0
+	LoadConstNum8	1 -> 2
+	LessI
+	JumpPosIfTrue	3
+	JumpPos	21
+	LoadLocalText	0
+	LoadConstText	76 -> "value"
+	LoadConstFunc	111
+	CallFunc	2
+	ReturnElement
+	LoadLocalNum32	0
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	79
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:colon/Range/List/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	LoadConstText	79 -> "end"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadLocalText	0
+	LoadConstText	78 -> "start"
+	LoadConstFunc	110
+	CallFunc	2
+	SubI
+	LoadConstNum8	1 -> 2
+	AddI
+	LoadLocalText	1
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadLocalText	0
+	LoadConstText	79 -> "end"
+	LoadConstFunc	110
+	CallFunc	2
+	SubI
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalText	1
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadLocalText	0
+	LoadConstText	78 -> "start"
+	LoadConstFunc	110
+	CallFunc	2
+	SubI
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadConstFunc	71
+	CallFunc	2
+	LoadLocalText	1
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	81
+	CallFunc	2
+	LoadConstFunc	73
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:colon/Range/Node/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	1
+	LoadGlobalText	6
+	LoadConstFunc	105
+	CallFunc	2
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadLocalText	1
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	78 -> "start"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	LessI
+	LoadLocalText	0
+	LoadConstText	79 -> "end"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	LessI
+	And
+	JumpPosIfTrue	3
+	JumpPos	36
+	LoadLocalText	1
+	LoadConstText	76 -> "value"
+	LoadConstFunc	111
+	CallFunc	2
+	LoadGlobalText	6
+	LoadConstFunc	74
+	CallFunc	2
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	78 -> "start"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	LessI
+	JumpPosIfTrue	3
+	JumpPos	102
+	LoadLocalText	1
+	LoadConstText	76 -> "value"
+	LoadConstFunc	111
+	CallFunc	2
+	LoadConstNum8	0 -> 0
+	LoadLocalText	0
+	LoadConstText	79 -> "end"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadConstFunc	72
+	CallFunc	2
+	LoadLocalText	1
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	81
+	CallFunc	2
+	LoadConstFunc	74
+	CallFunc	2
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	78 -> "start"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalText	0
+	LoadConstText	79 -> "end"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadConstFunc	72
+	CallFunc	2
+	LoadLocalText	1
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	81
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:convert_text/List/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	LessI
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstText	22 -> ""
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	83
+	CallFunc	1
+	StoreLocalText	1
+	LoadConstText	80 -> "("
+	LoadLocalText	1
+	TextConcat
+	LoadConstText	81 -> ")"
+	TextConcat
+	ReturnElement
+
+tests/test.gsm:convert_text/Node/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadGlobalText	6
+	LoadConstFunc	105
+	CallFunc	2
+	JumpPosIfTrue	3
+	JumpPos	22
+	LoadLocalText	0
+	LoadConstText	76 -> "value"
+	LoadConstFunc	111
+	CallFunc	2
+	F2Text
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	83
+	CallFunc	1
+	LoadConstText	82 -> ", "
+	TextConcat
+	LoadLocalText	0
+	LoadConstText	76 -> "value"
+	LoadConstFunc	111
+	CallFunc	2
+	F2Text
+	TextConcat
+	ReturnElement
+
+tests/test.gsm:convert_int/List/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	85
+	CallFunc	1
+	ReturnElement
+
+tests/test.gsm:convert_int/Node/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadGlobalText	6
+	LoadConstFunc	105
+	CallFunc	2
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstNum8	0 -> 0
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	85
+	CallFunc	1
+	StoreLocalNum32	0
+	LoadLocalText	0
+	LoadConstText	76 -> "value"
+	LoadConstFunc	111
+	CallFunc	2
+	LoadLocalNum32	0
+	I2F
+	AddF
+	F2I
+	ReturnElement
+
+tests/test.gsm:sub/List//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum32	0
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalText	0
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadLocalNum32	0
+	SubI
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadConstFunc	87
+	CallFunc	2
+	LoadConstFunc	73
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:sub/Node//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum32	0
+	LoadLocalNum32	0
+	LoadConstNum8	0 -> 0
+	Swap
+	LessI
+	JumpPosIfTrue	3
+	JumpPos	72
+	LoadLocalText	0
+	LoadConstText	76 -> "value"
+	LoadConstFunc	111
+	CallFunc	2
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadLocalNum32	0
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadConstFunc	87
+	CallFunc	2
+	LoadConstFunc	74
+	CallFunc	2
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:hash/List/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstFunc	77
+	CallFunc	1
+	ReturnElement
+
+tests/test.gsm:MetaList:
+	LoadArgument	1
+	StoreLocalNum32	0
+	LoadArgument	0
+	StoreLocalText	0
+	CmplxBuildEmpty
+	LoadConstText	83 -> "MetaList(count:int,head:text)"
+	CmplxAddElement
+	LoadLocalNum32	0
+	CmplxAddElement
+	LoadLocalText	0
+	CmplxAddElement
+	CmplxBuildEmpty
+	LoadConstNum8	38 -> 12
+	CmplxAddElement
+	LoadConstNum8	35 -> 10
+	CmplxAddElement
+	LoadConstNum8	39 -> 15
+	CmplxAddElement
+	LoadConstFunc	107
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:MetaNode:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	CmplxBuildEmpty
+	LoadConstText	84 -> "MetaNode(value:text,next:text)"
+	CmplxAddElement
+	LoadLocalText	0
+	CmplxAddElement
+	LoadLocalText	1
+	CmplxAddElement
+	CmplxBuildEmpty
+	LoadConstNum8	38 -> 12
+	CmplxAddElement
+	LoadConstNum8	39 -> 15
+	CmplxAddElement
+	LoadConstNum8	39 -> 15
+	CmplxAddElement
+	LoadConstFunc	107
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:append/List/List/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadConstNum8	2 -> 4
+	LoadLocalText	1
+	LoadLocalText	0
+	LoadGlobalText	6
+	LoadConstFunc	90
+	CallFunc	2
+	LoadConstFunc	90
+	CallFunc	2
+	LoadConstFunc	89
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:append/MetaList/List/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	AddI
+	LoadLocalText	1
+	LoadLocalText	0
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	90
+	CallFunc	2
+	LoadConstFunc	89
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:count/MetaList/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:colon//MetaList/:
+	LoadArgument	1
+	StoreLocalNum32	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadLocalNum32	0
+	SubI
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalText	0
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	95
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:colon//MetaNode/:
+	LoadArgument	1
+	StoreLocalNum32	0
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalNum32	0
+	LoadConstNum8	1 -> 2
+	LessI
+	JumpPosIfTrue	3
+	JumpPos	21
+	LoadLocalText	0
+	LoadConstText	76 -> "value"
+	LoadConstFunc	108
+	CallFunc	2
+	ReturnElement
+	LoadLocalNum32	0
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	95
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:colon/Range/MetaList/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	LoadConstText	79 -> "end"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadLocalText	0
+	LoadConstText	78 -> "start"
+	LoadConstFunc	110
+	CallFunc	2
+	SubI
+	LoadConstNum8	1 -> 2
+	AddI
+	LoadLocalText	1
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadLocalText	0
+	LoadConstText	79 -> "end"
+	LoadConstFunc	110
+	CallFunc	2
+	SubI
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalText	1
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadLocalText	0
+	LoadConstText	78 -> "start"
+	LoadConstFunc	110
+	CallFunc	2
+	SubI
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadConstFunc	71
+	CallFunc	2
+	LoadLocalText	1
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	97
+	CallFunc	2
+	LoadConstFunc	89
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:colon/Range/MetaNode/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	1
+	LoadGlobalText	6
+	LoadConstFunc	105
+	CallFunc	2
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadLocalText	1
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	78 -> "start"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	LessI
+	LoadLocalText	0
+	LoadConstText	79 -> "end"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	LessI
+	And
+	JumpPosIfTrue	3
+	JumpPos	36
+	LoadLocalText	1
+	LoadConstText	76 -> "value"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadGlobalText	6
+	LoadConstFunc	90
+	CallFunc	2
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	78 -> "start"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	LessI
+	JumpPosIfTrue	3
+	JumpPos	102
+	LoadLocalText	1
+	LoadConstText	76 -> "value"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstNum8	0 -> 0
+	LoadLocalText	0
+	LoadConstText	79 -> "end"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadConstFunc	72
+	CallFunc	2
+	LoadLocalText	1
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	97
+	CallFunc	2
+	LoadConstFunc	90
+	CallFunc	2
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	78 -> "start"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalText	0
+	LoadConstText	79 -> "end"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadConstFunc	72
+	CallFunc	2
+	LoadLocalText	1
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	97
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:convert_text/MetaList/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	LessI
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadConstText	22 -> ""
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	99
+	CallFunc	1
+	StoreLocalText	1
+	LoadConstText	80 -> "("
+	LoadLocalText	1
+	TextConcat
+	LoadConstText	81 -> ")"
+	TextConcat
+	ReturnElement
+
+tests/test.gsm:convert_text/MetaNode/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstText	76 -> "value"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	82
+	CallFunc	1
+	StoreLocalText	1
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadGlobalText	6
+	LoadConstFunc	105
+	CallFunc	2
+	JumpPosIfTrue	3
+	JumpPos	6
+	LoadLocalText	1
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	99
+	CallFunc	1
+	StoreLocalText	2
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadConstFunc	99
+	CallFunc	1
+	LoadConstText	82 -> ", "
+	TextConcat
+	LoadLocalText	1
+	TextConcat
+	ReturnElement
+
+tests/test.gsm:sub/MetaList//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum32	0
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadLocalText	0
+	LoadConstText	75 -> "head"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadLocalText	0
+	LoadConstText	74 -> "count"
+	LoadConstFunc	110
+	CallFunc	2
+	LoadLocalNum32	0
+	SubI
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadConstFunc	101
+	CallFunc	2
+	LoadConstFunc	89
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:sub/MetaNode//:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalNum32	0
+	LoadLocalNum32	0
+	LoadConstNum8	0 -> 0
+	Swap
+	LessI
+	JumpPosIfTrue	3
+	JumpPos	72
+	LoadLocalText	0
+	LoadConstText	76 -> "value"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	LoadLocalNum32	0
+	LoadConstNum8	1 -> 2
+	SubI
+	LoadConstFunc	101
+	CallFunc	2
+	LoadConstFunc	90
+	CallFunc	2
+	ReturnElement
+	LoadLocalText	0
+	LoadConstText	77 -> "next"
+	LoadConstFunc	108
+	CallFunc	2
+	ReturnElement
+
+tests/test.gsm:hash/MetaList/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstFunc	93
+	CallFunc	1
+	ReturnElement
+
+tests/test.gsm:main:
+	LoadConstNum8	1 -> 2
+	I2F
+	LoadConstNum8	2 -> 4
+	I2F
+	LoadConstFunc	75
+	CallFunc	2
+	LoadConstNum8	3 -> 6
+	I2F
+	LoadConstFunc	76
+	CallFunc	2
+	LoadConstNum8	4 -> 8
+	I2F
+	LoadConstFunc	76
+	CallFunc	2
+	LoadConstNum8	5 -> 10
+	I2F
+	LoadConstFunc	76
+	CallFunc	2
+	LoadConstNum8	6 -> 12
+	I2F
+	LoadConstFunc	76
+	CallFunc	2
+	LoadConstNum8	7 -> 14
+	I2F
+	LoadConstFunc	76
+	CallFunc	2
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstFunc	84
+	CallFunc	1
+	Pop
+	ReturnElement
+
+./libs/system.gsm:isNull/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	TextHash
+	LoadGlobalText	6
+	TextHash
+	EqU
+	ReturnElement
+
+./libs/system.gsm:isequal/txt/txt/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	LoadLocalText	1
+	LoadConstFunc	2
+	CallFunc	2
+	ReturnElement
+
+./libs/system.gsm:$_getStructDescription_$/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadConstText	22 -> ""
+	StoreLocalText	1
+	LoadLocalText	0
+	TextGetSize
+	JumpPosIfFalse	58
+	LoadLocalText	0
+	LoadConstNum8	17 -> 0
+	TextGetChar
+	StoreLocalNum8	1
+	LoadLocalText	0
+	LoadConstNum8	17 -> 0
+	TextRemoveChar
+	StoreLocalText	0
+	LoadLocalNum8	1
+	LoadConstText	80 -> "("
+	TextHash
+	EqU
+	JumpPosIfTrue	3
+	JumpPos	5
+	JumpAbs	142
+	JumpNeg	64
+	LoadLocalText	0
+	TextGetSize
+	LoadConstNum8	17 -> 0
+	GreaterU
+	JumpPosIfTrue	3
+	JumpPos	23
+	LoadLocalText	0
+	LoadLocalText	0
+	TextGetSize
+	LoadConstNum8	18 -> 1
+	SubU
+	TextRemoveChar
+	StoreLocalText	0
+	LoadLocalText	0
+	ReturnElement
+
+./libs/system.gsm:$_constructor_$/:
+	LoadArgument	1
+	StoreLocalCmplx	0
+	LoadArgument	0
+	StoreLocalCmplx	1
+	StoreLocalText	0
+	LoadLocalText	0
+	LoadConstFunc	106
+	CallFunc	1
+	StoreLocalText	1
+	LoadLocalText	1
+	LoadConstText	85 -> ","
+	LoadConstFunc	41
+	CallFunc	2
+	StoreLocalCmplx	2
+	LoadLocalText	0
+	LoadConstFunc	61
+	CallFunc	1
+	StoreLocalNum64	0
+	LoadConstNum8	18 -> 1
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadLocalCmplx	0
+	CmplxSize
+	StoreLocalCmplx	0
+	LessU
+	JumpPosIfFalse	383
+	LoadLocalCmplx	2
+	LoadLocalNum64	1
+	LoadConstNum8	18 -> 1
+	SubU
+	CmplxLoadElement
+	StoreLocalCmplx	2
+	LoadConstText	86 -> ":"
+	LoadConstFunc	41
+	CallFunc	2
+	StoreLocalCmplx	4
+	LoadLocalCmplx	4
+	LoadConstNum8	17 -> 0
+	CmplxLoadElement
+	StoreLocalCmplx	4
+	StoreLocalText	3
+	LoadLocalCmplx	1
+	LoadLocalNum64	1
+	CmplxLoadElement
+	StoreLocalCmplx	1
+	LoadConstFunc	1
+	CallFunc	1
+	StoreLocalNum64	3
+	LoadLocalNum64	3
+	LoadGlobalNum8	9
+	Swap
+	EqIU
+	JumpPosIfTrue	219
+	LoadLocalNum64	3
+	LoadGlobalNum8	10
+	Swap
+	EqIU
+	JumpPosIfTrue	165
+	LoadLocalNum64	3
+	LoadGlobalNum8	11
+	Swap
+	EqIU
+	JumpPosIfTrue	111
+	LoadLocalNum64	3
+	LoadGlobalNum8	12
+	Swap
+	EqIU
+	JumpPosIfTrue	57
+	LoadLocalNum64	3
+	LoadGlobalNum8	15
+	Swap
+	EqIU
+	JumpPosIfTrue	3
+	JumpPos	36
+	LoadLocalNum64	0
+	LoadLocalText	3
+	LoadConstFunc	57
+	CallFunc	1
+	LoadLocalNum64	3
+	LoadConstFunc	66
+	CallFunc	4
+	Pop
+	JumpPos	36
+	LoadLocalNum64	0
+	LoadLocalText	3
+	LoadConstFunc	57
+	CallFunc	1
+	LoadLocalNum64	3
+	LoadConstFunc	66
+	CallFunc	4
+	Pop
+	JumpPos	36
+	LoadLocalNum64	0
+	LoadLocalText	3
+	LoadConstFunc	54
+	CallFunc	1
+	LoadLocalNum64	3
+	LoadConstFunc	66
+	CallFunc	4
+	Pop
+	JumpPos	36
+	LoadLocalNum64	0
+	LoadLocalText	3
+	LoadConstFunc	51
+	CallFunc	1
+	LoadLocalNum64	3
+	LoadConstFunc	66
+	CallFunc	4
+	Pop
+	JumpPos	36
+	LoadLocalNum64	0
+	LoadLocalText	3
+	LoadConstFunc	48
+	CallFunc	1
+	LoadLocalNum64	3
+	LoadConstFunc	66
+	CallFunc	4
+	Pop
+	LoadLocalNum64	1
+	LoadConstNum8	18 -> 1
+	AddU
+	StoreLocalNum64	1
+	JumpNeg	400
+	LoadLocalNum64	0
+	U2Text
+	ReturnElement
+
+./libs/system.gsm:$_selectText_$/txt/txt/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	Text2U
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	1
+	LoadConstFunc	67
+	CallFunc	2
+	LoadConstFunc	58
+	CallFunc	1
+	ReturnElement
+
+./libs/system.gsm:$_selectUInt_$/txt/txt/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	Text2U
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	1
+	LoadConstFunc	67
+	CallFunc	2
+	LoadConstFunc	49
+	CallFunc	1
+	ReturnElement
+
+./libs/system.gsm:$_selectInt_$/txt/txt/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	Text2U
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	1
+	LoadConstFunc	67
+	CallFunc	2
+	LoadConstFunc	52
+	CallFunc	1
+	ReturnElement
+
+./libs/system.gsm:$_selectFloat_$/txt/txt/:
+	LoadArgument	1
+	StoreLocalText	0
+	LoadArgument	0
+	StoreLocalText	1
+	LoadLocalText	0
+	Text2U
+	StoreLocalNum64	0
+	LoadLocalNum64	0
+	LoadLocalText	1
+	LoadConstFunc	67
+	CallFunc	2
+	LoadConstFunc	55
+	CallFunc	1
+	ReturnElement
+
+./libs/system.gsm:$_update_$/:
+	LoadArgument	1
+	StoreLocalCmplx	0
+	LoadArgument	0
+	StoreLocalCmplx	1
+	Text2U
+	StoreLocalNum64	0
+	StoreLocalText	0
+	LoadLocalCmplx	1
+	LoadConstNum8	19 -> 2
+	CmplxLoadElement
+	StoreLocalCmplx	1
+	LoadConstFunc	1
+	CallFunc	1
+	StoreLocalNum64	1
+	LoadLocalNum64	1
+	LoadGlobalNum8	9
+	Swap
+	EqIU
+	JumpPosIfTrue	215
+	LoadLocalNum64	1
+	LoadGlobalNum8	10
+	Swap
+	EqIU
+	JumpPosIfTrue	166
+	LoadLocalNum64	1
+	LoadGlobalNum8	11
+	Swap
+	EqIU
+	JumpPosIfTrue	117
+	LoadLocalNum64	1
+	LoadGlobalNum8	12
+	Swap
+	EqIU
+	JumpPosIfTrue	68
+	LoadLocalNum64	1
+	LoadGlobalNum8	15
+	Swap
+	EqIU
+	JumpPosIfTrue	19
+	LoadConstText	87 -> "Field isn't a valid formatType!"
+	LoadConstFunc	11
+	CallFunc	1
+	Pop
+	JumpPos	31
+	LoadLocalNum64	0
+	LoadLocalText	0
+	LoadConstFunc	67
+	CallFunc	2
+	LoadConstFunc	59
+	CallFunc	2
+	Pop
+	JumpPos	31
+	LoadLocalNum64	0
+	LoadLocalText	0
+	LoadConstFunc	67
+	CallFunc	2
+	LoadConstFunc	59
+	CallFunc	2
+	Pop
+	JumpPos	31
+	LoadLocalNum64	0
+	LoadLocalText	0
+	LoadConstFunc	67
+	CallFunc	2
+	LoadConstFunc	56
+	CallFunc	2
+	Pop
+	JumpPos	31
+	LoadLocalNum64	0
+	LoadLocalText	0
+	LoadConstFunc	67
+	CallFunc	2
+	LoadConstFunc	53
+	CallFunc	2
+	Pop
+	JumpPos	31
+	LoadLocalNum64	0
+	LoadLocalText	0
+	LoadConstFunc	67
+	CallFunc	2
+	LoadConstFunc	50
+	CallFunc	2
+	Pop
+
+./libs/system.gsm:drop:
+	LoadArgument	0
+	StoreLocalText	0
+
+./libs/system.gsm:classOf/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	Text2U
+	LoadConstFunc	62
+	CallFunc	1
+	ReturnElement
+
+./libs/system.gsm:fieldsOf/txt/:
+	LoadArgument	0
+	StoreLocalText	0
+	LoadLocalText	0
+	Text2U
+	LoadConstFunc	64
+	CallFunc	1
+	StoreLocalCmplx	0
+	LoadLocalCmplx	0
+	ReturnElement
+
