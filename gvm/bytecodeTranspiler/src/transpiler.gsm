@@ -615,7 +615,7 @@ transpile2Statements(txt instructions, ulong functionCount) Transpile2Statements
 				functionName = hint_args[1u]
 			}
 		} else {
-			statements.Add("/*WARNING: Incomplete Instruction Set Translation*/")
+			statements.Add("/*WARNING: Incomplete Instruction Set Translation for " + bytecode_name@bytecode[fInstr] + "*/")
 			if len == (-1) {
 				fReader.nextBuffer()
 			} else if len == 2 {

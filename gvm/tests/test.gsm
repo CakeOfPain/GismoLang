@@ -51,6 +51,27 @@ sub(Node node, int n) Node {
 
 hash(List list) int = list.count()
 
+max(List list) double = max(list.head)
+max(Node node) double {
+	if node == null return -9999
+	next_max := max(node.next)
+	if node.value > next_max return node.value
+	return next_max
+}
+
+min(List list) double = min(list.head)
+min(Node node) double {
+	if node == null return 9999
+	next_min := min(node.next)
+	if node.value < next_min return node.value
+	return next_min
+}
+
+sort(List list) List {
+	newList := ()
+	
+}
+
 // Meta
 
 MetaList(int count, MetaNode head) struct;
@@ -99,8 +120,6 @@ sub(MetaNode node, int n) MetaNode {
 hash(MetaList list) int = list.count()
 
 actor main() {
-	list := 1, 2, 3, 4, 5, 6, 7
-	list as int
-	// output(list as txt)
-	$$debug_opstack$$()
+	list := 3, 2, 6, 2, 10, 23
+	sum := list as int
 }

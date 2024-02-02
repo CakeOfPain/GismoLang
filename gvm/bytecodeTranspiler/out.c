@@ -197,7 +197,7 @@ void $function109(void); /* ./src/byteReader.gsm:nextUShort/ByteReader/ */
 void $function110(void); /* ./src/byteReader.gsm:nextBuffer/ByteReader/ */
 const uint8_t  const_num8[91] = {0,
 0,
-114,
+115,
 0,
 2,
 4,
@@ -295,7 +295,7 @@ const uint16_t const_num16[2] = {0,
 const uint32_t const_num32[1] = {0,
 6777197};
 const uint64_t const_num64[1] = {0};
-const char *const_text[370] = {"undefined",
+const char *const_text[371] = {"undefined",
 "none",
 "ubyte",
 "byte",
@@ -648,7 +648,8 @@ const char *const_text[370] = {"undefined",
 "(GVM_CMPLX_STORE(",
 ", ",
 "fl",
-"/*WARNING: Incomplete Instruction Set Translation*/",
+"*/",
+"/*WARNING: Incomplete Instruction Set Translation for ",
 "\n\t",
 "ResultTxt(content:text,error:text)",
 "ResultFile(file:text,error:text)",
@@ -699,44 +700,44 @@ void $function0(void) {/* $function0 */
 	global_num8[14] = const_num8[14];
 	global_num8[15] = const_num8[15];
 	global_num8[16] = const_num8[16];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalText*/
 	global_num8[17] = const_num8[17];
 	global_num8[18] = const_num8[18];
 	global_num8[19] = const_num8[19];
@@ -746,382 +747,382 @@ void $function0(void) {/* $function0 */
 	global_num8[23] = const_num8[23];
 	global_num8[24] = const_num8[24];
 	global_num8[25] = const_num8[25];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalCmplx*/
 	global_num16[0] = const_num16[0];
 	global_num8[26] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[3], const_num8[17]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[4], const_num8[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[5], const_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[7], const_num8[17]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[9], const_num8[17]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[10], const_num8[17]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[12], const_num8[17]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for UnaryMinusI*/
+	/*WARNING: Incomplete Instruction Set Translation for UnaryMinusI*/
 	GVM_CMPLX_ASSIGN(global_cmplx[14], (gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add((gvm_cmplx_add(const_num8[0], ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[2]), 0)), ((uint64_t)const_num8[2]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[2]), 0)), ((uint64_t)const_num8[2]), 0)), ((uint64_t)const_num8[2]), 0)), ((uint64_t)const_num8[2]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[1]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[4]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[1]), 0)), ((uint64_t)const_num8[0]), 0)), ((uint64_t)const_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for GllLoad*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreGlobalNum16*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for GllSymbol*/
 	global_num16[2] = global_num16[1];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxClone*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 }
 void $function1(void) {/* ./libs/std.gsm:getFormatType// */
 	uint8_t local_num8[0] = {0};
@@ -1131,44 +1132,44 @@ void $function1(void) {/* ./libs/std.gsm:getFormatType// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function2(void) {/* ./libs/std.gsm:cmp/txt/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1178,36 +1179,36 @@ void $function2(void) {/* ./libs/std.gsm:cmp/txt/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for EqU*/
+	/*WARNING: Incomplete Instruction Set Translation for Not*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	local_num32[0] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	local_num32[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num32[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function3(void) {/* ./libs/std.gsm:same/txt/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1217,44 +1218,44 @@ void $function3(void) {/* ./libs/std.gsm:same/txt/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for EqU*/
+	/*WARNING: Incomplete Instruction Set Translation for Not*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	local_num32[0] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	local_num32[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num32[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function4(void) {/* ./libs/std.gsm:upper/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1264,34 +1265,34 @@ void $function4(void) {/* ./libs/std.gsm:upper/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
 	local_num64[1] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[28]) - GVM_U2I(global_num64[1])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextRemoveChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function5(void) {/* ./libs/std.gsm:reverse/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1301,33 +1302,33 @@ void $function5(void) {/* ./libs/std.gsm:reverse/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[1];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextRemoveChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function6(void) {/* ./libs/std.gsm:pause/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1337,14 +1338,14 @@ void $function6(void) {/* ./libs/std.gsm:pause/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for InputChar*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
 }
 void $function7(void) {/* ./libs/std.gsm:argsCheck/multi/// */
 	uint8_t local_num8[0] = {0};
@@ -1354,26 +1355,26 @@ void $function7(void) {/* ./libs/std.gsm:argsCheck/multi/// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 }
 void $function8(void) {/* ./libs/std.gsm:outerr/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1383,17 +1384,17 @@ void $function8(void) {/* ./libs/std.gsm:outerr/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 }
 void $function9(void) {/* ./libs/std.gsm:jErr/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1403,13 +1404,13 @@ void $function9(void) {/* ./libs/std.gsm:jErr/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for Exit*/
 }
 void $function10(void) {/* ./libs/std.gsm:logWarning/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1419,11 +1420,11 @@ void $function10(void) {/* ./libs/std.gsm:logWarning/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
 }
 void $function11(void) {/* ./libs/std.gsm:abort/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1433,12 +1434,12 @@ void $function11(void) {/* ./libs/std.gsm:abort/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 }
 void $function12(void) {/* ./libs/std.gsm:assert//txt/ */
 	uint8_t local_num8[1] = {0};
@@ -1448,16 +1449,16 @@ void $function12(void) {/* ./libs/std.gsm:assert//txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 }
 void $function13(void) {/* ./libs/std.gsm:progressbar/txt//// */
 	uint8_t local_num8[0] = {0};
@@ -1467,48 +1468,48 @@ void $function13(void) {/* ./libs/std.gsm:progressbar/txt//// */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	local_num64[3] = (GVM_F2U(GVM_U2F(global_num64[1]) / GVM_U2F(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for I2F*/
+	/*WARNING: Incomplete Instruction Set Translation for F2I*/
 	local_num64[4] = (GVM_F2U(GVM_U2F(global_num64[2]) * GVM_U2F(global_num64[3])));
 	local_num64[5] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for GreaterIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
 	local_num64[5] = (const_num8[18] + global_num64[5]);
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
 	local_num64[5] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
 	local_num64[5] = (const_num8[18] + global_num64[5]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
 	local_num64[5] = (const_num8[18] + global_num64[5]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
 }
 void $function14(void) {/* ./libs/std.gsm:fill/txt// */
 	uint8_t local_num8[0] = {0};
@@ -1518,15 +1519,15 @@ void $function14(void) {/* ./libs/std.gsm:fill/txt// */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function15(void) {/* ./libs/std.gsm:fillWith/txt/txt// */
 	uint8_t local_num8[0] = {0};
@@ -1536,54 +1537,54 @@ void $function15(void) {/* ./libs/std.gsm:fillWith/txt/txt// */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
 	local_num64[1] = (GVM_U2I((GVM_I2U(GVM_U2I(const_num8[18]) + GVM_U2I(global_num64[0])))) < (GVM_U2I(const_num8[0]) > GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[1] = (const_num8[18] + global_num64[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for UnaryMinusI*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) * GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
 	local_num64[1] = (GVM_U2I((GVM_I2U(GVM_U2I(const_num8[18]) + GVM_U2I(global_num64[0])))) < (GVM_U2I((GVM_I2U(GVM_U2I(const_num8[18]) + GVM_U2I(global_num64[0])))) < global_num64[1]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[1] = (const_num8[18] + global_num64[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function16(void) {/* ./libs/std.gsm:indexOfTxtInList/multi/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1593,28 +1594,28 @@ void $function16(void) {/* ./libs/std.gsm:indexOfTxtInList/multi/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[17];
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for UnaryMinusI*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function17(void) {/* ./libs/std.gsm:indexOfSameTxtInList/multi/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1624,28 +1625,28 @@ void $function17(void) {/* ./libs/std.gsm:indexOfSameTxtInList/multi/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[17];
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for UnaryMinusI*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function18(void) {/* ./libs/std.gsm:toBytes/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1655,22 +1656,22 @@ void $function18(void) {/* ./libs/std.gsm:toBytes/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
 	local_num64[0] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[0])), ((uint64_t)global_num64[0]), 0)));
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function19(void) {/* ./libs/std.gsm:ccolor// */
 	uint8_t local_num8[0] = {0};
@@ -1680,10 +1681,10 @@ void $function19(void) {/* ./libs/std.gsm:ccolor// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum16*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function20(void) {/* ./libs/std.gsm:isUpper// */
 	uint8_t local_num8[1] = {0};
@@ -1693,9 +1694,9 @@ void $function20(void) {/* ./libs/std.gsm:isUpper// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function21(void) {/* ./libs/std.gsm:isLower// */
 	uint8_t local_num8[1] = {0};
@@ -1705,9 +1706,9 @@ void $function21(void) {/* ./libs/std.gsm:isLower// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function22(void) {/* ./libs/std.gsm:isNumeric// */
 	uint8_t local_num8[1] = {0};
@@ -1717,9 +1718,9 @@ void $function22(void) {/* ./libs/std.gsm:isNumeric// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function23(void) {/* ./libs/std.gsm:isAlpha// */
 	uint8_t local_num8[1] = {0};
@@ -1729,13 +1730,13 @@ void $function23(void) {/* ./libs/std.gsm:isAlpha// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function24(void) {/* ./libs/std.gsm:isAlphaNumeric// */
 	uint8_t local_num8[1] = {0};
@@ -1745,13 +1746,13 @@ void $function24(void) {/* ./libs/std.gsm:isAlphaNumeric// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function25(void) {/* ./libs/std.gsm:isWhitespace// */
 	uint8_t local_num8[1] = {0};
@@ -1761,12 +1762,12 @@ void $function25(void) {/* ./libs/std.gsm:isWhitespace// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function26(void) {/* ./libs/std.gsm:isInText//txt/ */
 	uint8_t local_num8[1] = {0};
@@ -1776,24 +1777,24 @@ void $function26(void) {/* ./libs/std.gsm:isInText//txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function27(void) {/* ./libs/std.gsm:filter/txt/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1803,33 +1804,33 @@ void $function27(void) {/* ./libs/std.gsm:filter/txt/txt/ */
 	char *local_text[3] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
 	local_num64[2] = global_num64[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function28(void) {/* ./libs/std.gsm:insertText/txt/txt// */
 	uint8_t local_num8[0] = {0};
@@ -1839,49 +1840,49 @@ void $function28(void) {/* ./libs/std.gsm:insertText/txt/txt// */
 	char *local_text[3] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[1] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for And*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[1] = (const_num8[18] + global_num64[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
 	local_num64[2] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[2] = (const_num8[18] + global_num64[2]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[1] = (const_num8[18] + global_num64[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function29(void) {/* ./libs/std.gsm:subText/txt/// */
 	uint8_t local_num8[0] = {0};
@@ -1891,28 +1892,28 @@ void $function29(void) {/* ./libs/std.gsm:subText/txt/// */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[2] = global_num64[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[2] = (const_num8[18] + global_num64[2]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function30(void) {/* ./libs/std.gsm:StringRepresentation/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -1922,112 +1923,112 @@ void $function30(void) {/* ./libs/std.gsm:StringRepresentation/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = (const_num8[18] + global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function31(void) {/* ./libs/std.gsm:SQLStringRepresentation/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -2037,36 +2038,36 @@ void $function31(void) {/* ./libs/std.gsm:SQLStringRepresentation/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = (const_num8[18] + global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function32(void) {/* ./libs/std.gsm:getChar/txt// */
 	uint8_t local_num8[0] = {0};
@@ -2076,21 +2077,21 @@ void $function32(void) {/* ./libs/std.gsm:getChar/txt// */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function33(void) {/* ./libs/std.gsm:mulText/txt// */
 	uint8_t local_num8[0] = {0};
@@ -2100,22 +2101,22 @@ void $function33(void) {/* ./libs/std.gsm:mulText/txt// */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[1] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[1])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function34(void) {/* ./libs/std.gsm:Str/ */
 	uint8_t local_num8[0] = {0};
@@ -2125,35 +2126,35 @@ void $function34(void) {/* ./libs/std.gsm:Str/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[2] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
 	local_num64[0] = const_num8[17];
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for And*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = (const_num8[18] + global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function35(void) {/* ./libs/std.gsm:getIndexInText/txt// */
 	uint8_t local_num8[1] = {0};
@@ -2163,25 +2164,25 @@ void $function35(void) {/* ./libs/std.gsm:getIndexInText/txt// */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
 	local_num64[0] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for UnaryMinusI*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function36(void) {/* ./libs/std.gsm:stripMargin/txt/ */
 	uint8_t local_num8[2] = {0};
@@ -2191,36 +2192,36 @@ void $function36(void) {/* ./libs/std.gsm:stripMargin/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
 	local_num8[1] = global_num64[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
 	local_num8[1] = global_num64[0];
 	local_num64[0] = (const_num8[18] + global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
 	local_num64[0] = (const_num8[18] - global_num64[0]);
 	local_num64[0] = (const_num8[18] + global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function37(void) {/* ./libs/std.gsm:makeString/multi/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -2230,34 +2231,34 @@ void $function37(void) {/* ./libs/std.gsm:makeString/multi/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[17];
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = (const_num8[18] + global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function38(void) {/* ./libs/std.gsm:replace/txt/txt/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -2267,52 +2268,52 @@ void $function38(void) {/* ./libs/std.gsm:replace/txt/txt/txt/ */
 	char *local_text[4] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[1];
 	local_num64[1] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[1];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
 	local_num64[0] = global_num64[1];
 	local_num64[1] = (GVM_I2U(GVM_U2I(global_num64[0]) + GVM_U2I(global_num64[1])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function39(void) {/* ./libs/std.gsm:countChar/txt// */
 	uint8_t local_num8[1] = {0};
@@ -2322,25 +2323,25 @@ void $function39(void) {/* ./libs/std.gsm:countChar/txt// */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
 	local_num64[0] = const_num8[0];
 	local_num64[1] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
 	local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[1])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function40(void) {/* ./libs/std.gsm:startsWith/txt/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -2350,20 +2351,20 @@ void $function40(void) {/* ./libs/std.gsm:startsWith/txt/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function41(void) {/* ./libs/std.gsm:split/txt/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -2373,51 +2374,51 @@ void $function41(void) {/* ./libs/std.gsm:split/txt/txt/ */
 	char *local_text[3] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add(global_num64[0], ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[0]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
 	local_num64[0] = (GVM_I2U(GVM_U2I((GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[0])))) + GVM_U2I((GVM_I2U(GVM_U2I(global_num64[0]) + GVM_U2I(global_num64[0]))))));
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add(global_num64[0], ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[0]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function42(void) {/* ./libs/std.gsm:getArgument/multi/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -2427,41 +2428,41 @@ void $function42(void) {/* ./libs/std.gsm:getArgument/multi/txt/ */
 	char *local_text[4] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[0];
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LessIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function43(void) {/* ./libs/tracer.gsm:function_tracer_enter/txt// */
 	uint8_t local_num8[0] = {0};
@@ -2471,33 +2472,33 @@ void $function43(void) {/* ./libs/tracer.gsm:function_tracer_enter/txt// */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
 	GVM_CMPLX_ASSIGN(global_cmplx[1], ((GVM_CMPLX_TAKE(global_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
 	global_num8[26] = const_num8[18];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Exit*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(global_cmplx[1], (gvm_cmplx_add(const_num8[1], ((uint64_t)(GVM_CMPLX_TAKE(global_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(global_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(global_cmplx[2])), ((uint64_t)global_num64[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function44(void) {/* ./libs/tracer.gsm:function_tracer_leave/txt// */
 	uint8_t local_num8[0] = {0};
@@ -2507,21 +2508,21 @@ void $function44(void) {/* ./libs/tracer.gsm:function_tracer_leave/txt// */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[1], ((GVM_CMPLX_TAKE(global_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
 	GVM_CMPLX_ASSIGN(global_cmplx[1], ((GVM_CMPLX_TAKE(global_cmplx[1]))->number_of_elements));
 	local_num64[1] = (const_num8[18] - const_num8[17]);
 	GVM_CMPLX_ASSIGN(global_cmplx[1], const_num8[18]);
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 	GVM_CMPLX_ASSIGN(global_cmplx[2], const_num8[18]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function45(void) {/* ./libs/tracer.gsm:printStackTrace/ */
 	uint8_t local_num8[1] = {0};
@@ -2531,66 +2532,66 @@ void $function45(void) {/* ./libs/tracer.gsm:printStackTrace/ */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
 	local_num64[0] = const_num8[17];
 	local_num8[0] = const_num8[17];
 	GVM_CMPLX_ASSIGN(global_cmplx[1], ((GVM_CMPLX_TAKE(global_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for EqU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
 	GVM_CMPLX_ASSIGN(global_cmplx[2], ((GVM_CMPLX_TAKE(global_cmplx[2]))->number_of_elements));
 	local_num64[1] = (const_num8[18] - const_num8[17]);
 	GVM_CMPLX_ASSIGN(global_cmplx[1], const_num8[18]);
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 	GVM_CMPLX_ASSIGN(global_cmplx[2], const_num8[18]);
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 	local_num64[2] = const_num8[17];
 	GVM_CMPLX_ASSIGN(global_cmplx[1], ((GVM_CMPLX_TAKE(global_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
 	GVM_CMPLX_ASSIGN(global_cmplx[1], ((GVM_CMPLX_TAKE(global_cmplx[1]))->number_of_elements));
 	local_num64[4] = (const_num8[18] - (gvm_cmplx_remove((GVM_CMPLX_TAKE(global_cmplx[2])), ((uint64_t)global_num64[1]))));
 	GVM_CMPLX_ASSIGN(global_cmplx[2], ((GVM_CMPLX_TAKE(global_cmplx[2]))->elements[global_num64[4]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
 	local_num8[0] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintU*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
 	GVM_CMPLX_ASSIGN(global_cmplx[2], ((GVM_CMPLX_TAKE(global_cmplx[2]))->elements[global_num64[4]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintU*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
 	GVM_CMPLX_ASSIGN(global_cmplx[1], ((GVM_CMPLX_TAKE(global_cmplx[1]))->elements[global_num64[4]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
 	local_num8[0] = const_num8[18];
 	GVM_CMPLX_ASSIGN(global_cmplx[2], ((GVM_CMPLX_TAKE(global_cmplx[2]))->elements[global_num64[4]]));
 	local_num64[0] = (!global_num8[0]);
 	GVM_CMPLX_ASSIGN(global_cmplx[2], global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 	GVM_CMPLX_ASSIGN(global_cmplx[1], global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 	local_num64[2] = (const_num8[18] + global_num64[2]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
 }
 void $function46(void) {/* ./libs/tracer.gsm:$$GVMErrorHandler$$/ */
 	uint8_t local_num8[0] = {0};
@@ -2600,9 +2601,9 @@ void $function46(void) {/* ./libs/tracer.gsm:$$GVMErrorHandler$$/ */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 }
 void $function47(void) {/* ./libs/classic.gsm:dumpMemoryUse/ */
 	uint8_t local_num8[0] = {0};
@@ -2612,114 +2613,114 @@ void $function47(void) {/* ./libs/classic.gsm:dumpMemoryUse/ */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(global_cmplx[3], ((GVM_CMPLX_TAKE(global_cmplx[3]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(global_cmplx[3], ((GVM_CMPLX_TAKE(global_cmplx[3]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for MulI*/
+	/*WARNING: Incomplete Instruction Set Translation for I2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(global_cmplx[4], ((GVM_CMPLX_TAKE(global_cmplx[4]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(global_cmplx[4], ((GVM_CMPLX_TAKE(global_cmplx[4]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(global_cmplx[5], ((GVM_CMPLX_TAKE(global_cmplx[5]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(global_cmplx[5], ((GVM_CMPLX_TAKE(global_cmplx[5]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(global_cmplx[6], ((GVM_CMPLX_TAKE(global_cmplx[6]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	local_num64[0] = const_num8[0];
 	local_num64[1] = const_num8[0];
 	GVM_CMPLX_ASSIGN(global_cmplx[6], ((GVM_CMPLX_TAKE(global_cmplx[6]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(global_cmplx[6], ((GVM_CMPLX_TAKE(global_cmplx[6]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(global_num64[0]) + GVM_U2I((GVM_U2I(global_num64[1]) > (GVM_I2U(GVM_U2I(const_num8[8]) * GVM_U2I((GVM_I2U(GVM_U2I(const_num8[8]) * GVM_U2I(const_num8[8]))))))))));
 	local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[1])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for I2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(global_cmplx[12], ((GVM_CMPLX_TAKE(global_cmplx[12]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	local_num64[2] = const_num8[8];
 	local_num64[1] = const_num8[0];
 	GVM_CMPLX_ASSIGN(global_cmplx[12], ((GVM_CMPLX_TAKE(global_cmplx[12]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(global_cmplx[11], ((GVM_CMPLX_TAKE(global_cmplx[11]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
 	local_num64[2] = (GVM_I2U(GVM_U2I(global_num64[2]) + GVM_U2I((GVM_U2I(global_num64[1]) > global_num64[0]))));
 	local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[1])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for I2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	local_num64[3] = const_num8[37];
 	local_num64[1] = const_num8[0];
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
 	local_num64[3] = (GVM_I2U(GVM_U2I(global_num64[3]) + GVM_U2I((GVM_U2I(global_num64[1]) > global_num64[2]))));
 	local_num64[1] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[1])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for I2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function48(void) {/* ./libs/classic.gsm:UInt// */
 	uint8_t local_num8[0] = {0};
@@ -2729,12 +2730,12 @@ void $function48(void) {/* ./libs/classic.gsm:UInt// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[3], ((GVM_CMPLX_TAKE(global_cmplx[3]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[3], (gvm_cmplx_add((GVM_CMPLX_TAKE(global_cmplx[3])), ((uint64_t)global_num64[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function49(void) {/* ./libs/classic.gsm:getUInt// */
 	uint8_t local_num8[0] = {0};
@@ -2744,10 +2745,10 @@ void $function49(void) {/* ./libs/classic.gsm:getUInt// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[3], ((GVM_CMPLX_TAKE(global_cmplx[3]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function50(void) {/* ./libs/classic.gsm:updateUInt/// */
 	uint8_t local_num8[0] = {0};
@@ -2757,11 +2758,11 @@ void $function50(void) {/* ./libs/classic.gsm:updateUInt/// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(global_cmplx[3], (GVM_CMPLX_STORE(global_num64[0], global_num64[1], (GVM_CMPLX_TAKE(global_cmplx[3])))));
 }
 void $function51(void) {/* ./libs/classic.gsm:Int// */
@@ -2772,12 +2773,12 @@ void $function51(void) {/* ./libs/classic.gsm:Int// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[4], ((GVM_CMPLX_TAKE(global_cmplx[4]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[4], (gvm_cmplx_add((GVM_CMPLX_TAKE(global_cmplx[4])), ((uint64_t)global_num64[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function52(void) {/* ./libs/classic.gsm:getInt// */
 	uint8_t local_num8[0] = {0};
@@ -2787,10 +2788,10 @@ void $function52(void) {/* ./libs/classic.gsm:getInt// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[4], ((GVM_CMPLX_TAKE(global_cmplx[4]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function53(void) {/* ./libs/classic.gsm:updateInt/// */
 	uint8_t local_num8[0] = {0};
@@ -2800,11 +2801,11 @@ void $function53(void) {/* ./libs/classic.gsm:updateInt/// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(global_cmplx[4], (GVM_CMPLX_STORE(global_num64[0], global_num64[1], (GVM_CMPLX_TAKE(global_cmplx[4])))));
 }
 void $function54(void) {/* ./libs/classic.gsm:Float// */
@@ -2815,12 +2816,12 @@ void $function54(void) {/* ./libs/classic.gsm:Float// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[5], ((GVM_CMPLX_TAKE(global_cmplx[5]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[5], (gvm_cmplx_add((GVM_CMPLX_TAKE(global_cmplx[5])), ((uint64_t)global_num64[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function55(void) {/* ./libs/classic.gsm:getFloat// */
 	uint8_t local_num8[0] = {0};
@@ -2830,10 +2831,10 @@ void $function55(void) {/* ./libs/classic.gsm:getFloat// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[5], ((GVM_CMPLX_TAKE(global_cmplx[5]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function56(void) {/* ./libs/classic.gsm:updateFloat/// */
 	uint8_t local_num8[0] = {0};
@@ -2843,11 +2844,11 @@ void $function56(void) {/* ./libs/classic.gsm:updateFloat/// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(global_cmplx[5], (GVM_CMPLX_STORE(global_num64[0], global_num64[1], (GVM_CMPLX_TAKE(global_cmplx[5])))));
 }
 void $function57(void) {/* ./libs/classic.gsm:Text/txt/ */
@@ -2858,14 +2859,14 @@ void $function57(void) {/* ./libs/classic.gsm:Text/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	GVM_CMPLX_ASSIGN(global_cmplx[6], ((GVM_CMPLX_TAKE(global_cmplx[6]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[6], (GVM_CMPLX_TAKE(global_cmplx[6])));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function58(void) {/* ./libs/classic.gsm:getText// */
 	uint8_t local_num8[0] = {0};
@@ -2875,10 +2876,10 @@ void $function58(void) {/* ./libs/classic.gsm:getText// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[6], ((GVM_CMPLX_TAKE(global_cmplx[6]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function59(void) {/* ./libs/classic.gsm:updateText//txt/ */
 	uint8_t local_num8[0] = {0};
@@ -2888,13 +2889,13 @@ void $function59(void) {/* ./libs/classic.gsm:updateText//txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxStoreElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[6], global_num64[0]);
 }
 void $function60(void) {/* ./libs/classic.gsm:ObjectNode//txt/// */
@@ -2905,23 +2906,23 @@ void $function60(void) {/* ./libs/classic.gsm:ObjectNode//txt/// */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[7], ((GVM_CMPLX_TAKE(global_cmplx[7]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[7], (gvm_cmplx_add((GVM_CMPLX_TAKE(global_cmplx[7])), ((uint64_t)global_num64[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[8], (GVM_CMPLX_TAKE(global_cmplx[8])));
 	GVM_CMPLX_ASSIGN(global_cmplx[9], (gvm_cmplx_add((GVM_CMPLX_TAKE(global_cmplx[9])), ((uint64_t)global_num64[1]), 0)));
 	GVM_CMPLX_ASSIGN(global_cmplx[10], (gvm_cmplx_add((GVM_CMPLX_TAKE(global_cmplx[10])), ((uint64_t)global_num64[2]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function61(void) {/* ./libs/classic.gsm:Object/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -2931,15 +2932,15 @@ void $function61(void) {/* ./libs/classic.gsm:Object/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	GVM_CMPLX_ASSIGN(global_cmplx[11], ((GVM_CMPLX_TAKE(global_cmplx[11]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[11], (GVM_CMPLX_TAKE(global_cmplx[11])));
 	GVM_CMPLX_ASSIGN(global_cmplx[12], (gvm_cmplx_add((GVM_CMPLX_TAKE(global_cmplx[12])), ((uint64_t)const_num8[17]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function62(void) {/* ./libs/classic.gsm:classOfObject// */
 	uint8_t local_num8[0] = {0};
@@ -2949,10 +2950,10 @@ void $function62(void) {/* ./libs/classic.gsm:classOfObject// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[11], ((GVM_CMPLX_TAKE(global_cmplx[11]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function63(void) {/* ./libs/classic.gsm:objectToText// */
 	uint8_t local_num8[0] = {0};
@@ -2962,15 +2963,15 @@ void $function63(void) {/* ./libs/classic.gsm:objectToText// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function64(void) {/* ./libs/classic.gsm:fieldsOfObject// */
 	uint8_t local_num8[0] = {0};
@@ -2980,27 +2981,27 @@ void $function64(void) {/* ./libs/classic.gsm:fieldsOfObject// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[12], ((GVM_CMPLX_TAKE(global_cmplx[12]))->elements[global_num64[0]]));
 	local_num64[1] = (GVM_CMPLX_TAKE(local_cmplx[0]));
 	GVM_CMPLX_ASSIGN(global_cmplx[7], ((GVM_CMPLX_TAKE(global_cmplx[7]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[1]]));
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((!(const_num8[17] == (const_num8[17] == global_num64[0]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[0]))), 4)));
 	GVM_CMPLX_ASSIGN(global_cmplx[7], ((GVM_CMPLX_TAKE(global_cmplx[7]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[1]]));
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((!(const_num8[17] == global_num64[1])), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[0]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function65(void) {/* ./libs/classic.gsm:typeOfField// */
 	uint8_t local_num8[0] = {0};
@@ -3010,10 +3011,10 @@ void $function65(void) {/* ./libs/classic.gsm:typeOfField// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[10], ((GVM_CMPLX_TAKE(global_cmplx[10]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function66(void) {/* ./libs/classic.gsm:putField//txt/// */
 	uint8_t local_num8[0] = {0};
@@ -3023,48 +3024,48 @@ void $function66(void) {/* ./libs/classic.gsm:putField//txt/// */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	local_num64[3] = global_num64[2];
 	GVM_CMPLX_ASSIGN(global_cmplx[12], ((GVM_CMPLX_TAKE(global_cmplx[12]))->elements[global_num64[0]]));
 	local_num64[4] = global_num64[1];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(global_cmplx[12], (GVM_CMPLX_STORE(global_num64[0], global_num64[3], (GVM_CMPLX_TAKE(global_cmplx[12])))));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[7], ((GVM_CMPLX_TAKE(global_cmplx[7]))->elements[global_num64[4]]));
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[4]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
 	GVM_CMPLX_ASSIGN(global_cmplx[7], ((GVM_CMPLX_TAKE(global_cmplx[7]))->elements[global_num64[4]]));
 	local_num64[4] = ((!(!(const_num8[17] == const_num8[18]))) & (const_num8[17] == global_num64[4]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[4]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(global_cmplx[7], (GVM_CMPLX_STORE(global_num64[4], global_num64[3], (GVM_CMPLX_TAKE(global_cmplx[7])))));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(global_cmplx[9], (GVM_CMPLX_STORE(global_num64[4], global_num64[1], (GVM_CMPLX_TAKE(global_cmplx[9])))));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function67(void) {/* ./libs/classic.gsm:getField//txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3074,43 +3075,43 @@ void $function67(void) {/* ./libs/classic.gsm:getField//txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[12], ((GVM_CMPLX_TAKE(global_cmplx[12]))->elements[global_num64[0]]));
 	local_num64[1] = const_num8[17];
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
 	GVM_CMPLX_ASSIGN(global_cmplx[9], ((GVM_CMPLX_TAKE(global_cmplx[9]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[7], ((GVM_CMPLX_TAKE(global_cmplx[7]))->elements[global_num64[1]]));
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for And*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
 	GVM_CMPLX_ASSIGN(global_cmplx[7], ((GVM_CMPLX_TAKE(global_cmplx[7]))->elements[global_num64[1]]));
 	local_num64[1] = (!(!(const_num8[17] == ((!(const_num8[17] == global_num64[1])) & (const_num8[17] == global_num64[0])))));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Not*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[9], ((GVM_CMPLX_TAKE(global_cmplx[9]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function68(void) {/* ./libs/classic.gsm:getFieldReference//txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3120,40 +3121,40 @@ void $function68(void) {/* ./libs/classic.gsm:getFieldReference//txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[12], ((GVM_CMPLX_TAKE(global_cmplx[12]))->elements[global_num64[0]]));
 	local_num64[1] = const_num8[17];
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 	GVM_CMPLX_ASSIGN(global_cmplx[7], ((GVM_CMPLX_TAKE(global_cmplx[7]))->elements[global_num64[1]]));
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
 	GVM_CMPLX_ASSIGN(global_cmplx[7], ((GVM_CMPLX_TAKE(global_cmplx[7]))->elements[global_num64[1]]));
 	local_num64[1] = ((!(!(const_num8[17] == global_num64[1]))) & ((!(const_num8[17] == global_num64[1])) & (const_num8[17] == global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
 	GVM_CMPLX_ASSIGN(global_cmplx[8], ((GVM_CMPLX_TAKE(global_cmplx[8]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Not*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function69(void) {/* ./libs/classic.gsm:getFieldValue// */
 	uint8_t local_num8[0] = {0};
@@ -3163,10 +3164,10 @@ void $function69(void) {/* ./libs/classic.gsm:getFieldValue// */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(global_cmplx[9], ((GVM_CMPLX_TAKE(global_cmplx[9]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function70(void) {/* ./libs/classic.gsm:collectByClass/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3176,27 +3177,27 @@ void $function70(void) {/* ./libs/classic.gsm:collectByClass/txt/ */
 	char *local_text[3] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
 	local_num64[0] = const_num8[0];
 	GVM_CMPLX_ASSIGN(global_cmplx[11], ((GVM_CMPLX_TAKE(global_cmplx[11]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LessIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(global_cmplx[11], ((GVM_CMPLX_TAKE(global_cmplx[11]))->elements[global_num64[0]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[0])), ((uint64_t)global_num64[0]), 0)));
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function71(void) {/* main.gsm:help/ */
 	uint8_t local_num8[0] = {0};
@@ -3206,25 +3207,25 @@ void $function71(void) {/* main.gsm:help/ */
 	char *local_text[0] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
+	/*WARNING: Incomplete Instruction Set Translation for Exit*/
 }
 void $function72(void) {/* main.gsm:main */
 	uint8_t local_num8[0] = {0};
@@ -3234,41 +3235,41 @@ void $function72(void) {/* main.gsm:main */
 	char *local_text[3] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for GreaterIU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxClone*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (GVM_CMPLX_TAKE(local_cmplx[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for PrintText*/
+	/*WARNING: Incomplete Instruction Set Translation for Newline*/
 }
 void $function73(void) {/* ./libs/system.gsm:isNull/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3278,14 +3279,14 @@ void $function73(void) {/* ./libs/system.gsm:isNull/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadGlobalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for EqU*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function74(void) {/* ./libs/system.gsm:$_getStructDescription_$/txt/ */
 	uint8_t local_num8[2] = {0};
@@ -3295,36 +3296,36 @@ void $function74(void) {/* ./libs/system.gsm:$_getStructDescription_$/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
 	local_num8[1] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextRemoveChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpAbs*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for TextRemoveChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function75(void) {/* ./libs/system.gsm:$_constructor_$/ */
 	uint8_t local_num8[0] = {0};
@@ -3334,94 +3335,94 @@ void $function75(void) {/* ./libs/system.gsm:$_constructor_$/ */
 	char *local_text[4] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[5] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[const_num8[17]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	local_num64[1] = const_num8[18];
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], ((GVM_CMPLX_TAKE(local_cmplx[2]))->elements[(const_num8[18] - global_num64[1])]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	GVM_CMPLX_ASSIGN(local_cmplx[4], global_num64[1]);
 	GVM_CMPLX_ASSIGN(local_cmplx[4], ((GVM_CMPLX_TAKE(local_cmplx[4]))->elements[const_num8[17]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[global_num64[1]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 	local_num64[1] = (const_num8[18] + global_num64[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function76(void) {/* ./libs/system.gsm:$_selectText_$/txt/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3431,19 +3432,19 @@ void $function76(void) {/* ./libs/system.gsm:$_selectText_$/txt/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for Text2U*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function77(void) {/* ./libs/system.gsm:$_selectUInt_$/txt/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3453,19 +3454,19 @@ void $function77(void) {/* ./libs/system.gsm:$_selectUInt_$/txt/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for Text2U*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function78(void) {/* ./libs/system.gsm:$_selectInt_$/txt/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3475,19 +3476,19 @@ void $function78(void) {/* ./libs/system.gsm:$_selectInt_$/txt/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for Text2U*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function79(void) {/* ./libs/system.gsm:$_selectFloat_$/txt/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3497,19 +3498,19 @@ void $function79(void) {/* ./libs/system.gsm:$_selectFloat_$/txt/txt/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for Text2U*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function80(void) {/* ./libs/system.gsm:$_update_$/ */
 	uint8_t local_num8[0] = {0};
@@ -3519,73 +3520,73 @@ void $function80(void) {/* ./libs/system.gsm:$_update_$/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[2] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[const_num8[17]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Text2U*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[const_num8[18]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->elements[const_num8[19]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[const_num8[19]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[const_num8[19]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[const_num8[19]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[const_num8[19]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], ((GVM_CMPLX_TAKE(local_cmplx[0]))->elements[const_num8[19]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
 }
 void $function81(void) {/* ./libs/system.gsm:drop */
 	uint8_t local_num8[0] = {0};
@@ -3595,8 +3596,8 @@ void $function81(void) {/* ./libs/system.gsm:drop */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 }
 void $function82(void) {/* ./libs/system.gsm:classOf/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3606,13 +3607,13 @@ void $function82(void) {/* ./libs/system.gsm:classOf/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for Text2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function83(void) {/* ./libs/system.gsm:fieldsOf/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3622,14 +3623,14 @@ void $function83(void) {/* ./libs/system.gsm:fieldsOf/txt/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[1] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for Text2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function84(void) {/* ./src/GIM.gsm:GismoInstructions */
 	uint8_t local_num8[0] = {0};
@@ -3639,44 +3640,44 @@ void $function84(void) {/* ./src/GIM.gsm:GismoInstructions */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function85(void) {/* ./src/GIM.gsm:loadGim/txt/ */
 	uint8_t local_num8[0] = {0};
@@ -3686,106 +3687,106 @@ void $function85(void) {/* ./src/GIM.gsm:loadGim/txt/ */
 	char *local_text[5] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	local_num32[0] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	local_num32[1] = (!(const_num32[0] == global_num32[0]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function86(void) {/* ./src/transpiler.gsm:transpile2C/GismoInstructions/ */
 	uint8_t local_num8[0] = {0};
@@ -3795,22 +3796,22 @@ void $function86(void) {/* ./src/transpiler.gsm:transpile2C/GismoInstructions/ *
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function87(void) {/* ./src/transpiler.gsm:collectConstants/GismoInstructions/ */
 	uint8_t local_num8[2] = {0};
@@ -3820,430 +3821,430 @@ void $function87(void) {/* ./src/transpiler.gsm:collectConstants/GismoInstructio
 	char *local_text[11] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[7] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], const_num8[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	local_num64[0] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	local_num32[7] = ((GVM_U2I(const_num8[7]) == global_num8[1]) | (GVM_U2I(const_num8[6]) == global_num8[1]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	local_num32[8] = (GVM_U2I(const_num8[5]) == global_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	local_num32[9] = (GVM_U2I(const_num8[4]) == global_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	local_num32[10] = (GVM_U2I(const_num8[3]) == global_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	local_num32[11] = (GVM_U2I(const_num8[2]) == global_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	local_num32[12] = (GVM_U2I(const_num8[1]) == global_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	local_num32[13] = (GVM_U2I(const_num8[0]) == global_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[5], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[5])), ((uint64_t)global_num64[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[6], (gvm_cmplx_add(global_num32[11], ((uint64_t)global_num32[13]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	GVM_CMPLX_ASSIGN(local_cmplx[4], (gvm_cmplx_add(global_num32[12], ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[4]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
 	GVM_CMPLX_ASSIGN(local_cmplx[3], (gvm_cmplx_add(global_num32[10], ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[3]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add(global_num32[9], ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[2]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add(global_num32[8], ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add(global_num32[7], ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[0]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxClone*/
 	GVM_CMPLX_ASSIGN(local_cmplx[5], (GVM_CMPLX_TAKE(local_cmplx[5])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxClone*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (GVM_CMPLX_TAKE(local_cmplx[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxClone*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (GVM_CMPLX_TAKE(local_cmplx[1])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxClone*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (GVM_CMPLX_TAKE(local_cmplx[2])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxClone*/
 	GVM_CMPLX_ASSIGN(local_cmplx[3], (GVM_CMPLX_TAKE(local_cmplx[3])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxClone*/
 	GVM_CMPLX_ASSIGN(local_cmplx[4], (GVM_CMPLX_TAKE(local_cmplx[4])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxClone*/
 	GVM_CMPLX_ASSIGN(local_cmplx[6], (GVM_CMPLX_TAKE(local_cmplx[6])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function88(void) {/* ./src/transpiler.gsm:Transpile2StatementsResult */
 	uint8_t local_num8[0] = {0};
@@ -4253,22 +4254,22 @@ void $function88(void) {/* ./src/transpiler.gsm:Transpile2StatementsResult */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function89(void) {/* ./src/transpiler.gsm:transpile2Statements/txt// */
 	uint8_t local_num8[6] = {0};
@@ -4278,1563 +4279,1567 @@ void $function89(void) {/* ./src/transpiler.gsm:transpile2Statements/txt// */
 	char *local_text[21] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[5] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], const_num8[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], global_num64[0]);
 	local_num8[0] = const_num8[0];
 	local_num8[1] = const_num8[1];
 	local_num8[2] = const_num8[2];
 	local_num8[3] = const_num8[3];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalCmplx*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum8*/
 	GVM_CMPLX_ASSIGN(global_cmplx[13], ((GVM_CMPLX_TAKE(global_cmplx[13]))->elements[global_num8[5]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	GVM_CMPLX_ASSIGN(global_cmplx[14], ((GVM_CMPLX_TAKE(global_cmplx[14]))->elements[global_num8[5]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for U2I*/
+	/*WARNING: Incomplete Instruction Set Translation for SubI*/
 	local_num64[5] = const_num8[1];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], ((GVM_CMPLX_TAKE(local_cmplx[1]))->number_of_elements));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	GVM_CMPLX_ASSIGN(global_cmplx[13], ((GVM_CMPLX_TAKE(global_cmplx[13]))->elements[global_num8[5]]));
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_U2I(const_num16[1]) == global_num8[5]), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[0]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for UnaryMinusI*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
 	GVM_CMPLX_ASSIGN(local_cmplx[4], (GVM_U2I(const_num8[4]) == GVM_U2I(global_num64[4])));
 	GVM_CMPLX_ASSIGN(local_cmplx[4], ((GVM_CMPLX_TAKE(local_cmplx[4]))->elements[const_num8[17]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
 	GVM_CMPLX_ASSIGN(local_cmplx[4], ((GVM_CMPLX_TAKE(local_cmplx[4]))->elements[const_num8[18]]));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[4]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[4]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[2]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[2]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[2]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[2]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[2]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[2]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[3]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[3]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[2]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
 	local_num64[6] = (gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5])));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[6]), 0)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[2]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[0]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[0]))), 4)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[2]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[2]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[0])), ((uint64_t)(gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5])))), 6)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[0])), ((uint64_t)(gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5])))), 6)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[0])), ((uint64_t)(gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5])))), 6)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[0])), ((uint64_t)(gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5])))), 6)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[0])), ((uint64_t)(gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5])))), 6)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[0])), ((uint64_t)(gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5])))), 6)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[0])), ((uint64_t)(gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5])))), 6)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[0])), ((uint64_t)(gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5])))), 6)));
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for I2U*/
 	GVM_CMPLX_ASSIGN(local_cmplx[2], const_num8[1]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)global_num64[5]))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for U2Text*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
 	GVM_CMPLX_ASSIGN(local_cmplx[1], (gvm_cmplx_add((gvm_cmplx_remove((GVM_CMPLX_TAKE(local_cmplx[1])), ((uint64_t)(GVM_I2U(GVM_U2I(const_num8[1]) - GVM_U2I(global_num64[5])))))), ((uint64_t)(GVM_CMPLX_TAKE(local_cmplx[1]))), 4)));
 	GVM_CMPLX_ASSIGN(local_cmplx[2], (gvm_cmplx_add((GVM_CMPLX_TAKE(local_cmplx[2])), ((uint64_t)global_num8[0]), 0)));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxClone*/
 	GVM_CMPLX_ASSIGN(local_cmplx[0], (GVM_CMPLX_TAKE(local_cmplx[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function90(void) {/* ./libs/fs.gsm:ResultTxt */
 	uint8_t local_num8[0] = {0};
@@ -5844,22 +5849,22 @@ void $function90(void) {/* ./libs/fs.gsm:ResultTxt */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function91(void) {/* ./libs/fs.gsm:ResultFile */
 	uint8_t local_num8[0] = {0};
@@ -5869,22 +5874,22 @@ void $function91(void) {/* ./libs/fs.gsm:ResultFile */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function92(void) {/* ./libs/fs.gsm:ResultDir */
 	uint8_t local_num8[0] = {0};
@@ -5894,22 +5899,22 @@ void $function92(void) {/* ./libs/fs.gsm:ResultDir */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function93(void) {/* ./libs/fs.gsm:Path */
 	uint8_t local_num8[0] = {0};
@@ -5919,18 +5924,18 @@ void $function93(void) {/* ./libs/fs.gsm:Path */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function94(void) {/* ./libs/fs.gsm:Exists/Path/ */
 	uint8_t local_num8[0] = {0};
@@ -5940,14 +5945,14 @@ void $function94(void) {/* ./libs/fs.gsm:Exists/Path/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Swap*/
+	/*WARNING: Incomplete Instruction Set Translation for EqIU*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function95(void) {/* ./libs/fs.gsm:Type/Path/ */
 	uint8_t local_num8[0] = {0};
@@ -5957,15 +5962,15 @@ void $function95(void) {/* ./libs/fs.gsm:Type/Path/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for GllExec*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function96(void) {/* ./libs/fs.gsm:AsFile/Path/ */
 	uint8_t local_num8[0] = {0};
@@ -5975,38 +5980,38 @@ void $function96(void) {/* ./libs/fs.gsm:AsFile/Path/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Not*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function97(void) {/* ./libs/fs.gsm:AsDir/Path/ */
 	uint8_t local_num8[0] = {0};
@@ -6016,38 +6021,38 @@ void $function97(void) {/* ./libs/fs.gsm:AsDir/Path/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Not*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function98(void) {/* ./libs/fs.gsm:File */
 	uint8_t local_num8[0] = {0};
@@ -6057,18 +6062,18 @@ void $function98(void) {/* ./libs/fs.gsm:File */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function99(void) {/* ./libs/fs.gsm:Read/File/ */
 	uint8_t local_num8[0] = {0};
@@ -6078,35 +6083,35 @@ void $function99(void) {/* ./libs/fs.gsm:Read/File/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Not*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for GllExec*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function100(void) {/* ./libs/fs.gsm:Exists/File/ */
 	uint8_t local_num8[0] = {0};
@@ -6116,15 +6121,15 @@ void $function100(void) {/* ./libs/fs.gsm:Exists/File/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for GllExec*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function101(void) {/* ./libs/fs.gsm:Dir */
 	uint8_t local_num8[0] = {0};
@@ -6134,18 +6139,18 @@ void $function101(void) {/* ./libs/fs.gsm:Dir */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function102(void) {/* ./libs/fs.gsm:List/Dir/ */
 	uint8_t local_num8[0] = {0};
@@ -6155,35 +6160,35 @@ void $function102(void) {/* ./libs/fs.gsm:List/Dir/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Not*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for TextConcat*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for GllExec*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function103(void) {/* ./libs/fs.gsm:Exists/Dir/ */
 	uint8_t local_num8[0] = {0};
@@ -6193,15 +6198,15 @@ void $function103(void) {/* ./libs/fs.gsm:Exists/Dir/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for GllExec*/
+	/*WARNING: Incomplete Instruction Set Translation for TextHash*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function104(void) {/* ./src/byteReader.gsm:ByteReader */
 	uint8_t local_num8[0] = {0};
@@ -6211,20 +6216,20 @@ void $function104(void) {/* ./src/byteReader.gsm:ByteReader */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum64*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function105(void) {/* ./src/byteReader.gsm:hasNext/ByteReader/ */
 	uint8_t local_num8[0] = {0};
@@ -6234,19 +6239,19 @@ void $function105(void) {/* ./src/byteReader.gsm:hasNext/ByteReader/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetSize*/
+	/*WARNING: Incomplete Instruction Set Translation for LessU*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function106(void) {/* ./src/byteReader.gsm:next/ByteReader/ */
 	uint8_t local_num8[1] = {0};
@@ -6256,41 +6261,41 @@ void $function106(void) {/* ./src/byteReader.gsm:next/ByteReader/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Not*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfTrue*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPos*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextGetChar*/
 	local_num8[0] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for AddU*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxAddElement*/
+	/*WARNING: Incomplete Instruction Set Translation for CmplxBuildEmpty*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Pop*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function107(void) {/* ./src/byteReader.gsm:nextULong/ByteReader/ */
 	uint8_t local_num8[0] = {0};
@@ -6300,50 +6305,50 @@ void $function107(void) {/* ./src/byteReader.gsm:nextULong/ByteReader/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num64[0] = (const_num8[87] | global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num64[0] = (const_num8[34] | global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num64[0] = (const_num8[88] | global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num64[0] = (const_num8[89] | global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num64[0] = (const_num8[90] | global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num64[0] = (const_num8[25] | global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num64[0] = (const_num8[24] | global_num64[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Or*/
 	local_num64[0] = global_num64[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function108(void) {/* ./src/byteReader.gsm:nextUInt/ByteReader/ */
 	uint8_t local_num8[0] = {0};
@@ -6353,30 +6358,30 @@ void $function108(void) {/* ./src/byteReader.gsm:nextUInt/ByteReader/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num32[0] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num32[0] = (const_num8[90] | global_num32[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num32[0] = (const_num8[25] | global_num32[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num32[0] = (const_num8[24] | global_num32[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Or*/
 	local_num32[0] = global_num32[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function109(void) {/* ./src/byteReader.gsm:nextUShort/ByteReader/ */
 	uint8_t local_num8[0] = {0};
@@ -6386,20 +6391,20 @@ void $function109(void) {/* ./src/byteReader.gsm:nextUShort/ByteReader/ */
 	char *local_text[1] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num16[0] = const_num8[17];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for ShiftL*/
 	local_num16[0] = (const_num8[24] | global_num16[0]);
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for Or*/
 	local_num16[0] = global_num16[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 void $function110(void) {/* ./src/byteReader.gsm:nextBuffer/ByteReader/ */
 	uint8_t local_num8[0] = {0};
@@ -6409,25 +6414,25 @@ void $function110(void) {/* ./src/byteReader.gsm:nextBuffer/ByteReader/ */
 	char *local_text[2] = {NULL};
 	void *local_func[0] = {NULL};
 	gvm_cmplx_t *local_cmplx[0] = {NULL};
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadArgument*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstText*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalNum32*/
 	local_num64[0] = const_num8[0];
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpPosIfFalse*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadConstFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for CallFunc*/
+	/*WARNING: Incomplete Instruction Set Translation for TextAddChar*/
+	/*WARNING: Incomplete Instruction Set Translation for StoreLocalText*/
 	local_num64[0] = (GVM_I2U(GVM_U2I(const_num8[1]) + GVM_U2I(global_num64[0])));
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
-	/*WARNING: Incomplete Instruction Set Translation*/
+	/*WARNING: Incomplete Instruction Set Translation for JumpNeg*/
+	/*WARNING: Incomplete Instruction Set Translation for LoadLocalText*/
+	/*WARNING: Incomplete Instruction Set Translation for ReturnElement*/
 }
 
