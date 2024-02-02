@@ -2,7 +2,7 @@
 The old version of the Gismolang Compiler
 
 Just some image I made...
-![Gismolang-Image](GismoLang.png)
+<img src="/GismoLang.png" width="50" height="50">
 
 ### Build
 
