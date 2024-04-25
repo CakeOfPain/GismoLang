@@ -3,7 +3,7 @@ The old version of the Gismolang Compiler
 
 This is the offical logo of Gismolang:
 
-<img src="logo.jpg" width="100" height="100">
+<img src="logo.jpg" width="300" height="300">
 
 ### Build
 
