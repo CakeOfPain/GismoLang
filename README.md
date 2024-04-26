@@ -1,9 +1,9 @@
 # OldGismoCompiler
 The old version of the Gismolang Compiler
 
-This is the offical logo of Gismolang:
+This is the official logo of Gismolang:
 
-<img src="logo.jpg" width="300" height="300">
+<img src="logo.jpg" width="300">
 
 ### Build
 
